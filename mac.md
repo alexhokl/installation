@@ -1,0 +1,35 @@
+- set display scaled and choose "more space"
+- setup keyboard with UK English and HK Chinese and download dictation
+- setup three finger drag in "accessibility" (see https://support.apple.com/en-us/HT204609)
+- setup screen corners in "Screen Saver" of "Desktop & Screen Saver"
+- setup "Require password immediately after sleep or screen saver begins" in "Security & Privacy"
+- change size of dock and setup "automatically hide and show the dock"
+- download and install Chrome
+- change default download directory of chrome to desktop
+- install Chrome Remote Desktop
+- install XCode from AppStore
+- install homebrew
+- `brew install $(cat brew-list.txt)`
+- import profile from [plist file](https://github.com/alexhokl/dotfiles/blob/master/com.googlecode.iterm2.plist) in iTerm2
+- `git clone https://github.com/alexhokl/dotfiles`
+- in dotfiles repository, `make dotfiles`
+- generate new token from github for bash access (https://github.com/settings/tokens/new) and this token will be used a password for github authentication
+- `gpg --gen-key` (and select "RSA and RSA",  select 4096 as keysize, select "key does not expire",  enter github registration email address for "email address")
+- `gpg --list-secret-keys --keyid-format LONG` (and copy the number in "sec" after "4096R/"
+- copy the number into `.gitconfig`
+- `gpg --armor --export {key} | pbcopy` (replace key with the number in the previous step)
+- add the GPG key onto GitHub
+- `sudo mkdir /etc/bash_completion.d`
+- `sudo curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /etc/bash_completion.d/git-completion.bash`
+- `sudo curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose`
+- `ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/`
+- `ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/`
+- in dotfiles repository, `apm install $(cat apm-list.txt)`
+- `npm install -g $(cat npm-list.txt)`
+- download and install dotnet (https://www.microsoft.com/net/core#macos)
+- download and install Docker for Mac (installer includes docker-compose as well)
+- download and instal .Net Core
+- download and install Visual Studio for Mac
+- install Telegram from AppStore
+- install Slack from AppStore
+- `go get -u github.com/davecheney/httpstat`
