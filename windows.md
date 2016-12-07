@@ -1,0 +1,6 @@
+- run command prompt with administrator privilege
+- `@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
+- `choco install -y choco-list.config`
+- download and install SQL Server Developer Edition
+- download and install Docker for Windows
+- download and install GitHub for Windows
