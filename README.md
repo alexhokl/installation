@@ -1,1 +1,1 @@
-This documents the installations of y machines.
+This documents the installations of my machines.
