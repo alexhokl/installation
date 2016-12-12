@@ -4,3 +4,4 @@ grunt-cli
 gulp
 n
 angular-cli
+next-update
