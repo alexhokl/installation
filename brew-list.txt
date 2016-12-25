@@ -22,3 +22,4 @@ youtube-dl
 watchman
 jq
 neovim/neovim/neovim
+socat
