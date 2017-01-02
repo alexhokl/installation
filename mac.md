@@ -11,6 +11,24 @@
 - install homebrew
 - `brew install $(cat brew-list.txt)`
 - import profile from [plist file](https://github.com/alexhokl/dotfiles/blob/master/com.googlecode.iterm2.plist) in iTerm2
+- configure vim and neovim (nvim)
+
+```console
+cd ~/
+git clone --recursive https://github.com/alexhokl/.vim.git .vim
+ln -sf $HOME/.vim/vimrc $HOME/.vimrc
+cd $HOME/.vim
+git submodule update --init
+
+mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
+ln -snf "${HOME}/.vim" "${XDG_CONFIG_HOME}/nvim"
+ln -snf "${HOME}/.vimrc" "${XDG_CONFIG_HOME}/nvim/init.vim"
+
+sudo mkdir -p /root/.config
+sudo ln -snf "${HOME}/.vim" /root/.config/nvim
+sudo ln -snf "${HOME}/.vimrc" /root/.config/nvim/init.vim
+```
+
 - `git clone https://github.com/alexhokl/dotfiles`
 - in dotfiles repository, `make dotfiles`
 - generate new token from github for bash access (https://github.com/settings/tokens/new) and this token will be used a password for github authentication
