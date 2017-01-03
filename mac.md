@@ -47,7 +47,8 @@ sudo ln -snf "${HOME}/.vimrc" /root/.config/nvim/init.vim
 - download and install dotnet (https://www.microsoft.com/net/core#macos)
 - download and install Docker for Mac (installer includes docker-compose as well)
 - download and instal .Net Core
-- download and install Visual Studio for Mac
+- download and install Visual Studio Code for Mac
+  - install extension `MSSQL`
 - install Telegram from AppStore
 - install Slack from AppStore
 - `go get -u github.com/davecheney/httpstat`
