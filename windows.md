@@ -5,7 +5,7 @@
 ```
 - Exit the command prompt. 
 - Open Powershell with administrator privilege.
-- Execute the following command to download a list of installations.
+- Execute the following command to download a list of installations (see [list](https://github.com/alexhokl/installation/blob/master/choco-list.config)).
 ```console
 (New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/alexhokl/installation/master/choco-list.config', 'choco-list.config')
 ```
