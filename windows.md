@@ -21,5 +21,6 @@ choco install -y choco-list.config
   5. Un-check `Shadow-copy assemblies being tested`.
 - Download and install SQL Data Tools for Visual Studio 2013 (See [Previous releases of SQL Server Data Tools (SSDT and SSDT-BI)](https://msdn.microsoft.com/en-us/library/mt674919.aspx))
 - Download and install SQL Server Developer Edition
-- Download and install Docker for Windows
-- Download and install GitHub for Windows
+- Download and install Docker for Windows (beta) (See [Download Docker for
+  Windows](https://docs.docker.com/docker-for-windows/))
+- Download and install [GitHub for Windows](https://desktop.github.com/)
