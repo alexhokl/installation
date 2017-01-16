@@ -24,3 +24,5 @@ choco install -y choco-list.config
 - Download and install Docker for Windows (beta) (See [Download Docker for
   Windows](https://docs.docker.com/docker-for-windows/))
 - Download and install [GitHub for Windows](https://desktop.github.com/)
+- Add system enviornment variable `GOPATH` and add `%GOPATH\bin%` to variable
+  `PATH`.
