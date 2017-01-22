@@ -49,15 +49,23 @@ sudo ln -snf "${HOME}/.vimrc" /root/.config/nvim/init.vim
 - copy the number into `.gitconfig`
 - `gpg --armor --export {key} | pbcopy` (replace key with the number in the previous step)
 - add the GPG key onto GitHub
-- `sudo mkdir /etc/bash_completion.d`
-- `sudo curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /etc/bash_completion.d/git-completion.bash`
-- `sudo curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose`
+
 - `ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/`
 - `ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/`
 - in dotfiles repository, `apm install $(cat apm-list.txt)`
 - `npm install -g $(cat npm-list.txt)`
 - download and install dotnet (https://www.microsoft.com/net/core#macos)
 - download and install Docker for Mac (installer includes docker-compose as well)
+- setup bash auto-completions
+
+```console
+sudo mkdir /etc/bash_completion.d
+sudo curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /etc/bash_completion.d/git-completion.bash
+sudo curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
+sudo curl -L https://raw.githubusercontent.com/docker/docker/v$(docker version -f {{.Client.Version}})/contrib/completion/bash/docker -o /etc/bash_completion.d/docker
+sudo curl -L https://raw.githubusercontent.com/alexhokl/go-bb-pr/master/go-bb-pr-completion.bash -o /etc/bash_completion.d/go-bb-pr-completion.bash
+```
+
 - download and instal .Net Core (may need to select from a list of all
   installations rather than the default one)
 - download and install Visual Studio Code for Mac
