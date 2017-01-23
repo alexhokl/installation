@@ -13,6 +13,14 @@
 ```console
 choco install -y choco-list.config
 ```
+
+- Download the list of Atom packages (via non-privileged Powershell)
+
+```console
+(New-Object System.Net.WebClient).DownloadFile('https://raw.githubusercontent.com/alexhokl/installation/master/apm-list.txt', 'apm-list.txt')
+apm install $(cat apm-list.txt)
+```
+
 - Configure ReSharper to disallow shadow-copy assemblies for unit tests.
   1. Open Visual Studio.
   2. Open Menu `ReSharper`.
