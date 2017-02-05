@@ -18,8 +18,18 @@ usermod -a -G sudo alex
 ```sh
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt-get install git-core build-essential neovim python-neovim
+sudo apt-get install -y libtool libtool-bin autoconf automake cmake g++ pkg-config unzip git-core build-essential vim curl
 mkdir ~/git && cd ~/git
-git clone https://github.com/alexhokl/dotfiles
+git clone https://github.com/neovim/neovim
+cd ~/git/neovim
+git checkout v0.1.7
+make
+sudo make install
+cd ~/git
+curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+sudo apt-get install -y nodejs
+curl https://raw.githubusercontent.com/alexhokl/installation/master/npm-list.txt -o npm-list.txt
+sudo npm i -g $(cat npm-list.txt)
+git clone https://github.com/alexhokl/dotfiles`
 
 ```
