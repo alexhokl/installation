@@ -131,6 +131,7 @@ sudo npm i -g $(cat npm-list.txt)
 git clone https://github.com/alexhokl/dotfiles`
 ```
 
+- generate new token from github for bash access (https://github.com/settings/tokens/new) and this token will be used a password for github authentication
 - `gpg --gen-key` (and select "RSA and RSA", select 4096 as keysize, select "key does not expire", enter github registration email address for "email address")
 - `gpg --list-secret-keys --keyid-format LONG` (and copy the number in "sec" after "4096R/"
 - copy the number into `.gitconfig`
