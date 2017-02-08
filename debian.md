@@ -14,7 +14,7 @@ usermod -a -G sudo alex
 ```
 - Reboot to allow the changes to be applied.
 
-- Install 
+- Install
 ```sh
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
@@ -30,6 +30,7 @@ sudo apt-get -y install \
   git-core \
   build-essential \
   vim \
+  gnupg2 \
   curl \
   kdiff3 \
   python-dev \
@@ -129,3 +130,9 @@ curl https://raw.githubusercontent.com/alexhokl/installation/master/npm-list.txt
 sudo npm i -g $(cat npm-list.txt)
 git clone https://github.com/alexhokl/dotfiles`
 ```
+
+- `gpg --gen-key` (and select "RSA and RSA", select 4096 as keysize, select "key does not expire", enter github registration email address for "email address")
+- `gpg --list-secret-keys --keyid-format LONG` (and copy the number in "sec" after "4096R/"
+- copy the number into `.gitconfig`
+- `gpg --armor --export {key}` (replace key with the number in the previous step)
+- add the GPG key onto GitHub
