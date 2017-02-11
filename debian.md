@@ -6,11 +6,34 @@ Reference:
 -  Install sudo and enable myself to sudo
 ```sh
 su
-nano /etc/ap/sources.list
+vi /etc/apt/sources.list
 (remove lines with  `cdrom` to avoid prompting for discs)
 apt-get update
-apt-get sudo
+apt-get install -y \
+		apt-transport-https \
+		ca-certificates \
+		curl \
+        sudo \
+		--no-install-recommends
 usermod -a -G sudo alex
+cat <<-EOF > /etc/apt/sources.list
+#deb http://httpredir.debian.org/debian stretch main contrib non-free
+#deb-src http://httpredir.debian.org/debian/ stretch main contrib non-free
+#deb http://httpredir.debian.org/debian/ stretch-updates main contrib non-free
+#deb-src http://httpredir.debian.org/debian/ stretch-updates main contrib non-free
+#deb http://security.debian.org/ stretch/updates main contrib non-free
+#deb-src http://security.debian.org/ stretch/updates main contrib non-free
+#deb http://httpredir.debian.org/debian/ jessie-backports main contrib non-free
+#deb-src http://httpredir.debian.org/debian/ jessie-backports main contrib non-free
+#deb http://httpredir.debian.org/debian experimental main contrib non-free
+#deb-src http://httpredir.debian.org/debian experimental main contrib non-free
+# neovim
+deb http://ppa.launchpad.net/neovim-ppa/unstable/ubuntu wily main
+deb-src http://ppa.launchpad.net/neovim-ppa/unstable/ubuntu wily main
+# yubico
+deb http://ppa.launchpad.net/yubico/stable/ubuntu wily main
+deb-src http://ppa.launchpad.net/yubico/stable/ubuntu wily main
+EOF
 ```
 - Reboot to allow the changes to be applied.
 
