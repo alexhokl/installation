@@ -21,10 +21,13 @@ apt-get install -y \
 		adduser \
 		alsa-utils \
 		apparmor \
+    autoconf \
 		automake \
 		bash-completion \
 		bc \
+    bison \
 		bridge-utils \
+    build-essential \
 		bzip2 \
 		ca-certificates \
 		cgroupfs-mount \
@@ -48,9 +51,20 @@ apt-get install -y \
     kdiff3 \
 		less \
 		libapparmor-dev \
+    libappindicator1 \
 		libc6-dev \
+    libdbusmenu-glib4 \
+    libdbusmenu-gtk4 \
+    libffi-dev \
+    libgdbm3 \
+    libgdbm-dev \
+    libindicator7 \
 		libltdl-dev \
+    libncurses5-dev \
+    libreadline6-dev \
 		libseccomp-dev \
+    libssl-dev \
+    libyaml-dev \
 		locales \
 		lsof \
 		make \
@@ -67,6 +81,7 @@ apt-get install -y \
 		s3cmd \
 		scdaemon \
 		silversearcher-ag \
+    software-properties-common \
 		ssh \
 		strace \
 		sudo \
@@ -78,6 +93,7 @@ apt-get install -y \
 		xcompmgr \
 		xz-utils \
 		zip \
+    zlib1g-dev \
 		--no-install-recommends
 
 usermod -a -G sudo alex
