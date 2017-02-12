@@ -31,6 +31,7 @@ apt-get install -y \
 		bzip2 \
 		ca-certificates \
 		cgroupfs-mount \
+    cmake \
 		coreutils \
 		curl \
 		dnsutils \
@@ -64,6 +65,8 @@ apt-get install -y \
     libreadline6-dev \
 		libseccomp-dev \
     libssl-dev \
+    libtool \
+    libtool-bin \
     libyaml-dev \
 		locales \
 		lsof \
@@ -73,6 +76,7 @@ apt-get install -y \
 		network-manager \
 		openvpn \
 		pinentry-curses \
+    pkg-config \
     python-dev \
     python-pip \
     python3-dev \

@@ -4,6 +4,7 @@ git clone https://github.com/alexhokl/installation ${HOME}/git/installation
 git clone https://github.com/alexhokl/dotfiles ${HOME}/git/dotfiles
 git clone https://github.com/neovim/neovim ${HOME}/git/neovim
 git clone https://github.com/rbenv/rbenv.git ${HOME}/.rbenv
+git clone https://github.com/rbenv/ruby-build.git ${HOME}/.rbenv/plugins/ruby-build
 
 curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o google-chrome-stable_current_amd64.deb
 curl https://storage.googleapis.com/golang/go1.7.5.linux-amd64.tar.gz -o go1.7.5.linux-amd64.tar.gz
