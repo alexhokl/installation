@@ -30,14 +30,20 @@ rm debian8.1.root.sh
 
 - Reboot the machine to make sure `sudo` works
 
-- Install more packages
+- Install `git`
 
 ```sh
 curl https://raw.githubusercontent.com/alexhokl/installation/master/debian8.2.user.sh -o debian8.2.user.sh
-curl https://raw.githubusercontent.com/alexhokl/installation/master/debian8.3.user.sh -o debian8.3.user.sh
 chmod +x debian8.2.user.sh
 ./debian8.2.user.sh
-rm debian8.2.user.sh
+```
+
+- Close the current terminal and open a new terminal to ensure `git` changes are applied.
+
+- Install more packages
+
+```sh
+./debian8.3.user.sh
 ```
 
 - Reboot to make sure docker for unprivileged user is enabled.
@@ -45,9 +51,7 @@ rm debian8.2.user.sh
 - Install Ruby and neovim
 
 ```sh
-chmod +x debian8.3.user.sh
-./debian8.3.user.sh
-rm debian8.3.user.sh
+./debian8.4.user.sh
 ```
 
 - Open neovim and update plugins via `:UpdateRemotePlugins`

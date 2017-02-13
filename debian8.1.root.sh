@@ -38,7 +38,7 @@ apt-get install -y \
 		file \
 		findutils \
 		gcc \
-		git-core \
+    gettext \
 		gnupg \
 		gnupg2 \
 		gnupg-agent \
@@ -54,8 +54,10 @@ apt-get install -y \
 		libapparmor-dev \
     libappindicator1 \
 		libc6-dev \
+    libcurl4-openssl-dev \
     libdbusmenu-glib4 \
     libdbusmenu-gtk4 \
+    libexpat1-dev \
     libffi-dev \
     libgdbm3 \
     libgdbm-dev \
@@ -99,5 +101,7 @@ apt-get install -y \
 		zip \
     zlib1g-dev \
 		--no-install-recommends
+
+apt-get purge git git-core
 
 usermod -a -G sudo alex
