@@ -30,20 +30,12 @@ rm debian8.1.root.sh
 
 - Reboot the machine to make sure `sudo` works
 
-- Install `git`
+- Install `git` and more APT packages
 
 ```sh
 curl https://raw.githubusercontent.com/alexhokl/installation/master/debian8.2.user.sh -o debian8.2.user.sh
 chmod +x debian8.2.user.sh
 ./debian8.2.user.sh
-```
-
-- Close the current terminal and open a new terminal to ensure `git` changes are applied.
-
-- Install more packages
-
-```sh
-./debian8.3.user.sh
 ```
 
 - Reboot to make sure docker for unprivileged user is enabled.
@@ -56,10 +48,10 @@ chmod +x debian8.2.user.sh
 
 - Open neovim and update plugins via `:UpdateRemotePlugins`
 - generate new token from github for bash access (https://github.com/settings/tokens/new) and this token will be used a password for github authentication
-- `gpg --gen-key` (and select "RSA and RSA", select 4096 as keysize, select "key does not expire", enter github registration email address for "email address")
-- `gpg --list-secret-keys --keyid-format LONG` (and copy the number in "sec" after "4096R/"
+- `gpg2 --gen-key` (and select "RSA and RSA", select 4096 as keysize, select "key does not expire", enter github registration email address for "email address")
+- `gpg2 --list-secret-keys --keyid-format LONG` (and copy the number in "sec" after "4096R/"
 - copy the number into `.gitconfig`
-- `gpg --armor --export {key}` (replace key with the number in the previous step)
+- `gpg2 --armor --export {key}` (replace key with the number in the previous step)
 - add the GPG key onto GitHub
 
 ```sh

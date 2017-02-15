@@ -29,3 +29,6 @@ sudo update-alternatives --install /usr/bin/vi vi "$(which nvim)" 60
 sudo update-alternatives --config vi
 sudo update-alternatives --install /usr/bin/editor editor "$(which nvim)" 60
 sudo update-alternatives --config editor
+
+cd $HOME/git/dotfiles
+make dotfiles

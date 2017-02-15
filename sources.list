@@ -18,3 +18,7 @@ deb-src http://ftp.hk.debian.org/debian/ jessie-updates main contrib non-free
 # yubico
 deb http://ppa.launchpad.net/yubico/stable/ubuntu wily main
 deb-src http://ppa.launchpad.net/yubico/stable/ubuntu wily main
+
+# docker
+deb https://apt.dockerproject.org/repo/ debian-jessie main
+#deb-src https://apt.dockerproject.org/repo/ debian-jessie main

@@ -92,6 +92,7 @@ apt-get install -y \
 		strace \
 		sudo \
 		tar \
+		tmux \
 		tree \
 		tzdata \
 		unzip \

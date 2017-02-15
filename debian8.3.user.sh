@@ -29,11 +29,6 @@ go get github.com/Soulou/curl-unix-socket
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo dpkg -i atom-amd64.deb
 
-sudo add-apt-repository \
-       "deb https://apt.dockerproject.org/repo/ \
-       debian-$(lsb_release -cs) \
-       main"
-sudo apt-get update
 sudo apt-get -y install docker-engine
 sudo usermod -aG docker $USER
 
@@ -54,6 +49,6 @@ sudo curl -sSL https://raw.githubusercontent.com/sivel/speedtest-cli/master/spee
 sudo chmod +x /usr/local/bin/speedtest
 
 curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo apt-get install -y git git-man liberror-perl nodejs
 curl https://raw.githubusercontent.com/alexhokl/installation/master/npm-list.txt -o npm-list.txt
 sudo npm i -g $(cat npm-list.txt)

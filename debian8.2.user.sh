@@ -11,3 +11,6 @@ unzip git.zip
 cd git-*
 make prefix=/usr/local all
 sudo make prefix=/usr/local install
+
+cd $HOME
+./debian8.3.user.sh
