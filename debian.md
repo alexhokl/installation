@@ -46,7 +46,9 @@ chmod +x debian8.2.user.sh
 ./debian8.4.user.sh
 ```
 
-- Open neovim and update plugins via `:UpdateRemotePlugins`
+- Open neovim
+  - update plugins via `:UpdateRemotePlugins`
+  - install go binaries via `:GoInstallBinaries`
 - generate new token from github for bash access (https://github.com/settings/tokens/new) and this token will be used a password for github authentication
 - `gpg2 --gen-key` (and select "RSA and RSA", select 4096 as keysize, select "key does not expire", enter github registration email address for "email address")
 - `gpg2 --list-secret-keys --keyid-format LONG` (and copy the number in "sec" after "4096R/"
