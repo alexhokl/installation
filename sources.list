@@ -22,3 +22,6 @@ deb-src http://ppa.launchpad.net/yubico/stable/ubuntu wily main
 # docker
 deb https://apt.dockerproject.org/repo/ debian-jessie main
 #deb-src https://apt.dockerproject.org/repo/ debian-jessie main
+
+# spotify
+deb http://repository.spotify.com stable non-free

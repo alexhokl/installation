@@ -14,6 +14,9 @@ apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 9DBB0BE
 # yubico
 apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 3653E21064B19D134466702E43D5C49532CBA1A9
 
+# spotify
+aapt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+
 apt-get update
 apt-get -y upgrade
 
@@ -88,6 +91,7 @@ apt-get install -y \
 		scdaemon \
 		silversearcher-ag \
     software-properties-common \
+		spotify-client \
 		ssh \
 		strace \
 		sudo \
