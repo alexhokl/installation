@@ -79,9 +79,11 @@ apt-get install -y \
 		mount \
 		net-tools \
 		network-manager \
+		network-manager-pptp-gnome \
 		openvpn \
 		pinentry-curses \
     pkg-config \
+		pptp-linux \
     python-dev \
     python-pip \
     python3-dev \
