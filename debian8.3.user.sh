@@ -52,3 +52,9 @@ curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 sudo apt-get install -y git git-man liberror-perl nodejs
 curl https://raw.githubusercontent.com/alexhokl/installation/master/npm-list.txt -o npm-list.txt
 sudo npm i -g $(cat npm-list.txt)
+
+curl -sSL -o dotnet.tar.gz https://go.microsoft.com/fwlink/?linkid=843453
+sudo mkdir -p /opt/dotnet
+sudo tar zxf dotnet.tar.gz -C /opt/dotnet
+sudo ln -s /opt/dotnet/dotnet /usr/local/bin
+
