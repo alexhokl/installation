@@ -24,24 +24,24 @@ apt-get install -y \
 		adduser \
 		alsa-utils \
 		apparmor \
-    autoconf \
+		autoconf \
 		automake \
 		bash-completion \
 		bc \
-    bison \
+		bison \
 		bridge-utils \
-    build-essential \
+		build-essential \
 		bzip2 \
 		ca-certificates \
 		cgroupfs-mount \
-    cmake \
+		cmake \
 		coreutils \
 		curl \
 		dnsutils \
 		file \
 		findutils \
 		gcc \
-    gettext \
+		gettext \
 		gnupg \
 		gnupg2 \
 		gnupg-agent \
@@ -52,27 +52,28 @@ apt-get install -y \
 		indent \
 		iptables \
 		jq \
-    kdiff3 \
+		kdiff3 \
 		less \
 		libapparmor-dev \
-    libappindicator1 \
+		libappindicator1 \
 		libc6-dev \
-    libcurl4-openssl-dev \
-    libdbusmenu-glib4 \
-    libdbusmenu-gtk4 \
-    libexpat1-dev \
-    libffi-dev \
-    libgdbm3 \
-    libgdbm-dev \
-    libindicator7 \
+		libcurl4-openssl-dev \
+		libdbusmenu-glib4 \
+		libdbusmenu-gtk4 \
+		libexpat1-dev \
+		libffi-dev \
+		libgdbm3 \
+		libgdbm-dev \
+		libindicator7 \
 		libltdl-dev \
-    libncurses5-dev \
-    libreadline6-dev \
+		libncurses5-dev \
+		libreadline6-dev \
 		libseccomp-dev \
-    libssl-dev \
-    libtool \
-    libtool-bin \
-    libyaml-dev \
+		libssl-dev \
+		libtool \
+		libtool-bin \
+		libunwind8 \
+		libyaml-dev \
 		locales \
 		lsof \
 		make \
@@ -82,17 +83,17 @@ apt-get install -y \
 		network-manager-pptp-gnome \
 		openvpn \
 		pinentry-curses \
-    pkg-config \
+		pkg-config \
 		pptp-linux \
-    python-dev \
-    python-pip \
-    python3-dev \
-    python3-pip \
+		python-dev \
+		python-pip \
+		python3-dev \
+		python3-pip \
 		rxvt-unicode-256color \
 		s3cmd \
 		scdaemon \
 		silversearcher-ag \
-    software-properties-common \
+		software-properties-common \
 		spotify-client \
 		ssh \
 		strace \
@@ -106,7 +107,7 @@ apt-get install -y \
 		xcompmgr \
 		xz-utils \
 		zip \
-    zlib1g-dev \
+		zlib1g-dev \
 		--no-install-recommends
 
 apt-get purge git git-core
