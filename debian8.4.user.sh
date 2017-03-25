@@ -19,6 +19,9 @@ git clone --recursive https://github.com/alexhokl/.vim.git .vim
 ln -sf $HOME/.vim/vimrc $HOME/.vimrc
 cd $HOME/.vim
 git submodule update --init
+cd $HOME/.vim/bundle/vimproc.vim
+make
+cd $HOME/.vim
 mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
 ln -snf "${HOME}/.vim" "${XDG_CONFIG_HOME}/nvim"
 ln -snf "${HOME}/.vimrc" "${XDG_CONFIG_HOME}/nvim/init.vim"
