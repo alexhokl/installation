@@ -25,6 +25,9 @@ go get github.com/nsf/gocode
 go get github.com/rogpeppe/godef
 go get github.com/shurcooL/markdownfmt
 go get github.com/Soulou/curl-unix-socket
+go get github.com/spf13/cobra/cobra
+go get github.com/unidoc/unidoc
+go get github.com/go-swagger/go-swagger
 
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo dpkg -i atom-amd64.deb
