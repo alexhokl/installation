@@ -15,7 +15,11 @@ apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 9DBB0BE
 apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 3653E21064B19D134466702E43D5C49532CBA1A9
 
 # spotify
-aapt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+
+# dotnet
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 
 apt-get update
 apt-get -y upgrade
@@ -24,6 +28,7 @@ apt-get install -y \
 		adduser \
 		alsa-utils \
 		apparmor \
+		apt-transport-https \
 		autoconf \
 		automake \
 		bash-completion \
