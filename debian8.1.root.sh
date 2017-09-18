@@ -82,6 +82,7 @@ apt-get install -y \
 		locales \
 		lsof \
 		make \
+		mono-devel \
 		mount \
 		net-tools \
 		network-manager \
