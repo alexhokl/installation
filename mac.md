@@ -22,6 +22,7 @@ brew install git
 curl https://raw.githubusercontent.com/alexhokl/installation/master/brew-list.txt -o brew-list.txt
 ```
 - `brew install $(cat brew-list.txt)`
+- `brew cask install amethyst`
 - import profile from [plist file](https://github.com/alexhokl/dotfiles/blob/master/com.googlecode.iterm2.plist) in iTerm2
 - configure vim and neovim (nvim)
 
