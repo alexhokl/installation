@@ -98,6 +98,7 @@ apt-get install -y \
 		python-pip \
 		python3-dev \
 		python3-pip \
+		python3-setuptools \
 		rxvt-unicode-256color \
 		s3cmd \
 		scdaemon \
