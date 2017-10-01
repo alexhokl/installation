@@ -31,3 +31,7 @@ deb https://packages.microsoft.com/repos/microsoft-debian-jessie-prod jessie mai
 
 # mono
 deb http://download.mono-project.com/repo/debian jessie main
+
+# virtual box
+deb http://download.virtualbox.org/virtualbox/debian jessie contrib
+
