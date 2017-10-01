@@ -29,3 +29,5 @@ deb http://repository.spotify.com stable non-free
 # dotnet
 deb https://packages.microsoft.com/repos/microsoft-debian-jessie-prod jessie main
 
+# mono
+deb http://download.mono-project.com/repo/debian jessie main
