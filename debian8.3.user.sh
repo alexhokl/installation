@@ -51,7 +51,7 @@ sudo chmod +x /usr/local/bin/git-icdiff
 sudo curl -sSL https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py  -o /usr/local/bin/speedtest
 sudo chmod +x /usr/local/bin/speedtest
 
-curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y git git-man liberror-perl nodejs
 curl https://raw.githubusercontent.com/alexhokl/installation/master/npm-list.txt -o npm-list.txt
 sudo npm i -g $(cat npm-list.txt)
