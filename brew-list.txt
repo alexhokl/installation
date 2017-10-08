@@ -17,7 +17,7 @@ Caskroom/cask/kdiff3
 Caskroom/cask/vmware-fusion
 Caskroom/cask/vlc
 Caskroom/cask/google-cloud-sdk
-Caskroom/cask/whatsappp
+Caskroom/cask/whatsapp
 youtube-dl
 watchman
 jq
@@ -25,3 +25,5 @@ neovim/neovim/neovim
 socat
 python3
 handbrake
+Caskroom/cask/amethyst
+Caskroom/cask/visual-studio
