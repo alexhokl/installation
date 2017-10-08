@@ -7,9 +7,9 @@ git clone https://github.com/rbenv/rbenv.git ${HOME}/.rbenv
 git clone https://github.com/rbenv/ruby-build.git ${HOME}/.rbenv/plugins/ruby-build
 
 curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o google-chrome-stable_current_amd64.deb
-curl https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz -o go1.9.linux-amd64.tar.gz
-curl -L https://github.com/atom/atom/releases/download/v1.13.1/atom-amd64.deb -o atom-amd64.deb
-tar xvf go1.9.linux-amd64.tar.gz
+curl https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz -o golang.tar.gz
+curl -L https://atom.io/download/deb -o atom.deb
+tar xvf golang.tar.gz
 source ${HOME}/git/dotfiles/.path
 
 sudo mv go /usr/local/
@@ -30,7 +30,7 @@ go get github.com/unidoc/unidoc
 go get github.com/go-swagger/go-swagger
 
 sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo dpkg -i atom-amd64.deb
+sudo dpkg -i atom.deb
 
 sudo apt-get -y install docker-engine
 sudo usermod -aG docker $USER
