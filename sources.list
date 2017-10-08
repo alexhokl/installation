@@ -1,16 +1,16 @@
 #
 
-deb http://ftp.hk.debian.org/debian/ jessie main contrib non-free
-deb-src http://ftp.hk.debian.org/debian/ jessie main contrib non-free
+deb http://ftp.hk.debian.org/debian/ stretch main contrib non-free
+deb-src http://ftp.hk.debian.org/debian/ stretch main contrib non-free
 
-deb http://security.debian.org/ jessie/updates main contrib non-free
-deb-src http://security.debian.org/ jessie/updates main contrib non-free
+deb http://security.debian.org/ stretch/updates main contrib non-free
+deb-src http://security.debian.org/ stretch/updates main contrib non-free
 
-deb http://ftp.hk.debian.org/debian/ jessie-updates main contrib non-free
-deb-src http://ftp.hk.debian.org/debian/ jessie-updates main contrib non-free
+deb http://ftp.hk.debian.org/debian/ stretch-updates main contrib non-free
+deb-src http://ftp.hk.debian.org/debian/ stretch-updates main contrib non-free
 
-#deb http://httpredir.debian.org/debian/ jessie-backports main contrib non-free
-#deb-src http://httpredir.debian.org/debian/ jessie-backports main contrib non-free
+#deb http://httpredir.debian.org/debian/ stretch-backports main contrib non-free
+#deb-src http://httpredir.debian.org/debian/ stretch-backports main contrib non-free
 
 #deb http://httpredir.debian.org/debian experimental main contrib non-free
 #deb-src http://httpredir.debian.org/debian experimental main contrib non-free
@@ -20,19 +20,19 @@ deb http://ppa.launchpad.net/yubico/stable/ubuntu wily main
 deb-src http://ppa.launchpad.net/yubico/stable/ubuntu wily main
 
 # docker
-#deb https://apt.dockerproject.org/repo/ debian-jessie main
-#deb-src https://apt.dockerproject.org/repo/ debian-jessie main
-deb [arch=amd64] https://download.docker.com/linux/debian jessie stable
+#deb https://apt.dockerproject.org/repo/ debian-stretch main
+#deb-src https://apt.dockerproject.org/repo/ debian-stretch main
+deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
 
 # spotify
 deb http://repository.spotify.com stable non-free
 
 # dotnet
-deb https://packages.microsoft.com/repos/microsoft-debian-jessie-prod jessie main
+deb https://packages.microsoft.com/repos/microsoft-debian-stretch-prod stretch main
 
 # mono
-deb http://download.mono-project.com/repo/debian jessie main
+deb http://download.mono-project.com/repo/debian stretch main
 
 # virtual box
-deb http://download.virtualbox.org/virtualbox/debian jessie contrib
+deb http://download.virtualbox.org/virtualbox/debian stretch contrib
 
