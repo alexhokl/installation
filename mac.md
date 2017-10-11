@@ -8,7 +8,13 @@
 - change default download directory of chrome to desktop
 - install Chrome Remote Desktop
 - install XCode from AppStore
+```console
+xcode-select --install
+```
 - install homebrew
+```console
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 - Uninstall the built-in git by
 ```console
 /usr/local/git/uninstall.sh
