@@ -1,4 +1,6 @@
+git
 Caskroom/cask/iterm2
+Caskroom/cask/google-chrome
 Caskroom/cask/gpgtools
 golang
 openssl
@@ -18,6 +20,7 @@ Caskroom/cask/vmware-fusion
 Caskroom/cask/vlc
 Caskroom/cask/google-cloud-sdk
 Caskroom/cask/whatsapp
+Caskroom/cask/chrome-remote-desktop-host
 youtube-dl
 watchman
 jq

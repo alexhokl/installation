@@ -1,3 +1,5 @@
+- update OSX in App Store
+- install XCode from App Store
 - set display scaled and choose "more space"
 - setup keyboard with UK English and HK Chinese and download dictation
 - setup three finger drag in "accessibility" (see https://support.apple.com/en-us/HT204609)
@@ -7,18 +9,18 @@
 - download and install Chrome
 - change default download directory of chrome to desktop
 - install Chrome Remote Desktop
-- install XCode from AppStore
+- install iTerm2, XCode and Homebrew
 ```console
-xcode-select --install
-```
-- install homebrew
-```console
+curl -O https://iterm2.com/downloads/stable/iTerm2-3_1_3.zip
+unzip iTerm2-3_1_3.zip
+mv iTerm.app /Applications/
+rm iTerm2-3_1_3.zip
+/usr/local/git/uninstall.sh
+sudo xcode-select --install
+sudo xcodebuid -license accept
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
-- Uninstall the built-in git by
-```console
-/usr/local/git/uninstall.sh
-```
+
 - Install git via Homebrew
 ```console
 brew install git
