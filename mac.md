@@ -21,16 +21,11 @@ sudo xcodebuid -license accept
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-- Install git via Homebrew
-```console
-brew install git
-```
 - Download [installation list](https://github.com/alexhokl/installation/blob/master/brew-list.txt)
 ```console
 curl https://raw.githubusercontent.com/alexhokl/installation/master/brew-list.txt -o brew-list.txt
 ```
 - `brew install $(cat brew-list.txt)`
-- `brew cask install amethyst`
 - import profile from [plist file](https://github.com/alexhokl/dotfiles/blob/master/com.googlecode.iterm2.plist) in iTerm2
 - configure vim and neovim (nvim)
 
