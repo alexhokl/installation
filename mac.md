@@ -1,36 +1,23 @@
 - update OSX in App Store
-- install XCode from App Store
+- install XCode and Microsoft Remote Desktop from App Store
 - set display scaled and choose "more space"
 - setup keyboard with UK English and HK Chinese and download dictation
 - setup three finger drag in "accessibility" (see https://support.apple.com/en-us/HT204609)
 - setup screen corners in "Screen Saver" of "Desktop & Screen Saver"
+- set never to have screen saver
 - setup "Require password immediately after sleep or screen saver begins" in "Security & Privacy"
 - change size of dock and setup "automatically hide and show the dock"
-- download and install Chrome
 - change default download directory of chrome to desktop
-- install Chrome Remote Desktop
-- install iTerm2, XCode and Homebrew
-```console
-curl -O https://iterm2.com/downloads/stable/iTerm2-3_1_3.zip
-unzip iTerm2-3_1_3.zip
-mv iTerm.app /Applications/
-rm iTerm2-3_1_3.zip
-/usr/local/git/uninstall.sh
+- install XCode command line tools, Homebrew and its packages
+
+```sh
 sudo xcode-select --install
 sudo xcodebuid -license accept
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
-
-- Download [installation list](https://github.com/alexhokl/installation/blob/master/brew-list.txt)
-```console
 curl https://raw.githubusercontent.com/alexhokl/installation/master/brew-list.txt -o brew-list.txt
-```
-- `brew install $(cat brew-list.txt)`
-- import profile from [plist file](https://github.com/alexhokl/dotfiles/blob/master/com.googlecode.iterm2.plist) in iTerm2
-- configure vim and neovim (nvim)
+brew install $(cat brew-list.txt)
 
-```console
-cd ~/
+cd $HOME
 git clone --recursive https://github.com/alexhokl/.vim.git .vim
 ln -sf $HOME/.vim/vimrc $HOME/.vimrc
 cd $HOME/.vim
@@ -40,26 +27,46 @@ mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
 ln -snf "${HOME}/.vim" "${XDG_CONFIG_HOME}/nvim"
 ln -snf "${HOME}/.vimrc" "${XDG_CONFIG_HOME}/nvim/init.vim"
 
-sudo mkdir -p /root/.config
-sudo ln -snf "${HOME}/.vim" /root/.config/nvim
-sudo ln -snf "${HOME}/.vimrc" /root/.config/nvim/init.vim
+pip3 install neovim
+
+git clone https://github.com/alexhokl/dotfiles
+cd dotfiles
+git checkout mac
+make dotfiles
+chmod 700 ${HOME}/.gnupg
+cd -
+git clone https://github.com/alexhokl/installation
+cd installation
+apm install $(cat apm-list.txt)
+npm install -g $(cat npm-list.txt)
+go get github.com/axw/gocov/gocov
+go get github.com/brianredbeard/gpget
+go get github.com/crosbymichael/gistit
+go get github.com/crosbymichael/ip-addr
+go get github.com/davecheney/httpstat
+go get github.com/google/gops
+go get github.com/jstemmer/gotags
+go get github.com/nsf/gocode
+go get github.com/rogpeppe/godef
+go get github.com/shurcooL/markdownfmt
+go get github.com/Soulou/curl-unix-socket
+go get github.com/spf13/cobra/cobra
+go get github.com/unidoc/unidoc
+go get github.com/go-swagger/go-swagger
+go get github.com/alexhokl/go-bb-pr
 ```
 
-- `git clone https://github.com/alexhokl/dotfiles`
-- in dotfiles repository, `make dotfiles`
+- in "Security & Privacy" and in "Privacy" tab, add "Amethyst" to "Accessibility" list
+- import profile from [plist file](https://github.com/alexhokl/dotfiles/blob/master/com.googlecode.iterm2.plist) in iTerm2
 - generate new token from github for bash access (https://github.com/settings/tokens/new) and this token will be used a password for github authentication
-- `gpg --gen-key` (and select "RSA and RSA",  select 4096 as keysize, select "key does not expire",  enter github registration email address for "email address")
-- `gpg --list-secret-keys --keyid-format LONG` (and copy the number in "sec" after "4096R/"
-- copy the number into `.gitconfig`
-- `gpg --armor --export {key} | pbcopy` (replace key with the number in the previous step)
-- add the GPG key onto GitHub
+- import GPG key from another machine
+
+```sh
+gpg2 --import my-key-filename.asc
+```
 
 - `ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/`
 - `ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/`
-- in dotfiles repository, `apm install $(cat apm-list.txt)`
-- `npm install -g $(cat npm-list.txt)`
-- download and install dotnet (https://www.microsoft.com/net/core#macos)
-- download and install Docker for Mac (installer includes docker-compose as well)
 - setup bash auto-completions
 
 ```console
@@ -70,10 +77,4 @@ sudo curl -L https://raw.githubusercontent.com/docker/docker/v$(docker version -
 sudo curl -L https://raw.githubusercontent.com/alexhokl/go-bb-pr/master/go-bb-pr-completion.bash -o /etc/bash_completion.d/go-bb-pr-completion.bash
 ```
 
-- download and instal .Net Core (may need to select from a list of all
-  installations rather than the default one)
-- download and install Visual Studio Code for Mac
-  - install extension `MSSQL`
-- install Telegram from AppStore
-- install Slack from AppStore
-- `go get -u github.com/davecheney/httpstat`
+- install extension `MSSQL` on Visual Studio Code
