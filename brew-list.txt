@@ -35,4 +35,7 @@ Caskroom/cask/slack
 Caskroom/cask/vmware-fusion
 Caskroom/cask/dotnet-sdk
 Caskroom/cask/docker
+Caskroom/cask/teamviewer
+Caskroom/cask/kap
+Caskroom/cask/keeweb
 Caskroom/cask/telegram-desktop
