@@ -13,7 +13,14 @@
 ```sh
 sudo xcode-select --install
 sudo xcodebuid -license accept
+
+sudo mkdir /etc/bash_completion.d
+sudo curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /etc/bash_completion.d/git-completion.bash
+sudo curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
+sudo curl -L https://raw.githubusercontent.com/docker/docker/v$(docker version -f {{.Client.Version}})/contrib/completion/bash/docker -o /etc/bash_completion.d/docker
+sudo curl -L https://raw.githubusercontent.com/alexhokl/go-bb-pr/master/go-bb-pr-completion.bash -o /etc/bash_completion.d/go-bb-pr-completion.bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 curl https://raw.githubusercontent.com/alexhokl/installation/master/brew-list.txt -o brew-list.txt
 brew install $(cat brew-list.txt)
 
@@ -54,6 +61,7 @@ go get github.com/spf13/cobra/cobra
 go get github.com/unidoc/unidoc
 go get github.com/go-swagger/go-swagger
 go get github.com/alexhokl/go-bb-pr
+code --install-extension ms-mssql.mssql
 ```
 
 - in "Security & Privacy" and in "Privacy" tab, add "Amethyst" to "Accessibility" list
@@ -64,17 +72,3 @@ go get github.com/alexhokl/go-bb-pr
 ```sh
 gpg2 --import my-key-filename.asc
 ```
-
-- `ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/`
-- `ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/`
-- setup bash auto-completions
-
-```console
-sudo mkdir /etc/bash_completion.d
-sudo curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /etc/bash_completion.d/git-completion.bash
-sudo curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
-sudo curl -L https://raw.githubusercontent.com/docker/docker/v$(docker version -f {{.Client.Version}})/contrib/completion/bash/docker -o /etc/bash_completion.d/docker
-sudo curl -L https://raw.githubusercontent.com/alexhokl/go-bb-pr/master/go-bb-pr-completion.bash -o /etc/bash_completion.d/go-bb-pr-completion.bash
-```
-
-- install extension `MSSQL` on Visual Studio Code
