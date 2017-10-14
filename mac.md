@@ -7,6 +7,7 @@
 - set never to have screen saver
 - setup "Require password immediately after sleep or screen saver begins" in "Security & Privacy"
 - change size of dock and setup "automatically hide and show the dock"
+- set "Show Bluetooth in menu bar" in "Bluetooth"
 - change default download directory of chrome to desktop
 - install XCode command line tools, Homebrew and its packages
 
