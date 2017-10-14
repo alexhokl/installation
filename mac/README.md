@@ -3,11 +3,7 @@
 - set display scaled and choose "more space"
 - setup keyboard with UK English and HK Chinese and download dictation
 - setup three finger drag in "accessibility" (see https://support.apple.com/en-us/HT204609)
-- setup screen corners in "Screen Saver" of "Desktop & Screen Saver"
-- set never to have screen saver
 - setup "Require password immediately after sleep or screen saver begins" in "Security & Privacy"
-- change size of dock and setup "automatically hide and show the dock"
-- set "Show Bluetooth in menu bar" in "Bluetooth"
 - change default download directory of chrome to desktop
 - install XCode command line tools, Homebrew and its packages
 
@@ -21,6 +17,9 @@ sudo curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose v
 sudo curl -L https://raw.githubusercontent.com/docker/docker/v$(docker version -f {{.Client.Version}})/contrib/completion/bash/docker -o /etc/bash_completion.d/docker
 sudo curl -L https://raw.githubusercontent.com/alexhokl/go-bb-pr/master/go-bb-pr-completion.bash -o /etc/bash_completion.d/go-bb-pr-completion.bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+curl https://raw.githubusercontent.com/alexhokl/installation/master/mac-preferences.scpt -o mac-preferences.scpt
+osascript mac-preferences.scpt
 
 brew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release
 curl https://raw.githubusercontent.com/alexhokl/installation/master/brew-list.txt -o brew-list.txt
