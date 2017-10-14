@@ -63,6 +63,7 @@ go get github.com/unidoc/unidoc
 go get github.com/go-swagger/go-swagger
 go get github.com/alexhokl/go-bb-pr
 code --install-extension ms-mssql.mssql
+rbenv install 2.4.2
 ```
 
 - in "Security & Privacy" and in "Privacy" tab, add "Amethyst" to "Accessibility" list
