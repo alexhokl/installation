@@ -63,6 +63,7 @@ go get github.com/unidoc/unidoc
 go get github.com/go-swagger/go-swagger
 go get github.com/alexhokl/go-bb-pr
 code --install-extension ms-mssql.mssql
+code --install-extension ms-vscode.powershell
 rbenv install 2.4.2
 ```
 
