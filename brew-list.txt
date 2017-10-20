@@ -42,3 +42,4 @@ Caskroom/cask/telegram-desktop
 rbenv
 ruby
 Caskroom/cask/sopcast
+awscli
