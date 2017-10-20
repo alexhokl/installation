@@ -43,3 +43,4 @@ rbenv
 ruby
 Caskroom/cask/sopcast
 awscli
+go-delve/delve/delve
