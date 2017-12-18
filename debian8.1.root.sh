@@ -28,6 +28,9 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328
 # virtual box
 curl https://www.virtualbox.org/download/oracle_vbox_2016.asc | apt-key add -
 
+# telegram
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36FD5529
+
 apt-get update
 apt-get -y upgrade
 

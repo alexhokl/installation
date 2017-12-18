@@ -36,3 +36,7 @@ deb http://download.mono-project.com/repo/debian stretch main
 # virtual box
 deb http://download.virtualbox.org/virtualbox/debian stretch contrib
 
+# telegram
+deb http://ppa.launchpad.net/atareao/telegram/ubuntu xenial main
+deb-src http://ppa.launchpad.net/atareao/telegram/ubuntu xenial main
+
