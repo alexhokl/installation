@@ -40,3 +40,5 @@ deb http://download.virtualbox.org/virtualbox/debian stretch contrib
 deb http://ppa.launchpad.net/atareao/telegram/ubuntu xenial main
 deb-src http://ppa.launchpad.net/atareao/telegram/ubuntu xenial main
 
+# yarn
+deb https://dl.yarnpkg.com/debian/ stable main

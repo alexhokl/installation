@@ -31,6 +31,9 @@ curl https://www.virtualbox.org/download/oracle_vbox_2016.asc | apt-key add -
 # telegram
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36FD5529
 
+# yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+
 apt-get update
 apt-get -y upgrade
 
