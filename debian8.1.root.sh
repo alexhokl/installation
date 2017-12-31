@@ -34,6 +34,9 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36FD5529
 # yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 
+# signal
+curl -s https://updates.signal.org/desktop/apt/keys.asc | apt-key add -
+
 apt-get update
 apt-get -y upgrade
 
