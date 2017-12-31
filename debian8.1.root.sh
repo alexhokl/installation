@@ -143,6 +143,6 @@ apt-get install -y \
 
 apt-get purge git git-core
 
-apt install signal-desktop
+apt install signal-desktop telegram
 
 usermod -a -G sudo alex
