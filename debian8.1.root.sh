@@ -37,6 +37,10 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 # signal
 curl -s https://updates.signal.org/desktop/apt/keys.asc | apt-key add -
 
+# mssql-tools
+curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | tee /etc/apt/sources.list.d/msprod.list
+
 apt-get update
 apt-get -y upgrade
 
@@ -101,6 +105,7 @@ apt-get install -y \
 		make \
 		mono-devel \
 		mount \
+		mssql-tools \
 		net-tools \
 		network-manager \
 		network-manager-pptp-gnome \
@@ -126,6 +131,7 @@ apt-get install -y \
 		tmux \
 		tree \
 		tzdata \
+		unixodbc-dev \
 		unzip \
 		virtualbox-5.1 \
 		xclip \

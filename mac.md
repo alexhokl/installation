@@ -22,8 +22,10 @@ sudo curl -L https://raw.githubusercontent.com/docker/docker/v$(docker version -
 sudo curl -L https://raw.githubusercontent.com/alexhokl/go-bb-pr/master/go-bb-pr-completion.bash -o /etc/bash_completion.d/go-bb-pr-completion.bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+brew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release
 curl https://raw.githubusercontent.com/alexhokl/installation/master/brew-list.txt -o brew-list.txt
 brew install $(cat brew-list.txt)
+ACCEPT_EULA=y brew install --no-sandbox mssql-tools
 
 cd $HOME
 git clone --recursive https://github.com/alexhokl/.vim.git .vim
