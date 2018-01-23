@@ -28,6 +28,9 @@ go get github.com/Soulou/curl-unix-socket
 go get github.com/spf13/cobra/cobra
 go get github.com/unidoc/unidoc
 go get github.com/go-swagger/go-swagger
+go get github.com/alexhokl/go-bb-pr
+go get github.com/russross/blackfriday-tool
+go get github.com/kubernetes/kompose
 
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo dpkg -i atom.deb
