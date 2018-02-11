@@ -134,6 +134,7 @@ apt-get install -y \
 		unixodbc-dev \
 		unzip \
 		virtualbox-5.1 \
+		webp \
 		xclip \
 		xcompmgr \
 		xz-utils \
