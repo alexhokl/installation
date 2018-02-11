@@ -44,4 +44,4 @@ ruby
 Caskroom/cask/sopcast
 awscli
 go-delve/delve/delve
-
+imagemagick
