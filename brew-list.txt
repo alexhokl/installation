@@ -46,3 +46,4 @@ awscli
 go-delve/delve/delve
 imagemagick
 gnu-sed
+webp
