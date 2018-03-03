@@ -28,7 +28,6 @@ markdown-format@2.5.1
 markdown-preview-plus@2.5.5
 minimap@4.29.8
 minimap-highlight-selected@4.6.1
-omnisharp-atom@0.31.2
 open-recent@5.0.0
 prettier-atom@0.51.0
 react@0.18.0
