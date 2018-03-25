@@ -6,17 +6,16 @@ echo "deb https://packages.cloud.google.com/apt cloud-sdk-sid main" > /etc/apt/s
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 
 # docker
-apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | apt-key add -
 
 # neovim
-apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 9DBB0BE9366964F134855E2255F96FCF8231B6DD
+#apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 9DBB0BE9366964F134855E2255F96FCF8231B6DD
 
 # yubico
-apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 3653E21064B19D134466702E43D5C49532CBA1A9
+#apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 3653E21064B19D134466702E43D5C49532CBA1A9
 
 # spotify
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+#apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
 
 # dotnet
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -27,9 +26,6 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328
 
 # virtual box
 curl https://www.virtualbox.org/download/oracle_vbox_2016.asc | apt-key add -
-
-# telegram
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 36FD5529
 
 # yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -123,7 +119,7 @@ apt-get install -y \
 		scdaemon \
 		silversearcher-ag \
 		software-properties-common \
-		spotify-client \
+		#spotify-client \
 		ssh \
 		strace \
 		sudo \
@@ -144,6 +140,6 @@ apt-get install -y \
 
 apt-get purge git git-core
 
-apt install signal-desktop telegram
+apt install signal-desktop
 
 usermod -a -G sudo alex
