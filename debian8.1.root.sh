@@ -22,7 +22,7 @@ curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microso
 mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 
 # mono
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 
 # virtual box
 curl https://www.virtualbox.org/download/oracle_vbox_2016.asc | apt-key add -
