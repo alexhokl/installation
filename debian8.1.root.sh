@@ -96,6 +96,7 @@ apt-get install -y \
 		libtool-bin \
 		libunwind8 \
 		libyaml-dev \
+		libz-dev \
 		locales \
 		lsof \
 		make \
@@ -129,11 +130,12 @@ apt-get install -y \
 		tzdata \
 		unixodbc-dev \
 		unzip \
-		virtualbox-5.1 \
+		virtualbox-5.2 \
 		webp \
 		xclip \
 		xcompmgr \
 		xz-utils \
+		yarn \
 		zip \
 		zlib1g-dev \
 		--no-install-recommends

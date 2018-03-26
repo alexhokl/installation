@@ -16,6 +16,7 @@ apt-get install -y \
 		apt-transport-https \
 		ca-certificates \
 		curl \
+        dirmngr \
 		--no-install-recommends
 ```
 
@@ -26,9 +27,8 @@ curl https://raw.githubusercontent.com/alexhokl/installation/master/debian8.1.ro
 chmod +x debian8.1.root.sh
 ./debian8.1.root.sh
 rm debian8.1.root.sh
+shutdown -r now
 ```
-
-- Reboot the machine to make sure `sudo` works
 
 - Install `git` and more APT packages
 

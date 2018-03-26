@@ -9,6 +9,7 @@ git clone https://github.com/rbenv/ruby-build.git ${HOME}/.rbenv/plugins/ruby-bu
 curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o google-chrome-stable_current_amd64.deb
 curl https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz -o golang.tar.gz
 curl -L https://atom.io/download/deb -o atom.deb
+curl -sSL https://downloads.slack-edge.com/linux_releases/slack-desktop-3.1.0-amd64.deb -o slack.deb
 tar xvf golang.tar.gz
 source ${HOME}/git/dotfiles/.path
 
@@ -34,8 +35,9 @@ go get github.com/kubernetes/kompose
 
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo dpkg -i atom.deb
+sudo dpkg -i slack.deb
 
-sudo apt-get -y install docker-engine
+sudo apt-get -y install docker-ce
 sudo usermod -aG docker $USER
 
 sudo curl -L "https://github.com/docker/compose/releases/download/1.16.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -59,8 +61,4 @@ sudo apt-get install -y git git-man liberror-perl nodejs
 curl https://raw.githubusercontent.com/alexhokl/installation/master/npm-list.txt -o npm-list.txt
 sudo npm i -g $(cat npm-list.txt)
 
-curl -sSL -o dotnet.tar.gz https://go.microsoft.com/fwlink/?linkid=843453
-sudo mkdir -p /opt/dotnet
-sudo tar zxf dotnet.tar.gz -C /opt/dotnet
-sudo ln -s /opt/dotnet/dotnet /usr/local/bin
-
+sudo apt-get install -y dotnet-sdk-2.1.101
