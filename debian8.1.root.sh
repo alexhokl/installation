@@ -56,6 +56,7 @@ apt-get install -y \
 		ca-certificates \
 		cgroupfs-mount \
 		cmake \
+		code \
 		coreutils \
 		curl \
 		dkms \

@@ -25,10 +25,12 @@ deb-src http://ppa.launchpad.net/yubico/stable/ubuntu wily main
 deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
 
 # spotify
-deb http://repository.spotify.com stable non-free
+#deb http://repository.spotify.com stable non-free
 
 # dotnet
 deb https://packages.microsoft.com/repos/microsoft-debian-stretch-prod stretch main
+# VS Code
+deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
 
 # mono
 deb http://download.mono-project.com/repo/debian stretch main
@@ -37,8 +39,8 @@ deb http://download.mono-project.com/repo/debian stretch main
 deb http://download.virtualbox.org/virtualbox/debian stretch contrib
 
 # telegram
-deb http://ppa.launchpad.net/atareao/telegram/ubuntu xenial main
-deb-src http://ppa.launchpad.net/atareao/telegram/ubuntu xenial main
+#deb http://ppa.launchpad.net/atareao/telegram/ubuntu xenial main
+#deb-src http://ppa.launchpad.net/atareao/telegram/ubuntu xenial main
 
 # yarn
 deb https://dl.yarnpkg.com/debian/ stable main
