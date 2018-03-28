@@ -2,8 +2,8 @@
 
 source ${HOME}/git/dotfiles/.path
 rbenv init
-rbenv install 2.3.3
-rbenv global 2.3.3
+rbenv install 2.5.0
+rbenv global 2.5.0
 echo "gem: --no-document" > ${HOME}/.gemrc
 gem install bundler
 
