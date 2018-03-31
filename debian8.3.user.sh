@@ -10,6 +10,7 @@ curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -
 curl https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz -o golang.tar.gz
 curl -L https://atom.io/download/deb -o atom.deb
 curl -sSL https://downloads.slack-edge.com/linux_releases/slack-desktop-3.1.0-amd64.deb -o slack.deb
+curl -sSL https://github.com/keeweb/keeweb/releases/download/v1.6.3/KeeWeb-1.6.3.linux.x64.deb -o keeweb.deb
 tar xvf golang.tar.gz
 source ${HOME}/git/dotfiles/.path
 
@@ -36,6 +37,7 @@ go get github.com/kubernetes/kompose
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo dpkg -i atom.deb
 sudo dpkg -i slack.deb
+sudo dpkg -i keeweb.deb
 
 sudo apt-get -y install docker-ce
 sudo usermod -aG docker $USER
