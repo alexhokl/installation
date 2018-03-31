@@ -35,3 +35,5 @@ sudo update-alternatives --config editor
 
 cd $HOME/git/dotfiles
 make dotfiles
+
+pip install awscli --upgrade --user
