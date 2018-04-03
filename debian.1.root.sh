@@ -50,6 +50,8 @@ apt-get install -y \
 		bash-completion \
 		bc \
 		bison \
+		bluez-f \
+		blueman \
 		bridge-utils \
 		build-essential \
 		bzip2 \
@@ -108,9 +110,12 @@ apt-get install -y \
 		network-manager \
 		network-manager-pptp-gnome \
 		openvpn \
+		pavucontrol \
 		pinentry-curses \
 		pkg-config \
 		pptp-linux \
+		pulseaudio \
+		pulseaudio-module-bluetooth \
 		python-dev \
 		python-pip \
 		python3-dev \
