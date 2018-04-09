@@ -47,13 +47,21 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 sudo curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /etc/bash_completion.d/git-completion.bash
 sudo curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
-sudo curl -L https://raw.githubusercontent.com/docker/docker/v$(docker version -f {{.Client.Version}})/contrib/completion/bash/docker -o /etc/bash_completion.d/docker
 sudo curl -L https://raw.githubusercontent.com/alexhokl/go-bb-pr/master/go-bb-pr-completion.bash -o /etc/bash_completion.d/go-bb-pr-completion.bash
 
 sudo curl -sSL https://raw.githubusercontent.com/jeffkaufman/icdiff/master/icdiff -o /usr/local/bin/icdiff
 sudo curl -sSL https://raw.githubusercontent.com/jeffkaufman/icdiff/master/git-icdiff -o /usr/local/bin/git-icdiff
 sudo chmod +x /usr/local/bin/icdiff
 sudo chmod +x /usr/local/bin/git-icdiff
+
+sudo curl -sSL https://raw.githubusercontent.com/tehmaze/lolcat/master/lolcat -o /usr/local/bin/lolcat
+sudo chmod +x /usr/local/bin/lolcat
+
+sudo curl -sSL https://misc.j3ss.co/binaries/have -o /usr/local/bin/have
+sudo chmod +x /usr/local/bin/have
+
+sudo curl -sSL https://misc.j3ss.co/binaries/light -o /usr/local/bin/light
+sudo chmod +x /usr/local/bin/light
 
 sudo curl -sSL https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py  -o /usr/local/bin/speedtest
 sudo chmod +x /usr/local/bin/speedtest
