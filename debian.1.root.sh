@@ -81,6 +81,7 @@ apt-get install -y \
 		less \
 		libapparmor-dev \
 		libappindicator1 \
+		libav-tools \
 		libc6-dev \
 		libcurl4-openssl-dev \
 		libdbusmenu-glib4 \
