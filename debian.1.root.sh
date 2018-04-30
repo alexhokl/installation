@@ -63,7 +63,9 @@ apt-get install -y \
 		curl \
 		dkms \
 		dnsutils \
+		ffmpeg \
 		file \
+		firmware-iwlwifi \
 		findutils \
 		gcc \
 		gettext \
