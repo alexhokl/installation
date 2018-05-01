@@ -25,7 +25,7 @@ deb-src http://ppa.launchpad.net/yubico/stable/ubuntu wily main
 deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
 
 # spotify
-#deb http://repository.spotify.com stable non-free
+deb http://repository.spotify.com stable non-free
 
 # dotnet
 deb https://packages.microsoft.com/repos/microsoft-debian-stretch-prod stretch main
