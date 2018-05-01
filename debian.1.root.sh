@@ -113,6 +113,7 @@ apt-get install -y \
 		network-manager \
 		network-manager-pptp-gnome \
 		openvpn \
+		openssh-server \
 		pavucontrol \
 		pinentry-curses \
 		pkg-config \
