@@ -51,6 +51,7 @@ apt-get install -y \
 		bc \
 		bison \
 		bluez-f \
+		bluez-tools \
 		blueman \
 		bridge-utils \
 		build-essential \
