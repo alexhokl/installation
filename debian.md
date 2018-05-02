@@ -5,8 +5,6 @@
 
 #### Steps
 
-- Install `curl`
-
 ```sh
 su
 vi /etc/apt/sources.list
@@ -16,7 +14,7 @@ apt-get install -y \
 		apt-transport-https \
 		ca-certificates \
 		curl \
-        dirmngr \
+		dirmngr \
 		--no-install-recommends
 ```
 
@@ -61,5 +59,26 @@ sudo apt-get -y install g++
 
 sudo nvim /etc/locale.gen
 (find and un-comment en_GB.UTF-8 and save and quit)
-sudo local-gen
+sudo locale-gen
 ```
+
+##### Installing WiFi on Intel NUC
+
+1. Download the latest driver from [Linux Support for Intel® Wireless
+   Adapters](https://www.intel.com/content/www/us/en/support/articles/000005511/network-and-i-o/wireless-networking.html). Follow its instruction and copy the contents of the downloaded zip file to directory `/lib/firmware`.
+2. `sudo modprobe -r iwlwifi`
+3. `sudo modprobe iwlwifi`
+4. Assuming the WiFi network interface is `wlan0`, `sudo ip link set wlan0 up`
+5. `sudo iwlist scan`
+6. `wpa_passphrase alex-wifi secret-password`
+7. `sudo nvim /etc/network/interfaces` and put the value of `psk` in the above step  as value of `wpa-psk`.
+8. `sudo chmod 0600 /etc/network/interfaces`
+
+```
+iface wlan0 inet dhcp
+  wpa-ssid alex-wifi
+  wpa-psk some-long-string
+```
+
+See also [How to use a WiFi interface](https://wiki.debian.org/WiFi/HowToUse)
+
