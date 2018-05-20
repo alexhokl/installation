@@ -6,3 +6,4 @@ n
 @angular/cli
 typescript
 next-update
+rxjs-tslint
