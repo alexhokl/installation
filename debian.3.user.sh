@@ -2,7 +2,6 @@
 
 git clone https://github.com/alexhokl/installation ${HOME}/git/installation
 git clone https://github.com/alexhokl/dotfiles ${HOME}/git/dotfiles
-git clone https://github.com/neovim/neovim ${HOME}/git/neovim
 git clone https://github.com/rbenv/rbenv.git ${HOME}/.rbenv
 git clone https://github.com/rbenv/ruby-build.git ${HOME}/.rbenv/plugins/ruby-build
 
@@ -15,6 +14,10 @@ tar xvf golang.tar.gz
 source ${HOME}/git/dotfiles/.path
 
 sudo mv go /usr/local/
+
+curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+chmod u+x nvim.appimage
+sudo mv nvim.appimage /usr/bin/nvim
 
 go get github.com/axw/gocov/gocov
 go get github.com/brianredbeard/gpget

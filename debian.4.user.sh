@@ -7,13 +7,6 @@ rbenv global 2.5.0
 echo "gem: --no-document" > ${HOME}/.gemrc
 gem install bundler
 
-cd ${HOME}/git/neovim
-git checkout v0.1.7
-make
-sudo make install
-sudo pip2 install neovim
-sudo pip3 install neovim
-gem install neovim
 cd $HOME
 git clone --recursive https://github.com/alexhokl/.vim.git .vim
 ln -sf $HOME/.vim/vimrc $HOME/.vimrc
