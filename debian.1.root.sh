@@ -47,7 +47,7 @@ apt-get install -y \
 		bash-completion \
 		bc \
 		bison \
-		bluez-f \
+		bluez-firmware \
 		bluez-tools \
 		blueman \
 		bridge-utils \
