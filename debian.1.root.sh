@@ -150,6 +150,6 @@ apt-get install -y \
 
 apt-get purge git git-core
 
-apt install signal-desktop
+apt install -y signal-desktop
 
 usermod -a -G sudo alex

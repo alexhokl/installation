@@ -21,27 +21,26 @@ apt-get install -y \
 - Install APT packages
 
 ```sh
-curl https://raw.githubusercontent.com/alexhokl/installation/master/debian8.1.root.sh -o debian8.1.root.sh
-chmod +x debian8.1.root.sh
-./debian8.1.root.sh
-rm debian8.1.root.sh
+curl https://raw.githubusercontent.com/alexhokl/installation/master/debian.1.root.sh -o debian.1.root.sh
+chmod +x debian.1.root.sh
+./debian.1.root.sh
+rm debian.1.root.sh
 shutdown -r now
 ```
 
 - Install `git` and more APT packages
 
 ```sh
-curl https://raw.githubusercontent.com/alexhokl/installation/master/debian8.2.user.sh -o debian8.2.user.sh
-chmod +x debian8.2.user.sh
-./debian8.2.user.sh
+curl https://raw.githubusercontent.com/alexhokl/installation/master/debian.2.user.sh -o debian.2.user.sh
+chmod +x debian.2.user.sh
+./debian.2.user.sh
 ```
 
 - Reboot to make sure docker for unprivileged user is enabled.
 
-- Install Ruby and neovim
-
 ```sh
-./debian8.4.user.sh
+./debian.3.user.sh
+./debian.4.user.sh
 ```
 
 - Open neovim
