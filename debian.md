@@ -7,8 +7,6 @@
 
 ```sh
 su
-vi /etc/apt/sources.list
-(remove lines with  `cdrom` to avoid prompting for discs)
 apt-get update
 apt-get install -y \
 		apt-transport-https \
