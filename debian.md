@@ -1,8 +1,3 @@
-##### Reference
-
-- [Initial Server Setup With Debian 8](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-debian-8)
-
-
 #### Steps
 
 - Open this page with Firefox
