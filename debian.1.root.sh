@@ -65,6 +65,7 @@ apt-get install -y \
 		file \
 		firmware-iwlwifi \
 		findutils \
+		g++ \
 		gcc \
 		gettext \
 		git \
