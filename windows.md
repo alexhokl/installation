@@ -23,5 +23,4 @@ code --install-extension robinbentley.sass-indented
   3. Select `Options`.
   4. In the side menu, select `Tools` and `Unit Testing`.
   5. Un-check `Shadow-copy assemblies being tested`.
-- Download and install SQL Server Developer Edition
 - Add system enviornment variable `GOPATH` and add `%GOPATH\bin%` to variable `PATH`.
