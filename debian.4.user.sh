@@ -30,3 +30,10 @@ cd $HOME/git/dotfiles
 make dotfiles
 
 pip install awscli --upgrade --user
+
+apt-get purge git git-core
+curl -L https://github.com/git/git/archive/v2.17.1.tar.gz -o git.tar.gz
+tar xvzf git.tar.gz
+cd git-*
+make prefix=/usr/local all
+sudo make prefix=/usr/local install

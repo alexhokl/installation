@@ -150,8 +150,6 @@ apt-get install -y \
 		zlib1g-dev \
 		--no-install-recommends
 
-apt-get purge git git-core
-
 apt install -y signal-desktop
 
 usermod -a -G sudo alex
