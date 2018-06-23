@@ -13,10 +13,14 @@ rm debian.1.root.sh
 shutdown -r now
 ```
 
+- Reboot to make sure `sudo` works.
+
 ```sh
 curl https://raw.githubusercontent.com/alexhokl/installation/master/debian.2.user.sh -o debian.2.user.sh
 chmod +x debian.2.user.sh
 ./debian.2.user.sh
+rm debian.2.user.sh
+shutdown -r now
 ```
 
 - Reboot to make sure docker for unprivileged user is enabled.
