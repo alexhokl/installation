@@ -1,10 +1,20 @@
 - Open Powershell with administrator privileges.
-- Install applications via BoxStarter.
+- See boxstarter script on [gist](https://gist.github.com/alexhokl/70c3a13353baa3955d3efa8b5bdfd0df)
 
 ```console
-start http://boxstarter.org/package/nr/url?https://gist.githubusercontent.com/alexhokl/70c3a13353baa3955d3efa8b5bdfd0df/raw/4fcf0487be13823888e3e118a581007044fb154f/boxstarter.ps1
-(New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/apm-list.txt", "$pwd\apm-list.txt")
-apm install $(cat apm-list.txt)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+. { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; get-boxstarter -Force
+Install-BoxstarterPackage -PackageName <URL-TO-RAW-GIST> -DisableReboots
+code --install-extension ms-mssql.mssql
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension ms-vscode.csharp
+code --install-extension ms-vscode.Go
+code --install-extension ms-python.python
+code --install-extension PeterJausovec.vscode-docker
+code --install-extension ms-vscode.PowerShell
+code --install-extension Zignd.html-css-class-completion
+code --install-extension redhat.vscode-yaml
+code --install-extension robinbentley.sass-indented
 ```
 
 - Configure ReSharper to disallow shadow-copy assemblies for unit tests.

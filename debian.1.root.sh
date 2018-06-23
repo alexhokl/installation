@@ -108,6 +108,8 @@ apt-get install -y \
 		libunwind8 \
 		libyaml-dev \
 		libz-dev \
+		linux-headers-amd-64 \
+		linux-headers-4.9.0-6-amd64 \
 		locales \
 		lsof \
 		make \
