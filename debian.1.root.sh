@@ -79,6 +79,7 @@ apt-get install -y \
 		indent \
 		iptables \
 		i3 \
+		i3status \
 		jq \
 		kdiff3 \
 		less \
