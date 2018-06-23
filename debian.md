@@ -36,8 +36,6 @@ shutdown -r now
 - add the GPG key onto GitHub
 
 ```sh
-sudo apt-get -y install g++
-
 sudo nvim /etc/locale.gen
 (find and un-comment en_GB.UTF-8 and save and quit)
 sudo locale-gen
