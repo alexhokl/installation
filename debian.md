@@ -20,6 +20,9 @@ curl https://raw.githubusercontent.com/alexhokl/installation/master/debian.2.use
 chmod +x debian.2.user.sh
 ./debian.2.user.sh
 rm debian.2.user.sh
+sudo nvim /etc/locale.gen
+(find and un-comment en_GB.UTF-8 and save and quit)
+sudo locale-gen
 shutdown -r now
 ```
 
@@ -34,12 +37,6 @@ shutdown -r now
 - copy the number into `.gitconfig`
 - `gpg2 --armor --export {key}` (replace key with the number in the previous step)
 - add the GPG key onto GitHub
-
-```sh
-sudo nvim /etc/locale.gen
-(find and un-comment en_GB.UTF-8 and save and quit)
-sudo locale-gen
-```
 
 ##### Installing WiFi on Intel NUC
 
