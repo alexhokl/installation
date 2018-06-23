@@ -86,8 +86,10 @@ apt-get install -y \
 		libcurl4-openssl-dev \
 		libdbusmenu-glib4 \
 		libdbusmenu-gtk4 \
+		liberror-perl \
 		libexpat1-dev \
 		libffi-dev \
+		libgconf2-4 \
 		libgdbm3 \
 		libgdbm-dev \
 		libindicator7 \
