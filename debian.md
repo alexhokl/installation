@@ -5,15 +5,12 @@
 
 #### Steps
 
+- Open this page with Firefox
+
 ```sh
 su
 apt-get update
-apt-get install -y \
-		apt-transport-https \
-		ca-certificates \
-		curl \
-		dirmngr \
-		--no-install-recommends
+apt-get install -y apt-transport-https ca-certificates curl dirmngr --no-install-recommends
 curl https://raw.githubusercontent.com/alexhokl/installation/master/debian.1.root.sh -o debian.1.root.sh
 chmod +x debian.1.root.sh
 ./debian.1.root.sh
