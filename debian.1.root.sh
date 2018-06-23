@@ -77,6 +77,7 @@ apt-get install -y \
 		hostname \
 		indent \
 		iptables \
+		i3 \
 		jq \
 		kdiff3 \
 		less \
