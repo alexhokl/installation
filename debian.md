@@ -22,8 +22,6 @@ shutdown -r now
 curl https://raw.githubusercontent.com/alexhokl/installation/master/debian.2.user.sh -o debian.2.user.sh
 chmod +x debian.2.user.sh
 ./debian.2.user.sh
-./debian.3.user.sh
-./debian.4.user.sh
 ```
 
 - Reboot to make sure docker for unprivileged user is enabled.
