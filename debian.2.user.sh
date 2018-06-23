@@ -116,6 +116,7 @@ cd $HOME
 rm -rf git-*
 rm *.deb
 rm *.tar.gz
+rm npm-list.txt
 
 cd $HOME/git/dotfiles
 make dotfiles
