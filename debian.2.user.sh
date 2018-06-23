@@ -112,5 +112,10 @@ cd git-*
 make prefix=/usr/local all
 sudo make prefix=/usr/local install
 
+cd $HOME
+rm -rf git-*
+rm *.deb
+rm *.tar.gz
+
 cd $HOME/git/dotfiles
 make dotfiles
