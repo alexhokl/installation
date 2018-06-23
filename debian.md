@@ -14,11 +14,6 @@ apt-get install -y \
 		curl \
 		dirmngr \
 		--no-install-recommends
-```
-
-- Install APT packages
-
-```sh
 curl https://raw.githubusercontent.com/alexhokl/installation/master/debian.1.root.sh -o debian.1.root.sh
 chmod +x debian.1.root.sh
 ./debian.1.root.sh
