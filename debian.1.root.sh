@@ -67,6 +67,7 @@ apt-get install -y \
 		findutils \
 		gcc \
 		gettext \
+		git \
 		gnupg \
 		gnupg2 \
 		gnupg-agent \
