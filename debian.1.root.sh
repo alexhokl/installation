@@ -60,6 +60,7 @@ apt-get install -y \
 		coreutils \
 		curl \
 		dkms \
+		dmenu \
 		dnsutils \
 		ffmpeg \
 		file \
