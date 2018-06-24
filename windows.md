@@ -15,6 +15,18 @@ code --install-extension ms-vscode.PowerShell
 code --install-extension Zignd.html-css-class-completion
 code --install-extension redhat.vscode-yaml
 code --install-extension robinbentley.sass-indented
+pip install awscli --upgrade --user
+$oldPath=(Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).Path
+$newPath=$oldPath+";C:\Users\alex\Desktop\git\bin"
+Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH –Value $newPath
+Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name GOPATH –Value "C:\Users\alex\Desktop\git"
+go get -u github.com/alexhokl/rds-backup
+```
+
+- Reboot to prepare .NET Framework installation
+
+```console
+choco install -y netfx-4.7.2-devpack
 ```
 
 - Configure ReSharper to disallow shadow-copy assemblies for unit tests.
