@@ -36,5 +36,8 @@ choco install -y netfx-4.7.2-devpack
   5. Un-check `Shadow-copy assemblies being tested`.
 
 ```console
+mkdir .\Desktop\git
 go get -u github.com/alexhokl/rds-backup
+(iwr -useb https://raw.githubusercontent.com/alexhokl/dotfiles/windows10/.gitconfig).Content > .gitconfig
+[Open .gitconfig in Visual Studio Code to change encoding and line-ending]
 ```
