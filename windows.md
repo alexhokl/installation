@@ -20,7 +20,6 @@ $oldPath=(Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentCon
 $newPath=$oldPath+";C:\Users\alex\Desktop\git\bin"
 Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH –Value $newPath
 Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name GOPATH –Value "C:\Users\alex\Desktop\git"
-go get -u github.com/alexhokl/rds-backup
 ```
 
 - Reboot to prepare .NET Framework installation
@@ -35,4 +34,7 @@ choco install -y netfx-4.7.2-devpack
   3. Select `Options`.
   4. In the side menu, select `Tools` and `Unit Testing`.
   5. Un-check `Shadow-copy assemblies being tested`.
-- Add system enviornment variable `GOPATH` and add `%GOPATH\bin%` to variable `PATH`.
+
+```console
+go get -u github.com/alexhokl/rds-backup
+```
