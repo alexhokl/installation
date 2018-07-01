@@ -36,6 +36,7 @@ go get github.com/go-swagger/go-swagger
 go get github.com/alexhokl/go-bb-pr
 go get github.com/russross/blackfriday-tool
 go get github.com/kubernetes/kompose
+go get github.com/davecgh/go-spew/spew
 
 sudo dpkg -i chrome.deb
 sudo dpkg -i atom.deb
