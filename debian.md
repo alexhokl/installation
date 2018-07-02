@@ -58,3 +58,81 @@ iface wlan0 inet dhcp
 
 See also [How to use a WiFi interface](https://wiki.debian.org/WiFi/HowToUse)
 
+##### Configure VPN L2TP/IPSec
+
+1. Configure Strongswan by editing `/etc/ipsec.conf`
+
+```
+# ipsec.conf - strongSwan IPsec configuration file
+
+# basic configuration
+
+config setup
+  # strictcrlpolicy=yes
+  # uniqueids = no
+
+# Add connections here.
+
+# Sample VPN connections
+
+conn %default
+  ikelifetime=60m
+  keylife=20m
+  rekeymargin=3m
+  keyingtries=1
+  keyexchange=ikev1
+  authby=secret
+  ike=aes128-sha1-modp1024,3des-sha1-modp1024!
+  esp=aes128-sha1-modp1024,3des-sha1-modp1024!
+
+conn office
+  keyexchange=ikev1
+  left=%defaultroute
+  auto=add
+  authby=secret
+  type=transport
+  leftprotoport=17/1701
+  rightprotoport=17/1701
+  right=office.example.com
+```
+
+2. Edit `/etc/ipsec.secrets`
+
+```
+: PSK "The_Preshared_Key_From_Router"
+```
+
+3. `sudo chmod 600 /etc/ipsec.secrets`
+4. Configure xl2tpd by editing `/etc/xl2tpd/xl2tpd.conf` 
+
+```
+[lac office]
+lns = office.example.com
+ppp debug = yes
+pppoptfile = /etc/ppp/options.l2tpd.client
+length bit = yes
+```
+
+5. Edit `/etc/ppp/options.l2tpd.client`
+
+```
+ipcp-accept-local
+ipcp-accept-remote
+refuse-eap
+require-chap
+noccp
+noauth
+mtu 1280
+mru 1280
+noipdefault
+defaultroute
+usepeerdns
+connect-delay 5000
+name your_vpn_username
+password your_vpn_password
+```
+
+6. `sudo chmod 600 /etc/ppp/options.l2tpd.client`
+7. `sudo service strongswan restart && sudo service xl2tpd restart`
+8. IPSec connection is configured by this point and only IP route is to be
+   configured and to kick start the connection (see [start VPN in bash](https://github.com/alexhokl/notes/blob/master/bash.md#start-vpn))

@@ -62,6 +62,7 @@ apt-get install -y \
 		dkms \
 		dmenu \
 		dnsutils \
+		feh \
 		ffmpeg \
 		file \
 		firmware-iwlwifi \
@@ -80,6 +81,7 @@ apt-get install -y \
 		indent \
 		iptables \
 		i3 \
+		i3lock \
 		i3status \
 		jq \
 		kdiff3 \
@@ -140,6 +142,7 @@ apt-get install -y \
 		spotify-client \
 		ssh \
 		strace \
+		strongswan \
 		sudo \
 		tar \
 		tmux \
