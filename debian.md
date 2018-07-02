@@ -138,4 +138,4 @@ password your_vpn_password
 6. `sudo chmod 600 /etc/ppp/options.l2tpd.client`
 7. `sudo service strongswan restart && sudo service xl2tpd restart`
 8. IPSec connection is configured by this point and only IP route is to be
-   configured and to kick start the connection (see [start VPN in bash](https://github.com/alexhokl/notes/blob/master/bash.md#start-vpn))
+   configured and to kick start the connection (see [start VPN in bash](https://github.com/alexhokl/notes/blob/master/bash.md#start-vpn-ipsec))
