@@ -154,6 +154,7 @@ apt-get install -y \
 		webp \
 		xclip \
 		xcompmgr \
+		xl2tpd \
 		xz-utils \
 		yarn \
 		zip \
