@@ -5,6 +5,7 @@
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 . { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; get-boxstarter -Force
 Install-BoxstarterPackage -PackageName <URL-TO-RAW-GIST> -DisableReboots
+npm i -g iisexpress-proxy
 code --install-extension ms-mssql.mssql
 code --install-extension dbaeumer.vscode-eslint
 code --install-extension ms-vscode.csharp
