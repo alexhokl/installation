@@ -103,6 +103,7 @@ sudo update-alternatives --config vi
 sudo update-alternatives --install /usr/bin/editor editor "$(which nvim)" 60
 sudo update-alternatives --config editor
 
+cd $HOME
 pip install awscli --upgrade --user
 
 sudo apt-get purge -y git git-core
