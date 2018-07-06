@@ -42,3 +42,5 @@ go get -u github.com/alexhokl/rds-backup
 (iwr -useb https://raw.githubusercontent.com/alexhokl/dotfiles/windows10/.gitconfig).Content > .gitconfig
 [Open .gitconfig in Visual Studio Code to change encoding and line-ending]
 ```
+
+- Download and install [git credential manager for Windows](https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/)

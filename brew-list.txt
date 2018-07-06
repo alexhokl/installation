@@ -2,6 +2,7 @@ git
 Caskroom/cask/iterm2
 Caskroom/cask/google-chrome
 Caskroom/cask/gpgtools
+bash-completion
 golang
 openssl
 Caskroom/cask/atom
