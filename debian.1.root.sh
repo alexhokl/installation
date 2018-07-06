@@ -137,6 +137,7 @@ apt-get install -y \
 		rxvt-unicode-256color \
 		s3cmd \
 		scdaemon \
+		scrot \
 		silversearcher-ag \
 		software-properties-common \
 		spotify-client \
