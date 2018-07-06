@@ -52,6 +52,7 @@ apt-get install -y \
 		blueman \
 		bridge-utils \
 		build-essential \
+		byzanz \
 		bzip2 \
 		ca-certificates \
 		cgroupfs-mount \
