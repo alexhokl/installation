@@ -34,6 +34,9 @@ curl -s https://updates.signal.org/desktop/apt/keys.asc | apt-key add -
 curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | tee /etc/apt/sources.list.d/msprod.list
 
+# unifi
+curl https://dl.ubnt.com/unifi/unifi-repo.gpg | apt-key add -
+
 apt-get update
 apt-get -y upgrade
 
@@ -116,6 +119,7 @@ apt-get install -y \
 		locales \
 		lsof \
 		make \
+		mongodb \
 		mono-devel \
 		mount \
 		mssql-tools \
@@ -150,6 +154,7 @@ apt-get install -y \
 		tmux \
 		tree \
 		tzdata \
+		unifi \
 		unixodbc-dev \
 		unzip \
 		virtualbox-5.2 \

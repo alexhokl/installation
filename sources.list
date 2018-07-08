@@ -45,5 +45,8 @@ deb http://download.virtualbox.org/virtualbox/debian stretch contrib
 # yarn
 deb https://dl.yarnpkg.com/debian/ stable main
 
-#signal
+# signal
 deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main
+
+# unifi
+deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti
