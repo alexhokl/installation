@@ -85,6 +85,10 @@ echo "gem: --no-document" > ${HOME}/.gemrc
 gem install bundler
 
 cd $HOME
+pip install wheel
+pip3 install wheel
+pip install neovim
+pip3 install neovim
 git clone --recursive https://github.com/alexhokl/.vim.git .vim
 ln -sf $HOME/.vim/vimrc $HOME/.vimrc
 cd $HOME/.vim
