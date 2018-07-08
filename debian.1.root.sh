@@ -161,6 +161,7 @@ apt-get install -y \
 		webp \
 		xclip \
 		xcompmgr \
+		xdotool \
 		xl2tpd \
 		xz-utils \
 		yarn \
