@@ -83,6 +83,7 @@ rbenv install 2.5.1
 rbenv global 2.5.1
 echo "gem: --no-document" > ${HOME}/.gemrc
 gem install bundler
+gem install travis
 
 cd $HOME
 pip install wheel
