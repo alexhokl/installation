@@ -90,6 +90,7 @@ apt-get install -y \
 		jq \
 		kdiff3 \
 		less \
+		lib32stdc++6 \
 		libapparmor-dev \
 		libappindicator1 \
 		libav-tools \
@@ -122,6 +123,7 @@ apt-get install -y \
 		mongodb \
 		mono-devel \
 		mount \
+		msbuild \
 		mssql-tools \
 		net-tools \
 		network-manager \
