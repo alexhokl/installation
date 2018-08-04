@@ -1,0 +1,11 @@
+ms-mssql.mssql
+dbaeumer.vscode-eslint
+ms-vscode.csharp
+ms-vscode.Go
+ms-python.python
+PeterJausovec.vscode-docker
+ms-vscode.PowerShell
+Zignd.html-css-class-completion
+redhat.vscode-yaml
+robinbentley.sass-indented
+ckolkman.vscode-postgres

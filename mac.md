@@ -66,8 +66,7 @@ go get github.com/go-swagger/go-swagger
 go get github.com/alexhokl/go-bb-pr
 go get github.com/russross/blackfriday-tool
 go get github.com/kubernetes/kompose
-code --install-extension ms-mssql.mssql
-code --install-extension ms-vscode.powershell
+code --install-extension $(cat vscode-extensions.txt)
 rbenv install 2.4.2
 ```
 

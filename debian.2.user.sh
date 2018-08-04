@@ -74,6 +74,7 @@ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 curl https://raw.githubusercontent.com/alexhokl/installation/master/npm-list.txt -o npm-list.txt
 sudo npm i -g $(cat npm-list.txt)
+code --install-extension $(cat vscode-extensions.txt)
 
 sudo apt-get install -y dotnet-sdk-2.1
 
