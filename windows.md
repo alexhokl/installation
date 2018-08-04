@@ -17,6 +17,7 @@ code --install-extension Zignd.html-css-class-completion
 code --install-extension redhat.vscode-yaml
 code --install-extension robinbentley.sass-indented
 code --install-extension ckolkman.vscode-postgres
+code --install-extension dart-code.flutter
 pip install awscli --upgrade --user
 $oldPath=(Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).Path
 $newPath=$oldPath+";C:\Users\alex\Desktop\git\bin"

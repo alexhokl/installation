@@ -8,4 +8,5 @@ ms-vscode.PowerShell
 Zignd.html-css-class-completion
 redhat.vscode-yaml
 robinbentley.sass-indented
+dart-code.flutter
 ckolkman.vscode-postgres
