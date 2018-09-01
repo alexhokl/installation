@@ -1,10 +1,13 @@
 ckolkman.vscode-postgres
+dart-code.dart-code
 dart-code.flutter
 dbaeumer.vscode-eslint
+donjayamanne.githistory
 ms-mssql.mssql
+ms-python.python
 ms-vscode.csharp
-ms-vscode.Go
-ms-vscode.PowerShell
+ms-vscode.go
+ms-vscode.powerShell
 ms-python.python
 PeterJausovec.vscode-docker
 redhat.vscode-yaml
