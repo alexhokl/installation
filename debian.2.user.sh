@@ -10,6 +10,7 @@ curl https://storage.googleapis.com/golang/go1.10.3.linux-amd64.tar.gz -o golang
 curl -L https://atom.io/download/deb -o atom.deb
 curl -sSL https://downloads.slack-edge.com/linux_releases/slack-desktop-3.2.1-amd64.deb -o slack.deb
 curl -sSL https://github.com/keeweb/keeweb/releases/download/v1.6.3/KeeWeb-1.6.3.linux.x64.deb -o keeweb.deb
+curl -sSL https://github.com/sharkdp/bat/releases/download/v0.6.1/bat-musl_0.6.1_amd64.deb -o bat.deb
 tar xvf golang.tar.gz
 source ${HOME}/git/dotfiles/.path
 
@@ -42,6 +43,7 @@ sudo dpkg -i chrome.deb
 sudo dpkg -i atom.deb
 sudo dpkg -i slack.deb
 sudo dpkg -i keeweb.deb
+sudo dpkg -i bat.deb
 
 sudo apt-get -y install docker-ce
 sudo usermod -aG docker $USER
