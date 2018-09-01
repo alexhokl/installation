@@ -1,0 +1,12 @@
+{
+    "files.defaultLanguage": "sql",
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "editor.formatOnSave": true,
+    "[sql]": {
+        "editor.formatOnSave": false,
+    },
+    "[html]": {
+        "editor.formatOnSave": false,
+    },
+    "window.zoomLevel": -2
+}
