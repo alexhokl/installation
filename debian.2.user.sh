@@ -76,10 +76,12 @@ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 curl https://raw.githubusercontent.com/alexhokl/installation/master/npm-list.txt -o npm-list.txt
 sudo npm i -g $(cat npm-list.txt)
-code --install-extension $(cat vscode-extensions.txt)
-curl https://raw.githubusercontent.com/alexhokl/installation/master/vscode_settings.json -o settings.json
+curl https://raw.githubusercontent.com/alexhokl/installation/master/vscode-extensions.txt -o vscode-extensions.txt
+for e in ${cat vscode-extensions.txt}; do
+  code --install-extension $e
+done
 mkdir -p ${HOME}/.config/Code/User
-mv settings.json ${HOME}/.config/Code/User/
+curl https://raw.githubusercontent.com/alexhokl/installation/master/vscode_settings.json -o ${HOME}/.config/Code/User/settings.json
 sudo apt-get install -y dotnet-sdk-2.1
 
 source ${HOME}/git/dotfiles/.path
@@ -114,12 +116,12 @@ sudo update-alternatives --install /usr/bin/editor editor "$(which nvim)" 60
 sudo update-alternatives --config editor
 
 cd $HOME
-pip install awscli --upgrade --user
+pip3 install awscli --upgrade --user
 
 sudo apt-get purge -y git git-core
 sudo apt autoremove
 hash -r
-curl -L https://github.com/git/git/archive/v2.17.1.tar.gz -o git.tar.gz
+curl -L https://github.com/git/git/archive/v2.18.0.tar.gz -o git.tar.gz
 tar xvzf git.tar.gz
 cd git-*
 make prefix=/usr/local all
