@@ -12,5 +12,6 @@ ms-python.python
 PeterJausovec.vscode-docker
 redhat.vscode-yaml
 robinbentley.sass-indented
+shd101wyy.markdown-preview-enhanced
 waderyan.gitblame
 Zignd.html-css-class-completion
