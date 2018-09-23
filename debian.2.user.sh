@@ -6,7 +6,7 @@ git clone https://github.com/rbenv/rbenv.git ${HOME}/.rbenv
 git clone https://github.com/rbenv/ruby-build.git ${HOME}/.rbenv/plugins/ruby-build
 
 curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o chrome.deb
-curl https://storage.googleapis.com/golang/go1.10.3.linux-amd64.tar.gz -o golang.tar.gz
+curl https://storage.googleapis.com/golang/go1.11.linux-amd64.tar.gz -o golang.tar.gz
 curl -L https://atom.io/download/deb -o atom.deb
 curl -sSL https://downloads.slack-edge.com/linux_releases/slack-desktop-3.2.1-amd64.deb -o slack.deb
 curl -sSL https://github.com/keeweb/keeweb/releases/download/v1.6.3/KeeWeb-1.6.3.linux.x64.deb -o keeweb.deb
