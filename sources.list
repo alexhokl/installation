@@ -31,7 +31,8 @@ deb http://repository.spotify.com stable non-free
 deb https://packages.microsoft.com/repos/microsoft-debian-stretch-prod stretch main
 # VS Code
 deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
-
+# Azure CLI
+deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ stretch main
 # mono
 deb http://download.mono-project.com/repo/debian stretch main
 
@@ -50,3 +51,6 @@ deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main
 
 # unifi
 deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti
+
+# kubectl
+deb http://apt.kubernetes.io/ kubernetes-xenial main

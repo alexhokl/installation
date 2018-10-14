@@ -17,6 +17,7 @@ apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F
 # dotnet
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 
 # mono
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
@@ -36,6 +37,9 @@ curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | tee /etc/apt
 
 # unifi
 curl https://dl.ubnt.com/unifi/unifi-repo.gpg | apt-key add -
+
+#kubectl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 
 apt-get update
 apt-get -y upgrade
