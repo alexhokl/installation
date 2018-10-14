@@ -16,8 +16,8 @@ deb-src http://ftp.hk.debian.org/debian/ stretch-updates main contrib non-free
 #deb-src http://httpredir.debian.org/debian experimental main contrib non-free
 
 # yubico
-deb http://ppa.launchpad.net/yubico/stable/ubuntu wily main
-deb-src http://ppa.launchpad.net/yubico/stable/ubuntu wily main
+#deb http://ppa.launchpad.net/yubico/stable/ubuntu wily main
+#deb-src http://ppa.launchpad.net/yubico/stable/ubuntu wily main
 
 # docker
 #deb https://apt.dockerproject.org/repo/ debian-stretch main
