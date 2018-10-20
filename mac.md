@@ -37,7 +37,9 @@ mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
 ln -snf "${HOME}/.vim" "${XDG_CONFIG_HOME}/nvim"
 ln -snf "${HOME}/.vimrc" "${XDG_CONFIG_HOME}/nvim/init.vim"
 
-pip3 install neovim
+pip install setuptools
+pip install --upgrade neovim
+pip3 install --upgrade neovim
 
 git clone https://github.com/alexhokl/dotfiles
 cd dotfiles
