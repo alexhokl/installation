@@ -95,8 +95,8 @@ gem install travis
 cd $HOME
 pip install wheel
 pip3 install wheel
-pip install neovim
-pip3 install neovim
+pip install --upgrade neovim
+pip3 install --upgrade neovim
 git clone --recursive https://github.com/alexhokl/.vim.git .vim
 ln -sf $HOME/.vim/vimrc $HOME/.vimrc
 cd $HOME/.vim
