@@ -117,6 +117,7 @@ apt-get install -y \
 		libtool \
 		libtool-bin \
 		libunwind8 \
+		libuv1-dev \
 		libyaml-dev \
 		libz-dev \
 		linux-headers-amd-64 \
