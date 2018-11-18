@@ -121,7 +121,7 @@ pip3 install awscli --upgrade --user
 sudo apt-get purge -y git git-core
 sudo apt autoremove
 hash -r
-curl -L https://github.com/git/git/archive/v2.18.0.tar.gz -o git.tar.gz
+curl -L https://github.com/git/git/archive/v2.19.1.tar.gz -o git.tar.gz
 tar xvzf git.tar.gz
 cd git-*
 make prefix=/usr/local all
