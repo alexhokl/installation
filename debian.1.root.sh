@@ -136,6 +136,7 @@ apt-get install -y \
 		openvpn \
 		openssh-server \
 		pavucontrol \
+		peek \
 		pinentry-curses \
 		pkg-config \
 		pptp-linux \
