@@ -174,8 +174,7 @@ apt-get install -y \
 		xz-utils \
 		yarn \
 		zip \
-		zlib1g-dev \
-		--no-install-recommends
+		zlib1g-dev
 
 apt install -y signal-desktop
 
