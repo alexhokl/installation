@@ -75,9 +75,7 @@ sudo apt-get install -y nodejs
 curl https://raw.githubusercontent.com/alexhokl/installation/master/npm-list.txt -o npm-list.txt
 sudo npm i -g $(cat npm-list.txt)
 curl https://raw.githubusercontent.com/alexhokl/installation/master/vscode-extensions.txt -o vscode-extensions.txt
-for e in ${cat vscode-extensions.txt}; do
-  code --install-extension $e
-done
+for e in $(cat vscode-extensions.txt); do code --install-extension $e; done
 mkdir -p ${HOME}/.config/Code/User
 curl https://raw.githubusercontent.com/alexhokl/installation/master/vscode_settings.json -o ${HOME}/.config/Code/User/settings.json
 sudo apt-get install -y dotnet-sdk-2.1
