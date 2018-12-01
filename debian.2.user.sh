@@ -79,6 +79,7 @@ for e in $(cat vscode-extensions.txt); do code --install-extension $e; done
 mkdir -p ${HOME}/.config/Code/User
 curl https://raw.githubusercontent.com/alexhokl/installation/master/vscode_settings.json -o ${HOME}/.config/Code/User/settings.json
 sudo apt-get install -y dotnet-sdk-2.1
+sudo curl -o /usr/local/bin/nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 
 source ${HOME}/git/dotfiles/.path
 rbenv init
