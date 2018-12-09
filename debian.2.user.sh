@@ -11,6 +11,7 @@ curl -sSL https://downloads.slack-edge.com/linux_releases/slack-desktop-3.2.1-am
 curl -sSL https://github.com/keeweb/keeweb/releases/download/v1.6.3/KeeWeb-1.6.3.linux.x64.deb -o keeweb.deb
 curl -sSL https://github.com/sharkdp/bat/releases/download/v0.6.1/bat-musl_0.6.1_amd64.deb -o bat.deb
 curl https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v0.11.13-beta.tar.xz -o ${HOME}/git/flutter.xz
+curl -o remarkable.deb https://remarkableapp.github.io/files/remarkable_1.87_all.deb
 tar xvf golang.tar.gz
 source ${HOME}/git/dotfiles/.path
 
@@ -43,6 +44,9 @@ sudo dpkg -i chrome.deb
 sudo dpkg -i slack.deb
 sudo dpkg -i keeweb.deb
 sudo dpkg -i bat.deb
+sudo dpkg -i remarkable.deb
+
+sudo apt --fix-broken install
 
 tar xf ${HOME}/git/flutter.xz -C ${HOME}/git/
 
