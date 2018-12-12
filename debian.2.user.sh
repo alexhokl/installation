@@ -12,6 +12,7 @@ curl -sSL https://github.com/keeweb/keeweb/releases/download/v1.6.3/KeeWeb-1.6.3
 curl -sSL https://github.com/sharkdp/bat/releases/download/v0.6.1/bat-musl_0.6.1_amd64.deb -o bat.deb
 curl https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v0.11.13-beta.tar.xz -o ${HOME}/git/flutter.xz
 curl -o remarkable.deb https://remarkableapp.github.io/files/remarkable_1.87_all.deb
+curl -o azuredatastudio.deb https://azuredatastudiobuilds.blob.core.windows.net/releases/1.2.4/azuredatastudio-linux-1.2.4.deb
 tar xvf golang.tar.gz
 source ${HOME}/git/dotfiles/.path
 
@@ -45,6 +46,7 @@ sudo dpkg -i slack.deb
 sudo dpkg -i keeweb.deb
 sudo dpkg -i bat.deb
 sudo dpkg -i remarkable.deb
+sudo dpkg -i azuredatastudio.deb
 
 sudo apt --fix-broken install
 
