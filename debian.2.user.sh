@@ -118,6 +118,8 @@ sudo ln -snf "${HOME}/.vim" /root/.config/nvim
 sudo ln -snf "${HOME}/.vimrc" /root/.config/nvim/init.vim
 sudo update-alternatives --install /usr/bin/vi vi "$(which nvim)" 60
 sudo update-alternatives --config vi
+sudo update-alternatives --install /usr/bin/vim vim "$(which nvim)" 60
+sudo update-alternatives --config vim
 sudo update-alternatives --install /usr/bin/editor editor "$(which nvim)" 60
 sudo update-alternatives --config editor
 
@@ -125,7 +127,7 @@ cd $HOME
 pip3 install awscli --upgrade --user
 
 sudo apt-get purge -y git git-core
-sudo apt autoremove
+sudo apt autoremove -y
 hash -r
 curl -L https://github.com/git/git/archive/v2.19.1.tar.gz -o git.tar.gz
 tar xvzf git.tar.gz

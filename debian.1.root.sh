@@ -12,7 +12,7 @@ curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gp
 #apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 3653E21064B19D134466702E43D5C49532CBA1A9
 
 # spotify
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
 
 # dotnet
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -68,7 +68,6 @@ apt-get install -y \
 		coreutils \
 		curl \
 		dkms \
-		dmenu \
 		dnsutils \
 		feh \
 		ffmpeg \
@@ -111,7 +110,7 @@ apt-get install -y \
 		libindicator7 \
 		libltdl-dev \
 		libncurses5-dev \
-		libreadline6-dev \
+		libreadline-dev \
 		libseccomp-dev \
 		libssl-dev \
 		libtool \
@@ -119,8 +118,7 @@ apt-get install -y \
 		libunwind8 \
 		libuv1-dev \
 		libyaml-dev \
-		libz-dev \
-		linux-headers-amd-64 \
+		linux-headers-amd64 \
 		linux-headers-4.9.0-6-amd64 \
 		locales \
 		lsof \
@@ -157,6 +155,7 @@ apt-get install -y \
 		ssh \
 		strace \
 		strongswan \
+		suckless-tools \
 		sudo \
 		tar \
 		tmux \

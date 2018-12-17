@@ -28,15 +28,18 @@ shutdown -r now
 
 - Reboot to make sure docker for unprivileged user is enabled.
 
-- Open neovim
-  - update plugins via `:UpdateRemotePlugins`
-  - install go binaries via `:GoInstallBinaries`
-- generate new token from github for bash access (https://github.com/settings/tokens/new) and this token will be used a password for github authentication
-- `gpg2 --gen-key` (and select "RSA and RSA", select 4096 as keysize, select "key does not expire", enter github registration email address for "email address")
-- `gpg2 --list-secret-keys --keyid-format LONG` (and copy the number in "sec" after "4096R/"
-- copy the number into `.gitconfig`
-- `gpg2 --armor --export {key}` (replace key with the number in the previous step)
-- add the GPG key onto GitHub
+- Download `.pem` file from a machine has GPG keys stored so that SSH is
+    possible and change its file access to `chmod 600`
+- `ssh user_name@server_name gpg --export-secret-key KEY_ID | gpg --import`
+  - where `KEY_ID` is the key to be imported
+- copy git credentials from another machine using SSH
+- Open neovim and execute the following commands
+
+```
+:UpdateRemotePlugins
+:GoInstallBinaries
+:OmniSharpInstall
+```
 
 ##### Installing WiFi on Intel NUC
 
