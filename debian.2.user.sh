@@ -48,7 +48,7 @@ sudo dpkg -i bat.deb
 sudo dpkg -i remarkable.deb
 sudo dpkg -i azuredatastudio.deb
 
-sudo apt --fix-broken install
+sudo apt --fix-broken install -y
 
 tar xf ${HOME}/git/flutter.xz -C ${HOME}/git/
 
