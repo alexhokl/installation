@@ -144,3 +144,6 @@ rm npm-list.txt
 cd $HOME/git/dotfiles
 make bin
 make dotfiles
+
+sudo sed -i -e 's/#\ en_GB\.UTF\-8/en_GB\.UTF\-8/g' /etc/locale.gen
+sudo locale-gen

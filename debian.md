@@ -20,9 +20,6 @@ curl https://raw.githubusercontent.com/alexhokl/installation/master/debian.2.use
 chmod +x debian.2.user.sh
 ./debian.2.user.sh
 rm debian.2.user.sh
-sudo nvim /etc/locale.gen
-(find and un-comment en_GB.UTF-8 and save and quit)
-sudo locale-gen
 shutdown -r now
 ```
 
