@@ -14,6 +14,7 @@ shutdown -r now
 ```
 
 ```sh
+sudo apt-get install -y apt-transport-https ca-certificates curl dirmngr --no-install-recommends
 curl https://raw.githubusercontent.com/alexhokl/installation/master/debian.2.user.sh -o debian.2.user.sh
 chmod +x debian.2.user.sh
 ./debian.2.user.sh

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-sudo apt-get install -y apt-transport-https ca-certificates curl dirmngr --no-install-recommends
-
 sudo curl https://raw.githubusercontent.com/alexhokl/installation/master/sources.list -o /etc/apt/sources.list
 
 echo "deb https://packages.cloud.google.com/apt cloud-sdk-sid main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
