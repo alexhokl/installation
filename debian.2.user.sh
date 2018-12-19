@@ -1,5 +1,183 @@
 #!/bin/bash
 
+sudo apt-get install -y apt-transport-https ca-certificates curl dirmngr --no-install-recommends
+
+sudo curl https://raw.githubusercontent.com/alexhokl/installation/master/sources.list -o /etc/apt/sources.list
+
+echo "deb https://packages.cloud.google.com/apt cloud-sdk-sid main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+# docker
+curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | sudo apt-key add -
+
+# yubico
+#sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 3653E21064B19D134466702E43D5C49532CBA1A9
+
+# spotify
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
+
+# dotnet
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+
+# mono
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+
+# virtual box
+curl https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
+
+# yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+
+# signal
+curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+
+# mssql-tools
+curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | sudo tee /etc/apt/sources.list.d/msprod.list
+
+# unifi
+curl https://dl.ubnt.com/unifi/unifi-repo.gpg | sudo apt-key add -
+
+#kubectl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+sudo apt-get update
+sudo apt-get -y upgrade
+
+sudo apt-get install -y \
+		adduser \
+		alsa-utils \
+		apparmor \
+		apt-transport-https \
+		autoconf \
+		automake \
+		bash-completion \
+		bc \
+		bison \
+		bluez-firmware \
+		bluez-tools \
+		blueman \
+		bridge-utils \
+		build-essential \
+		byzanz \
+		bzip2 \
+		ca-certificates \
+		cgroupfs-mount \
+		cmake \
+		code \
+		coreutils \
+		curl \
+		dkms \
+		dnsutils \
+		feh \
+		ffmpeg \
+		file \
+		firmware-iwlwifi \
+		findutils \
+		g++ \
+		gcc \
+		gettext \
+		git \
+		gnupg \
+		gnupg2 \
+		gnupg-agent \
+		google-cloud-sdk \
+		grep \
+		gzip \
+		hostname \
+		indent \
+		iptables \
+		i3 \
+		i3lock \
+		i3status \
+		jq \
+		kdiff3 \
+		less \
+		lib32stdc++6 \
+		libapparmor-dev \
+		libappindicator1 \
+		libav-tools \
+		libc6-dev \
+		libcurl4-openssl-dev \
+		libdbusmenu-glib4 \
+		libdbusmenu-gtk4 \
+		liberror-perl \
+		libexpat1-dev \
+		libffi-dev \
+		libgconf2-4 \
+		libgdbm3 \
+		libgdbm-dev \
+		libindicator7 \
+		libltdl-dev \
+		libncurses5-dev \
+		libreadline-dev \
+		libseccomp-dev \
+		libssl-dev \
+		libtool \
+		libtool-bin \
+		libunwind8 \
+		libuv1-dev \
+		libyaml-dev \
+		linux-headers-amd64 \
+		linux-headers-4.9.0-6-amd64 \
+		locales \
+		lsof \
+		make \
+		mongodb \
+		mono-devel \
+		mount \
+		msbuild \
+		mssql-tools \
+		net-tools \
+		network-manager \
+		network-manager-pptp-gnome \
+		openvpn \
+		openssh-server \
+		pavucontrol \
+		peek \
+		pinentry-curses \
+		pkg-config \
+		pptp-linux \
+		pulseaudio \
+		pulseaudio-module-bluetooth \
+		python-dev \
+		python-pip \
+		python3-dev \
+		python3-pip \
+		python3-setuptools \
+		rxvt-unicode-256color \
+		s3cmd \
+		scdaemon \
+		scrot \
+		silversearcher-ag \
+		software-properties-common \
+		spotify-client \
+		ssh \
+		strace \
+		strongswan \
+		suckless-tools \
+		tar \
+		tmux \
+		tree \
+		tzdata \
+		unifi \
+		unixodbc-dev \
+		unzip \
+		virtualbox-5.2 \
+		webp \
+		xclip \
+		xcompmgr \
+		xdotool \
+		xl2tpd \
+		xz-utils \
+		yarn \
+		zip \
+		zlib1g-dev
+
+sudo apt install -y signal-desktop
+
 git clone https://github.com/alexhokl/installation ${HOME}/git/installation
 git clone https://github.com/alexhokl/dotfiles ${HOME}/git/dotfiles
 git clone https://github.com/rbenv/rbenv.git ${HOME}/.rbenv

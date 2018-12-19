@@ -2,18 +2,16 @@
 
 - Open this page with Firefox
 
+If root account is enabled during installation, execute the following; skip, otherwise.
+
 ```sh
+temp_user=$USER
 su
 apt-get update
-apt-get install -y apt-transport-https ca-certificates curl dirmngr --no-install-recommends
-curl https://raw.githubusercontent.com/alexhokl/installation/master/debian.1.root.sh -o debian.1.root.sh
-chmod +x debian.1.root.sh
-./debian.1.root.sh
-rm debian.1.root.sh
+apt-get install -y sudo
+usermod -a -G sudo $temp_user
 shutdown -r now
 ```
-
-- Reboot to make sure `sudo` works.
 
 ```sh
 curl https://raw.githubusercontent.com/alexhokl/installation/master/debian.2.user.sh -o debian.2.user.sh
@@ -22,8 +20,6 @@ chmod +x debian.2.user.sh
 rm debian.2.user.sh
 shutdown -r now
 ```
-
-- Reboot to make sure docker for unprivileged user is enabled.
 
 - Download `.pem` file from a machine has GPG keys stored so that SSH is
     possible and change its file access to `chmod 600`
