@@ -3,11 +3,10 @@
 If root account is enabled during installation, execute the following; skip, otherwise.
 
 ```sh
-temp_user=$USER
 su
 apt-get update
 apt-get install -y sudo
-usermod -a -G sudo $temp_user
+usermod -a -G sudo alex
 shutdown -r now
 ```
 
