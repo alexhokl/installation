@@ -1,4 +1,3 @@
-bower
 grunt
 grunt-cli
 gulp
