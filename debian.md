@@ -1,5 +1,14 @@
 #### Steps
 
+Upon booting into Debian installer,
+
+1. select `Advanced options`, then
+2. select `Automated install`, then
+3. when prompted with "Location of initial preconfiguration file:", enter
+   `https://raw.githubusercontent.com/alexhokl/installation/master/debian.preseed.cfg`
+   or `https://raw.githubusercontent.com/alexhokl/installation/master/debian.preseed.no-root.cfg`
+   if root account is not required
+
 If root account is enabled during installation, execute the following; skip, otherwise.
 
 ```sh
