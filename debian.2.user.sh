@@ -44,8 +44,6 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 sudo apt-get update
 sudo apt-get -y upgrade
 
-export ACCEPT_EULA=Y
-
 sudo apt-get install -y \
 		adduser \
 		alsa-utils \
