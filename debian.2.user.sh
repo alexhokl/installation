@@ -51,6 +51,7 @@ sudo apt-get install -y \
 		apt-transport-https \
 		autoconf \
 		automake \
+		azure-cli \
 		bash-completion \
 		bc \
 		bison \
@@ -69,6 +70,8 @@ sudo apt-get install -y \
 		curl \
 		dkms \
 		dnsutils \
+		docker-ce \
+		dotnet-sdk-2.1 \
 		feh \
 		ffmpeg \
 		file \
@@ -228,9 +231,7 @@ sudo apt --fix-broken install -y
 
 tar xf ${HOME}/git/flutter.xz -C ${HOME}/git/
 
-sudo apt-get -y install docker-ce
 sudo usermod -aG docker $USER
-
 sudo curl -L "https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
@@ -263,7 +264,6 @@ curl https://raw.githubusercontent.com/alexhokl/installation/master/vscode-exten
 for e in $(cat vscode-extensions.txt); do code --install-extension $e; done
 mkdir -p ${HOME}/.config/Code/User
 curl https://raw.githubusercontent.com/alexhokl/installation/master/vscode_settings.json -o ${HOME}/.config/Code/User/settings.json
-sudo apt-get install -y dotnet-sdk-2.1
 sudo curl -o /usr/local/bin/nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 
 source ${HOME}/git/dotfiles/.path
