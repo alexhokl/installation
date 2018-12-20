@@ -38,9 +38,6 @@ curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | sudo tee /et
 # unifi
 curl https://dl.ubnt.com/unifi/unifi-repo.gpg | sudo apt-key add -
 
-#kubectl
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-
 sudo apt-get update
 sudo apt-get -y upgrade
 
@@ -95,6 +92,7 @@ sudo apt-get install -y \
 		i3status \
 		jq \
 		kdiff3 \
+		kubectl \
 		less \
 		lib32stdc++6 \
 		libapparmor-dev \
