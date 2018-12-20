@@ -1,5 +1,17 @@
 #!/bin/bash
 
+VERSION_GOLANG=1.11.1
+VERSION_SLACK=3.2.1
+VERSION_KEEWEB=1.6.3
+VERSION_BAT=0.6.1
+VERSION_FLUTTER=0.11.13
+VERSION_REMARKABLE=1.87
+VERSION_AZURE_DATA_STUDIO=1.2.4
+VERSION_DOCKER_COMPOSE=1.21.2
+VERSION_NODEJS=8
+VERSION_RUBY=2.5.1
+VERSION_GIT=2.19.1
+
 sudo curl https://raw.githubusercontent.com/alexhokl/installation/master/sources.list -o /etc/apt/sources.list
 
 echo "deb https://packages.cloud.google.com/apt cloud-sdk-sid main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
@@ -183,13 +195,13 @@ git clone https://github.com/rbenv/rbenv.git ${HOME}/.rbenv
 git clone https://github.com/rbenv/ruby-build.git ${HOME}/.rbenv/plugins/ruby-build
 
 curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o chrome.deb
-curl https://storage.googleapis.com/golang/go1.11.1.linux-amd64.tar.gz -o golang.tar.gz
-curl -sSL https://downloads.slack-edge.com/linux_releases/slack-desktop-3.2.1-amd64.deb -o slack.deb
-curl -sSL https://github.com/keeweb/keeweb/releases/download/v1.6.3/KeeWeb-1.6.3.linux.x64.deb -o keeweb.deb
-curl -sSL https://github.com/sharkdp/bat/releases/download/v0.6.1/bat-musl_0.6.1_amd64.deb -o bat.deb
-curl https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v0.11.13-beta.tar.xz -o ${HOME}/git/flutter.xz
-curl -o remarkable.deb https://remarkableapp.github.io/files/remarkable_1.87_all.deb
-curl -o azuredatastudio.deb https://azuredatastudiobuilds.blob.core.windows.net/releases/1.2.4/azuredatastudio-linux-1.2.4.deb
+curl https://storage.googleapis.com/golang/go${VERSION_GOLANG}.linux-amd64.tar.gz -o golang.tar.gz
+curl -sSL https://downloads.slack-edge.com/linux_releases/slack-desktop-${VERSION_SLACK}-amd64.deb -o slack.deb
+curl -sSL https://github.com/keeweb/keeweb/releases/download/v${VERSION_KEEWEB}/KeeWeb-${VERSION_KEEWEB}.linux.x64.deb -o keeweb.deb
+curl -sSL https://github.com/sharkdp/bat/releases/download/v${VERSION_BAT}/bat-musl_${VERSION_BAT}_amd64.deb -o bat.deb
+curl https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v${VERSION_FLUTTER}-beta.tar.xz -o ${HOME}/git/flutter.xz
+curl -o remarkable.deb https://remarkableapp.github.io/files/remarkable_${VERSION_REMARKABLE}_all.deb
+curl -o azuredatastudio.deb https://azuredatastudiobuilds.blob.core.windows.net/releases/${VERSION_AZURE_DATA_STUDIO}/azuredatastudio-linux-${VERSION_AZURE_DATA_STUDIO}.deb
 tar xvf golang.tar.gz
 source ${HOME}/git/dotfiles/.path
 
@@ -230,7 +242,7 @@ sudo apt --fix-broken install -y
 tar xf ${HOME}/git/flutter.xz -C ${HOME}/git/
 
 sudo usermod -aG docker $USER
-sudo curl -L "https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/${VERSION_DOCKER_COMPOSE}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
 sudo curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /etc/bash_completion.d/git-completion.bash
@@ -254,7 +266,7 @@ sudo chmod +x /usr/local/bin/light
 sudo curl -sSL https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py  -o /usr/local/bin/speedtest
 sudo chmod +x /usr/local/bin/speedtest
 
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_${VERSION_NODEJS}.x | sudo -E bash -
 sudo apt-get install -y nodejs
 curl https://raw.githubusercontent.com/alexhokl/installation/master/npm-list.txt -o npm-list.txt
 sudo npm i -g $(cat npm-list.txt)
@@ -266,8 +278,8 @@ sudo curl -o /usr/local/bin/nuget.exe https://dist.nuget.org/win-x86-commandline
 
 source ${HOME}/git/dotfiles/.path
 rbenv init
-rbenv install 2.5.1
-rbenv global 2.5.1
+rbenv install ${VERSION_RUBY}
+rbenv global ${VERSION_RUBY}
 echo "gem: --no-document" > ${HOME}/.gemrc
 gem install bundler
 gem install travis
@@ -303,7 +315,7 @@ pip3 install awscli --upgrade --user
 sudo apt-get purge -y git git-core
 sudo apt autoremove -y
 hash -r
-curl -L https://github.com/git/git/archive/v2.19.1.tar.gz -o git.tar.gz
+curl -L https://github.com/git/git/archive/v${VERSION_GIT}.tar.gz -o git.tar.gz
 tar xvzf git.tar.gz
 cd git-*
 make prefix=/usr/local all
