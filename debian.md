@@ -19,6 +19,9 @@ usermod -a -G sudo alex
 shutdown -r now
 ```
 
+Once `sudo` is installed (or root account has been disabled), execute the
+following.
+
 ```sh
 sudo apt-get install -y apt-transport-https ca-certificates curl dirmngr --no-install-recommends
 curl https://raw.githubusercontent.com/alexhokl/installation/master/debian.2.user.sh -o debian.2.user.sh

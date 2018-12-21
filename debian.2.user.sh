@@ -53,7 +53,7 @@ curl https://dl.ubnt.com/unifi/unifi-repo.gpg | sudo apt-key add -
 sudo apt-get update
 sudo apt-get -y upgrade
 
-sudo apt-get install -y \
+sudo ACCEPT_EULA=Y apt-get install -y \
 		adduser \
 		alsa-utils \
 		apparmor \
