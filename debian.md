@@ -12,7 +12,9 @@ Upon booting into Debian installer,
 If root account is enabled during installation, execute the following; skip, otherwise.
 
 ```sh
+passwd
 su
+passwd
 apt-get update
 apt-get install -y sudo
 usermod -a -G sudo alex
