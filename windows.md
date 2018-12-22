@@ -1,10 +1,9 @@
-- Open Powershell with administrator privileges.
-- See boxstarter script on [gist](https://gist.github.com/alexhokl/70c3a13353baa3955d3efa8b5bdfd0df)
+- Open Powershell with administrator privileges and run the following scripts
 
 ```console
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 . { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; get-boxstarter -Force
-Install-BoxstarterPackage -PackageName <URL-TO-RAW-GIST> -DisableReboots
+Install-BoxstarterPackage -PackageName https://raw.githubusercontent.com/alexhokl/installation/master/windows.boxstarter.ps1 -DisableReboots
 npm i -g iisexpress-proxy
 code --install-extension ms-mssql.mssql
 code --install-extension dbaeumer.vscode-eslint
