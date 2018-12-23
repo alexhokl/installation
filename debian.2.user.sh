@@ -11,6 +11,7 @@ VERSION_DOCKER_COMPOSE=1.21.2
 VERSION_NODEJS=8
 VERSION_RUBY=2.5.1
 VERSION_GIT=2.19.1
+VERSION_STEP=0.8.2
 
 sudo curl https://raw.githubusercontent.com/alexhokl/installation/master/sources.list -o /etc/apt/sources.list
 
@@ -202,6 +203,8 @@ curl -sSL https://github.com/sharkdp/bat/releases/download/v${VERSION_BAT}/bat-m
 curl https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v${VERSION_FLUTTER}-beta.tar.xz -o ${HOME}/git/flutter.xz
 curl -o remarkable.deb https://remarkableapp.github.io/files/remarkable_${VERSION_REMARKABLE}_all.deb
 curl -o azuredatastudio.deb https://azuredatastudiobuilds.blob.core.windows.net/releases/${VERSION_AZURE_DATA_STUDIO}/azuredatastudio-linux-${VERSION_AZURE_DATA_STUDIO}.deb
+curl -o step.deb -sSL https://github.com/smallstep/cli/releases/download/v${VERSION_STEP}/step-cli_${VERSION_STEP}_amd64.deb
+
 tar xvf golang.tar.gz
 source ${HOME}/git/dotfiles/.path
 
