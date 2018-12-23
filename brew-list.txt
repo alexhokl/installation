@@ -25,7 +25,7 @@ Caskroom/cask/chrome-remote-desktop-host
 youtube-dl
 watchman
 jq
-neovim/neovim/neovim
+neovim
 socat
 python3
 handbrake
