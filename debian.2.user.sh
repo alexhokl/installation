@@ -189,6 +189,7 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		zlib1g-dev
 
 sudo apt install -y signal-desktop
+sudo apt install -t stretch-backports remmina remmina-plugin-rdp remmina-plugin-secret
 
 git clone https://github.com/alexhokl/installation ${HOME}/git/installation
 git clone https://github.com/alexhokl/dotfiles ${HOME}/git/dotfiles
