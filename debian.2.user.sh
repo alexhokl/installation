@@ -2,7 +2,6 @@
 
 VERSION_GOLANG=1.11.1
 VERSION_SLACK=3.2.1
-VERSION_KEEWEB=1.6.3
 VERSION_BAT=0.6.1
 VERSION_FLUTTER=0.11.13
 VERSION_REMARKABLE=1.87
@@ -105,6 +104,7 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		i3status \
 		jq \
 		kdiff3 \
+		keepassxc \
 		kubectl \
 		less \
 		lib32stdc++6 \
@@ -199,7 +199,6 @@ git clone https://github.com/rbenv/ruby-build.git ${HOME}/.rbenv/plugins/ruby-bu
 curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o chrome.deb
 curl https://storage.googleapis.com/golang/go${VERSION_GOLANG}.linux-amd64.tar.gz -o golang.tar.gz
 curl -sSL https://downloads.slack-edge.com/linux_releases/slack-desktop-${VERSION_SLACK}-amd64.deb -o slack.deb
-curl -sSL https://github.com/keeweb/keeweb/releases/download/v${VERSION_KEEWEB}/KeeWeb-${VERSION_KEEWEB}.linux.x64.deb -o keeweb.deb
 curl -sSL https://github.com/sharkdp/bat/releases/download/v${VERSION_BAT}/bat-musl_${VERSION_BAT}_amd64.deb -o bat.deb
 curl https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v${VERSION_FLUTTER}-beta.tar.xz -o ${HOME}/git/flutter.xz
 curl -o remarkable.deb https://remarkableapp.github.io/files/remarkable_${VERSION_REMARKABLE}_all.deb
@@ -236,7 +235,6 @@ go get github.com/davecgh/go-spew/spew
 
 sudo dpkg -i chrome.deb
 sudo dpkg -i slack.deb
-sudo dpkg -i keeweb.deb
 sudo dpkg -i bat.deb
 sudo dpkg -i remarkable.deb
 sudo dpkg -i azuredatastudio.deb
