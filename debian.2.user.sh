@@ -143,6 +143,7 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		msbuild \
 		mssql-tools \
 		net-tools \
+		netcat-traditional \
 		network-manager \
 		network-manager-pptp-gnome \
 		openvpn \
