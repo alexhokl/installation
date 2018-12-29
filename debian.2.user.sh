@@ -215,24 +215,7 @@ curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimag
 chmod u+x nvim.appimage
 sudo mv nvim.appimage /usr/bin/nvim
 
-go get github.com/axw/gocov/gocov
-go get github.com/brianredbeard/gpget
-go get github.com/crosbymichael/gistit
-go get github.com/crosbymichael/ip-addr
-go get github.com/davecheney/httpstat
-go get github.com/google/gops
-go get github.com/jstemmer/gotags
-go get github.com/nsf/gocode
-go get github.com/rogpeppe/godef
-go get github.com/shurcooL/markdownfmt
-go get github.com/Soulou/curl-unix-socket
-go get github.com/spf13/cobra/cobra
-go get github.com/unidoc/unidoc
-go get github.com/go-swagger/go-swagger
-go get github.com/alexhokl/go-bb-pr
-go get github.com/russross/blackfriday-tool
-go get github.com/kubernetes/kompose
-go get github.com/davecgh/go-spew/spew
+for p in $(cat go-packges.txt); do go get -u $p; done
 
 sudo dpkg -i chrome.deb
 sudo dpkg -i slack.deb
