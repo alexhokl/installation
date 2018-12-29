@@ -3,6 +3,7 @@ dart-code.dart-code
 dart-code.flutter
 dbaeumer.vscode-eslint
 donjayamanne.githistory
+eamodio.gitlens
 ms-mssql.mssql
 ms-python.python
 ms-vscode.csharp
