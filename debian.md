@@ -47,6 +47,8 @@ shutdown -r now
   - Export the key into a file
   - `ssh user_name@server_name cat file.key | gpg --import`
 - copy git credentials from another machine using SSH
+- copy Docker Content Trust keys from another machine using SSH
+    (`~/.docker/trust/private/`)
 - Open neovim and execute the following commands
 
 ```
