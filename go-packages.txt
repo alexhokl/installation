@@ -17,3 +17,4 @@ github.com/alexhokl/go-bb-pr
 github.com/russross/blackfriday-tool
 github.com/kubernetes/kompose
 github.com/davecgh/go-spew/spew
+github.com/juruen/rmapi
