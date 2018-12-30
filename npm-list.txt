@@ -6,3 +6,4 @@ n
 typescript
 next-update
 rxjs-tslint
+markdown-toc
