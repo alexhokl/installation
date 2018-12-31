@@ -215,7 +215,7 @@ curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimag
 chmod u+x nvim.appimage
 sudo mv nvim.appimage /usr/bin/nvim
 
-for p in $(cat go-packges.txt); do go get -u $p; done
+for p in $(cat go-packages.txt); do go get -u $p; done
 
 sudo dpkg -i chrome.deb
 sudo dpkg -i slack.deb
