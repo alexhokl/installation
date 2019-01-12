@@ -26,10 +26,10 @@ following.
 
 ```sh
 sudo apt-get install -y apt-transport-https ca-certificates curl dirmngr --no-install-recommends
-curl https://raw.githubusercontent.com/alexhokl/installation/master/debian.2.user.sh -o debian.2.user.sh
-chmod +x debian.2.user.sh
-./debian.2.user.sh
-rm debian.2.user.sh
+curl https://raw.githubusercontent.com/alexhokl/installation/master/debian.sh -o debian.sh
+chmod +x debian.sh
+./debian.sh
+rm debian.sh
 shutdown -r now
 ```
 
