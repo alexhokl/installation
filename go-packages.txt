@@ -18,3 +18,4 @@ github.com/russross/blackfriday-tool
 github.com/kubernetes/kompose
 github.com/davecgh/go-spew/spew
 github.com/juruen/rmapi
+honnef.co/go/tools/cmd/staticcheck
