@@ -11,6 +11,7 @@ VERSION_NODEJS=8
 VERSION_RUBY=2.5.1
 VERSION_GIT=2.19.1
 VERSION_STEP=0.8.2
+VERSION_HEXYL=0.3.1
 
 sudo curl https://raw.githubusercontent.com/alexhokl/installation/master/sources.list -o /etc/apt/sources.list
 
@@ -205,6 +206,7 @@ curl https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_li
 curl -o remarkable.deb https://remarkableapp.github.io/files/remarkable_${VERSION_REMARKABLE}_all.deb
 curl -o azuredatastudio.deb https://azuredatastudiobuilds.blob.core.windows.net/releases/${VERSION_AZURE_DATA_STUDIO}/azuredatastudio-linux-${VERSION_AZURE_DATA_STUDIO}.deb
 curl -o step.deb -sSL https://github.com/smallstep/cli/releases/download/v${VERSION_STEP}/step-cli_${VERSION_STEP}_amd64.deb
+curl -o hexyl.deb -sSL https://github.com/sharkdp/hexyl/releases/download/v${VERSION_HEXYL}/hexyl_${VERSION_HEXYL}_amd64.deb
 
 tar xvf golang.tar.gz
 source ${HOME}/git/dotfiles/.path
@@ -222,6 +224,7 @@ sudo dpkg -i slack.deb
 sudo dpkg -i bat.deb
 sudo dpkg -i remarkable.deb
 sudo dpkg -i azuredatastudio.deb
+sudo dpkg -i hexyl.deb
 
 sudo apt --fix-broken install -y
 

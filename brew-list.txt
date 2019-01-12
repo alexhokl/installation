@@ -50,3 +50,4 @@ gnu-sed
 webp
 git-lfs
 smallstep/smallstep/step
+hexyl
