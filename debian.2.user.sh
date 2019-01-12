@@ -262,6 +262,10 @@ mkdir -p ${HOME}/.config/Code/User
 curl https://raw.githubusercontent.com/alexhokl/installation/master/vscode_settings.json -o ${HOME}/.config/Code/User/settings.json
 sudo curl -o /usr/local/bin/nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 
+curl https://raw.githubusercontent.com/alexhokl/installation/master/pip.txt -o pip.txt
+pip $(cat pip.txt)
+pip3 $(cat pip.txt)
+
 source ${HOME}/git/dotfiles/.path
 rbenv init
 rbenv install ${VERSION_RUBY}
@@ -270,11 +274,8 @@ echo "gem: --no-document" > ${HOME}/.gemrc
 gem install bundler
 gem install travis
 
+
 cd $HOME
-pip install wheel
-pip3 install wheel
-pip install --upgrade pynvim
-pip3 install --upgrade pynvim
 git clone --recursive https://github.com/alexhokl/.vim.git .vim
 ln -sf $HOME/.vim/vimrc $HOME/.vimrc
 cd $HOME/.vim
@@ -296,8 +297,6 @@ sudo update-alternatives --install /usr/bin/editor editor "$(which nvim)" 60
 sudo update-alternatives --config editor
 
 cd $HOME
-pip3 install awscli --upgrade --user
-
 sudo apt-get purge -y git git-core
 sudo apt autoremove -y
 hash -r
