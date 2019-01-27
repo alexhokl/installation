@@ -81,7 +81,7 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		dkms \
 		dnsutils \
 		docker-ce \
-		dotnet-sdk-2.1 \
+		dotnet-sdk-2.2 \
 		feh \
 		ffmpeg \
 		file \
