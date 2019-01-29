@@ -207,6 +207,7 @@ curl -o remarkable.deb https://remarkableapp.github.io/files/remarkable_${VERSIO
 curl -o azuredatastudio.deb https://azuredatastudiobuilds.blob.core.windows.net/releases/${VERSION_AZURE_DATA_STUDIO}/azuredatastudio-linux-${VERSION_AZURE_DATA_STUDIO}.deb
 curl -o step.deb -sSL https://github.com/smallstep/cli/releases/download/v${VERSION_STEP}/step-cli_${VERSION_STEP}_amd64.deb
 curl -o hexyl.deb -sSL https://github.com/sharkdp/hexyl/releases/download/v${VERSION_HEXYL}/hexyl_${VERSION_HEXYL}_amd64.deb
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 
 tar xvf golang.tar.gz
 source ${HOME}/git/dotfiles/.path
@@ -227,6 +228,9 @@ sudo dpkg -i azuredatastudio.deb
 sudo dpkg -i hexyl.deb
 
 sudo apt --fix-broken install -y
+
+chmod +x minikube
+sudo mv minikube /usr/local/bin
 
 tar xf ${HOME}/git/flutter.xz -C ${HOME}/git/
 
