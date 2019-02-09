@@ -65,10 +65,10 @@ choco install -y visualstudio2017professional
 choco install -y visualstudio2017-workload-netweb
 choco install -y visualstudio2017-workload-netcoretools
 choco install -y visualstudio2017-workload-data
-choco install -y resharper
+#choco install -y resharper
 # choco install -y slack
 choco install -y sql-server-management-studio
-choco install -y sql-operations-studio
+#choco install -y sql-operations-studio
 choco install -y office365proplus
 choco install -y cmder
 
