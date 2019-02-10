@@ -19,8 +19,8 @@
 Disable-UAC
 
 #--- Fonts ---
-choco install -y inconsolata
-choco install -y robotofonts
+choco install inconsolata
+choco install robotofonts
 
 #--- Windows Settings ---
 Disable-BingSearch
@@ -35,42 +35,39 @@ choco install Microsoft-Hyper-V-All -source windowsFeatures
 choco install Microsoft-Windows-Subsystem-Linux -source windowsfeatures
 
 #--- Tools ---
-choco install -y git
-choco install -y poshgit
-choco install -y sysinternals
-choco install -y neovim
+choco install git
+choco install poshgit
+choco install sysinternals
+choco install neovim
 
 #--- Apps ---
-choco install -y googlechrome
-choco install -y docker-for-windows --pre
-# choco install sharex
-# choco install microsoft-teams
-# choco install vcxsrv
-choco install -y golang
-choco install -y winrar
-choco install -y jdk8
-choco install -y adobereader
-choco install -y 7zip
-choco install -y nodejs
-choco install -y 7zip.commandline
-choco install -y procexp
-choco install -y vscode
-choco install -y ruby
-choco install -y python2
-choco install -y python
-choco install -y linqpad5
-choco install -y kdiff3
-choco install -y jq
-choco install -y visualstudio2017professional
-choco install -y visualstudio2017-workload-netweb
-choco install -y visualstudio2017-workload-netcoretools
-choco install -y visualstudio2017-workload-data
-#choco install -y resharper
-# choco install -y slack
-choco install -y sql-server-management-studio
-#choco install -y sql-operations-studio
-choco install -y office365proplus
-choco install -y cmder
+choco install googlechrome
+choco install docker-for-windows
+choco install golang
+choco install winrar
+choco install jdk8
+choco install adobereader
+choco install 7zip
+choco install nodejs
+choco install 7zip.commandline
+choco install procexp
+choco install vscode
+choco install ruby
+choco install python2
+choco install python
+choco install linqpad5
+choco install kdiff3
+choco install jq
+choco install visualstudio2017professional
+choco install visualstudio2017-workload-netweb
+choco install visualstudio2017-workload-netcoretools
+choco install visualstudio2017-workload-data
+choco install slack
+choco install sql-server-management-studio
+choco install azure-data-studio
+choco install office365proplus
+choco install cmder
+choco install git-credential-manager-for-windows
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---
 
@@ -117,6 +114,9 @@ Get-AppxPackage Microsoft.Print3D | Remove-AppxPackage
 Get-AppxPackage *Dolby* | Remove-AppxPackage
 Get-AppxPackage *Disney* | Remove-AppxPackage
 Get-AppxPackage *McAfee* | Remove-AppxPackage
+Get-AppxPackage *Fitbit* | Remove-AppxPackage
+Get-AppxPackage *PhototasticCollage* | Remove-AppxPackage
+
 
 # Uninstall McAfee Security App
 $mcafee = gci "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall" | foreach { gp $_.PSPath } | ? { $_ -match "McAfee Security" } | select UninstallString

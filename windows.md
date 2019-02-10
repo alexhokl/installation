@@ -1,47 +1,34 @@
 - Open Powershell with administrator privileges and run the following scripts
 
-```console
+```ps1
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 . { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; get-boxstarter -Force
 Install-BoxstarterPackage -PackageName https://raw.githubusercontent.com/alexhokl/installation/master/windows.boxstarter.ps1 -DisableReboots
-npm i -g iisexpress-proxy
-code --install-extension ms-mssql.mssql
-code --install-extension dbaeumer.vscode-eslint
-code --install-extension ms-vscode.csharp
-code --install-extension ms-vscode.Go
-code --install-extension ms-python.python
-code --install-extension PeterJausovec.vscode-docker
-code --install-extension ms-vscode.PowerShell
-code --install-extension Zignd.html-css-class-completion
-code --install-extension redhat.vscode-yaml
-code --install-extension robinbentley.sass-indented
-code --install-extension ckolkman.vscode-postgres
-code --install-extension dart-code.flutter
-pip install awscli --upgrade --user
-$oldPath=(Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).Path
-$newPath=$oldPath+";C:\Users\alex\Desktop\git\bin"
-Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH –Value $newPath
-Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name GOPATH –Value "C:\Users\alex\Desktop\git"
 ```
 
 - Reboot to prepare .NET Framework installation
 
-```console
-choco install -y netfx-4.7.2-devpack
+- Open Powershell with administrator privileges and run the following scripts
+
+```ps1
+choco install -y netfx-4.7-devpack
+(New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/npm-list.txt", "$HOME\Desktop\npm-list.txt")
+Get-Content $HOME\Desktop\npm-list.txt | ForEach-Object { npm i -g $_ }
+$oldPath=(Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).Path
+$newPath=$oldPath+";$HOME\Desktop\git\bin"
+Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH –Value $newPath
+Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name GOPATH –Value "$HOME\Desktop\git"
 ```
 
-- Configure ReSharper to disallow shadow-copy assemblies for unit tests.
-  1. Open Visual Studio.
-  2. Open Menu `ReSharper`.
-  3. Select `Options`.
-  4. In the side menu, select `Tools` and `Unit Testing`.
-  5. Un-check `Shadow-copy assemblies being tested`.
+- Open Powershell as a normal user and run the following scripts
 
-```console
-mkdir .\Desktop\git
-go get -u github.com/alexhokl/rds-backup
-(iwr -useb https://raw.githubusercontent.com/alexhokl/dotfiles/windows10/.gitconfig).Content > .gitconfig
-[Open .gitconfig in Visual Studio Code to change encoding and line-ending]
+```ps1
+mkdir $HOME\Desktop\git
+(iwr -useb https://raw.githubusercontent.com/alexhokl/dotfiles/windows10/.gitconfig).Content.Replace("`n", "`r`n") | Set-Content -Encoding utf8 $HOME\.gitconfig
+(New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/vscode-extensions.txt", "$HOME\Desktop\vscode-extensions.txt")
+Get-Content $HOME\Desktop\vscode-extensions.txt | ForEach-Object { code --install-extension $_ }
+(New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/pip.txt", "$HOME\Desktop\pip.txt")
+Get-Content $HOME\Desktop\pip.txt | ForEach-Object { pip3 install $_ }
+(New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/go-packages.txt", "$HOME\Desktop\go-packages.txt")
+Get-Content $HOME\Desktop\go-packages.txt | ForEach-Object { go get -u $_ }
 ```
-
-- Download and install [git credential manager for Windows](https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/)
