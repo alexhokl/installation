@@ -205,7 +205,6 @@ Install-WindowsUpdate -acceptEula
 
 #--- Rename the Computer ---
 # Requires restart, or add the -Restart flag
-$computername = "alex-windows"
 if ($env:computername -ne $computername) {
 	Rename-Computer -NewName $computername
 }
