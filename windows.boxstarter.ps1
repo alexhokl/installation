@@ -68,6 +68,7 @@ choco install azure-data-studio
 choco install office365proplus
 choco install cmder
 choco install git-credential-manager-for-windows
+choco install yarn
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---
 
