@@ -77,6 +77,8 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		cmake \
 		code \
 		coreutils \
+		cups \
+		cups-pdf \
 		curl \
 		dkms \
 		dnsutils \
