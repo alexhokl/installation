@@ -4,6 +4,9 @@ dart-code.flutter
 dbaeumer.vscode-eslint
 donjayamanne.githistory
 eamodio.gitlens
+EQuimper.react-native-react-redux
+euskadi31.json-pretty-printer
+leizongmin.node-module-intellisense
 ms-mssql.mssql
 ms-python.python
 ms-vscode.csharp
