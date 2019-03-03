@@ -210,6 +210,7 @@ curl -o azuredatastudio.deb https://azuredatastudiobuilds.blob.core.windows.net/
 curl -o step.deb -sSL https://github.com/smallstep/cli/releases/download/v${VERSION_STEP}/step-cli_${VERSION_STEP}_amd64.deb
 curl -o hexyl.deb -sSL https://github.com/sharkdp/hexyl/releases/download/v${VERSION_HEXYL}/hexyl_${VERSION_HEXYL}_amd64.deb
 curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+curl -o postman.tar.gz -sSL https://dl.pstmn.io/download/latest/linux64
 
 tar xvf golang.tar.gz
 source ${HOME}/git/dotfiles/.path
@@ -219,6 +220,8 @@ sudo mv go /usr/local/
 curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 chmod u+x nvim.appimage
 sudo mv nvim.appimage /usr/bin/nvim
+
+tar xvzf postman.tar.gz
 
 for p in $(cat go-packages.txt); do go get -u $p; done
 
