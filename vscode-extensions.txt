@@ -1,4 +1,5 @@
 ckolkman.vscode-postgres
+CoenraadS.bracket-pair-colorizer-2
 dart-code.dart-code
 dart-code.flutter
 dbaeumer.vscode-eslint
@@ -12,10 +13,15 @@ ms-python.python
 ms-vscode.csharp
 ms-vscode.go
 ms-vscode.powerShell
+ms-vsliveshare.vsliveshare
 ms-python.python
 PeterJausovec.vscode-docker
 redhat.vscode-yaml
 robinbentley.sass-indented
+RoscoP.ActiveFileInStatusBar
+shardulm94.trailing-spaces
 shd101wyy.markdown-preview-enhanced
+streetsidesoftware.code-spell-checker
 waderyan.gitblame
+xabikos.ReactSnippets
 Zignd.html-css-class-completion
