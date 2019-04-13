@@ -21,3 +21,4 @@ github.com/juruen/rmapi
 honnef.co/go/tools/cmd/staticcheck
 github.com/alexhokl/rds-backup
 github.com/cjbassi/gotop
+github.com/itchyny/bed
