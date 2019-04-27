@@ -76,6 +76,7 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		cgroupfs-mount \
 		cmake \
 		code \
+		containerd.io \
 		coreutils \
 		cups \
 		cups-pdf \
@@ -83,6 +84,7 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		dkms \
 		dnsutils \
 		docker-ce \
+		docker-ce-cli \
 		dotnet-sdk-2.2 \
 		feh \
 		ffmpeg \
