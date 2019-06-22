@@ -12,6 +12,7 @@ VERSION_RUBY=2.5.1
 VERSION_GIT=2.19.1
 VERSION_STEP=0.8.2
 VERSION_HEXYL=0.3.1
+VERSION_PYTHON=3.7.3
 
 sudo curl https://raw.githubusercontent.com/alexhokl/installation/master/sources.list -o /etc/apt/sources.list
 
@@ -129,6 +130,7 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		libindicator7 \
 		libltdl-dev \
 		libncurses5-dev \
+		libnss3-dev \
 		libreadline-dev \
 		libseccomp-dev \
 		libssl-dev \
@@ -185,6 +187,7 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		unzip \
 		virtualbox-5.2 \
 		webp \
+		wget \
 		xclip \
 		xcompmgr \
 		xdotool \
@@ -204,6 +207,7 @@ git clone https://github.com/rbenv/ruby-build.git ${HOME}/.rbenv/plugins/ruby-bu
 
 curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o chrome.deb
 curl https://storage.googleapis.com/golang/go${VERSION_GOLANG}.linux-amd64.tar.gz -o golang.tar.gz
+curl https://www.python.org/ftp/python/${VERSION_PYTHON}/Python-${VERSION_PYTHON}.tar.xz -o python.tar.xz
 curl -sSL https://downloads.slack-edge.com/linux_releases/slack-desktop-${VERSION_SLACK}-amd64.deb -o slack.deb
 curl -sSL https://github.com/sharkdp/bat/releases/download/v${VERSION_BAT}/bat-musl_${VERSION_BAT}_amd64.deb -o bat.deb
 curl https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v${VERSION_FLUTTER}-beta.tar.xz -o ${HOME}/git/flutter.xz
@@ -218,6 +222,14 @@ tar xvf golang.tar.gz
 source ${HOME}/git/dotfiles/.path
 
 sudo mv go /usr/local/
+
+tar -xf python.tar.xz
+cd Python-${VERSION_PYTHON}
+./configure --enable-optimizations
+make
+sudo make install
+sudo update-alternatives --install /usr/bin/python python /usr/local/bin/python3.7 1
+sudo update-alternatives --set python /usr/local/bin/python3.7
 
 curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 chmod u+x nvim.appimage
