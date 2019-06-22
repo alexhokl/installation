@@ -1,3 +1,5 @@
+Atlassian.atlascode
+bungcip.better-toml
 ckolkman.vscode-postgres
 CoenraadS.bracket-pair-colorizer-2
 dart-code.dart-code
@@ -7,7 +9,9 @@ donjayamanne.githistory
 eamodio.gitlens
 EQuimper.react-native-react-redux
 euskadi31.json-pretty-printer
+k--kato.docomment
 leizongmin.node-module-intellisense
+ms-azuretools.vscode-docker
 ms-mssql.mssql
 ms-python.python
 ms-vscode.csharp
@@ -15,7 +19,6 @@ ms-vscode.go
 ms-vscode.powerShell
 ms-vsliveshare.vsliveshare
 ms-python.python
-PeterJausovec.vscode-docker
 redhat.vscode-yaml
 robinbentley.sass-indented
 RoscoP.ActiveFileInStatusBar
@@ -24,4 +27,4 @@ shd101wyy.markdown-preview-enhanced
 streetsidesoftware.code-spell-checker
 waderyan.gitblame
 xabikos.ReactSnippets
-Zignd.html-css-class-completion
+zignd.html-css-class-completion
