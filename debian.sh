@@ -60,6 +60,7 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		alsa-utils \
 		apparmor \
 		apt-transport-https \
+		asciinema \
 		autoconf \
 		automake \
 		azure-cli \
