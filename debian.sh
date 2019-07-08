@@ -1,17 +1,17 @@
 #!/bin/bash
 
-VERSION_GOLANG=1.11.1
-VERSION_SLACK=3.2.1
-VERSION_BAT=0.6.1
-VERSION_FLUTTER=0.11.13
+VERSION_GOLANG=1.12.6
+VERSION_SLACK=3.4.2
+VERSION_BAT=0.11.0
+VERSION_FLUTTER=1.5.4-hotfix.2
 VERSION_REMARKABLE=1.87
-VERSION_AZURE_DATA_STUDIO=1.2.4
-VERSION_DOCKER_COMPOSE=1.21.2
-VERSION_NODEJS=8
+VERSION_AZURE_DATA_STUDIO=1.8.0
+VERSION_DOCKER_COMPOSE=1.24.0
+VERSION_NODEJS=10
 VERSION_RUBY=2.5.1
-VERSION_GIT=2.19.1
-VERSION_STEP=0.8.2
-VERSION_HEXYL=0.3.1
+VERSION_GIT=2.22.0
+VERSION_STEP=0.10.2
+VERSION_HEXYL=0.5.1
 VERSION_PYTHON=3.7.3
 
 sudo curl https://raw.githubusercontent.com/alexhokl/installation/master/sources.list -o /etc/apt/sources.list
@@ -211,7 +211,7 @@ curl https://storage.googleapis.com/golang/go${VERSION_GOLANG}.linux-amd64.tar.g
 curl https://www.python.org/ftp/python/${VERSION_PYTHON}/Python-${VERSION_PYTHON}.tar.xz -o python.tar.xz
 curl -sSL https://downloads.slack-edge.com/linux_releases/slack-desktop-${VERSION_SLACK}-amd64.deb -o slack.deb
 curl -sSL https://github.com/sharkdp/bat/releases/download/v${VERSION_BAT}/bat-musl_${VERSION_BAT}_amd64.deb -o bat.deb
-curl https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v${VERSION_FLUTTER}-beta.tar.xz -o ${HOME}/git/flutter.xz
+curl https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v${VERSION_FLUTTER}-stable.tar.xz -o ${HOME}/git/flutter.xz
 curl -o remarkable.deb https://remarkableapp.github.io/files/remarkable_${VERSION_REMARKABLE}_all.deb
 curl -o azuredatastudio.deb https://azuredatastudiobuilds.blob.core.windows.net/releases/${VERSION_AZURE_DATA_STUDIO}/azuredatastudio-linux-${VERSION_AZURE_DATA_STUDIO}.deb
 curl -o step.deb -sSL https://github.com/smallstep/cli/releases/download/v${VERSION_STEP}/step-cli_${VERSION_STEP}_amd64.deb
@@ -294,12 +294,13 @@ pip $(cat pip.txt)
 pip3 $(cat pip.txt)
 
 source ${HOME}/git/dotfiles/.path
-rbenv init
-rbenv install ${VERSION_RUBY}
-rbenv global ${VERSION_RUBY}
-echo "gem: --no-document" > ${HOME}/.gemrc
-gem install bundler
-gem install travis
+
+# rbenv init
+# rbenv install ${IVERSION_RUBY}
+# rbenv global ${VERSION_RUBY}
+# echo "gem: --no-document" > ${HOME}/.gemrc
+# gem install bundler
+# gem install travis
 
 
 cd $HOME
