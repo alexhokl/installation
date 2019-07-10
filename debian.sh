@@ -56,16 +56,10 @@ sudo apt-get update
 sudo apt-get -y upgrade
 
 sudo ACCEPT_EULA=Y apt-get install -y \
-		adduser \
-		alsa-utils \
-		apparmor \
-		apt-transport-https \
 		asciinema \
 		autoconf \
 		automake \
 		azure-cli \
-		bash-completion \
-		bc \
 		bison \
 		bluez-firmware \
 		bluez-tools \
@@ -73,16 +67,10 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		bridge-utils \
 		build-essential \
 		byzanz \
-		bzip2 \
-		ca-certificates \
 		cgroupfs-mount \
 		cmake \
 		code \
 		containerd.io \
-		coreutils \
-		cups \
-		cups-pdf \
-		curl \
 		dkms \
 		dnsutils \
 		docker-ce \
@@ -90,22 +78,15 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		dotnet-sdk-2.2 \
 		feh \
 		ffmpeg \
-		file \
 		firmware-iwlwifi \
-		findutils \
 		g++ \
 		gcc \
 		gettext \
 		git \
-		gnupg \
 		gnupg2 \
 		gnupg-agent \
 		google-cloud-sdk \
-		grep \
-		gzip \
-		hostname \
 		indent \
-		iptables \
 		i3 \
 		i3lock \
 		i3status \
@@ -113,20 +94,15 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		kdiff3 \
 		keepassxc \
 		kubectl \
-		less \
 		lib32stdc++6 \
 		libapparmor-dev \
 		libappindicator1 \
-		libav-tools \
 		libc6-dev \
 		libcurl4-openssl-dev \
-		libdbusmenu-glib4 \
 		libdbusmenu-gtk4 \
 		liberror-perl \
 		libexpat1-dev \
 		libffi-dev \
-		libgconf2-4 \
-		libgdbm3 \
 		libgdbm-dev \
 		libindicator7 \
 		libltdl-dev \
@@ -137,63 +113,42 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		libssl-dev \
 		libtool \
 		libtool-bin \
-		libunwind8 \
 		libuv1-dev \
 		libyaml-dev \
-		linux-headers-amd64 \
-		linux-headers-4.9.0-6-amd64 \
-		locales \
-		lsof \
 		make \
-		mongodb \
 		mono-devel \
-		mount \
-		msbuild \
 		mssql-tools \
 		net-tools \
-		netcat-traditional \
-		network-manager \
 		network-manager-pptp-gnome \
 		openvpn \
 		openssh-server \
 		pavucontrol \
 		peek \
-		pinentry-curses \
 		pkg-config \
 		pptp-linux \
-		pulseaudio \
-		pulseaudio-module-bluetooth \
+		printer-driver-cups-pdf \
 		python-dev \
 		python-pip \
 		python3-dev \
 		python3-pip \
 		python3-setuptools \
 		rxvt-unicode-256color \
-		s3cmd \
 		scdaemon \
 		scrot \
 		silversearcher-ag \
-		software-properties-common \
 		spotify-client \
 		ssh \
 		strace \
 		strongswan \
 		suckless-tools \
-		tar \
 		tmux \
 		tree \
-		tzdata \
-		unifi \
 		unixodbc-dev \
-		unzip \
-		virtualbox-5.2 \
 		webp \
-		wget \
 		xclip \
 		xcompmgr \
 		xdotool \
 		xl2tpd \
-		xz-utils \
 		yarn \
 		zip \
 		zlib1g-dev
@@ -211,7 +166,7 @@ curl https://storage.googleapis.com/golang/go${VERSION_GOLANG}.linux-amd64.tar.g
 curl https://www.python.org/ftp/python/${VERSION_PYTHON}/Python-${VERSION_PYTHON}.tar.xz -o python.tar.xz
 curl -sSL https://downloads.slack-edge.com/linux_releases/slack-desktop-${VERSION_SLACK}-amd64.deb -o slack.deb
 curl -sSL https://github.com/sharkdp/bat/releases/download/v${VERSION_BAT}/bat-musl_${VERSION_BAT}_amd64.deb -o bat.deb
-curl https://storage.googleapis.com/flutter_infra/releases/beta/linux/flutter_linux_v${VERSION_FLUTTER}-stable.tar.xz -o ${HOME}/git/flutter.xz
+curl https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v${VERSION_FLUTTER}-stable.tar.xz -o ${HOME}/git/flutter.xz
 curl -o remarkable.deb https://remarkableapp.github.io/files/remarkable_${VERSION_REMARKABLE}_all.deb
 curl -o azuredatastudio.deb https://azuredatastudiobuilds.blob.core.windows.net/releases/${VERSION_AZURE_DATA_STUDIO}/azuredatastudio-linux-${VERSION_AZURE_DATA_STUDIO}.deb
 curl -o step.deb -sSL https://github.com/smallstep/cli/releases/download/v${VERSION_STEP}/step-cli_${VERSION_STEP}_amd64.deb
@@ -231,14 +186,16 @@ make
 sudo make install
 sudo update-alternatives --install /usr/bin/python python /usr/local/bin/python3.7 1
 sudo update-alternatives --set python /usr/local/bin/python3.7
+CD $HOME
 
 curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 chmod u+x nvim.appimage
 sudo mv nvim.appimage /usr/bin/nvim
 
 tar xvzf postman.tar.gz
+sudo mv Postman/app /opt/postman
 
-for p in $(cat go-packages.txt); do go get -u $p; done
+for p in $(cat $HOME/git/installation/go-packages.txt); do go get -u $p; done
 
 sudo dpkg -i chrome.deb
 sudo dpkg -i slack.deb
@@ -250,7 +207,7 @@ sudo dpkg -i hexyl.deb
 sudo apt --fix-broken install -y
 
 chmod +x minikube
-sudo mv minikube /usr/local/bin
+sudo mv minikube /usr/local/bin/
 
 tar xf ${HOME}/git/flutter.xz -C ${HOME}/git/
 
@@ -290,7 +247,6 @@ curl https://raw.githubusercontent.com/alexhokl/installation/master/vscode_setti
 sudo curl -o /usr/local/bin/nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 
 curl https://raw.githubusercontent.com/alexhokl/installation/master/pip.txt -o pip.txt
-pip $(cat pip.txt)
 pip3 $(cat pip.txt)
 
 source ${HOME}/git/dotfiles/.path
@@ -303,28 +259,17 @@ source ${HOME}/git/dotfiles/.path
 # gem install travis
 
 
-cd $HOME
-git clone --recursive https://github.com/alexhokl/.vim.git .vim
-ln -sf $HOME/.vim/vimrc $HOME/.vimrc
+git clone --recursive https://github.com/alexhokl/.vim
 cd $HOME/.vim
-git submodule update --init
-cd $HOME/.vim/bundle/vimproc.vim
-make
-cd $HOME/.vim
-mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
-ln -snf "${HOME}/.vim" "${XDG_CONFIG_HOME}/nvim"
-ln -snf "${HOME}/.vimrc" "${XDG_CONFIG_HOME}/nvim/init.vim"
-sudo mkdir -p /root/.config
-sudo ln -snf "${HOME}/.vim" /root/.config/nvim
-sudo ln -snf "${HOME}/.vimrc" /root/.config/nvim/init.vim
+make install
 sudo update-alternatives --install /usr/bin/vi vi "$(which nvim)" 60
 sudo update-alternatives --config vi
 sudo update-alternatives --install /usr/bin/vim vim "$(which nvim)" 60
 sudo update-alternatives --config vim
 sudo update-alternatives --install /usr/bin/editor editor "$(which nvim)" 60
 sudo update-alternatives --config editor
-
 cd $HOME
+
 sudo apt-get purge -y git git-core
 sudo apt autoremove -y
 hash -r
@@ -333,8 +278,8 @@ tar xvzf git.tar.gz
 cd git-*
 make prefix=/usr/local all
 sudo make prefix=/usr/local install
-
 cd $HOME
+
 rm -rf git-*
 rm *.deb
 rm *.tar.gz

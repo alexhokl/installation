@@ -15,10 +15,8 @@ If root account is enabled during installation, execute the following; skip, oth
 passwd
 su
 passwd
-apt-get update
-apt-get install -y sudo
-usermod -a -G sudo alex
-shutdown -r now
+/usr/sbin/usermod -a -G sudo alex
+/usr/sbin/shutdown -r now
 ```
 
 Once `sudo` is installed (or root account has been disabled), execute the
