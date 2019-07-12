@@ -1,5 +1,4 @@
 wheel
-pynvim
 awscli
 youtube-dl
 http-prompt
