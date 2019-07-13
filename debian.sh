@@ -251,12 +251,12 @@ pip3 $(cat pip.txt)
 
 source ${HOME}/git/dotfiles/.path
 
-# rbenv init
-# rbenv install ${IVERSION_RUBY}
-# rbenv global ${VERSION_RUBY}
-# echo "gem: --no-document" > ${HOME}/.gemrc
-# gem install bundler
-# gem install travis
+rbenv init
+rbenv install ${VERSION_RUBY}
+rbenv global ${VERSION_RUBY}
+echo "gem: --no-document" > ${HOME}/.gemrc
+gem install bundler
+gem install travis
 
 
 git clone --recursive https://github.com/alexhokl/.vim
