@@ -236,6 +236,10 @@ sudo chmod +x /usr/local/bin/light
 sudo curl -sSL https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py  -o /usr/local/bin/speedtest
 sudo chmod +x /usr/local/bin/speedtest
 
+sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
+sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+
 curl -sL https://deb.nodesource.com/setup_${VERSION_NODEJS}.x | sudo -E bash -
 sudo apt-get install -y nodejs
 curl https://raw.githubusercontent.com/alexhokl/installation/master/npm-list.txt -o npm-list.txt

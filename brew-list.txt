@@ -51,3 +51,4 @@ webp
 git-lfs
 smallstep/smallstep/step
 hexyl
+kubectx
