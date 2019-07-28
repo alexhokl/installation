@@ -140,7 +140,6 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		spotify-client \
 		ssh \
 		strace \
-		strongswan \
 		suckless-tools \
 		tmux \
 		tree \
