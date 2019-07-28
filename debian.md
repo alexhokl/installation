@@ -40,6 +40,7 @@ shutdown -r now
       does not work due to `pinentry` setup
     - where `KEY_ID` is the key to be imported
   - Export the key into a file
+    `gpg --export-secret-key EE510D8CB9F12960 > file.key`
   - `ssh user_name@server_name cat file.key | gpg --import`
 - copy git credentials from another machine using SSH
 - copy Docker Content Trust keys from another machine using SSH

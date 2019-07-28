@@ -252,6 +252,7 @@ sudo curl -o /usr/local/bin/nuget.exe https://dist.nuget.org/win-x86-commandline
 
 curl https://raw.githubusercontent.com/alexhokl/installation/master/pip.txt -o pip.txt
 pip3 $(cat pip.txt)
+pip3 install --user pynvim
 
 source ${HOME}/git/dotfiles/.path
 
