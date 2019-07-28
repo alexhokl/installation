@@ -185,7 +185,7 @@ make
 sudo make install
 sudo update-alternatives --install /usr/bin/python python /usr/local/bin/python3.7 1
 sudo update-alternatives --set python /usr/local/bin/python3.7
-CD $HOME
+cd $HOME
 
 curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 chmod u+x nvim.appimage
@@ -292,6 +292,7 @@ rm npm-list.txt
 cd $HOME/git/dotfiles
 make bin
 make dotfiles
+cd $HOME
 
 sudo sed -i -e 's/#\ en_GB\.UTF\-8/en_GB\.UTF\-8/g' /etc/locale.gen
 sudo locale-gen
