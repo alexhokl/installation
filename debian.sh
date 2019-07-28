@@ -38,6 +38,7 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328
 
 # virtual box
 curl https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
+curl https://www.virtualbox.org/download/oracle_vbox.asc | sudo apt-key add -
 
 # yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
@@ -153,8 +154,7 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		zip \
 		zlib1g-dev
 
-sudo apt install -y signal-desktop
-sudo apt install -t stretch-backports remmina remmina-plugin-rdp remmina-plugin-secret
+sudo apt install -y signal-desktop virtualbox-6.0
 
 git clone https://github.com/alexhokl/installation ${HOME}/git/installation
 git clone https://github.com/alexhokl/dotfiles ${HOME}/git/dotfiles
