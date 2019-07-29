@@ -253,8 +253,6 @@ curl https://raw.githubusercontent.com/alexhokl/installation/master/pip.txt -o p
 pip3 $(cat pip.txt)
 pip3 install --user pynvim
 
-source ${HOME}/git/dotfiles/.path
-
 rbenv init
 rbenv install ${VERSION_RUBY}
 rbenv global ${VERSION_RUBY}
