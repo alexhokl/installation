@@ -13,6 +13,7 @@ VERSION_GIT=2.22.0
 VERSION_STEP=0.10.2
 VERSION_HEXYL=0.5.1
 VERSION_PYTHON=3.7.3
+VERSION_PYTHON_MAJOR=3.7
 
 sudo curl https://raw.githubusercontent.com/alexhokl/installation/master/sources.list -o /etc/apt/sources.list
 
@@ -153,7 +154,7 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		zip \
 		zlib1g-dev
 
-sudo apt install -y signal-desktop virtualbox-6.0
+sudo apt install -y signal-desktop
 
 git clone https://github.com/alexhokl/installation ${HOME}/git/installation
 git clone https://github.com/alexhokl/dotfiles ${HOME}/git/dotfiles
@@ -183,8 +184,8 @@ cd Python-${VERSION_PYTHON}
 ./configure --enable-optimizations
 make
 sudo make install
-sudo update-alternatives --install /usr/bin/python python /usr/local/bin/python3.7 1
-sudo update-alternatives --set python /usr/local/bin/python3.7
+sudo update-alternatives --install /usr/bin/python python /usr/local/bin/python${VERSION_PYTHON_MAJOR} 1
+sudo update-alternatives --set python /usr/local/bin/python${VERSION_PYTHON_MAJOR}
 cd $HOME
 
 curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
@@ -243,15 +244,15 @@ curl -sL https://deb.nodesource.com/setup_${VERSION_NODEJS}.x | sudo -E bash -
 sudo apt-get install -y nodejs
 curl https://raw.githubusercontent.com/alexhokl/installation/master/npm-list.txt -o npm-list.txt
 sudo npm i -g $(cat npm-list.txt)
+
 curl https://raw.githubusercontent.com/alexhokl/installation/master/vscode-extensions.txt -o vscode-extensions.txt
 for e in $(cat vscode-extensions.txt); do code --install-extension $e; done
 mkdir -p ${HOME}/.config/Code/User
 curl https://raw.githubusercontent.com/alexhokl/installation/master/vscode_settings.json -o ${HOME}/.config/Code/User/settings.json
+
 sudo curl -o /usr/local/bin/nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 
-curl https://raw.githubusercontent.com/alexhokl/installation/master/pip.txt -o pip.txt
-pip3 $(cat pip.txt)
-pip3 install --user pynvim
+pip3 install --user $(curl https://raw.githubusercontent.com/alexhokl/installation/master/pip.txt)
 
 rbenv init
 rbenv install ${VERSION_RUBY}
