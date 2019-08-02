@@ -14,6 +14,7 @@ VERSION_STEP=0.10.2
 VERSION_HEXYL=0.5.1
 VERSION_PYTHON=3.7.3
 VERSION_PYTHON_MAJOR=3.7
+VERSION_STERN=1.10.0
 
 sudo curl https://raw.githubusercontent.com/alexhokl/installation/master/sources.list -o /etc/apt/sources.list
 
@@ -196,6 +197,8 @@ tar xvzf postman.tar.gz
 sudo mv Postman/app /opt/postman
 
 for p in $(cat $HOME/git/installation/go-packages.txt); do go get -u $p; done
+curl -sSL https://github.com/wercker/stern/releases/download/${VERSION_STERN}/stern_linux_amd64 -o $HOME/git/bin/stern
+chmod +x stern
 
 sudo dpkg -i chrome.deb
 sudo dpkg -i slack.deb
