@@ -53,3 +53,4 @@ smallstep/smallstep/step
 hexyl
 kubectx
 stern
+Caskroom/cask/balenaetcher

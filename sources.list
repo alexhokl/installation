@@ -54,3 +54,6 @@ deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti
 
 # kubectl
 deb http://apt.kubernetes.io/ kubernetes-xenial main
+
+# etcher
+deb https://deb.etcher.io stable etcher

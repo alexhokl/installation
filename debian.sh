@@ -55,6 +55,9 @@ curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | sudo tee /et
 # unifi
 curl https://dl.ubnt.com/unifi/unifi-repo.gpg | sudo apt-key add -
 
+# etcher
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
+
 sudo apt-get update
 sudo apt-get -y upgrade
 
@@ -63,6 +66,7 @@ sudo ACCEPT_EULA=Y apt-get install -y \
 		autoconf \
 		automake \
 		azure-cli \
+		balena-etcher-electron \
 		bison \
 		bluez-firmware \
 		bluez-tools \
