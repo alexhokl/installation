@@ -69,6 +69,7 @@ choco install office365proplus
 choco install cmder
 choco install git-credential-manager-for-windows
 choco install yarn
+choco install microsoftazurestorageexplorer
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---
 

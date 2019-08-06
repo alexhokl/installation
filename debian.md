@@ -1,3 +1,9 @@
+- [Backup](#backup)
+- [Steps](#steps)
+- [Installing WiFi on Intel NUC](#installing-wifi-on-intel-nuc)
+- [Configure VPN L2TP/IPSec](#configure-vpn-l2tpipsec)
+
+
 #### Steps
 
 Upon booting into Debian installer,
@@ -23,9 +29,18 @@ Once `sudo` is installed (or root account has been disabled), execute the
 following.
 
 ```sh
-sudo apt-get install -y apt-transport-https ca-certificates curl dirmngr --no-install-recommends
-curl https://raw.githubusercontent.com/alexhokl/installation/master/debian.sh | bash
+sudo apt install -y apt-transport-https ca-certificates curl dirmngr --no-install-recommends
+curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian.sh | bash
 shutdown -r now
+```
+
+```sh
+sudo update-alternatives --install /usr/bin/vi vi "$(which nvim)" 60
+sudo update-alternatives --config vi
+sudo update-alternatives --install /usr/bin/vim vim "$(which nvim)" 60
+sudo update-alternatives --config vim
+sudo update-alternatives --install /usr/bin/editor editor "$(which nvim)" 60
+sudo update-alternatives --config editor
 ```
 
 - Ensure `env | grep GDM_LANG` does not return `en_HK.UTF-8` and
@@ -51,6 +66,12 @@ shutdown -r now
 :UpdateRemotePlugins
 :GoInstallBinaries
 :OmniSharpInstall
+```
+
+##### Backup
+
+```sh
+curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian.backup.sh | bash
 ```
 
 ##### Installing WiFi on Intel NUC
