@@ -42,34 +42,32 @@ choco install neovim
 
 #--- Apps ---
 choco install googlechrome
-choco install docker-for-windows
+choco install docker-desktop
+choco install kubernetes-cli
 choco install golang
-choco install winrar
-choco install jdk8
-choco install adobereader
 choco install 7zip
-choco install nodejs
 choco install 7zip.commandline
+choco install nodejs
+choco install yarn
 choco install procexp
-choco install vscode
 choco install ruby
-choco install python2
 choco install python
-choco install linqpad5
+choco install linqpad
 choco install kdiff3
 choco install jq
-choco install visualstudio2017professional
-choco install visualstudio2017-workload-netweb
-choco install visualstudio2017-workload-netcoretools
-choco install visualstudio2017-workload-data
-choco install slack
+choco install visualstudio2019professional
+choco install visualstudio2019-workload-netweb
+choco install visualstudio2019-workload-netcoretools
+choco install visualstudio2019-workload-data
+choco install visualstudio2019-workload-webbuildtools
+choco install visualstudio2019-workload-azure
+choco install visualstudio2019-workload-azurebuildtools
 choco install sql-server-management-studio
+choco install vscode
 choco install azure-data-studio
-choco install office365proplus
+choco install microsoftazurestorageexplorer
 choco install cmder
 choco install git-credential-manager-for-windows
-choco install yarn
-choco install microsoftazurestorageexplorer
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---
 
