@@ -58,3 +58,4 @@ Caskroom/cask/microsoft-azure-storage-explorer
 derailed/popeye/popeye
 derailed/k9s/k9s
 azure-cli
+octant

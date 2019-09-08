@@ -17,6 +17,7 @@ VERSION_PYTHON_MAJOR=3.7
 VERSION_STERN=1.11.0
 VERSION_K9S=0.8.2
 VERSION_POPEYE=0.4.3
+VERSION_OCTANT=0.6.0
 INSTALL_DIR=/tmp/installation
 export GOPATH=$HOME/git
 GO_BIN_DIR=$GOPATH/bin
@@ -220,6 +221,7 @@ curl -o $INSTALL_DIR/git.tar.gz -sSL https://github.com/git/git/archive/v${VERSI
 curl -o $INSTALL_DIR/nvim.appimage -sSL https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 curl -o $INSTALL_DIR/k9s.tar.gz -sSL https://github.com/derailed/k9s/releases/download/${VERSION_K9S}/k9s_${VERSION_K9S}_Linux_x86_64.tar.gz
 curl -o $INSTALL_DIR/popeye.tar.gz -sSL https://github.com/derailed/popeye/releases/download/v${VERSION_POPEYE}/popeye_${VERSION_POPEYE}_Linux_x86_64.tar.gz
+curl -o $INSTALL_DIR/octant.deb -sSL https://github.com/vmware/octant/releases/download/v${VERSION_OCTANT}/octant_${VERSION_OCTANT}_Linux-64bit.deb
 sudo curl -o $LOCAL_BIN/docker-compose -sSL "https://github.com/docker/compose/releases/download/${VERSION_DOCKER_COMPOSE}/docker-compose-$(uname -s)-$(uname -m)"
 sudo curl -o /etc/bash_completion.d/git-completion.bash -sS https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 sudo curl -o /etc/bash_completion.d/docker-compose -sS https://raw.githubusercontent.com/docker/compose/${VERSION_DOCKER_COMPOSE}/contrib/completion/bash/docker-compose
@@ -241,6 +243,7 @@ sudo dpkg -i $INSTALL_DIR/slack.deb
 sudo dpkg -i $INSTALL_DIR/remarkable.deb
 sudo dpkg -i $INSTALL_DIR/azuredatastudio.deb
 sudo dpkg -i $INSTALL_DIR/hexyl.deb
+sudo dpkg -i $INSTALL_DIR/octant.deb
 
 sudo apt --fix-broken install -y
 
