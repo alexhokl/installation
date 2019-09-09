@@ -24,6 +24,7 @@ GO_BIN_DIR=$GOPATH/bin
 SOURCE_LIST=/etc/apt/sources.list
 SOURCE_LIST_DIR=/etc/apt/sources.list.d
 LOCAL_BIN=/usr/local/bin
+BASH_COMPLETION_DIR=/etc/bash_completion.d
 
 # chrome
 echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee $SOURCE_LIST_DIR/google-chrome.list
@@ -223,9 +224,11 @@ curl -o $INSTALL_DIR/k9s.tar.gz -sSL https://github.com/derailed/k9s/releases/do
 curl -o $INSTALL_DIR/popeye.tar.gz -sSL https://github.com/derailed/popeye/releases/download/v${VERSION_POPEYE}/popeye_${VERSION_POPEYE}_Linux_x86_64.tar.gz
 curl -o $INSTALL_DIR/octant.deb -sSL https://github.com/vmware/octant/releases/download/v${VERSION_OCTANT}/octant_${VERSION_OCTANT}_Linux-64bit.deb
 sudo curl -o $LOCAL_BIN/docker-compose -sSL "https://github.com/docker/compose/releases/download/${VERSION_DOCKER_COMPOSE}/docker-compose-$(uname -s)-$(uname -m)"
-sudo curl -o /etc/bash_completion.d/git-completion.bash -sS https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-sudo curl -o /etc/bash_completion.d/docker-compose -sS https://raw.githubusercontent.com/docker/compose/${VERSION_DOCKER_COMPOSE}/contrib/completion/bash/docker-compose
-sudo curl -o /etc/bash_completion.d/go-bb-pr-completion.bash -sS https://raw.githubusercontent.com/alexhokl/go-bb-pr/master/go-bb-pr-completion.bash
+sudo curl -o $BASH_COMPLETION_DIR/git-completion.bash -sS https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+sudo curl -o $BASH_COMPLETION_DIR/docker-compose -sS https://raw.githubusercontent.com/docker/compose/${VERSION_DOCKER_COMPOSE}/contrib/completion/bash/docker-compose
+sudo curl -o $BASH_COMPLETION_DIR/go-bb-pr-completion.bash -sS https://raw.githubusercontent.com/alexhokl/go-bb-pr/master/go-bb-pr-completion.bash
+sudo curl -o $BASH_COMPLETION_DIR/kubectx.bash -sS https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/kubectx.bash
+sudo curl -o $BASH_COMPLETION_DIR/kubens.bash -sS https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/kubens.bash
 sudo curl -o $LOCAL_BIN/icdiff -sS https://raw.githubusercontent.com/jeffkaufman/icdiff/master/icdiff
 sudo curl -o $LOCAL_BIN/git-icdiff -sS https://raw.githubusercontent.com/jeffkaufman/icdiff/master/git-icdiff
 sudo curl -o $LOCAL_BIN/lolcat -sS https://raw.githubusercontent.com/tehmaze/lolcat/master/lolcat
