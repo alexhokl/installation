@@ -56,6 +56,7 @@ choco install linqpad
 choco install kdiff3
 choco install jq
 choco install dotnetcore-sdk
+choco install netfx-4.7-devpack
 choco install visualstudio2019professional
 choco install visualstudio2019-workload-netweb
 choco install visualstudio2019-workload-netcoretools
