@@ -1,6 +1,5 @@
 Atlassian.atlascode
 bungcip.better-toml
-ckolkman.vscode-postgres
 CoenraadS.bracket-pair-colorizer-2
 dart-code.dart-code
 dart-code.flutter
