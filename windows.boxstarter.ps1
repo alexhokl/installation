@@ -70,6 +70,8 @@ choco install azure-data-studio
 choco install microsoftazurestorageexplorer
 choco install cmder
 choco install git-credential-manager-for-windows
+choco install gpg4win
+
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---
 
