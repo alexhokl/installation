@@ -253,6 +253,8 @@ sudo dpkg -i $INSTALL_DIR/dart.deb
 
 sudo apt --fix-broken install -y
 
+curl -L https://git.io/get_helm.sh | bash
+
 sudo tar xvf $INSTALL_DIR/golang.tar.gz -C /usr/local/
 
 tar -xf $INSTALL_DIR/python.tar.xz -C $INSTALL_DIR/
