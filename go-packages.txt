@@ -8,7 +8,6 @@ github.com/google/gops
 github.com/jstemmer/gotags
 github.com/nsf/gocode
 github.com/rogpeppe/godef
-github.com/shurcooL/markdownfmt
 github.com/Soulou/curl-unix-socket
 github.com/spf13/cobra/cobra
 github.com/unidoc/unidoc
