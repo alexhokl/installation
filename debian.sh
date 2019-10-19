@@ -197,7 +197,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		zip \
 		zlib1g-dev
 
-sudo apt install -y signal-deskop
+sudo apt install -y signal-desktop
 
 git clone https://github.com/alexhokl/installation $HOME/git/installation
 git clone https://github.com/alexhokl/dotfiles $HOME/git/dotfiles
