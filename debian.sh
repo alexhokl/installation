@@ -175,6 +175,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		python3-dev \
 		python3-pip \
 		python3-setuptools \
+		rclone \
 		rxvt-unicode-256color \
 		scdaemon \
 		scrot \
