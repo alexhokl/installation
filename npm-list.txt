@@ -7,3 +7,4 @@ next-update
 rxjs-tslint
 markdown-toc
 iisexpress-proxy
+neovim
