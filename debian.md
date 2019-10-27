@@ -74,6 +74,12 @@ sudo update-alternatives --config editor
 curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian.backup.sh | bash
 ```
 
+##### Sleep on Debian 10
+
+To avoid the system goes into sleep in GNOME login screen, make sure setting
+`sleep-inactive-ac-type` is set to `'blank'` in
+`/etc/gdm3/greeter.dconf-defaults`.
+
 ##### Installing WiFi on Intel NUC
 
 1. Download the latest driver from [Linux Support for Intel® Wireless
