@@ -114,6 +114,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		cmake \
 		code \
 		containerd.io \
+		darktable \
 		dkms \
 		dnsutils \
 		docker-ce \
