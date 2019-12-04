@@ -306,6 +306,10 @@ chmod a+x $INSTALL_DIR/sqlpackage/sqlpackage
 sudo mv $INSTALL_DIR/sqlpackage /opt/
 sudo ln -s /opt/sqlpackage/sqlpackage /usr/local/bin/sqlpackage
 
+unzip $INSTALL_DIR/vault.zip
+sudo mv vault $LOCAL_BIN/
+$LOCAL_BIN/vault -autocomplete-install
+
 sudo npm i -g $(cat $HOME/git/installation/npm-list.txt)
 
 for e in $(cat $HOME/git/installation/vscode-extensions.txt); do /usr/bin/code --install-extension $e; done
