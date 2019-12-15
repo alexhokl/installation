@@ -1,10 +1,35 @@
-- [Backup](#backup)
+- [Links](#links)
+- [BIOS settings on XPS 13 7390](#bios-settings-on-xps-13-7390)
 - [Steps](#steps)
+- [Backup](#backup)
 - [Installing WiFi on Intel NUC](#installing-wifi-on-intel-nuc)
 - [Configure VPN L2TP/IPSec](#configure-vpn-l2tpipsec)
 
+## Links
 
-#### Steps
+- [Ubuntu on Dell XPS 13 7390](https://certification.ubuntu.com/hardware/201906-27151)
+
+## BIOS settings on XPS 13 7390
+
+1. Press `F12` upon booting to enter BIOS menu
+2. Select `BIOS SETUP` from the menu
+3. From the menu on the left, select `POST Behaviour`
+4. In section `Fastboot`, select `Thorough`
+5. From the menu on the left, select `System Configuration`
+6. In section `SATA Operation`, select `AHCI`
+7. In section `Thunderbolt Adapter Configuration`, turn on `Enable Thunderbolt
+   Boot Support` and select `No Security` in `Thunderbolt Security Level`
+8. From the menu on the left, select `Secure Boot`
+9. Turn off `Enable Secure Boot`
+10. Apply changes and exit and press `F12` again to enter BIOS menu again
+11. Select `BIOS SETUP` from the menu
+12. From the menu of the left, select `Boot Options`
+13. Select the correct USB drive
+14. Apply changes and exit
+
+## Steps
+
+### Debian-specific
 
 Upon booting into Debian installer,
 
@@ -28,9 +53,15 @@ passwd
 Once `sudo` is installed (or root account has been disabled), execute the
 following.
 
+### General
+
 ```sh
-sudo apt install -y apt-transport-https ca-certificates curl dirmngr --no-install-recommends
-curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian.sh | bash
+if [ "debian" = $(. /etc/os-release; echo $ID) ]; then
+    sudo apt install -y apt-transport-https ca-certificates curl dirmngr --no-install-recommends;
+else
+    sudo apt install -y apt-transport-https curl --no-install-recommends;
+fi
+curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/$(. /etc/os-release; echo $ID).sh | bash
 shutdown -r now
 ```
 
@@ -68,113 +99,104 @@ sudo update-alternatives --config editor
 :OmniSharpInstall
 ```
 
-##### Backup
+## Backup
 
 ```sh
 curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian.backup.sh | bash
 ```
 
-##### Sleep on Debian 10
+## Avoiding sleep on GNOME login screen
 
-To avoid the system goes into sleep in GNOME login screen, make sure setting
-`sleep-inactive-ac-type` is set to `'blank'` in
-`/etc/gdm3/greeter.dconf-defaults`.
+To avoid the system goes into sleep in GNOME login screen, make sure the
+following setting is in `/etc/gdm3/greeter.dconf-defaults`
 
-##### Installing WiFi on Intel NUC
+```conf
+[org/gnome/settings-daemon/plugins/power]
+sleep-inactive-ac-type='blank'
+```
+
+## Installing WiFi on Intel NUC
 
 1. Download the latest driver from [Linux Support for Intel® Wireless
-   Adapters](https://www.intel.com/content/www/us/en/support/articles/000005511/network-and-i-o/wireless-networking.html). Follow its instruction and copy the contents of the downloaded zip file to directory `/lib/firmware`.
+   Adapters](https://www.intel.com/content/www/us/en/support/articles/000005511/network-and-i-o/wireless-networking.html).
+   Follow its instruction and copy the contents of the downloaded zip file to
+   directory `/lib/firmware`.
 2. `sudo modprobe -r iwlwifi`
 3. `sudo modprobe iwlwifi`
-4. Assuming the WiFi network interface is `wlan0`, `sudo ip link set wlan0 up`
-5. `sudo iwlist scan`
-6. `wpa_passphrase alex-wifi secret-password`
-7. `sudo nvim /etc/network/interfaces` and put the value of `psk` in the above step  as value of `wpa-psk`.
-8. `sudo chmod 0600 /etc/network/interfaces`
-
-```
-iface wlan0 inet dhcp
-  wpa-ssid alex-wifi
-  wpa-psk some-long-string
-```
+4. Use `nmcli dev wifi` to list the available SSIDs.
+5. `nmcli dev wifi connect your-ssid -a` to setup the connection.
+6. `nmcli c up your-ssid` to connect to the newly setup WiFi connection.
 
 See also [How to use a WiFi interface](https://wiki.debian.org/WiFi/HowToUse)
 
-##### Configure VPN L2TP/IPSec
+## Installing WiFi on XPS 13 7390
 
-1. Configure Strongswan by editing `/etc/ipsec.conf`
-
-```
-# ipsec.conf - strongSwan IPsec configuration file
-
-# basic configuration
-
-config setup
-  # strictcrlpolicy=yes
-  # uniqueids = no
-
-# Add connections here.
-
-# Sample VPN connections
-
-conn %default
-  ikelifetime=60m
-  keylife=20m
-  rekeymargin=3m
-  keyingtries=1
-  keyexchange=ikev1
-  authby=secret
-  ike=aes128-sha1-modp1024,3des-sha1-modp1024!
-  esp=aes128-sha1-modp1024,3des-sha1-modp1024!
-
-conn office
-  keyexchange=ikev1
-  left=%defaultroute
-  auto=add
-  authby=secret
-  type=transport
-  leftprotoport=17/1701
-  rightprotoport=17/1701
-  right=office.example.com
+```sh
+sudo add-apt-repository ppa:canonical-hwe-team/backport-iwlwifi
+sudo apt-get update
+sudo apt-get install backport-iwlwifi-dkms
 ```
 
-2. Edit `/etc/ipsec.secrets`
+Note that a reboot is required.
 
-```
-: PSK "The_Preshared_Key_From_Router"
-```
+## Enabling touchpad in i3wm
 
-3. `sudo chmod 600 /etc/ipsec.secrets`
-4. Configure xl2tpd by editing `/etc/xl2tpd/xl2tpd.conf` 
+Add file `/etc/X11/xorg.conf.d/90-touchpad.conf` with the following content.
 
-```
-[lac office]
-lns = office.example.com
-ppp debug = yes
-pppoptfile = /etc/ppp/options.l2tpd.client
-length bit = yes
-```
-
-5. Edit `/etc/ppp/options.l2tpd.client`
-
-```
-ipcp-accept-local
-ipcp-accept-remote
-refuse-eap
-require-chap
-noccp
-noauth
-mtu 1280
-mru 1280
-noipdefault
-defaultroute
-usepeerdns
-connect-delay 5000
-name your_vpn_username
-password your_vpn_password
+```conf
+Section "InputClass"
+        Identifier "touchpad"
+        MatchIsTouchpad "on"
+        Driver "libinput"
+        Option "Tapping" "on"
+        Option "TappingButtonMap" "lrm"
+        Option "NaturalScrolling" "on"
+        Option "ScrollMethod" "twofinger"
+EndSection
 ```
 
-6. `sudo chmod 600 /etc/ppp/options.l2tpd.client`
-7. `sudo service strongswan restart && sudo service xl2tpd restart`
-8. IPSec connection is configured by this point and only IP route is to be
-   configured and to kick start the connection (see [start VPN in bash](https://github.com/alexhokl/notes/blob/master/bash.md#start-vpn-ipsec))
+## Configure VPN L2TP/IPSec
+
+1. Create a file with content similar to the following in directory
+   `/etc/NetworkManager/system-connections/` where the filename matches `id`
+   used.
+
+```conf
+[connection]
+id=your-vpn
+uuid=bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb
+type=vpn
+autoconnect=false
+permissions=
+
+[vpn]
+gateway=office.your-domain.com
+ipsec-enabled=yes
+ipsec-psk=YourPreSharedKey
+password-flags=0
+user=your-username
+service-type=org.freedesktop.NetworkManager.l2tp
+
+[vpn-secrets]
+password=your-password
+
+[ipv4]
+dns-search=
+method=auto
+
+[ipv6]
+addr-gen-mode=stable-privacy
+dns-search=
+ip6-privacy=0
+method=auto
+```
+
+2. Reset network manager by `systemctl restart NetworkManager.service`.
+3. Check if the VPN has been setup correct by `nmcli c`.
+4. Connect to the newly setup VPN by `nmcli c up your-vpn`.
+
+Note that, if it fails to establish a connection with errors like `received
+NO_PROPOSAL_CHOSEN error notify`, one can try removing all temporary secrets
+by `sudo rm -f /etc/ipsec.d/nm-l2tp-ipsec-*.secrets`.
+
+Note that `libreswan` can be installed to support older ciphers.

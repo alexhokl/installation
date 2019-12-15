@@ -18,7 +18,7 @@ VERSION_STERN=1.11.0
 VERSION_K9S=0.8.2
 VERSION_POPEYE=0.4.3
 VERSION_OCTANT=0.6.0
-VERSION_VAULT=1.2.3
+VERSION_VAULT=1.3.0
 INSTALL_DIR=/tmp/installation
 export GOPATH=$HOME/git
 GO_BIN_DIR=$GOPATH/bin
@@ -35,7 +35,7 @@ echo "deb https://packages.cloud.google.com/apt cloud-sdk-sid main" | sudo tee $
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
 # docker
-echo "deb [arch=amd64] https://download.docker.com/linux/debian buster stable" | sudo tee -a $SOURCE_LIST
+echo "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable" | sudo tee -a $SOURCE_LIST
 curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | sudo apt-key add -
 
 # kubectl
@@ -51,14 +51,17 @@ echo "deb http://repository.spotify.com stable non-free" | sudo tee -a $SOURCE_L
 curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
 
 # Microsdft azure-cli, dotnet core, vscode, mssql-tools
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ buster main" | sudo tee -a $SOURCE_LIST
-echo "deb https://packages.microsoft.com/repos/microsoft-debian-buster-prod buster main" | sudo tee -a $SOURCE_LIST
-curl -sS https://packages.microsoft.com/config/debian/10/prod.list | sudo tee $SOURCE_LIST_DIR/mssql-release.list
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" | sudo tee -a $SOURCE_LIST
+if [ "debian" = $(. /etc/os-release; echo $ID) ]; then
+  curl -sS https://packages.microsoft.com/config/$(. /etc/os-release; echo "$ID")/10/prod.list | sudo tee $SOURCE_LIST_DIR/mssql-release.list;
+else
+  curl -sS https://packages.microsoft.com/config/$(. /etc/os-release; echo "$ID")/18.04/prod.list | sudo tee $SOURCE_LIST_DIR/mssql-release.list;
+fi
 echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" | sudo tee $SOURCE_LIST_DIR/vscode.list
 curl -sS https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 
 # mono
-echo "deb http://download.mono-project.com/repo/debian buster main" | sudo tee -a $SOURCE_LIST
+echo "deb http://download.mono-project.com/repo/$(. /etc/os-release; echo "$ID") stable-$(lsb_release -cs) main" | sudo tee -a $SOURCE_LIST
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 
 # virtual box
@@ -68,8 +71,8 @@ curl -sS https://www.virtualbox.org/download/oracle_vbox.asc | sudo apt-key add 
 
 # nodejs
 # curl -sL https://deb.nodesource.com/setup_${VERSION_NODEJS}.x | sudo -E bash -
-echo "deb https://deb.nodesource.com/${VERSION_NODEJS} buster main" | sudo tee $SOURCE_LIST_DIR/nodesource.list
-echo "deb-src https://deb.nodesource.com/${VERSION_NODEJS} buster main" | sudo tee -a $SOURCE_LIST_DIR/nodesource.list
+echo "deb https://deb.nodesource.com/${VERSION_NODEJS} $(lsb_release -cs) main" | sudo tee $SOURCE_LIST_DIR/nodesource.list
+echo "deb-src https://deb.nodesource.com/${VERSION_NODEJS} $(lsb_release -cs) main" | sudo tee -a $SOURCE_LIST_DIR/nodesource.list
 curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -
 
 # yarn
@@ -85,8 +88,10 @@ curl -sS https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 # echo "deb-src http://ppa.launchpad.net/atareao/telegram/ubuntu xenial main" | sudo tee -a $SOURCE_LIST
 
 # unifi
-echo "deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti" | sudo tee -a $SOURCE_LIST
-curl -sS https://dl.ubnt.com/unifi/unifi-repo.gpg | sudo apt-key add -
+if [ "debian" = $(. /etc/os-release; echo $ID) ]; then
+  echo "deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti" | sudo tee -a $SOURCE_LIST;
+  curl -sS https://dl.ubnt.com/unifi/unifi-repo.gpg | sudo apt-key add -;
+fi
 
 # etcher
 echo "deb https://deb.etcher.io stable etcher" | sudo tee -a $SOURCE_LIST
@@ -104,7 +109,6 @@ sudo ACCEPT_EULA=Y apt install -y \
 		azure-cli \
 		balena-etcher-electron \
 		bison \
-		bluez-firmware \
 		bluez-tools \
 		blueman \
 		bridge-utils \
@@ -120,9 +124,10 @@ sudo ACCEPT_EULA=Y apt install -y \
 		docker-ce \
 		docker-ce-cli \
 		dotnet-sdk-2.2 \
+		exfat-fuse \
+		exfat-utils \
 		feh \
 		ffmpeg \
-		firmware-iwlwifi \
 		ftp \
 		g++ \
 		gcc \
@@ -130,7 +135,6 @@ sudo ACCEPT_EULA=Y apt install -y \
 		git \
 		gnupg2 \
 		gnupg-agent \
-		google-chrome-stable \
 		google-cloud-sdk \
 		indent \
 		i3 \
@@ -153,6 +157,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		libncurses5-dev \
 		libnss3-dev \
 		libreadline-dev \
+		libreswan \
 		libseccomp-dev \
 		libssl-dev \
 		libtool \
@@ -163,12 +168,14 @@ sudo ACCEPT_EULA=Y apt install -y \
 		mono-devel \
 		mssql-tools \
 		net-tools \
+		network-manager \
+		network-manager-l2tp \
+		network-manager-l2tp-gnome \
 		network-manager-pptp-gnome \
 		nodejs \
 		openvpn \
 		openssh-server \
 		pavucontrol \
-		peek \
 		pkg-config \
 		pptp-linux \
 		printer-driver-cups-pdf \
@@ -189,8 +196,10 @@ sudo ACCEPT_EULA=Y apt install -y \
 		suckless-tools \
 		tmux \
 		tree \
+		ufw \
 		unixodbc-dev \
 		virtualbox-6.0 \
+		vim \
 		webp \
 		xclip \
 		xcompmgr \
@@ -200,16 +209,26 @@ sudo ACCEPT_EULA=Y apt install -y \
 		zip \
 		zlib1g-dev
 
+if [ "debian" = $(. /etc/os-release; echo $ID) ]; then
+  sudo apt install -y \
+    bluez-firmware \
+    firmware-iwlwifi \
+    peek;
+fi
+
 sudo apt install -y signal-desktop
 
 git clone https://github.com/alexhokl/installation $HOME/git/installation
 git clone https://github.com/alexhokl/dotfiles $HOME/git/dotfiles
 git clone https://github.com/alexhokl/notes $HOME/git/notes
-git clone https://github.com/alexhokl/unifi $HOME/git/unifi
+if [ "debian" = $(. /etc/os-release; echo $ID) ]; then
+  git clone https://github.com/alexhokl/unifi $HOME/git/unifi;
+fi
 git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
 git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
 
 mkdir $INSTALL_DIR $GO_BIN_DIR
+curl -o $INSTALL_DIR/chrome.deb -sS https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 curl -o $INSTALL_DIR/golang.tar.gz -sS https://storage.googleapis.com/golang/go${VERSION_GOLANG}.linux-amd64.tar.gz
 curl -o $INSTALL_DIR/python.tar.xz -sS https://www.python.org/ftp/python/${VERSION_PYTHON}/Python-${VERSION_PYTHON}.tar.xz
 curl -o $INSTALL_DIR/slack.deb -sSL https://downloads.slack-edge.com/linux_releases/slack-desktop-${VERSION_SLACK}-amd64.deb
@@ -247,6 +266,7 @@ sudo curl -o $LOCAL_BIN/nuget.exe -sS https://dist.nuget.org/win-x86-commandline
 sudo curl -o $LOCAL_BIN/have -sSL https://misc.j3ss.co/binaries/have
 sudo curl -o $LOCAL_BIN/light -sSL https://misc.j3ss.co/binaries/light
 
+sudo dpkg -i $INSTALL_DIR/chrome.deb
 sudo dpkg -i $INSTALL_DIR/bat.deb
 sudo dpkg -i $INSTALL_DIR/slack.deb
 sudo dpkg -i $INSTALL_DIR/remarkable.deb
