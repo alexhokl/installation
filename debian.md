@@ -105,17 +105,10 @@ sudo update-alternatives --config editor
 curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian.backup.sh | bash
 ```
 
-## Avoiding sleep on GNOME login screen
-
-To avoid the system goes into sleep in GNOME login screen, make sure the
-following setting is in `/etc/gdm3/greeter.dconf-defaults`
-
-```conf
-[org/gnome/settings-daemon/plugins/power]
-sleep-inactive-ac-type='blank'
-```
-
 ## Installing WiFi on Intel NUC
+
+Note that the driver installation may only be needed in Debian 9 (stretch)
+installation (to be verifiied).
 
 1. Download the latest driver from [Linux Support for Intel® Wireless
    Adapters](https://www.intel.com/content/www/us/en/support/articles/000005511/network-and-i-o/wireless-networking.html).
@@ -128,32 +121,6 @@ sleep-inactive-ac-type='blank'
 6. `nmcli c up your-ssid` to connect to the newly setup WiFi connection.
 
 See also [How to use a WiFi interface](https://wiki.debian.org/WiFi/HowToUse)
-
-## Installing WiFi on XPS 13 7390
-
-```sh
-sudo add-apt-repository ppa:canonical-hwe-team/backport-iwlwifi
-sudo apt-get update
-sudo apt-get install backport-iwlwifi-dkms
-```
-
-Note that a reboot is required.
-
-## Enabling touchpad in i3wm
-
-Add file `/etc/X11/xorg.conf.d/90-touchpad.conf` with the following content.
-
-```conf
-Section "InputClass"
-        Identifier "touchpad"
-        MatchIsTouchpad "on"
-        Driver "libinput"
-        Option "Tapping" "on"
-        Option "TappingButtonMap" "lrm"
-        Option "NaturalScrolling" "on"
-        Option "ScrollMethod" "twofinger"
-EndSection
-```
 
 ## Configure VPN L2TP/IPSec
 

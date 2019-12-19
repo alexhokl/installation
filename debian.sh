@@ -214,6 +214,10 @@ if [ "debian" = $(. /etc/os-release; echo $ID) ]; then
     bluez-firmware \
     firmware-iwlwifi \
     peek;
+else
+  sudo add-apt-repository ppa:canonical-hwe-team/backport-iwlwifi;
+  sudo apt-get update;
+  sudo apt-get install backport-iwlwifi-dkms;
 fi
 
 sudo apt install -y signal-desktop
@@ -366,3 +370,11 @@ cd $HOME
 
 sudo sed -i -e 's/#\ en_GB\.UTF\-8/en_GB\.UTF\-8/g' /etc/locale.gen
 sudo locale-gen
+
+# to disable suspend on login screen
+echo | sudo tee -a /etc/gdm3/greeter.dconf-defaults
+cat $HOME/git/installation/debian.greeter.dconf-defaults.conf | sudo tee -a /etc/gdm3/greeter.dconf-defaults
+
+# to enable touchpad in i3wm
+echo | sudo tee -a /etc/X11/xorg.conf.d/90-touchpad.conf
+cat $HOME/git/installation/debian.90-touchpad.conf | sudo tee -a /etc/X11/xorg.conf.d/90-touchpad.conf
