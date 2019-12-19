@@ -245,7 +245,7 @@ curl -o $INSTALL_DIR/hexyl.deb -sSL https://github.com/sharkdp/hexyl/releases/do
 curl -o $INSTALL_DIR/postman.tar.gz -sSL https://dl.pstmn.io/download/latest/linux64
 curl -o $INSTALL_DIR/sqlpackage.zip -sSL https://go.microsoft.com/fwlink/?linkid=2087431
 curl -o $INSTALL_DIR/git.tar.gz -sSL https://github.com/git/git/archive/v${VERSION_GIT}.tar.gz
-curl -o $INSTALL_DIR/nvim.appimage -sSL https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+curl -o $INSTALL_DIR/nvim.appimage -sSL https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
 curl -o $INSTALL_DIR/k9s.tar.gz -sSL https://github.com/derailed/k9s/releases/download/${VERSION_K9S}/k9s_${VERSION_K9S}_Linux_x86_64.tar.gz
 curl -o $INSTALL_DIR/popeye.tar.gz -sSL https://github.com/derailed/popeye/releases/download/v${VERSION_POPEYE}/popeye_${VERSION_POPEYE}_Linux_x86_64.tar.gz
 curl -o $INSTALL_DIR/octant.deb -sSL https://github.com/vmware/octant/releases/download/v${VERSION_OCTANT}/octant_${VERSION_OCTANT}_Linux-64bit.deb
