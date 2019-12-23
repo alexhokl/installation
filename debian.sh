@@ -252,6 +252,7 @@ curl -o $INSTALL_DIR/octant.deb -sSL https://github.com/vmware/octant/releases/d
 curl -o $INSTALL_DIR/dart.deb -sSL https://storage.googleapis.com/dart-archive/channels/stable/release/latest/linux_packages/dart_2.5.0-1_amd64.deb
 curl -o $INSTALL_DIR/android-studio.tar.gz -sSL https://dl.google.com/dl/android/studio/ide-zips/3.5.0.21/android-studio-ide-191.5791312-linux.tar.gz
 curl -o $INSTALL_DIR/vault.zip -sSL https://releases.hashicorp.com/vault/${VERSION_VAULT}/vault_${VERSION_VAULT}_linux_amd64.zip
+curl -o $INSTALL_DIR/azcopy.tar.gz -SSL https://aka.ms/downloadazcopy-v10-linux
 sudo curl -o $LOCAL_BIN/docker-compose -sSL "https://github.com/docker/compose/releases/download/${VERSION_DOCKER_COMPOSE}/docker-compose-$(uname -s)-$(uname -m)"
 sudo curl -o $BASH_COMPLETION_DIR/git-completion.bash -sS https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 sudo curl -o $BASH_COMPLETION_DIR/docker-compose -sS https://raw.githubusercontent.com/docker/compose/${VERSION_DOCKER_COMPOSE}/contrib/completion/bash/docker-compose
@@ -311,6 +312,11 @@ tar xvzf $INSTALL_DIR/popeye.tar.gz -C $INSTALL_DIR/
 sudo mv $INSTALL_DIR/popeye $LOCAL_BIN/
 
 sudo tar xvzf $INSTALL_DIR/android-studio.tar.gz -C /usr/local/
+
+tar xvzf $INSTALL_DIR/azcopy.tar.gz -C $INSTALL_DIR/
+cd $INSTALL_DIR/azcopy_*
+sudo mv azcopy $LOCAL_BIN/
+cd $HOME
 
 sudo usermod -aG docker $USER
 sudo chmod a+x $LOCAL_BIN/docker-compose
