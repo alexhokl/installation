@@ -138,8 +138,8 @@ sudo ACCEPT_EULA=Y apt install -y \
 		google-cloud-sdk \
 		indent \
 		i3 \
+		i3blocks \
 		i3lock \
-		i3status \
 		jq \
 		kubectl \
 		lib32stdc++6 \
@@ -230,6 +230,7 @@ if [ "debian" = $(. /etc/os-release; echo $ID) ]; then
 fi
 git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
 git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
+git clone https://github.com/vivien/i3blocks-contrib $HOME/.config/i3blocks
 
 mkdir $INSTALL_DIR $GO_BIN_DIR
 curl -o $INSTALL_DIR/chrome.deb -sS https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
