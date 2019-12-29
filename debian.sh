@@ -172,6 +172,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		network-manager-l2tp \
 		network-manager-l2tp-gnome \
 		network-manager-pptp-gnome \
+		nnn \
 		nodejs \
 		openvpn \
 		openssh-server \
