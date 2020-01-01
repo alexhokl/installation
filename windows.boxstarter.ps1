@@ -65,12 +65,13 @@ choco install visualstudio2019-workload-webbuildtools
 choco install visualstudio2019-workload-azure
 choco install visualstudio2019-workload-azurebuildtools
 choco install sql-server-management-studio
-choco install vscode
-choco install azure-data-studio
+# choco install vscode
+# choco install azure-data-studio
 choco install microsoftazurestorageexplorer
 choco install cmder
 choco install git-credential-manager-for-windows
 choco install gpg4win
+choco install neovim
 
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---
