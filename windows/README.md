@@ -4,7 +4,7 @@
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 . { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; get-boxstarter -Force
 $computername = "alex-windows"
-Install-BoxstarterPackage -PackageName https://raw.githubusercontent.com/alexhokl/installation/master/windows.boxstarter.ps1 -DisableReboots
+Install-BoxstarterPackage -PackageName https://raw.githubusercontent.com/alexhokl/installation/master/windows/boxstarter.ps1 -DisableReboots
 ```
 
 - Reboot to prepare .NET Framework installation
