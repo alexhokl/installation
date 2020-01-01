@@ -87,12 +87,6 @@ curl -sS https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 # echo "deb http://ppa.launchpad.net/atareao/telegram/ubuntu xenial main" | sudo tee -a $SOURCE_LIST
 # echo "deb-src http://ppa.launchpad.net/atareao/telegram/ubuntu xenial main" | sudo tee -a $SOURCE_LIST
 
-# unifi
-if [ "debian" = $(. /etc/os-release; echo $ID) ]; then
-  echo "deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti" | sudo tee -a $SOURCE_LIST;
-  curl -sS https://dl.ubnt.com/unifi/unifi-repo.gpg | sudo apt-key add -;
-fi
-
 # etcher
 echo "deb https://deb.etcher.io stable etcher" | sudo tee -a $SOURCE_LIST
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
