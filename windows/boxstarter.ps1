@@ -42,8 +42,7 @@ choco install neovim
 
 #--- Apps ---
 choco install googlechrome
-choco install docker-desktop
-choco install kubernetes-cli
+# choco install kubernetes-cli
 choco install golang
 choco install 7zip
 choco install 7zip.commandline
