@@ -193,7 +193,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		tree \
 		ufw \
 		unixodbc-dev \
-		virtualbox-6.0 \
+		virtualbox-6.1 \
 		vim \
 		webp \
 		xclip \
