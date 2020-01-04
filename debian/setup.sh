@@ -10,7 +10,7 @@ VERSION_DOCKER_COMPOSE=1.24.1
 VERSION_NODEJS=node_10.x
 VERSION_RUBY=2.6.3
 VERSION_GIT=2.23.0
-VERSION_STEP=0.10.1
+VERSION_STEP=0.13.3
 VERSION_HEXYL=0.5.1
 VERSION_PYTHON=3.7.3
 VERSION_PYTHON_MAJOR=3.7
@@ -275,6 +275,7 @@ sudo dpkg -i $INSTALL_DIR/azuredatastudio.deb
 sudo dpkg -i $INSTALL_DIR/hexyl.deb
 sudo dpkg -i $INSTALL_DIR/octant.deb
 sudo dpkg -i $INSTALL_DIR/dart.deb
+sudo dpkg -i $INSTALL_DIR/step.deb
 
 sudo apt --fix-broken install -y
 
