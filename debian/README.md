@@ -158,9 +158,10 @@ ip6-privacy=0
 method=auto
 ```
 
-2. Reset network manager by `systemctl restart NetworkManager.service`.
-3. Check if the VPN has been setup correct by `nmcli c`.
-4. Connect to the newly setup VPN by `nmcli c up your-vpn`.
+2. Ensure the file access mode is changed to `600` (`sudo chmod 600`).
+3. Reset network manager by `systemctl restart NetworkManager.service`.
+4. Check if the VPN has been setup correct by `nmcli c`.
+5. Connect to the newly setup VPN by `nmcli c up your-vpn`.
 
 Note that, if it fails to establish a connection with errors like `received
 NO_PROPOSAL_CHOSEN error notify`, one can try removing all temporary secrets
