@@ -24,3 +24,4 @@ github.com/itchyny/bed/cmd/bed
 github.com/gohugoio/hugo
 github.com/kardianos/govendor
 github.com/prometheus/prometheus/cmd/...
+github.com/rakyll/govalidate
