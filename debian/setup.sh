@@ -19,6 +19,7 @@ VERSION_K9S=0.8.2
 VERSION_POPEYE=0.4.3
 VERSION_OCTANT=0.6.0
 VERSION_VAULT=1.3.0
+VERSION_SAMPLER=1.1.0
 INSTALL_DIR=/tmp/installation
 export GOPATH=$HOME/git
 GO_BIN_DIR=$GOPATH/bin
@@ -266,6 +267,7 @@ sudo curl -o $LOCAL_BIN/stern -sSL https://github.com/wercker/stern/releases/dow
 sudo curl -o $LOCAL_BIN/nuget.exe -sS https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 sudo curl -o $LOCAL_BIN/have -sSL https://misc.j3ss.co/binaries/have
 sudo curl -o $LOCAL_BIN/light -sSL https://misc.j3ss.co/binaries/light
+sudo curl -o $LOCAL_BIN/sampler -sSL https://github.com/sqshq/sampler/releases/download/v${VERSION_SAMPLER}/sampler-${VERSION_SAMPLER}-linux-amd64
 
 sudo dpkg -i $INSTALL_DIR/chrome.deb
 sudo dpkg -i $INSTALL_DIR/bat.deb
@@ -327,6 +329,7 @@ sudo chmod a+x $LOCAL_BIN/stern
 sudo chmod a+x $LOCAL_BIN/minikube
 sudo chmod a+x $LOCAL_BIN/kubectx
 sudo chmod a+x $LOCAL_BIN/kubens
+sudo chmod a+x $LOCAL_BIN/sampler
 
 unzip $INSTALL_DIR/sqlpackage.zip -d $INSTALL_DIR/sqlpackage
 chmod a+x $INSTALL_DIR/sqlpackage/sqlpackage
