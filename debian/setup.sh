@@ -150,6 +150,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		libindicator7 \
 		libltdl-dev \
 		libncurses5-dev \
+		libncursesw5-dev \
 		libnss3-dev \
 		libreadline-dev \
 		libreswan \
@@ -158,7 +159,9 @@ sudo ACCEPT_EULA=Y apt install -y \
 		libtool \
 		libtool-bin \
 		libuv1-dev \
+		libxml2-dev \
 		libyaml-dev \
+		libzip-dev \
 		make \
 		mono-devel \
 		mssql-tools \
@@ -227,6 +230,8 @@ fi
 git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
 git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
 git clone https://github.com/vivien/i3blocks-contrib $HOME/.config/i3blocks
+git clone https://github.com/jmcnamara/libxlsxwriter.git $HOME/git/libxlsxwriter
+git clone https://github.com/andmarti1424/sc-im.git $HOME/git/sc-im
 
 mkdir $INSTALL_DIR $GO_BIN_DIR
 curl -o $INSTALL_DIR/chrome.deb -sS https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -341,6 +346,15 @@ sudo ln -s /opt/sqlpackage/sqlpackage /usr/local/bin/sqlpackage
 unzip $INSTALL_DIR/vault.zip
 sudo mv vault $LOCAL_BIN/
 $LOCAL_BIN/vault -autocomplete-install
+
+# sc-im
+cd $HOME/git/libxlsxwriter
+make
+sudo make install
+cd $HOME/git/sc-im/src
+make
+sudo make install
+cd $HOME
 
 sudo npm i -g $(cat $HOME/git/installation/npm-list.txt)
 
