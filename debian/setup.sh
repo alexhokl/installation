@@ -268,6 +268,7 @@ sudo curl -o $LOCAL_BIN/nuget.exe -sS https://dist.nuget.org/win-x86-commandline
 sudo curl -o $LOCAL_BIN/have -sSL https://misc.j3ss.co/binaries/have
 sudo curl -o $LOCAL_BIN/light -sSL https://misc.j3ss.co/binaries/light
 sudo curl -o $LOCAL_BIN/sampler -sSL https://github.com/sqshq/sampler/releases/download/v${VERSION_SAMPLER}/sampler-${VERSION_SAMPLER}-linux-amd64
+sudo curl -o $LOCAL_BIN/hey -sSL https://storage.googleapis.com/hey-release/hey_linux_amd64
 
 sudo dpkg -i $INSTALL_DIR/chrome.deb
 sudo dpkg -i $INSTALL_DIR/bat.deb
@@ -330,6 +331,7 @@ sudo chmod a+x $LOCAL_BIN/minikube
 sudo chmod a+x $LOCAL_BIN/kubectx
 sudo chmod a+x $LOCAL_BIN/kubens
 sudo chmod a+x $LOCAL_BIN/sampler
+sudo chmod a+x $LOCAL_BIN/hey
 
 unzip $INSTALL_DIR/sqlpackage.zip -d $INSTALL_DIR/sqlpackage
 chmod a+x $INSTALL_DIR/sqlpackage/sqlpackage
