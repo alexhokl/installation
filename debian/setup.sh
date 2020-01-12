@@ -2,7 +2,6 @@
 
 VERSION_GOLANG=1.13.6
 VERSION_SLACK=4.2.0
-VERSION_BAT=0.12.1
 VERSION_FLUTTER=1.12.13+hotfix.5
 VERSION_REMARKABLE=1.87
 VERSION_AZURE_DATA_STUDIO=1.14.1
@@ -10,16 +9,9 @@ VERSION_DOCKER_COMPOSE=1.25.0
 VERSION_NODEJS=node_10.x
 VERSION_RUBY=2.6.5
 VERSION_GIT=2.24.1
-VERSION_STEP=0.13.3
-VERSION_HEXYL=0.6.0
 VERSION_PYTHON=3.7.6
 VERSION_PYTHON_MAJOR=3.7
-VERSION_STERN=1.11.0
-VERSION_K9S=0.12.0
-VERSION_POPEYE=0.6.1
-VERSION_OCTANT=0.9.1
 VERSION_VAULT=1.3.1
-VERSION_SAMPLER=1.1.0
 INSTALL_DIR=/tmp/installation
 export GOPATH=$HOME/git
 GO_BIN_DIR=$GOPATH/bin
@@ -233,24 +225,26 @@ git clone https://github.com/vivien/i3blocks-contrib $HOME/.config/i3blocks
 git clone https://github.com/jmcnamara/libxlsxwriter.git $HOME/git/libxlsxwriter
 git clone https://github.com/andmarti1424/sc-im.git $HOME/git/sc-im
 
+source $HOME/git/installation/versions-on-github
+
 mkdir $INSTALL_DIR $GO_BIN_DIR
 curl -o $INSTALL_DIR/chrome.deb -sS https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 curl -o $INSTALL_DIR/golang.tar.gz -sS https://storage.googleapis.com/golang/go${VERSION_GOLANG}.linux-amd64.tar.gz
 curl -o $INSTALL_DIR/python.tar.xz -sS https://www.python.org/ftp/python/${VERSION_PYTHON}/Python-${VERSION_PYTHON}.tar.xz
 curl -o $INSTALL_DIR/slack.deb -sSL https://downloads.slack-edge.com/linux_releases/slack-desktop-${VERSION_SLACK}-amd64.deb
-curl -o $INSTALL_DIR/bat.deb -sSL https://github.com/sharkdp/bat/releases/download/v${VERSION_BAT}/bat-musl_${VERSION_BAT}_amd64.deb
+curl -o $INSTALL_DIR/bat.deb -sSL https://github.com/sharkdp/bat/releases/download/v${VERSION_SHARKDP_BAT}/bat-musl_${VERSION_BAT}_amd64.deb
 curl -o $INSTALL_DIR/flutter.xz -sS https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v${VERSION_FLUTTER}-stable.tar.xz
 curl -o $INSTALL_DIR/remarkable.deb -sS https://remarkableapp.github.io/files/remarkable_${VERSION_REMARKABLE}_all.deb
 curl -o $INSTALL_DIR/azuredatastudio.deb -sS https://azuredatastudiobuilds.blob.core.windows.net/releases/${VERSION_AZURE_DATA_STUDIO}/azuredatastudio-linux-${VERSION_AZURE_DATA_STUDIO}.deb
-curl -o $INSTALL_DIR/step.deb -sSL https://github.com/smallstep/cli/releases/download/v${VERSION_STEP}/step-cli_${VERSION_STEP}_amd64.deb
-curl -o $INSTALL_DIR/hexyl.deb -sSL https://github.com/sharkdp/hexyl/releases/download/v${VERSION_HEXYL}/hexyl_${VERSION_HEXYL}_amd64.deb
+curl -o $INSTALL_DIR/step.deb -sSL https://github.com/smallstep/cli/releases/download/v${VERSION_SMALLSTEP_CLI}/step-cli_${VERSION_SMALLSTEP_CLI}_amd64.deb
+curl -o $INSTALL_DIR/hexyl.deb -sSL https://github.com/sharkdp/hexyl/releases/download/v${VERSION_SHARKDP_HEXYL}/hexyl_${VERSION_SHARKDP_HEXYL}_amd64.deb
 curl -o $INSTALL_DIR/postman.tar.gz -sSL https://dl.pstmn.io/download/latest/linux64
 curl -o $INSTALL_DIR/sqlpackage.zip -sSL https://go.microsoft.com/fwlink/?linkid=2087431
 curl -o $INSTALL_DIR/git.tar.gz -sSL https://github.com/git/git/archive/v${VERSION_GIT}.tar.gz
-curl -o $INSTALL_DIR/nvim.appimage -sSL https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-curl -o $INSTALL_DIR/k9s.tar.gz -sSL https://github.com/derailed/k9s/releases/download/${VERSION_K9S}/k9s_${VERSION_K9S}_Linux_x86_64.tar.gz
-curl -o $INSTALL_DIR/popeye.tar.gz -sSL https://github.com/derailed/popeye/releases/download/v${VERSION_POPEYE}/popeye_${VERSION_POPEYE}_Linux_x86_64.tar.gz
-curl -o $INSTALL_DIR/octant.deb -sSL https://github.com/vmware/octant/releases/download/v${VERSION_OCTANT}/octant_${VERSION_OCTANT}_Linux-64bit.deb
+curl -o $INSTALL_DIR/nvim.appimage -sSL https://github.com/neovim/neovim/releases/download/v${VERSION_NEOVIM_NEOVIM}/nvim.appimage
+curl -o $INSTALL_DIR/k9s.tar.gz -sSL https://github.com/derailed/k9s/releases/download/${VERSION_DERAILED_K9S}/k9s_${VERSION_DERAILED_K9S}_Linux_x86_64.tar.gz
+curl -o $INSTALL_DIR/popeye.tar.gz -sSL https://github.com/derailed/popeye/releases/download/v${VERSION_DERAILED_POPEYE}/popeye_${VERSION_DERAILED_POPEYE}_Linux_x86_64.tar.gz
+curl -o $INSTALL_DIR/octant.deb -sSL https://github.com/vmware/octant/releases/download/v${VERSION_VMWARE__TANZU_OCTANT}/octant_${VERSION_VMWARE-TANZU_OCTANT}_Linux-64bit.deb
 curl -o $INSTALL_DIR/dart.deb -sSL https://storage.googleapis.com/dart-archive/channels/stable/release/latest/linux_packages/dart_2.5.0-1_amd64.deb
 curl -o $INSTALL_DIR/android-studio.tar.gz -sSL https://dl.google.com/dl/android/studio/ide-zips/3.5.0.21/android-studio-ide-191.5791312-linux.tar.gz
 curl -o $INSTALL_DIR/vault.zip -sSL https://releases.hashicorp.com/vault/${VERSION_VAULT}/vault_${VERSION_VAULT}_linux_amd64.zip
@@ -268,11 +262,11 @@ sudo curl -o $LOCAL_BIN/speedtest -sS https://raw.githubusercontent.com/sivel/sp
 sudo curl -o $LOCAL_BIN/minikube -sSL https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo curl -o $LOCAL_BIN/kubectx -sSL https://raw.githubusercontent.com/ahmetb/kubectx/master/kubectx
 sudo curl -o $LOCAL_BIN/kubens -sSL https://raw.githubusercontent.com/ahmetb/kubectx/master/kubens
-sudo curl -o $LOCAL_BIN/stern -sSL https://github.com/wercker/stern/releases/download/${VERSION_STERN}/stern_linux_amd64
+sudo curl -o $LOCAL_BIN/stern -sSL https://github.com/wercker/stern/releases/download/${VERSION_WERCKER_STERN}/stern_linux_amd64
 sudo curl -o $LOCAL_BIN/nuget.exe -sS https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 sudo curl -o $LOCAL_BIN/have -sSL https://misc.j3ss.co/binaries/have
 sudo curl -o $LOCAL_BIN/light -sSL https://misc.j3ss.co/binaries/light
-sudo curl -o $LOCAL_BIN/sampler -sSL https://github.com/sqshq/sampler/releases/download/v${VERSION_SAMPLER}/sampler-${VERSION_SAMPLER}-linux-amd64
+sudo curl -o $LOCAL_BIN/sampler -sSL https://github.com/sqshq/sampler/releases/download/v${VERSION_SQSHQ_SAMPLER}/sampler-${VERSION_SQSHQ_SAMPLER}-linux-amd64
 sudo curl -o $LOCAL_BIN/hey -sSL https://storage.googleapis.com/hey-release/hey_linux_amd64
 
 sudo dpkg -i $INSTALL_DIR/chrome.deb
