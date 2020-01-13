@@ -248,7 +248,8 @@ curl -o $INSTALL_DIR/octant.deb -sSL https://github.com/vmware/octant/releases/d
 curl -o $INSTALL_DIR/dart.deb -sSL https://storage.googleapis.com/dart-archive/channels/stable/release/latest/linux_packages/dart_2.5.0-1_amd64.deb
 curl -o $INSTALL_DIR/android-studio.tar.gz -sSL https://dl.google.com/dl/android/studio/ide-zips/3.5.0.21/android-studio-ide-191.5791312-linux.tar.gz
 curl -o $INSTALL_DIR/vault.zip -sSL https://releases.hashicorp.com/vault/${VERSION_VAULT}/vault_${VERSION_VAULT}_linux_amd64.zip
-curl -o $INSTALL_DIR/azcopy.tar.gz -SSL https://aka.ms/downloadazcopy-v10-linux
+curl -o $INSTALL_DIR/azcopy.tar.gz -sSL https://aka.ms/downloadazcopy-v10-linux
+curl -o $INSTALL_DIR/minikube.deb -sSL https://storage.googleapis.com/minikube/releases/latest/minikube_${VERSION_KUBERNETES_MINIKUBE}.deb
 sudo curl -o $LOCAL_BIN/docker-compose -sSL "https://github.com/docker/compose/releases/download/${VERSION_DOCKER_COMPOSE}/docker-compose-$(uname -s)-$(uname -m)"
 sudo curl -o $BASH_COMPLETION_DIR/git-completion.bash -sS https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 sudo curl -o $BASH_COMPLETION_DIR/docker-compose -sS https://raw.githubusercontent.com/docker/compose/${VERSION_DOCKER_COMPOSE}/contrib/completion/bash/docker-compose
@@ -259,7 +260,6 @@ sudo curl -o $LOCAL_BIN/icdiff -sS https://raw.githubusercontent.com/jeffkaufman
 sudo curl -o $LOCAL_BIN/git-icdiff -sS https://raw.githubusercontent.com/jeffkaufman/icdiff/master/git-icdiff
 sudo curl -o $LOCAL_BIN/lolcat -sS https://raw.githubusercontent.com/tehmaze/lolcat/master/lolcat
 sudo curl -o $LOCAL_BIN/speedtest -sS https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
-sudo curl -o $LOCAL_BIN/minikube -sSL https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo curl -o $LOCAL_BIN/kubectx -sSL https://raw.githubusercontent.com/ahmetb/kubectx/master/kubectx
 sudo curl -o $LOCAL_BIN/kubens -sSL https://raw.githubusercontent.com/ahmetb/kubectx/master/kubens
 sudo curl -o $LOCAL_BIN/stern -sSL https://github.com/wercker/stern/releases/download/${VERSION_WERCKER_STERN}/stern_linux_amd64
@@ -278,6 +278,7 @@ sudo dpkg -i $INSTALL_DIR/hexyl.deb
 sudo dpkg -i $INSTALL_DIR/octant.deb
 sudo dpkg -i $INSTALL_DIR/dart.deb
 sudo dpkg -i $INSTALL_DIR/step.deb
+sudo dpkg -i $INSTALL_DIR/minikube.deb
 
 sudo apt --fix-broken install -y
 
@@ -326,7 +327,6 @@ sudo chmod a+x $LOCAL_BIN/have
 sudo chmod a+x $LOCAL_BIN/light
 sudo chmod a+x $LOCAL_BIN/speedtest
 sudo chmod a+x $LOCAL_BIN/stern
-sudo chmod a+x $LOCAL_BIN/minikube
 sudo chmod a+x $LOCAL_BIN/kubectx
 sudo chmod a+x $LOCAL_BIN/kubens
 sudo chmod a+x $LOCAL_BIN/sampler
