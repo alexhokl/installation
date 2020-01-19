@@ -19,7 +19,7 @@ ms-vscode.powerShell
 ms-vsliveshare.vsliveshare
 ms-python.python
 redhat.vscode-yaml
-robinbentley.sass-indented
+Syler.sass-indented
 RoscoP.ActiveFileInStatusBar
 shardulm94.trailing-spaces
 shd101wyy.markdown-preview-enhanced
