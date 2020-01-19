@@ -1,24 +1,7 @@
 #!/bin/bash
 
-VERSION_GOLANG=1.13.6
-VERSION_SLACK=4.2.0
-VERSION_FLUTTER=1.12.13+hotfix.5
-VERSION_REMARKABLE=1.87
-VERSION_AZURE_DATA_STUDIO=1.14.1
-VERSION_DOCKER_COMPOSE=1.25.0
-VERSION_NODEJS=node_10.x
-VERSION_RUBY=2.6.5
-VERSION_GIT=2.24.1
-VERSION_PYTHON=3.7.6
-VERSION_PYTHON_MAJOR=3.7
-VERSION_VAULT=1.3.1
-INSTALL_DIR=/tmp/installation
-export GOPATH=$HOME/git
-GO_BIN_DIR=$GOPATH/bin
 SOURCE_LIST=/etc/apt/sources.list
 SOURCE_LIST_DIR=/etc/apt/sources.list.d
-LOCAL_BIN=/usr/local/bin
-BASH_COMPLETION_DIR=/etc/bash_completion.d
 
 # chrome
 echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee $SOURCE_LIST_DIR/google-chrome.list
@@ -58,15 +41,9 @@ echo "deb http://download.mono-project.com/repo/$(. /etc/os-release; echo "$ID")
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 
 # virtual box
-echo "deb http://download.virtualbox.org/virtualbox/debian bionic contrib" | sudo tee -a $SOURCE_LIST
+echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian bionic contrib" | sudo tee -a $SOURCE_LIST
 curl -sS https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
 curl -sS https://www.virtualbox.org/download/oracle_vbox.asc | sudo apt-key add -
-
-# nodejs
-# curl -sL https://deb.nodesource.com/setup_${VERSION_NODEJS}.x | sudo -E bash -
-echo "deb https://deb.nodesource.com/${VERSION_NODEJS} $(lsb_release -cs) main" | sudo tee $SOURCE_LIST_DIR/nodesource.list
-echo "deb-src https://deb.nodesource.com/${VERSION_NODEJS} $(lsb_release -cs) main" | sudo tee -a $SOURCE_LIST_DIR/nodesource.list
-curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -
 
 # yarn
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee -a $SOURCE_LIST
@@ -83,6 +60,10 @@ curl -sS https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 # etcher
 echo "deb https://deb.etcher.io stable etcher" | sudo tee -a $SOURCE_LIST
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
+
+# dart
+curl -sS https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+curl -sS https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list | sudo tee $SOURCE_LIST_DIR/dart_stable.list
 
 sudo apt update
 sudo apt -y upgrade
@@ -106,6 +87,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		code \
 		containerd.io \
 		darktable \
+		dart \
 		dkms \
 		dnsutils \
 		docker-ce \
@@ -122,6 +104,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		git \
 		gnupg2 \
 		gnupg-agent \
+		google-chrome-stable \
 		google-cloud-sdk \
 		indent \
 		i3 \
@@ -163,18 +146,12 @@ sudo ACCEPT_EULA=Y apt install -y \
 		network-manager-l2tp-gnome \
 		network-manager-pptp-gnome \
 		nnn \
-		nodejs \
 		openvpn \
 		openssh-server \
 		pavucontrol \
 		pkg-config \
 		pptp-linux \
 		printer-driver-cups-pdf \
-		python-dev \
-		python-pip \
-		python3-dev \
-		python3-pip \
-		python3-setuptools \
 		rclone \
 		rxvt-unicode-256color \
 		scdaemon \
@@ -219,165 +196,50 @@ git clone https://github.com/alexhokl/notes $HOME/git/notes
 if [ "debian" = $(. /etc/os-release; echo $ID) ]; then
   git clone https://github.com/alexhokl/unifi $HOME/git/unifi;
 fi
-git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
-git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
 git clone https://github.com/vivien/i3blocks-contrib $HOME/.config/i3blocks
-git clone https://github.com/jmcnamara/libxlsxwriter.git $HOME/git/libxlsxwriter
-git clone https://github.com/andmarti1424/sc-im.git $HOME/git/sc-im
 
 source $HOME/git/installation/versions-on-github
-
-mkdir $INSTALL_DIR $GO_BIN_DIR
-curl -o $INSTALL_DIR/chrome.deb -sS https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-curl -o $INSTALL_DIR/golang.tar.gz -sS https://storage.googleapis.com/golang/go${VERSION_GOLANG}.linux-amd64.tar.gz
-curl -o $INSTALL_DIR/python.tar.xz -sS https://www.python.org/ftp/python/${VERSION_PYTHON}/Python-${VERSION_PYTHON}.tar.xz
-curl -o $INSTALL_DIR/slack.deb -sSL https://downloads.slack-edge.com/linux_releases/slack-desktop-${VERSION_SLACK}-amd64.deb
-curl -o $INSTALL_DIR/bat.deb -sSL https://github.com/sharkdp/bat/releases/download/v${VERSION_SHARKDP_BAT}/bat-musl_${VERSION_BAT}_amd64.deb
-curl -o $INSTALL_DIR/flutter.xz -sS https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v${VERSION_FLUTTER}-stable.tar.xz
-curl -o $INSTALL_DIR/remarkable.deb -sS https://remarkableapp.github.io/files/remarkable_${VERSION_REMARKABLE}_all.deb
-curl -o $INSTALL_DIR/azuredatastudio.deb -sS https://azuredatastudiobuilds.blob.core.windows.net/releases/${VERSION_AZURE_DATA_STUDIO}/azuredatastudio-linux-${VERSION_AZURE_DATA_STUDIO}.deb
-curl -o $INSTALL_DIR/step.deb -sSL https://github.com/smallstep/cli/releases/download/v${VERSION_SMALLSTEP_CLI}/step-cli_${VERSION_SMALLSTEP_CLI}_amd64.deb
-curl -o $INSTALL_DIR/hexyl.deb -sSL https://github.com/sharkdp/hexyl/releases/download/v${VERSION_SHARKDP_HEXYL}/hexyl_${VERSION_SHARKDP_HEXYL}_amd64.deb
-curl -o $INSTALL_DIR/postman.tar.gz -sSL https://dl.pstmn.io/download/latest/linux64
-curl -o $INSTALL_DIR/sqlpackage.zip -sSL https://go.microsoft.com/fwlink/?linkid=2087431
-curl -o $INSTALL_DIR/git.tar.gz -sSL https://github.com/git/git/archive/v${VERSION_GIT}.tar.gz
-curl -o $INSTALL_DIR/nvim.appimage -sSL https://github.com/neovim/neovim/releases/download/v${VERSION_NEOVIM_NEOVIM}/nvim.appimage
-curl -o $INSTALL_DIR/k9s.tar.gz -sSL https://github.com/derailed/k9s/releases/download/${VERSION_DERAILED_K9S}/k9s_${VERSION_DERAILED_K9S}_Linux_x86_64.tar.gz
-curl -o $INSTALL_DIR/popeye.tar.gz -sSL https://github.com/derailed/popeye/releases/download/v${VERSION_DERAILED_POPEYE}/popeye_${VERSION_DERAILED_POPEYE}_Linux_x86_64.tar.gz
-curl -o $INSTALL_DIR/octant.deb -sSL https://github.com/vmware/octant/releases/download/v${VERSION_VMWARE__TANZU_OCTANT}/octant_${VERSION_VMWARE-TANZU_OCTANT}_Linux-64bit.deb
-curl -o $INSTALL_DIR/dart.deb -sSL https://storage.googleapis.com/dart-archive/channels/stable/release/latest/linux_packages/dart_2.5.0-1_amd64.deb
-curl -o $INSTALL_DIR/android-studio.tar.gz -sSL https://dl.google.com/dl/android/studio/ide-zips/3.5.0.21/android-studio-ide-191.5791312-linux.tar.gz
-curl -o $INSTALL_DIR/vault.zip -sSL https://releases.hashicorp.com/vault/${VERSION_VAULT}/vault_${VERSION_VAULT}_linux_amd64.zip
-curl -o $INSTALL_DIR/azcopy.tar.gz -sSL https://aka.ms/downloadazcopy-v10-linux
-curl -o $INSTALL_DIR/minikube.deb -sSL https://storage.googleapis.com/minikube/releases/latest/minikube_${VERSION_KUBERNETES_MINIKUBE}.deb
-sudo curl -o $LOCAL_BIN/docker-compose -sSL "https://github.com/docker/compose/releases/download/${VERSION_DOCKER_COMPOSE}/docker-compose-$(uname -s)-$(uname -m)"
-sudo curl -o $BASH_COMPLETION_DIR/git-completion.bash -sS https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-sudo curl -o $BASH_COMPLETION_DIR/docker-compose -sS https://raw.githubusercontent.com/docker/compose/${VERSION_DOCKER_COMPOSE}/contrib/completion/bash/docker-compose
-sudo curl -o $BASH_COMPLETION_DIR/go-bb-pr-completion.bash -sS https://raw.githubusercontent.com/alexhokl/go-bb-pr/master/go-bb-pr-completion.bash
-sudo curl -o $BASH_COMPLETION_DIR/kubectx.bash -sS https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/kubectx.bash
-sudo curl -o $BASH_COMPLETION_DIR/kubens.bash -sS https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/kubens.bash
-sudo curl -o $LOCAL_BIN/icdiff -sS https://raw.githubusercontent.com/jeffkaufman/icdiff/master/icdiff
-sudo curl -o $LOCAL_BIN/git-icdiff -sS https://raw.githubusercontent.com/jeffkaufman/icdiff/master/git-icdiff
-sudo curl -o $LOCAL_BIN/lolcat -sS https://raw.githubusercontent.com/tehmaze/lolcat/master/lolcat
-sudo curl -o $LOCAL_BIN/speedtest -sS https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
-sudo curl -o $LOCAL_BIN/kubectx -sSL https://raw.githubusercontent.com/ahmetb/kubectx/master/kubectx
-sudo curl -o $LOCAL_BIN/kubens -sSL https://raw.githubusercontent.com/ahmetb/kubectx/master/kubens
-sudo curl -o $LOCAL_BIN/stern -sSL https://github.com/wercker/stern/releases/download/${VERSION_WERCKER_STERN}/stern_linux_amd64
-sudo curl -o $LOCAL_BIN/nuget.exe -sS https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-sudo curl -o $LOCAL_BIN/have -sSL https://misc.j3ss.co/binaries/have
-sudo curl -o $LOCAL_BIN/light -sSL https://misc.j3ss.co/binaries/light
-sudo curl -o $LOCAL_BIN/sampler -sSL https://github.com/sqshq/sampler/releases/download/v${VERSION_SQSHQ_SAMPLER}/sampler-${VERSION_SQSHQ_SAMPLER}-linux-amd64
-sudo curl -o $LOCAL_BIN/hey -sSL https://storage.googleapis.com/hey-release/hey_linux_amd64
-
-sudo dpkg -i $INSTALL_DIR/chrome.deb
-sudo dpkg -i $INSTALL_DIR/bat.deb
-sudo dpkg -i $INSTALL_DIR/slack.deb
-sudo dpkg -i $INSTALL_DIR/remarkable.deb
-sudo dpkg -i $INSTALL_DIR/azuredatastudio.deb
-sudo dpkg -i $INSTALL_DIR/hexyl.deb
-sudo dpkg -i $INSTALL_DIR/octant.deb
-sudo dpkg -i $INSTALL_DIR/dart.deb
-sudo dpkg -i $INSTALL_DIR/step.deb
-sudo dpkg -i $INSTALL_DIR/minikube.deb
-
-sudo apt --fix-broken install -y
-
-curl -L https://git.io/get_helm.sh | bash
-
-sudo tar xvf $INSTALL_DIR/golang.tar.gz -C /usr/local/
-
-tar -xf $INSTALL_DIR/python.tar.xz -C $INSTALL_DIR/
-cd $INSTALL_DIR/Python-${VERSION_PYTHON}
-./configure --enable-optimizations
-make
-sudo make install
-sudo update-alternatives --install /usr/bin/python python $LOCAL_BIN/python${VERSION_PYTHON_MAJOR} 1
-sudo update-alternatives --set python $LOCAL_BIN/python${VERSION_PYTHON_MAJOR}
-cd $HOME
-
-chmod u+x $INSTALL_DIR/nvim.appimage
-sudo mv $INSTALL_DIR/nvim.appimage /usr/bin/nvim
-
-sudo tar xvzf $INSTALL_DIR/postman.tar.gz -C /opt/
-sudo ln -s /opt/postman/app/Postman $LOCAL_BIN/Postman
-
-for p in $(cat $HOME/git/installation/go-packages.txt); do /usr/local/go/bin/go get -u $p; done
-
-tar xf $INSTALL_DIR/flutter.xz -C $HOME/git/
-
-tar xvzf $INSTALL_DIR/k9s.tar.gz -C $INSTALL_DIR/
-sudo mv $INSTALL_DIR/k9s $LOCAL_BIN/
-
-tar xvzf $INSTALL_DIR/popeye.tar.gz -C $INSTALL_DIR/
-sudo mv $INSTALL_DIR/popeye $LOCAL_BIN/
-
-sudo tar xvzf $INSTALL_DIR/android-studio.tar.gz -C /usr/local/
-
-tar xvzf $INSTALL_DIR/azcopy.tar.gz -C $INSTALL_DIR/
-cd $INSTALL_DIR/azcopy_*
-sudo mv azcopy $LOCAL_BIN/
-cd $HOME
+source $HOME/git/installation/debian/functions
 
 sudo usermod -aG docker $USER
-sudo chmod a+x $LOCAL_BIN/docker-compose
-sudo chmod a+x $LOCAL_BIN/icdiff
-sudo chmod a+x $LOCAL_BIN/git-icdiff
-sudo chmod a+x $LOCAL_BIN/lolcat
-sudo chmod a+x $LOCAL_BIN/have
-sudo chmod a+x $LOCAL_BIN/light
-sudo chmod a+x $LOCAL_BIN/speedtest
-sudo chmod a+x $LOCAL_BIN/stern
-sudo chmod a+x $LOCAL_BIN/kubectx
-sudo chmod a+x $LOCAL_BIN/kubens
-sudo chmod a+x $LOCAL_BIN/sampler
-sudo chmod a+x $LOCAL_BIN/hey
 
-unzip $INSTALL_DIR/sqlpackage.zip -d $INSTALL_DIR/sqlpackage
-chmod a+x $INSTALL_DIR/sqlpackage/sqlpackage
-sudo mv $INSTALL_DIR/sqlpackage /opt/
-sudo ln -s /opt/sqlpackage/sqlpackage /usr/local/bin/sqlpackage
+install_nodejs
+install_bat
+install_slack
+install_remarkable
+install_azure_data_studio
+install_hexyl
+install_octant
+install_step
+install_minikube
+install_helm
+install_python
+install_nvim
+install_flutter
+install_k9s
+install_popeye
+install_android_studio
+install_azcopy
+install_kubectx
+install_icdiff
+install_lolcat
+install_have
+install_light
+install_speedtest
+install_stern
+install_sampler
+install_hey
+install_nuget
+install_docker_compose
+install_sqlpackage
+install_vault
+install_sc_im
+install_vscode_extensions
+install_ruby
+install_vim
+install_git
 
-unzip $INSTALL_DIR/vault.zip
-sudo mv vault $LOCAL_BIN/
-$LOCAL_BIN/vault -autocomplete-install
-
-# sc-im
-cd $HOME/git/libxlsxwriter
-make
-sudo make install
-cd $HOME/git/sc-im/src
-make
-sudo make install
-cd $HOME
-
-sudo npm i -g $(cat $HOME/git/installation/npm-list.txt)
-
-for e in $(cat $HOME/git/installation/vscode-extensions.txt); do /usr/bin/code --install-extension $e; done
-mkdir -p $HOME/.config/Code/User
-cp $HOME/git/installation/vscode_settings.json $HOME/.config/Code/User/settings.json
-
-pip3 install --user $(cat $HOME/git/installation/pip.txt)
-
-$HOME/.rbenv/bin/rbenv init
-$HOME/.rbenv/bin/rbenv install $VERSION_RUBY
-$HOME/.rbenv/bin/rbenv global $VERSION_RUBY
-echo "gem: --no-document" > $HOME/.gemrc
-$HOME/.rbenv/versions/$VERSION_RUBY/bin/gem install bundler
-$HOME/.rbenv/versions/$VERSION_RUBY/bin/gem install travis
-
-git clone --recursive https://github.com/alexhokl/.vim
-cd $HOME/.vim
-make install
-cd $HOME
-
-sudo apt purge -y git git-core
-sudo apt autoremove -y
-hash -r
-tar xvzf $INSTALL_DIR/git.tar.gz -C $INSTALL_DIR/
-cd $INSTALL_DIR/git-*
-make prefix=/usr/local all
-sudo make prefix=/usr/local install
-cd $HOME
+sudo apt --fix-broken install -y
 
 cd $HOME/git/dotfiles
 make bin
