@@ -238,6 +238,7 @@ install_vscode_extensions
 install_ruby
 install_vim
 install_git
+install_gh
 
 sudo apt --fix-broken install -y
 
