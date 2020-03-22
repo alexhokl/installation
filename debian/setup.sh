@@ -92,7 +92,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		dnsutils \
 		docker-ce \
 		docker-ce-cli \
-		dotnet-sdk-2.2 \
+		dotnet-sdk-3.1 \
 		exfat-fuse \
 		exfat-utils \
 		feh \
