@@ -116,7 +116,7 @@ install_vim() {
 install_vscode_extensions() {
 	for e in $(cat $HOME/git/installation/vscode-extensions.txt); do /usr/bin/code --force --install-extension $e; done
 	mkdir -p $HOME/.config/Code/User
-	/usr/bin/cp -f $HOME/git/installation/vscode_settings.json $HOME/.config/Code/User/settings.json
+	/bin/cp -f $HOME/git/installation/vscode_settings.json $HOME/.config/Code/User/settings.json
 }
 
 install_sc_im() {
@@ -166,7 +166,7 @@ install_azcopy() {
 	curl -o $INSTALL_DIR/azcopy.tar.gz -sSL https://aka.ms/downloadazcopy-v10-linux
 	tar xvzf $INSTALL_DIR/azcopy.tar.gz -C $INSTALL_DIR/
 	cd $INSTALL_DIR/azcopy_*
-	sudo /usr/bin/mv -f azcopy $LOCAL_BIN/
+	sudo /bin/mv -f azcopy $LOCAL_BIN/
 
 	cd $_CURRENT_DIR
 }
