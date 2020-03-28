@@ -61,7 +61,7 @@ if [ "debian" = $(. /etc/os-release; echo $ID) ]; then
 else
     sudo apt install -y apt-transport-https curl --no-install-recommends;
 fi
-curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/$(. /etc/os-release; echo $ID).sh | bash
+curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/setup.sh | bash
 shutdown -r now
 ```
 
