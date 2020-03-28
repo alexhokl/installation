@@ -193,9 +193,6 @@ sudo apt install -y signal-desktop
 git clone https://github.com/alexhokl/installation $HOME/git/installation
 git clone https://github.com/alexhokl/dotfiles $HOME/git/dotfiles
 git clone https://github.com/alexhokl/notes $HOME/git/notes
-if [ "debian" = $(. /etc/os-release; echo $ID) ]; then
-  git clone https://github.com/alexhokl/unifi $HOME/git/unifi;
-fi
 git clone https://github.com/vivien/i3blocks-contrib $HOME/.config/i3blocks
 
 source $HOME/git/installation/versions-on-github

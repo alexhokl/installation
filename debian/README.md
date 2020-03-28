@@ -96,7 +96,6 @@ sudo update-alternatives --config editor
 ```
 :UpdateRemotePlugins
 :GoInstallBinaries
-:OmniSharpInstall
 ```
 
 ## Backup
