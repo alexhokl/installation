@@ -415,3 +415,13 @@ install_terraform() {
 	unzip $INSTALL_DIR/terraform.zip -d $INSTALL_DIR/
 	sudo mv $INSTALL_DIR/terraform $LOCAL_BIN/
 }
+
+install_lens() {
+	LOCAL_BIN=/usr/local/bin
+	INSTALL_DIR=$HOME/Downloads
+  source $HOME/git/installation/versions-on-github
+
+	curl -o $INSTALL_DIR/lens.appimage -sSL https://github.com/lensapp/lens/releases/download/v${VERSION_LENSAPP_LENS}/Lens-${VERSION_LENSAPP_LENS}.AppImage
+	chmod u+x $INSTALL_DIR/lens.appimage
+	sudo mv $INSTALL_DIR/lens.appimage $LOCAL_BIN/lens
+}
