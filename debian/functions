@@ -190,7 +190,7 @@ install_popeye() {
 	LOCAL_BIN=/usr/local/bin
   source $HOME/git/installation/versions-on-github
 
-	curl -o $INSTALL_DIR/popeye.tar.gz -sSL https://github.com/derailed/popeye/releases/download/v${VERSION_DERAILED_POPEYE}/popeye_${VERSION_DERAILED_POPEYE}_Linux_x86_64.tar.gz
+	curl -o $INSTALL_DIR/popeye.tar.gz -sSL https://github.com/derailed/popeye/releases/download/v${VERSION_DERAILED_POPEYE}/popeye_Linux_x86_64.tar.gz
 	tar xvzf $INSTALL_DIR/popeye.tar.gz -C $INSTALL_DIR/
 	sudo mv $INSTALL_DIR/popeye $LOCAL_BIN/
 }
@@ -200,7 +200,7 @@ install_k9s() {
 	LOCAL_BIN=/usr/local/bin
   source $HOME/git/installation/versions-on-github
 
-	curl -o $INSTALL_DIR/k9s.tar.gz -sSL https://github.com/derailed/k9s/releases/download/${VERSION_DERAILED_K9S}/k9s_${VERSION_DERAILED_K9S}_Linux_x86_64.tar.gz
+	curl -o $INSTALL_DIR/k9s.tar.gz -sSL https://github.com/derailed/k9s/releases/download/v${VERSION_DERAILED_K9S}/k9s_Linux_x86_64.tar.gz
 	tar xvzf $INSTALL_DIR/k9s.tar.gz -C $INSTALL_DIR/
 	sudo mv $INSTALL_DIR/k9s $LOCAL_BIN/
 }
@@ -290,7 +290,7 @@ install_octant() {
 	INSTALL_DIR=$HOME/Downloads
   source $HOME/git/installation/versions-on-github
 
-	curl -o $INSTALL_DIR/octant.deb -sSL https://github.com/vmware/octant/releases/download/v${VERSION_VMWARE__TANZU_OCTANT}/octant_${VERSION_VMWARE-TANZU_OCTANT}_Linux-64bit.deb
+	curl -o $INSTALL_DIR/octant.deb -sSL https://github.com/vmware-tanzu/octant/releases/download/v${VERSION_VMWARE__TANZU_OCTANT}/octant_${VERSION_VMWARE__TANZU_OCTANT}_Linux-64bit.deb
 	sudo dpkg -i $INSTALL_DIR/octant.deb
 }
 
@@ -306,7 +306,7 @@ install_minikube() {
 	INSTALL_DIR=$HOME/Downloads
   source $HOME/git/installation/versions-on-github
 
-	curl -o $INSTALL_DIR/minikube.deb -sSL https://storage.googleapis.com/minikube/releases/latest/minikube_${VERSION_KUBERNETES_MINIKUBE}.deb
+	curl -o $INSTALL_DIR/minikube.deb -sSL https://storage.googleapis.com/minikube/releases/latest/minikube_${VERSION_KUBERNETES_MINIKUBE}-0_amd64.deb
 	sudo dpkg -i $INSTALL_DIR/minikube.deb
 }
 
@@ -336,12 +336,6 @@ install_lolcat() {
 
 	sudo curl -o $LOCAL_BIN/lolcat -sS https://raw.githubusercontent.com/tehmaze/lolcat/master/lolcat
 	sudo chmod a+x $LOCAL_BIN/lolcat
-}
-
-install_lolcat() {
-	LOCAL_BIN=/usr/local/bin
-
-
 }
 
 install_have() {
@@ -410,4 +404,14 @@ install_gh() {
 	cp ./bin/gh $HOME/git/bin/
 
 	cd $_CURRENT_DIR
+}
+
+install_terraform() {
+	LOCAL_BIN=/usr/local/bin
+	INSTALL_DIR=$HOME/Downloads
+  source $HOME/git/installation/versions-on-github
+
+	curl -o $INSTALL_DIR/terraform.zip -sSL https://releases.hashicorp.com/terraform/${VERSION_HASHICORP_TERRAFORM}/terraform_${VERSION_HASHICORP_TERRAFORM}_linux_amd64.zip
+	unzip $INSTALL_DIR/terraform.zip -d $INSTALL_DIR/
+	sudo mv $INSTALL_DIR/terraform $LOCAL_BIN/
 }
