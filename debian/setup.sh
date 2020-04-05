@@ -106,6 +106,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		gnupg-agent \
 		google-chrome-stable \
 		google-cloud-sdk \
+		google-cloud-sdk-kpt \
 		indent \
 		i3 \
 		i3blocks \
