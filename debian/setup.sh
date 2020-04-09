@@ -128,6 +128,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		libncurses5-dev \
 		libncursesw5-dev \
 		libnss3-dev \
+		libpq-dev \
 		libreadline-dev \
 		libreswan \
 		libseccomp-dev \
@@ -153,6 +154,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		pkg-config \
 		pptp-linux \
 		printer-driver-cups-pdf \
+		python-dev \
 		rclone \
 		rxvt-unicode-256color \
 		scdaemon \
