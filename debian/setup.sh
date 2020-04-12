@@ -156,6 +156,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		printer-driver-cups-pdf \
 		python-dev \
 		rclone \
+		rofi \
 		rxvt-unicode-256color \
 		scdaemon \
 		scrot \
