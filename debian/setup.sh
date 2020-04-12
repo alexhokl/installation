@@ -136,6 +136,8 @@ sudo ACCEPT_EULA=Y apt install -y \
 		libtool \
 		libtool-bin \
 		libuv1-dev \
+		libvirt-clients \
+		libvirt-daemon-system \
 		libxml2-dev \
 		libyaml-dev \
 		libzip-dev \
@@ -155,6 +157,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		pptp-linux \
 		printer-driver-cups-pdf \
 		python-dev \
+		qemu-kvm \
 		rclone \
 		rofi \
 		rxvt-unicode-256color \
@@ -170,6 +173,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		tree \
 		ufw \
 		unixodbc-dev \
+		virt-manager \
 		virtualbox-6.1 \
 		vim \
 		webp \
@@ -203,6 +207,7 @@ source $HOME/git/installation/versions-on-github
 source $HOME/git/installation/debian/functions
 
 sudo usermod -aG docker $USER
+sudo adduser $USER libvirt
 
 install_nodejs
 install_bat
