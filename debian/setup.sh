@@ -40,11 +40,6 @@ curl -sS https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 echo "deb http://download.mono-project.com/repo/$(. /etc/os-release; echo "$ID") stable-$(lsb_release -cs) main" | sudo tee -a $SOURCE_LIST
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 
-# virtual box
-echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian bionic contrib" | sudo tee -a $SOURCE_LIST
-curl -sS https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
-curl -sS https://www.virtualbox.org/download/oracle_vbox.asc | sudo apt-key add -
-
 # yarn
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee -a $SOURCE_LIST
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
@@ -174,7 +169,6 @@ sudo ACCEPT_EULA=Y apt install -y \
 		ufw \
 		unixodbc-dev \
 		virt-manager \
-		virtualbox-6.1 \
 		vim \
 		webp \
 		xclip \
