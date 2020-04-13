@@ -255,11 +255,3 @@ cd $HOME
 
 sudo sed -i -e 's/#\ en_GB\.UTF\-8/en_GB\.UTF\-8/g' /etc/locale.gen
 sudo locale-gen
-
-# to disable suspend on login screen
-echo | sudo tee -a /etc/gdm3/greeter.dconf-defaults
-cat $HOME/git/installation/debian/greeter.dconf-defaults.conf | sudo tee -a /etc/gdm3/greeter.dconf-defaults
-
-# to enable touchpad in i3wm
-echo | sudo tee -a /etc/X11/xorg.conf.d/90-touchpad.conf
-cat $HOME/git/installation/debian/90-touchpad.conf | sudo tee -a /etc/X11/xorg.conf.d/90-touchpad.conf
