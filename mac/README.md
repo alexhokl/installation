@@ -48,25 +48,8 @@ chmod 700 ${HOME}/.gnupg
 cd -
 git clone https://github.com/alexhokl/installation
 cd installation
-apm install $(cat apm-list.txt)
 npm install -g $(cat npm-list.txt)
-go get github.com/axw/gocov/gocov
-go get github.com/brianredbeard/gpget
-go get github.com/crosbymichael/gistit
-go get github.com/crosbymichael/ip-addr
-go get github.com/davecheney/httpstat
-go get github.com/google/gops
-go get github.com/jstemmer/gotags
-go get github.com/nsf/gocode
-go get github.com/rogpeppe/godef
-go get github.com/shurcooL/markdownfmt
-go get github.com/Soulou/curl-unix-socket
-go get github.com/spf13/cobra/cobra
-go get github.com/unidoc/unidoc
-go get github.com/go-swagger/go-swagger
-go get github.com/alexhokl/go-bb-pr
-go get github.com/russross/blackfriday-tool
-go get github.com/kubernetes/kompose
+for p in $(cat $HOME/git/installation/go-packages.txt); do go get -u $p; done
 code --install-extension $(cat vscode-extensions.txt)
 rbenv install 2.4.2
 ```
