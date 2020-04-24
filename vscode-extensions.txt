@@ -11,6 +11,7 @@ euskadi31.json-pretty-printer
 k--kato.docomment
 leizongmin.node-module-intellisense
 ms-azuretools.vscode-docker
+ms-kubernetes-tools.vscode-kubernetes-tools
 ms-mssql.mssql
 ms-python.python
 ms-vscode.csharp
