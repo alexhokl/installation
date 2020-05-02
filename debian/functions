@@ -425,3 +425,8 @@ install_lens() {
 	chmod u+x $INSTALL_DIR/lens.appimage
 	sudo mv $INSTALL_DIR/lens.appimage $LOCAL_BIN/lens
 }
+
+install_fzf() {
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+}
