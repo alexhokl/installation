@@ -163,6 +163,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		snapd \
 		spotify-client \
 		ssh \
+		sshfs \
 		strace \
 		suckless-tools \
 		tmux \
