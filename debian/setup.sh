@@ -77,6 +77,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		bridge-utils \
 		build-essential \
 		byzanz \
+		calcurse \
 		cgroupfs-mount \
 		cmake \
 		code \
