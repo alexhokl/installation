@@ -4,3 +4,4 @@ youtube-dl
 http-prompt
 pynvim
 pgcli
+rtv
