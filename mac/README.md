@@ -9,14 +9,13 @@
 
 ```sh
 sudo xcode-select --install
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
 sudo xcodebuid -license accept
 
-sudo mkdir /etc/bash_completion.d
-sudo curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /etc/bash_completion.d/git-completion.bash
-sudo curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
-sudo curl -L https://raw.githubusercontent.com/docker/docker/v$(docker version -f {{.Client.Version}})/contrib/completion/bash/docker -o /etc/bash_completion.d/docker
-sudo curl -L https://raw.githubusercontent.com/alexhokl/go-bb-pr/master/go-bb-pr-completion.bash -o /etc/bash_completion.d/go-bb-pr-completion.bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+sudo curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /usr/local/etc/bash_completion.d/git-completion.bash
+sudo curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose -o /usr/local/etc/bash_completion.d/docker-compose
+sudo curl -L https://raw.githubusercontent.com/alexhokl/go-bb-pr/master/go-bb-pr-completion.bash -o /usr/local/etc/bash_completion.d/go-bb-pr-completion.bash
 
 curl https://raw.githubusercontent.com/alexhokl/installation/master/mac-preferences.scpt -o mac-preferences.scpt
 osascript mac-preferences.scpt
@@ -27,14 +26,9 @@ brew install $(cat brew-list.txt)
 ACCEPT_EULA=y brew install --no-sandbox mssql-tools
 
 cd $HOME
-git clone --recursive https://github.com/alexhokl/.vim.git .vim
-ln -sf $HOME/.vim/vimrc $HOME/.vimrc
+git clone --recursive https://github.com/alexhokl/.vim
 cd $HOME/.vim
-git submodule update --init
-
-mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
-ln -snf "${HOME}/.vim" "${XDG_CONFIG_HOME}/nvim"
-ln -snf "${HOME}/.vimrc" "${XDG_CONFIG_HOME}/nvim/init.vim"
+make
 
 pip install setuptools
 pip install --upgrade neovim
