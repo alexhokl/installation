@@ -1,6 +1,7 @@
 awscli
 azure-cli
 bash-completion
+bat
 derailed/k9s/k9s
 derailed/popeye/popeye
 docker-completion
