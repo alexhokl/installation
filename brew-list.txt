@@ -46,6 +46,7 @@ ruby
 smallstep/smallstep/step
 socat
 stern
+translate-shell
 watchman
 webp
 youtube-dl

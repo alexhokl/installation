@@ -168,6 +168,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		strace \
 		suckless-tools \
 		tmux \
+		translate-shell \
 		tree \
 		ufw \
 		unixodbc-dev \
