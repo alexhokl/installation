@@ -1,7 +1,8 @@
-wheel
 awscli
-youtube-dl
 http-prompt
-pynvim
+mssql-cli
 pgcli
+pynvim
 rtv
+wheel
+youtube-dl
