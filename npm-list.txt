@@ -8,3 +8,4 @@ rxjs-tslint
 markdown-toc
 iisexpress-proxy
 neovim
+@marp-team/marp-cli
