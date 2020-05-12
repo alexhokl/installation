@@ -243,6 +243,12 @@ install_ruby
 install_vim
 install_git
 install_gh
+install_go
+install_bb_pr
+install_vim
+install_terraform
+install_lens
+install_fzf
 
 sudo apt --fix-broken install -y
 
