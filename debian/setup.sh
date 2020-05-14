@@ -3,6 +3,11 @@
 SOURCE_LIST=/etc/apt/sources.list
 SOURCE_LIST_DIR=/etc/apt/sources.list.d
 
+TEMP_FOCAL=$(lsb_release -cs)
+if [ "focal" = "${TEMP_FOCAL}" ]; then
+	TEMP_FOCAL=bionic
+fi
+
 # chrome
 echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee $SOURCE_LIST_DIR/google-chrome.list
 
@@ -11,7 +16,7 @@ echo "deb https://packages.cloud.google.com/apt cloud-sdk-sid main" | sudo tee $
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
 # docker
-echo "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable" | sudo tee -a $SOURCE_LIST
+echo "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") ${TEMP_FOCAL} stable" | sudo tee -a $SOURCE_LIST
 curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | sudo apt-key add -
 
 # kubectl
@@ -27,7 +32,7 @@ echo "deb http://repository.spotify.com stable non-free" | sudo tee -a $SOURCE_L
 curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
 
 # Microsdft azure-cli, dotnet core, vscode, mssql-tools
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" | sudo tee -a $SOURCE_LIST
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ ${TEMP_FOCAL} main" | sudo tee -a $SOURCE_LIST
 if [ "debian" = $(. /etc/os-release; echo $ID) ]; then
   curl -sS https://packages.microsoft.com/config/$(. /etc/os-release; echo "$ID")/10/prod.list | sudo tee $SOURCE_LIST_DIR/mssql-release.list;
 else
