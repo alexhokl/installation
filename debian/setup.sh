@@ -160,7 +160,6 @@ sudo ACCEPT_EULA=Y apt install -y \
 		python-dev \
 		qemu-kvm \
 		rclone \
-		ripgrep \
 		rofi \
 		rxvt-unicode-256color \
 		scdaemon \
