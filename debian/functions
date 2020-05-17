@@ -208,7 +208,7 @@ install_k9s() {
 install_flutter() {
 	_CURRENT_DIR=$PWD
 
-	_REPO_DIR=$HOME/git/flutter
+	_REPO_DIR=$GOPATH/flutter
 	if [ -d $_REPO_DIR ]; then
 		rm -rf $_REPO_DIR
 	fi
@@ -229,15 +229,11 @@ install_nvim() {
 }
 
 install_helm() {
-	curl -L https://git.io/get_helm.sh | bash
+	curl -fsSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | sudo -E bash -
 }
 
 install_nodejs() {
-	VERSION_NODEJS=node_10.x
-
-	echo "deb https://deb.nodesource.com/${VERSION_NODEJS} $(lsb_release -cs) main" | sudo tee $SOURCE_LIST_DIR/nodesource.list
-	echo "deb-src https://deb.nodesource.com/${VERSION_NODEJS} $(lsb_release -cs) main" | sudo tee -a $SOURCE_LIST_DIR/nodesource.list
-	curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -
+	curl -sL https://deb.nodesource.com/setup_12.x curl | sudo -E bash -
 	sudo apt update
 	sudo apt install -y nodejs
 	sudo npm i -g $(cat $HOME/git/installation/npm-list.txt)
@@ -272,7 +268,7 @@ install_remarkable() {
 install_azure_data_studio() {
 	INSTALL_DIR=$(mktemp -d)
 
-	VERSION_AZURE_DATA_STUDIO=1.16.0
+	VERSION_AZURE_DATA_STUDIO=1.17.1
 
 	curl -o $INSTALL_DIR/azuredatastudio.deb -sS https://azuredatastudiobuilds.blob.core.windows.net/releases/${VERSION_AZURE_DATA_STUDIO}/azuredatastudio-linux-${VERSION_AZURE_DATA_STUDIO}.deb
 	sudo dpkg -i $INSTALL_DIR/azuredatastudio.deb
