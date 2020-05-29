@@ -342,10 +342,14 @@ install_have() {
 }
 
 install_light() {
-	LOCAL_BIN=/usr/local/bin
+	INSTALL_DIR=$(mktemp -d)
+	source $HOME/git/installation/versions-on-github
 
-	sudo curl -o $LOCAL_BIN/light -sSL https://misc.j3ss.co/binaries/light
-	sudo chmod a+x $LOCAL_BIN/light
+	curl -o $INSTALL_DIR/light.tar.gz -sSL https://github.com/haikarainen/light/archive/v${VERSION_HAIKARAINEN_LIGHT}.tar.gz
+	tar xf $INSTALL_DIR/light.tar.gz -C $INSTALL_DIR/
+	cd $INSTALL_DIR/light-*
+	./configure --with-udev && make
+	sudo make install
 }
 
 install_speedtest() {
