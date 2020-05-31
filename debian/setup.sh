@@ -201,6 +201,9 @@ fi
 
 sudo apt install -y signal-desktop
 
+sudo snap install barrier
+sudo snap install helm --classic
+
 git clone https://github.com/alexhokl/installation $HOME/git/installation
 git clone https://github.com/alexhokl/dotfiles $HOME/git/dotfiles
 git clone https://github.com/alexhokl/notes $HOME/git/notes
