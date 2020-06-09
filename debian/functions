@@ -228,10 +228,6 @@ install_nvim() {
 	sudo mv $INSTALL_DIR/nvim.appimage /usr/bin/nvim
 }
 
-install_helm() {
-	curl -fsSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | sudo -E bash -
-}
-
 install_nodejs() {
 	curl -sL https://deb.nodesource.com/setup_12.x curl | sudo -E bash -
 	sudo apt update

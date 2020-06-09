@@ -224,7 +224,6 @@ install_hexyl
 install_octant
 install_step
 install_minikube
-install_helm
 install_python
 install_nvim
 install_flutter
