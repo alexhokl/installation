@@ -141,7 +141,7 @@ install_vault() {
 
 	curl -o $INSTALL_DIR/vault.zip -sSL https://releases.hashicorp.com/vault/${VERSION_HASHICORP_VAULT}/vault_${VERSION_HASHICORP_VAULT}_linux_amd64.zip
 	unzip $INSTALL_DIR/vault.zip
-	sudo mv vault $LOCAL_BIN/
+	sudo /bin/mv -f vault $LOCAL_BIN/
 	$LOCAL_BIN/vault -autocomplete-install
 }
 
@@ -153,7 +153,7 @@ install_sqlpackage() {
 	curl -o $INSTALL_DIR/sqlpackage.zip -sSL https://go.microsoft.com/fwlink/?linkid=2087431
 	unzip $INSTALL_DIR/sqlpackage.zip -d $INSTALL_DIR/sqlpackage
 	chmod a+x $INSTALL_DIR/sqlpackage/sqlpackage
-	sudo mv $INSTALL_DIR/sqlpackage /opt/
+	sudo /bin/mv -f $INSTALL_DIR/sqlpackage /opt/
 	sudo ln -s /opt/sqlpackage/sqlpackage $LOCAL_BIN/sqlpackage
 }
 
@@ -192,7 +192,7 @@ install_popeye() {
 
 	curl -o $INSTALL_DIR/popeye.tar.gz -sSL https://github.com/derailed/popeye/releases/download/v${VERSION_DERAILED_POPEYE}/popeye_Linux_x86_64.tar.gz
 	tar xvzf $INSTALL_DIR/popeye.tar.gz -C $INSTALL_DIR/
-	sudo mv $INSTALL_DIR/popeye $LOCAL_BIN/
+	sudo /bin/mv -f $INSTALL_DIR/popeye $LOCAL_BIN/
 }
 
 install_k9s() {
@@ -202,7 +202,7 @@ install_k9s() {
 
 	curl -o $INSTALL_DIR/k9s.tar.gz -sSL https://github.com/derailed/k9s/releases/download/v${VERSION_DERAILED_K9S}/k9s_Linux_x86_64.tar.gz
 	tar xvzf $INSTALL_DIR/k9s.tar.gz -C $INSTALL_DIR/
-	sudo mv $INSTALL_DIR/k9s $LOCAL_BIN/
+	sudo /bin/mv -f $INSTALL_DIR/k9s $LOCAL_BIN/
 }
 
 install_flutter() {
@@ -225,7 +225,7 @@ install_nvim() {
 
 	curl -o $INSTALL_DIR/nvim.appimage -sSL https://github.com/neovim/neovim/releases/download/v${VERSION_NEOVIM_NEOVIM}/nvim.appimage
 	chmod u+x $INSTALL_DIR/nvim.appimage
-	sudo mv $INSTALL_DIR/nvim.appimage /usr/bin/nvim
+	sudo /bin/mv -f $INSTALL_DIR/nvim.appimage /usr/bin/nvim
 }
 
 install_nodejs() {
@@ -397,7 +397,7 @@ install_gh() {
 	git clone https://github.com/cli/cli.git $HOME/git/githubcli
 	cd $HOME/git/githubcli
 	make
-	cp ./bin/gh $HOME/git/bin/
+	/bin/cp -f ./bin/gh $HOME/git/bin/
 
 	cd $_CURRENT_DIR
 }
@@ -409,7 +409,7 @@ install_terraform() {
 
 	curl -o $INSTALL_DIR/terraform.zip -sSL https://releases.hashicorp.com/terraform/${VERSION_HASHICORP_TERRAFORM}/terraform_${VERSION_HASHICORP_TERRAFORM}_linux_amd64.zip
 	unzip $INSTALL_DIR/terraform.zip -d $INSTALL_DIR/
-	sudo mv $INSTALL_DIR/terraform $LOCAL_BIN/
+	sudo /bin/mv -f $INSTALL_DIR/terraform $LOCAL_BIN/
 }
 
 install_lens() {
@@ -419,7 +419,7 @@ install_lens() {
 
 	curl -o $INSTALL_DIR/lens.appimage -sSL https://github.com/lensapp/lens/releases/download/v${VERSION_LENSAPP_LENS}/Lens-${VERSION_LENSAPP_LENS}.AppImage
 	chmod u+x $INSTALL_DIR/lens.appimage
-	sudo mv $INSTALL_DIR/lens.appimage $LOCAL_BIN/lens
+	sudo /bin/mv -f $INSTALL_DIR/lens.appimage $LOCAL_BIN/lens
 }
 
 install_fzf() {
