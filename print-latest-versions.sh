@@ -21,6 +21,8 @@ github-latest-release ()
   curl -s https://api.github.com/repos/${1}/tags | jq -r '.[0] | .name'
 }
 
+TEMP_FILE=$(mktemp)
+
 for i in $(grep VERSION_ versions-on-github); do
 	_s=$(echo $i | cut -d '=' -f 1)
 	_r=${_s/VERSION_/}
@@ -29,6 +31,8 @@ for i in $(grep VERSION_ versions-on-github); do
 	_v1=$(github-latest-release $_repo)
 	_v2=${_v1/_/.}
 	_version=${_v2/_/.}
-	echo $_s=${_version/v/}
+	echo $_s=${_version/v/} >> $TEMP_FILE
 done
+
+/bin/cp -f $TEMP_FILE versions-on-github
 
