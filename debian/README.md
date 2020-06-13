@@ -167,3 +167,7 @@ NO_PROPOSAL_CHOSEN error notify`, one can try removing all temporary secrets
 by `sudo rm -f /etc/ipsec.d/nm-l2tp-ipsec-*.secrets`.
 
 Note that `libreswan` can be installed to support older ciphers.
+
+To support `PPTP` with `ufw`, GRE tunnels has to be enabled `sudo ufw allow
+proto gre from 200.200.200.200`(assuming the VPN server located at
+`200.200.200.200`).
