@@ -264,9 +264,7 @@ install_remarkable() {
 install_azure_data_studio() {
 	INSTALL_DIR=$(mktemp -d)
 
-	VERSION_AZURE_DATA_STUDIO=1.18.1
-
-	curl -o $INSTALL_DIR/azuredatastudio.deb -sS https://azuredatastudiobuilds.blob.core.windows.net/releases/${VERSION_AZURE_DATA_STUDIO}/azuredatastudio-linux-${VERSION_AZURE_DATA_STUDIO}.deb
+	curl -o $INSTALL_DIR/azuredatastudio.deb -sSL https://go.microsoft.com/fwlink/?linkid=2132350
 	sudo dpkg -i $INSTALL_DIR/azuredatastudio.deb
 }
 
