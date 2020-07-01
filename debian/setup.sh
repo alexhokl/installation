@@ -109,6 +109,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		google-chrome-stable \
 		google-cloud-sdk \
 		google-cloud-sdk-kpt \
+		hopenpgp-tools \
 		indent \
 		i3 \
 		i3blocks \
