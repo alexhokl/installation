@@ -82,7 +82,7 @@ install_python() {
 }
 
 install_go() {
-	VERSION_GOLANG=1.13.6
+	VERSION_GOLANG=1.14.6
 
 	export GOPATH=$HOME/git
 	GO_BIN_DIR=$GOPATH/bin
@@ -264,7 +264,7 @@ install_remarkable() {
 install_azure_data_studio() {
 	INSTALL_DIR=$(mktemp -d)
 
-	curl -o $INSTALL_DIR/azuredatastudio.deb -sSL https://go.microsoft.com/fwlink/?linkid=2132350
+	curl -o $INSTALL_DIR/azuredatastudio.deb -sSL https://go.microsoft.com/fwlink/?linkid=2135515
 	sudo dpkg -i $INSTALL_DIR/azuredatastudio.deb
 }
 
