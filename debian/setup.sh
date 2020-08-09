@@ -135,6 +135,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		libreadline-dev \
 		libreswan \
 		libseccomp-dev \
+		libsqlite3-dev \
 		libssl-dev \
 		libtool \
 		libtool-bin \
