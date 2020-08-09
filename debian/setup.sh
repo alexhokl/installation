@@ -12,7 +12,7 @@ fi
 echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee $SOURCE_LIST_DIR/google-chrome.list
 
 # gcloud
-echo "deb https://packages.cloud.google.com/apt cloud-sdk-sid main" | sudo tee $SOURCE_LIST_DIR/google-cloud-sdk.list
+echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee $SOURCE_LIST_DIR/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
 # docker
