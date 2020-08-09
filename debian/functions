@@ -60,7 +60,7 @@ install_ruby() {
 }
 
 install_python() {
-	VERSION_PYTHON=3.7.6
+	VERSION_PYTHON=3.7.8
 	VERSION_PYTHON_MAJOR=3.7
 
 	_CURRENT_DIR=$PWD
