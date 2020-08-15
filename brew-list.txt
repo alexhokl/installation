@@ -24,6 +24,7 @@ homebrew/cask/google-chrome
 homebrew/cask/google-cloud-sdk
 homebrew/cask/gpg-suite
 homebrew/cask/iterm2
+homebrew/cask/kdiff3
 homebrew/cask/microsoft-azure-storage-explorer
 homebrew/cask/microsoft-office
 homebrew/cask/skype

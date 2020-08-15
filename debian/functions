@@ -312,15 +312,6 @@ install_kubectx() {
 	sudo chmod a+x $LOCAL_BIN/kubens
 }
 
-install_icdiff() {
-	LOCAL_BIN=/usr/local/bin
-
-	sudo curl -o $LOCAL_BIN/icdiff -sS https://raw.githubusercontent.com/jeffkaufman/icdiff/master/icdiff
-	sudo curl -o $LOCAL_BIN/git-icdiff -sS https://raw.githubusercontent.com/jeffkaufman/icdiff/master/git-icdiff
-	sudo chmod a+x $LOCAL_BIN/icdiff
-	sudo chmod a+x $LOCAL_BIN/git-icdiff
-}
-
 install_lolcat() {
 	LOCAL_BIN=/usr/local/bin
 

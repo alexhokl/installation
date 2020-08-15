@@ -6,3 +6,4 @@ pynvim
 rtv
 wheel
 youtube-dl
+git+https://github.com/jeffkaufman/icdiff.git
