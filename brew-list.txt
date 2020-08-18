@@ -35,6 +35,7 @@ homebrew/cask/visual-studio-code
 homebrew/cask/vlc
 imagemagick
 jq
+kind
 kubectx
 neovim
 node

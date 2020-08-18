@@ -432,3 +432,12 @@ install_pandoc() {
 	curl -o $INSTALL_DIR/pandoc.deb -sSL https://github.com/jgm/pandoc/releases/download/${VERSION_JGM_PANDOC}/pandoc-${VERSION_JGM_PANDOC}-amd64.deb
 	sudo dpkg -i $INSTALL_DIR/pandoc.deb
 }
+
+install_kind() {
+	INSTALL_DIR=$(mktemp -d)
+  source $HOME/git/installation/versions-on-github
+
+	curl -o $INSTALL_DIR/kind -sSL https://kind.sigs.k8s.io/dl/v${VERSION_KUBERNETES__SIGS_KIND}/kind-$(uname)-amd64
+	chmod +x $INSTALL_DIR/kind
+	sudo /bin/mv -f $INSTALL_DIR/kind $LOCAL_BIN/
+}
