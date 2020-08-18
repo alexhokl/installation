@@ -441,3 +441,7 @@ install_kind() {
 	chmod +x $INSTALL_DIR/kind
 	sudo /bin/mv -f $INSTALL_DIR/kind $LOCAL_BIN/
 }
+
+install_code_server() {
+	curl -fsSL https://code-server.dev/install.sh | sh
+}
