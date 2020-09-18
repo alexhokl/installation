@@ -8,6 +8,7 @@ donjayamanne.githistory
 eamodio.gitlens
 EQuimper.react-native-react-redux
 euskadi31.json-pretty-printer
+googlecloudtools.cloudcode
 k--kato.docomment
 leizongmin.node-module-intellisense
 ms-azuretools.vscode-docker
