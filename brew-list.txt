@@ -14,6 +14,7 @@ gnu-sed
 golang
 gpg2
 handbrake
+helm
 hexyl
 homebrew/cask/alacritty
 homebrew/cask/android-file-transfer
