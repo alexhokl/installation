@@ -78,7 +78,7 @@ install_python() {
 
 	cd $_CURRENT_DIR
 
-  pip install --user $(cat $HOME/git/installation/pip.txt)
+  pip install --user -r $HOME/git/installation/requirements.txt
 }
 
 install_go() {

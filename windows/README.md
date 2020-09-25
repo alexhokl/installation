@@ -28,8 +28,8 @@ mkdir $HOME\Desktop\git
 (iwr -useb https://raw.githubusercontent.com/alexhokl/dotfiles/windows10/.gitconfig).Content.Replace("`n", "`r`n") | Set-Content -Encoding utf8 $HOME\.gitconfig
 (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/vscode-extensions.txt", "$HOME\Desktop\vscode-extensions.txt")
 Get-Content $HOME\Desktop\vscode-extensions.txt | ForEach-Object { code --install-extension $_ }
-(New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/pip.txt", "$HOME\Desktop\pip.txt")
-Get-Content $HOME\Desktop\pip.txt | ForEach-Object { pip3 install $_ }
+(New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/requirements.txt", "$HOME\Desktop\requirements.txt")
+pip3 install -r $HOME\Desktop\requirements.txt
 (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/go-packages.txt", "$HOME\Desktop\go-packages.txt")
 Get-Content $HOME\Desktop\go-packages.txt | ForEach-Object { go get -u $_ }
 ```

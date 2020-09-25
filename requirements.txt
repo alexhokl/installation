@@ -1,9 +1,10 @@
 awscli
+git+https://github.com/jeffkaufman/icdiff.git
 http-prompt
 mssql-cli
 pgcli
 pynvim
 rtv
+setuptools
 wheel
 youtube-dl
-git+https://github.com/jeffkaufman/icdiff.git

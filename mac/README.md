@@ -45,8 +45,8 @@ brew install $(cat brew-list.txt)
 brew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release
 ACCEPT_EULA=y brew install mssql-tools
 
-pip3 install setuptools
-pip3 install --upgrade neovim
+curl -sSLO https://raw.githubusercontent.com/alexhokl/installation/master/requirements.txt
+pip3 install -r requirements,txt
 
 cd $HOME
 git clone --recursive https://github.com/alexhokl/.vim
