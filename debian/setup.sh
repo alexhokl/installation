@@ -64,139 +64,10 @@ curl -sS https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_
 
 sudo apt update
 sudo apt -y upgrade
-sudo apt install -y kdiff3
-sudo apt install -y odbcinst1debian2
 
-sudo ACCEPT_EULA=Y apt install -y \
-		asciinema \
-		autoconf \
-		automake \
-		azure-cli \
-		balena-etcher-electron \
-		bison \
-		bluez-tools \
-		blueman \
-		bridge-utils \
-		build-essential \
-		byzanz \
-		calcurse \
-		cgroupfs-mount \
-		cmake \
-		code \
-		containerd.io \
-		darktable \
-		dart \
-		dkms \
-		dnsutils \
-		docker-ce \
-		docker-ce-cli \
-		dotnet-sdk-2.1 \
-		dotnet-sdk-3.1 \
-		exfat-fuse \
-		exfat-utils \
-		feh \
-		ffmpeg \
-		ftp \
-		g++ \
-		gcc \
-		gettext \
-		git \
-		gnupg2 \
-		gnupg-agent \
-		google-chrome-stable \
-		google-cloud-sdk \
-		google-cloud-sdk-kpt \
-		hopenpgp-tools \
-		indent \
-		i3 \
-		i3blocks \
-		i3lock \
-		jq \
-		kubectl \
-		lib32stdc++6 \
-		libapparmor-dev \
-		libappindicator1 \
-		libc6-dev \
-		libcurl4-openssl-dev \
-		libdbusmenu-gtk4 \
-		liberror-perl \
-		libexpat1-dev \
-		libffi-dev \
-		libgdbm-dev \
-		libindicator7 \
-		libltdl-dev \
-		libncurses5-dev \
-		libncursesw5-dev \
-		libnss3-dev \
-		libpq-dev \
-		libreadline-dev \
-		libreswan \
-		libseccomp-dev \
-		libsqlite3-dev \
-		libssl-dev \
-		libtool \
-		libtool-bin \
-		libuv1-dev \
-		libvirt-clients \
-		libvirt-daemon-system \
-		libxml2-dev \
-		libyaml-dev \
-		libzip-dev \
-		make \
-		mssql-tools \
-		net-tools \
-		network-manager \
-		network-manager-l2tp \
-		network-manager-l2tp-gnome \
-		network-manager-pptp-gnome \
-		nnn \
-		openvpn \
-		openssh-server \
-		pavucontrol \
-		pkg-config \
-		pptp-linux \
-		printer-driver-cups-pdf \
-		python-dev \
-		qemu-kvm \
-		rclone \
-		rofi \
-		rxvt-unicode-256color \
-		scdaemon \
-		scrot \
-		silversearcher-ag \
-		snapd \
-		ssh \
-		sshfs \
-		strace \
-		suckless-tools \
-		tmux \
-		translate-shell \
-		tree \
-		ufw \
-		unixodbc-dev \
-		virt-manager \
-		vim \
-		webp \
-		xclip \
-		xcompmgr \
-		xdotool \
-		xl2tpd \
-		yarn \
-		zip \
-		zlib1g-dev
-
-if [ "debian" = ${DISTRIBUTION} ]; then
-  sudo apt install -y \
-    bluez-firmware \
-    firmware-iwlwifi \
-    peek;
-else
-  sudo add-apt-repository ppa:canonical-hwe-team/backport-iwlwifi;
-  sudo apt-get update;
-  sudo apt-get install backport-iwlwifi-dkms;
-fi
-
-sudo apt install -y signal-desktop
+curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/basic_packages.sh | bash
+curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/ui_packages.sh | bash
+curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/desktop_package.sh | bash
 
 sudo snap install barrier
 sudo snap install helm --classic
@@ -206,51 +77,10 @@ git clone https://github.com/alexhokl/dotfiles $HOME/git/dotfiles
 git clone https://github.com/alexhokl/notes $HOME/git/notes
 git clone https://github.com/vivien/i3blocks-contrib $HOME/.config/i3blocks
 
-source $HOME/git/installation/versions-on-github
-source $HOME/git/installation/debian/functions
-
 sudo usermod -aG docker $USER
 sudo adduser $USER libvirt
 
-install_nodejs
-install_bat
-install_slack
-install_remarkable
-install_azure_data_studio
-install_hexyl
-install_octant
-install_step
-install_minikube
-install_python
-install_nvim
-install_flutter
-install_k9s
-install_popeye
-install_android_studio
-install_azcopy
-install_kubectx
-install_icdiff
-install_lolcat
-install_have
-install_light
-install_speedtest
-install_stern
-install_sampler
-install_hey
-install_nuget
-install_docker_compose
-install_sqlpackage
-install_vault
-install_sc_im
-install_vscode_extensions
-install_ruby
-install_vim
-install_git
-install_gh
-install_go
-install_bb_pr
-install_terraform
-install_lens
+curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/custom_installations.sh | bash
 
 sudo apt --fix-broken install -y
 
