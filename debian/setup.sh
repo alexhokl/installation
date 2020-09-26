@@ -1,5 +1,8 @@
 #!/bin/bash
 
+sudo apt update
+sudo apt install -y lsb-release
+
 SOURCE_LIST=/etc/apt/sources.list
 SOURCE_LIST_DIR=/etc/apt/sources.list.d
 DISTRIBUTION=$(. /etc/os-release; echo $ID)
@@ -12,6 +15,7 @@ if [ "ubuntu" = "${DISTRIBUTION}" ]; then
 		DISTRIBUTION_RELEASE_NO=18.04
 	fi
 fi
+HARDWARE_TYPE=$(uname -i)  # unknown for crostini or virtual machine
 
 # chrome
 echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee $SOURCE_LIST_DIR/google-chrome.list
@@ -66,21 +70,29 @@ sudo apt update
 sudo apt -y upgrade
 
 curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/basic_packages.sh | bash
-curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/ui_packages.sh | bash
-curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/desktop_package.sh | bash
+if [ "unknown" != "$HARDWARE_TYPE" ]; then
+	curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/ui_packages.sh | bash
+	curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/desktop_package.sh | bash
+fi
 
-sudo snap install barrier
-sudo snap install helm --classic
+if [ "unknown" != "$HARDWARE_TYPE" ]; then
+	sudo snap install barrier
+	sudo snap install helm --classic
+fi
 
 git clone https://github.com/alexhokl/installation $HOME/git/installation
 git clone https://github.com/alexhokl/dotfiles $HOME/git/dotfiles
 git clone https://github.com/alexhokl/notes $HOME/git/notes
-git clone https://github.com/vivien/i3blocks-contrib $HOME/.config/i3blocks
+if [ "unknown" != "$HARDWARE_TYPE" ]; then
+	git clone https://github.com/vivien/i3blocks-contrib $HOME/.config/i3blocks
+fi
 
 sudo usermod -aG docker $USER
 sudo adduser $USER libvirt
 
-curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/custom_installations.sh | bash
+source $HOME/git/installation/versions-on-github
+source $HOME/git/installation/debian/functions
+install_all
 
 sudo apt --fix-broken install -y
 
