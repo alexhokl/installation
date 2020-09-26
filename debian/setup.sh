@@ -33,8 +33,8 @@ echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a $SOURC
 # sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 3653E21064B19D134466702E43D5C49532CBA1A9
 
 # spotify
-echo "deb http://repository.spotify.com stable non-free" | sudo tee -a $SOURCE_LIST
-curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
+# echo "deb http://repository.spotify.com stable non-free" | sudo tee -a $SOURCE_LIST
+# curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
 
 # Microsdft azure-cli, dotnet core, vscode, mssql-tools
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ ${DISTRIBUTION_RELEASE} main" | sudo tee -a $SOURCE_LIST
@@ -166,7 +166,6 @@ sudo ACCEPT_EULA=Y apt install -y \
 		scrot \
 		silversearcher-ag \
 		snapd \
-		spotify-client \
 		ssh \
 		sshfs \
 		strace \
