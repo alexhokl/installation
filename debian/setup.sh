@@ -2,10 +2,15 @@
 
 SOURCE_LIST=/etc/apt/sources.list
 SOURCE_LIST_DIR=/etc/apt/sources.list.d
-
-TEMP_FOCAL=$(lsb_release -cs)
-if [ "focal" = "${TEMP_FOCAL}" ]; then
-	TEMP_FOCAL=bionic
+DISTRIBUTION=$(. /etc/os-release; echo $ID)
+DISTRIBUTION_RELEASE=$(lsb_release -cs)
+DISTRIBUTION_RELEASE_NO=10
+if [ "ubuntu" = "${DISTRIBUTION}" ]; then
+	if [ "focus" = "${DISTRIBUTION_RELEASE}" ]; then
+  	DISTRIBUTION_RELEASE_NO=20.04
+	else
+		DISTRIBUTION_RELEASE_NO=18.04
+	fi
 fi
 
 # chrome
@@ -16,8 +21,8 @@ echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee $SOUR
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
 # docker
-echo "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") ${TEMP_FOCAL} stable" | sudo tee -a $SOURCE_LIST
-curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | sudo apt-key add -
+echo "deb [arch=amd64] https://download.docker.com/linux/${DISTRIBUTION} ${DISTRIBUTION_RELEASE} stable" | sudo tee -a $SOURCE_LIST
+curl -fsSL https://download.docker.com/linux/${DISTRIBUTION}/gpg | sudo apt-key add -
 
 # kubectl
 echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a $SOURCE_LIST
@@ -32,17 +37,13 @@ echo "deb http://repository.spotify.com stable non-free" | sudo tee -a $SOURCE_L
 curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
 
 # Microsdft azure-cli, dotnet core, vscode, mssql-tools
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ ${TEMP_FOCAL} main" | sudo tee -a $SOURCE_LIST
-if [ "debian" = $(. /etc/os-release; echo $ID) ]; then
-  curl -sS https://packages.microsoft.com/config/$(. /etc/os-release; echo "$ID")/10/prod.list | sudo tee $SOURCE_LIST_DIR/mssql-release.list;
-else
-  curl -sS https://packages.microsoft.com/config/$(. /etc/os-release; echo "$ID")/18.04/prod.list | sudo tee $SOURCE_LIST_DIR/mssql-release.list;
-fi
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ ${DISTRIBUTION_RELEASE} main" | sudo tee -a $SOURCE_LIST
+curl -sS https://packages.microsoft.com/config/${DISTRIBUTION}/${DISTRIBUTION_RELEASE_NO}/prod.list | sudo tee $SOURCE_LIST_DIR/mssql-release.list;
 echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" | sudo tee $SOURCE_LIST_DIR/vscode.list
 curl -sS https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 
 # mono
-echo "deb http://download.mono-project.com/repo/$(. /etc/os-release; echo "$ID") stable-$(lsb_release -cs) main" | sudo tee -a $SOURCE_LIST
+echo "deb http://download.mono-project.com/repo/${DISTRIBUTION} stable-${DISTRIBUTION_RELEASE} main" | sudo tee -a $SOURCE_LIST
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 
 # yarn
@@ -52,10 +53,6 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 # signal
 echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a $SOURCE_LIST
 curl -sS https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
-
-# telegram
-# echo "deb http://ppa.launchpad.net/atareao/telegram/ubuntu xenial main" | sudo tee -a $SOURCE_LIST
-# echo "deb-src http://ppa.launchpad.net/atareao/telegram/ubuntu xenial main" | sudo tee -a $SOURCE_LIST
 
 # etcher
 echo "deb https://deb.etcher.io stable etcher" | sudo tee -a $SOURCE_LIST
@@ -190,7 +187,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		zip \
 		zlib1g-dev
 
-if [ "debian" = $(. /etc/os-release; echo $ID) ]; then
+if [ "debian" = ${DISTRIBUTION} ]; then
   sudo apt install -y \
     bluez-firmware \
     firmware-iwlwifi \
