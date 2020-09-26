@@ -43,8 +43,8 @@ echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" |
 curl -sS https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 
 # mono
-echo "deb http://download.mono-project.com/repo/${DISTRIBUTION} stable-${DISTRIBUTION_RELEASE} main" | sudo tee -a $SOURCE_LIST
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+# echo "deb http://download.mono-project.com/repo/${DISTRIBUTION} stable-${DISTRIBUTION_RELEASE} main" | sudo tee -a $SOURCE_LIST
+# sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
 
 # yarn
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee -a $SOURCE_LIST
@@ -143,7 +143,6 @@ sudo ACCEPT_EULA=Y apt install -y \
 		libyaml-dev \
 		libzip-dev \
 		make \
-		mono-devel \
 		mssql-tools \
 		net-tools \
 		network-manager \
