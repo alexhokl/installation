@@ -39,7 +39,6 @@ install_all() {
 	install_go
 	install_bb_pr
 	install_terraform
-	install_lens
 	install_fzf
 	install_krew
 	install_pandoc
@@ -446,16 +445,6 @@ install_terraform() {
 	curl -o $INSTALL_DIR/terraform.zip -sSL https://releases.hashicorp.com/terraform/${VERSION_HASHICORP_TERRAFORM}/terraform_${VERSION_HASHICORP_TERRAFORM}_linux_amd64.zip
 	unzip $INSTALL_DIR/terraform.zip -d $INSTALL_DIR/
 	sudo /bin/mv -f $INSTALL_DIR/terraform $LOCAL_BIN/
-}
-
-install_lens() {
-	LOCAL_BIN=/usr/local/bin
-	INSTALL_DIR=$(mktemp -d)
-  source $HOME/git/installation/versions-on-github
-
-	curl -o $INSTALL_DIR/lens.appimage -sSL https://github.com/lensapp/lens/releases/download/v${VERSION_LENSAPP_LENS}/Lens-${VERSION_LENSAPP_LENS}.AppImage
-	chmod u+x $INSTALL_DIR/lens.appimage
-	sudo /bin/mv -f $INSTALL_DIR/lens.appimage $LOCAL_BIN/lens
 }
 
 install_fzf() {

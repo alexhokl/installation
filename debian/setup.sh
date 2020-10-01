@@ -78,6 +78,7 @@ fi
 if [ "unknown" != "$HARDWARE_TYPE" ]; then
 	sudo snap install barrier
 	sudo snap install helm --classic
+	sudo snap install kontena-lens --classic
 fi
 
 git clone https://github.com/alexhokl/installation $HOME/git/installation
