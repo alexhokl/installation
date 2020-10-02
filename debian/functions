@@ -1,5 +1,27 @@
 #!/bin/bash
 
+update_all() {
+	install_bat
+	install_step
+	install_hexyl
+	install_nvim
+	install_k9s
+	install_popeye
+	install_octant
+	install_stern
+	install_sampler
+	install_minikube
+	install_git
+	install_docker_compose
+	install_ruby
+	install_vault
+	install_terraform
+	install_light
+	install_pandoc
+	install_kind
+	install_code_server
+}
+
 install_all() {
 	install_nodejs
 	install_bat
