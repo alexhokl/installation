@@ -65,30 +65,14 @@ curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/s
 shutdown -r now
 ```
 
-```sh
-sudo update-alternatives --install /usr/bin/vi vi "$(which nvim)" 60
-sudo update-alternatives --config vi
-sudo update-alternatives --install /usr/bin/vim vim "$(which nvim)" 60
-sudo update-alternatives --config vim
-sudo update-alternatives --install /usr/bin/editor editor "$(which nvim)" 60
-sudo update-alternatives --config editor
-```
-
 - Ensure `env | grep GDM_LANG` does not return `en_HK.UTF-8` and
     `i3-dmenu-desktop` would not work otherwise
   - to set `GDM_LANG`, open Settings app via `i3-dmenu-desktop` and select
       "Region and Language" and change "Language" to either "English (UK)" or
       "English (US)"
-- Download `.pem` file from a machine has GPG keys stored so that SSH is
-    possible and change its file access to `chmod 600`
-- SSH into the machine has the GPG key
-  - Unfortunately, `ssh user_name@server_name gpg --export-secret-key KEY_ID | gpg --import`
-      does not work due to `pinentry` setup
-    - where `KEY_ID` is the key to be imported
-  - Export the key into a file
-    `gpg --export-secret-key EE510D8CB9F12960 > file.key`
-  - `ssh user_name@server_name cat file.key | gpg --import`
-- copy git credentials from another machine using SSH
+- Download GPG public key and import it using `gpg --import something.pub`
+  - Once a Yubikey is inserted to the machine, the subkeys will be available to
+    be used
 - copy Docker Content Trust keys from another machine using SSH
     (`~/.docker/trust/private/`)
 - Open neovim and execute the following commands

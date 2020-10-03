@@ -95,6 +95,10 @@ source $HOME/git/installation/versions-on-github
 source $HOME/git/installation/debian/functions
 install_all
 
+sudo update-alternatives --install /usr/bin/vi vi "$(which nvim)" 60
+sudo update-alternatives --install /usr/bin/vim vim "$(which nvim)" 60
+sudo update-alternatives --install /usr/bin/editor editor "$(which nvim)" 60
+
 sudo apt --fix-broken install -y
 
 cd $HOME/git/dotfiles
