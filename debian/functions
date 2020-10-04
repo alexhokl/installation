@@ -26,7 +26,6 @@ install_all() {
 	install_nodejs
 	install_bat
 	install_slack
-	install_remarkable
 	install_azure_data_studio
 	install_hexyl
 	install_octant
@@ -318,15 +317,6 @@ install_bat() {
 
 	curl -o $INSTALL_DIR/bat.deb -sSL https://github.com/sharkdp/bat/releases/download/v${VERSION_SHARKDP_BAT}/bat-musl_${VERSION_SHARKDP_BAT}_amd64.deb
 	sudo dpkg -i $INSTALL_DIR/bat.deb
-}
-
-install_remarkable() {
-	INSTALL_DIR=$(mktemp -d)
-
-	VERSION_REMARKABLE=1.87
-
-	curl -o $INSTALL_DIR/remarkable.deb -sS https://remarkableapp.github.io/files/remarkable_${VERSION_REMARKABLE}_all.deb
-	sudo dpkg -i $INSTALL_DIR/remarkable.deb
 }
 
 install_azure_data_studio() {
