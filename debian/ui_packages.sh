@@ -13,6 +13,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		network-manager-l2tp-gnome \
 		network-manager-pptp-gnome \
 		pavucontrol \
+		qtqr \
 		rofi \
 		rxvt-unicode-256color \
 		scrot \
