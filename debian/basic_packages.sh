@@ -13,6 +13,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		calcurse \
 		cgroupfs-mount \
 		cmake \
+		conky-all \
 		containerd.io \
 		dart \
 		dkms \
