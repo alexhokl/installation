@@ -8,3 +8,4 @@ rtv
 setuptools
 wheel
 youtube-dl
+python-language-server[all]

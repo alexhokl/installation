@@ -46,7 +46,7 @@ brew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-rel
 ACCEPT_EULA=y brew install mssql-tools
 
 curl -sSLO https://raw.githubusercontent.com/alexhokl/installation/master/requirements.txt
-pip3 install --user -r requirements.txt
+python -m pip install --user -r requirements.txt
 
 cd $HOME
 git clone --recursive https://github.com/alexhokl/.vim

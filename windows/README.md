@@ -29,7 +29,7 @@ mkdir $HOME\Desktop\git
 (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/vscode-extensions.txt", "$HOME\Desktop\vscode-extensions.txt")
 Get-Content $HOME\Desktop\vscode-extensions.txt | ForEach-Object { code --install-extension $_ }
 (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/requirements.txt", "$HOME\Desktop\requirements.txt")
-pip3 install --user -r $HOME\Desktop\requirements.txt
+python -m pip install --user -r $HOME\Desktop\requirements.txt
 (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/go-packages.txt", "$HOME\Desktop\go-packages.txt")
 Get-Content $HOME\Desktop\go-packages.txt | ForEach-Object { go get -u $_ }
 ```
