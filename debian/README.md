@@ -80,6 +80,7 @@ shutdown -r now
 ```
 :UpdateRemotePlugins
 :GoInstallBinaries
+:CocInstall coc-python
 ```
 
 ## Backup
