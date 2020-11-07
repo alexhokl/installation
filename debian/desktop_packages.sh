@@ -16,9 +16,5 @@ if [ "debian" = ${DISTRIBUTION} ]; then
     bluez-firmware \
     firmware-iwlwifi \
     peek
-elif [ "ubuntu" = ${DISTRIBUTION} ]; then
-  sudo add-apt-repository ppa:canonical-hwe-team/backport-iwlwifi;
-  sudo apt-get update;
-  sudo apt-get install backport-iwlwifi-dkms;
 fi
 
