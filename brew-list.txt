@@ -17,7 +17,6 @@ handbrake
 helm
 hexyl
 homebrew/cask/alacritty
-homebrew/cask/android-file-transfer
 homebrew/cask/android-studio
 homebrew/cask/balenaetcher
 homebrew/cask/docker
