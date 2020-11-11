@@ -482,3 +482,14 @@ install_kind() {
 install_code_server() {
 	curl -fsSL https://code-server.dev/install.sh | sh
 }
+
+install_ripgrep() {
+	DISTRIBUTION=$(. /etc/os-release; echo $ID)
+	if [ "ubuntu" = ${DISTRIBUTION} ]; then
+		INSTALL_DIR=$(mktemp -d)
+		source $HOME/git/installation/versions-on-github
+
+		curl -o $INSTALL_DIR/ripgrep.deb -sSL https://github.com/BurntSushi/ripgrep/releases/download/${VERSION_BURNTSUSHI_RIPGREP}/ripgrep_${VERSION_BURNTSUSHI_RIPGREP}_amd64.deb
+		sudo dpkg -i $INSTALL_DIR/ripgrep.deb
+	fi
+}

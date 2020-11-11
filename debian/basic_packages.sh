@@ -94,3 +94,9 @@ sudo ACCEPT_EULA=Y apt install -y \
 		yarn \
 		zip \
 		zlib1g-dev
+
+if [ "debian" = ${DISTRIBUTION} ]; then
+  sudo apt install -y \
+    ripgrep
+fi
+
