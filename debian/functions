@@ -319,7 +319,7 @@ install_bat() {
 install_azure_data_studio() {
 	INSTALL_DIR=$(mktemp -d)
 
-	curl -o $INSTALL_DIR/azuredatastudio.deb -sSL https://go.microsoft.com/fwlink/?linkid=2146016
+	curl -o $INSTALL_DIR/azuredatastudio.deb -sSL https://go.microsoft.com/fwlink/?linkid=2148806
 	sudo dpkg -i $INSTALL_DIR/azuredatastudio.deb
 }
 
@@ -492,4 +492,12 @@ install_ripgrep() {
 		curl -o $INSTALL_DIR/ripgrep.deb -sSL https://github.com/BurntSushi/ripgrep/releases/download/${VERSION_BURNTSUSHI_RIPGREP}/ripgrep_${VERSION_BURNTSUSHI_RIPGREP}_amd64.deb
 		sudo dpkg -i $INSTALL_DIR/ripgrep.deb
 	fi
+}
+
+install_redis_cli() {
+	INSTALL_DIR=$(mktemp -d)
+	curl -o $INSTALL_DIR/redis-stable.tar.gz -sSL http://download.redis.io/redis-stable.tar.gz
+	tar xvzf $INSTALL_DIR/redis-stable.tar.gz -C $INSTALL_DIR/
+	cd $INSTALL_DIR/redis-stable
+	make
 }
