@@ -21,6 +21,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		docker-ce-cli \
 		dotnet-sdk-2.1 \
 		dotnet-sdk-3.1 \
+		dotnet-sdk-5.0 \
 		exfat-fuse \
 		exfat-utils \
 		ffmpeg \
