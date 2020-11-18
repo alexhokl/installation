@@ -171,7 +171,7 @@ install_vim() {
 		rm -rf $HOME/.vim
 	fi
 	git clone --recursive https://github.com/alexhokl/.vim $HOME/.vim
-	cd $HOME/.vim
+	cd !$
 	make install
 
 	cd $_CURRENT_DIR
@@ -187,11 +187,11 @@ install_sc_im() {
 	_CURRENT_DIR=$PWD
 
 	git clone https://github.com/jmcnamara/libxlsxwriter.git $HOME/git/libxlsxwriter
-	git clone https://github.com/andmarti1424/sc-im.git $HOME/git/sc-im
-	cd $HOME/git/libxlsxwriter
+	cd !$
 	make
 	sudo make install
-	cd $HOME/git/sc-im/src
+	git clone https://github.com/andmarti1424/sc-im.git $HOME/git/sc-im
+	cd !$
 	make
 	sudo make install
 
@@ -277,7 +277,7 @@ install_flutter() {
 		rm -rf $_REPO_DIR
 	fi
 	git clone https://github.com/flutter/flutter.git $_REPO_DIR
-	cd $_REPO_DIR
+	cd !$
 	git checkout stable
 
 	cd $_CURRENT_DIR
@@ -439,7 +439,7 @@ install_gh() {
 	_CURRENT_DIR=$PWD
 
 	git clone https://github.com/cli/cli.git $HOME/git/githubcli
-	cd $HOME/git/githubcli
+	cd !$
 	make
 	/bin/cp -f ./bin/gh $HOME/git/bin/
 

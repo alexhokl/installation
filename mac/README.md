@@ -59,8 +59,8 @@ sudo xcodebuid -license accept
 curl https://raw.githubusercontent.com/alexhokl/installation/master/mac/preferences.scpt -o mac-preferences.scpt
 osascript mac-preferences.scpt
 
-mkdir $HOME/Desktop/git
-cd $HOME/Desktop/git
+mkdir -p $HOME/Desktop/git
+cd !$
 git clone https://github.com/alexhokl/dotfiles
 cd dotfiles
 git checkout mac
