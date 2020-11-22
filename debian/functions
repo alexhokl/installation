@@ -321,6 +321,7 @@ install_azure_data_studio() {
 
 	curl -o $INSTALL_DIR/azuredatastudio.deb -sSL https://go.microsoft.com/fwlink/?linkid=2148806
 	sudo dpkg -i $INSTALL_DIR/azuredatastudio.deb
+	for e in $(cat $HOME/git/installation/azuredatastudio.extensions); do /usr/bin/azuredatastudio --force --install-extension $e; done
 }
 
 install_hexyl() {
