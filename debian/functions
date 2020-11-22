@@ -438,8 +438,14 @@ install_bb_pr() {
 install_gh() {
 	_CURRENT_DIR=$PWD
 
-	git clone https://github.com/cli/cli.git $HOME/git/githubcli
-	cd !$
+	_DIR=$HOME/git/cli
+	if [ ! -d "$_DIR" ]; then
+		git clone https://github.com/cli/cli.git $_DIR
+		cd !$
+	else
+		cd $_DIR
+		git pull
+	fi
 	make
 	/bin/cp -f ./bin/gh $HOME/git/bin/
 
@@ -457,8 +463,19 @@ install_terraform() {
 }
 
 install_fzf() {
-	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install
+	_CURRENT_DIR=$PWD
+
+	_DIR=$HOME/.fzf
+	if [ ! -d "$_DIR" ]; then
+		git clone --depth 1 https://github.com/junegunn/fzf.git $_DIR
+		cd !$
+	else
+		cd $_DIR
+		git pull
+	fi
+  ./install
+
+	cd $_CURRENT_DIR
 }
 
 install_krew() {
