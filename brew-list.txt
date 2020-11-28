@@ -14,16 +14,16 @@ gnu-sed
 golang
 gpg2
 handbrake
+hashicorp/tap/terraform
+hashicorp/tap/vault
 helm
 hexyl
-homebrew/cask/alacritty
 homebrew/cask/android-studio
 homebrew/cask/balenaetcher
 homebrew/cask/docker
 homebrew/cask/dotnet-sdk
 homebrew/cask/google-chrome
 homebrew/cask/google-cloud-sdk
-homebrew/cask/gpg-suite
 homebrew/cask/iterm2
 homebrew/cask/kdiff3
 homebrew/cask/microsoft-azure-storage-explorer
@@ -37,7 +37,9 @@ homebrew/cask/vlc
 imagemagick
 jq
 kind
+kind
 kubectx
+minikube
 neovim
 node
 octant
@@ -46,6 +48,7 @@ python3
 rbenv
 ripgrep
 ruby
+sampler
 smallstep/smallstep/step
 socat
 stern
