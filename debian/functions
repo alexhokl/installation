@@ -19,6 +19,7 @@ update_all() {
 	install_light
 	install_kind
 	install_code_server
+	install_protoc
 }
 
 install_all() {
@@ -63,6 +64,7 @@ install_all() {
 	install_krew
 	install_kind
 	install_code_server
+	install_protoc
 }
 
 install_git() {
@@ -518,4 +520,14 @@ install_redis_cli() {
 	tar xvzf $INSTALL_DIR/redis-stable.tar.gz -C $INSTALL_DIR/
 	cd $INSTALL_DIR/redis-stable
 	make
+}
+
+install_protoc() {
+	INSTALL_DIR=$(mktemp -d)
+	LOCAL_BIN=/usr/local/bin
+  source $HOME/git/installation/versions-on-github
+	curl -o $INSTALL_DIR/protoc.zip -sSL https://github.com/protocolbuffers/protobuf/releases/download/v${VERSION_PROTOCOLBUFFERS_PROTOBUF}/protoc-${VERSION_PROTOCOLBUFFERS_PROTOBUF}-linux-x86_64.zip
+	unzip $INSTALL_DIR/protoc.zip -d $INSTALL_DIR/
+	sudo /bin/mv -f $INSTALL_DIR/bin/protoc $LOCAL_BIN/
+	sudo /bin/mv -f $INSTALL_DIR/include/* /usr/local/include/
 }
