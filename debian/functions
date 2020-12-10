@@ -239,16 +239,18 @@ install_azcopy() {
 
 install_android_studio() {
 	INSTALL_DIR=$(mktemp -d)
+	LOCAL_BIN=/usr/local/bin
+	INSTALL_PATH=/opt/android-studio
 
-	curl -o $INSTALL_DIR/android-studio.tar.gz -sSL https://dl.google.com/dl/android/studio/ide-zips/3.5.3.0/android-studio-ide-191.6010548-linux.tar.gz
-	if [ -d /usr/local/android-studio ]; then
-		sudo rm -rf /usr/local/android-studio
+	curl -o $INSTALL_DIR/android-studio.tar.gz -sSL https://redirector.gvt1.com/edgedl/android/studio/ide-zips/4.1.1.0/android-studio-ide-201.6953283-linux.tar.gz
+	if [ -d "$INSTALL_PATH" ]; then
+		sudo rm -rf $INSTALL_PATH
 	fi
-	sudo tar xvzf $INSTALL_DIR/android-studio.tar.gz -C /usr/local/
-	if [ -L /usr/local/bin/studio.sh ]; then
-		sudo unlink /usr/local/bin/studio.sh
+	sudo tar xvzf $INSTALL_DIR/android-studio.tar.gz -C /opt
+	if [ -L "$INSTALL_PATH/bin/studio.sh" ]; then
+		sudo unlink $INSTALL_PATH/bin/studio.sh
 	fi
-	sudo ln -s /usr/local/android-studio/bin/studio.sh /usr/local/bin/studio.sh
+	sudo ln -s $INSTALL_PATH/bin/studio.sh $LOCAL_BIN/studio.sh
 }
 
 install_popeye() {
