@@ -151,7 +151,7 @@ install_python() {
 }
 
 install_go() {
-	VERSION_GOLANG=1.14.6
+	VERSION_GOLANG=1.15.6
 
 	GO_BIN_DIR=$HOME/git/bin
 
@@ -165,7 +165,6 @@ install_go() {
 		sudo rm -rf /usr/local/go
 	fi
 	sudo tar xvf $INSTALL_DIR/golang.tar.gz -C /usr/local/
-	for p in $(cat $HOME/git/installation/go-packages.txt); do /usr/local/go/bin/go get -u $p; done
 }
 
 install_vim() {
