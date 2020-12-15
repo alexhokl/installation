@@ -9,7 +9,7 @@ DISTRIBUTION=$(. /etc/os-release; echo $ID)
 DISTRIBUTION_RELEASE=$(lsb_release -cs)
 DISTRIBUTION_RELEASE_NO=10
 if [ "ubuntu" = "${DISTRIBUTION}" ]; then
-	if [ "focus" = "${DISTRIBUTION_RELEASE}" ]; then
+	if [ "focal" = "${DISTRIBUTION_RELEASE}" ]; then
   	DISTRIBUTION_RELEASE_NO=20.04
 	else
 		DISTRIBUTION_RELEASE_NO=18.04
