@@ -67,6 +67,7 @@ install_all() {
 	install_code_server
 	install_protoc
 	install_git_sizer
+	install_cargo
 }
 
 install_git() {
@@ -542,4 +543,8 @@ install_git_sizer() {
 	curl -o $INSTALL_DIR/git-sizer.zip -sSL https://github.com/github/git-sizer/releases/download/v${VERSION_GITHUB_GIT__SIZER}/git-sizer-${VERSION_GITHUB_GIT__SIZER}-linux-amd64.zip
 	unzip $INSTALL_DIR/git-sizer.zip -d $INSTALL_DIR/
 	sudo /bin/mv -f $INSTALL_DIR/git-sizer $LOCAL_BIN/
+}
+
+install_cargo() {
+	curl https://sh.rustup.rs -sSf | sh
 }
