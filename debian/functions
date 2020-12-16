@@ -520,11 +520,16 @@ install_ripgrep() {
 }
 
 install_redis_cli() {
+	_CURRENT_DIR=$PWD
+
 	INSTALL_DIR=$(mktemp -d)
 	curl -o $INSTALL_DIR/redis-stable.tar.gz -sSL http://download.redis.io/redis-stable.tar.gz
 	tar xvzf $INSTALL_DIR/redis-stable.tar.gz -C $INSTALL_DIR/
 	cd $INSTALL_DIR/redis-stable
 	make
+	sudo make install
+
+	cd $_CURRENT_DIR
 }
 
 install_protoc() {
