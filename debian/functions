@@ -451,7 +451,8 @@ install_gh() {
 		cd $_DIR
 	else
 		cd $_DIR
-		git pull
+		git checkout trunk
+		git pull origin trunk
 	fi
 	make
 	/bin/cp -f ./bin/gh $HOME/git/bin/
