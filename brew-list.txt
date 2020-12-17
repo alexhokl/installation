@@ -38,6 +38,7 @@ imagemagick
 jq
 kafkacat
 kubectx
+libpq
 neovim
 node
 octant
