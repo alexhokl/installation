@@ -21,6 +21,8 @@ update_all() {
 	install_code_server
 	install_protoc
 	install_git_sizer
+	install_go_packages
+	install_cargo_packages
 }
 
 install_all() {
@@ -59,6 +61,7 @@ install_all() {
 	install_git
 	install_gh
 	install_go
+	install_go_packages
 	install_bb_pr
 	install_terraform
 	install_fzf
@@ -68,6 +71,7 @@ install_all() {
 	install_protoc
 	install_git_sizer
 	install_cargo
+	install_cargo_packages
 }
 
 install_git() {
@@ -182,7 +186,7 @@ install_vim() {
 }
 
 install_vscode_extensions() {
-	for e in $(cat $HOME/git/installation/vscode-extensions.txt); do /usr/bin/code --force --install-extension $e; done
+	cat $HOME/git/installation/vscode-extensions.txt | xargs /usr/bin/code --force --install-extension
 	mkdir -p $HOME/.config/Code/User
 	/bin/cp -f $HOME/git/installation/vscode_settings.json $HOME/.config/Code/User/settings.json
 }
@@ -327,7 +331,7 @@ install_azure_data_studio() {
 
 	curl -o $INSTALL_DIR/azuredatastudio.deb -sSL https://go.microsoft.com/fwlink/?linkid=2148806
 	sudo dpkg -i $INSTALL_DIR/azuredatastudio.deb
-	for e in $(cat $HOME/git/installation/azuredatastudio.extensions); do /usr/bin/azuredatastudio --force --install-extension $e; done
+	cat $HOME/git/installation/azuredatastudio.extensions | xargs /usr/bin/azuredatastudio --force --install-extension
 }
 
 install_hexyl() {
@@ -553,4 +557,12 @@ install_git_sizer() {
 
 install_cargo() {
 	curl https://sh.rustup.rs -sSf | sh
+}
+
+install_cargo_packages() {
+	cat $HOME/git/installation/cargo_packages | xargs cargo install
+}
+
+install_go_packages() {
+	cat $HOME/git/installation/go_packages | xargs go get -u
 }

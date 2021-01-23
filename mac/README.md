@@ -70,8 +70,8 @@ cd $HOME/Desktop/git
 git clone https://github.com/alexhokl/installation
 cd installation
 npm install -g $(cat npm-list.txt)
-for p in $(cat go-packages.txt); do go get -u $p; done
-for e in $(cat vscode-extensions.txt); do code --install-extension $e; done
+cat go_packages | xargs go get -u
+cat vscode-extensions.txt | xargs code --install-extension
 sudo curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose -o /usr/local/etc/bash_completion.d/docker-compose
 ```
 
