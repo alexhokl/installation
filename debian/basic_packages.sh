@@ -94,7 +94,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 	webp \
 	xclip \
 	xdotool \
-	yarn \
+	yarn=1.17.3-1 \
 	zip \
 	zlib1g-dev
 
