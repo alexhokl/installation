@@ -77,6 +77,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 	openssh-server \
 	pkg-config \
 	postgresql-client \
+	postgresql-client-common \
 	printer-driver-cups-pdf \
 	python-dev \
 	rclone \
