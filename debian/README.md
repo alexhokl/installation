@@ -96,6 +96,12 @@ sudo ufw allow in on tailscale0 to any port 22
 sudo ufw allow 41641/udp
 ```
 
+## Configure firewall for Barrier
+
+```sh
+sudo ufw allow in on tailscale0 to any port 24800
+```
+
 ## Configure VPN L2TP/IPSec
 
 1. Create a file with content similar to the following in directory
