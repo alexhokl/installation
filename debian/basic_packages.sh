@@ -79,6 +79,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 	postgresql-client \
 	postgresql-client-common \
 	printer-driver-cups-pdf \
+	protonvpn \
 	python-dev \
 	rclone \
 	scdaemon \

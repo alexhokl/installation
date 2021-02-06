@@ -66,6 +66,10 @@ curl -sS https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_
 curl -fsSL https://pkgs.tailscale.com/stable/${DISTRIBUTION}/${DISTRIBUTION_RELEASE}.gpg | sudo apt-key add -
 curl -fsSL https://pkgs.tailscale.com/stable/${DISTRIBUTION}/${DISTRIBUTION_RELEASE}.list | sudo tee $SOURCE_LIST_DIR/tailscale.list
 
+# protonvpn
+curl -fsSL https://repo.protonvpn.com/debian/public_key.asc | sudo apt-key add -
+sudo add-apt-repository 'deb https://repo.protonvpn.com/debian unstable main'
+
 sudo apt update
 sudo apt -y upgrade
 
