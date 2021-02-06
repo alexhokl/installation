@@ -89,22 +89,12 @@ shutdown -r now
 curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/backup.sh | bash
 ```
 
-## Installing WiFi on Intel NUC
+## Configure firewall for Tailscale
 
-Note that the driver installation may only be needed in Debian 9 (stretch)
-installation (to be verifiied).
-
-1. Download the latest driver from [Linux Support for Intel® Wireless
-   Adapters](https://www.intel.com/content/www/us/en/support/articles/000005511/network-and-i-o/wireless-networking.html).
-   Follow its instruction and copy the contents of the downloaded zip file to
-   directory `/lib/firmware`.
-2. `sudo modprobe -r iwlwifi`
-3. `sudo modprobe iwlwifi`
-4. Use `nmcli dev wifi` to list the available SSIDs.
-5. `nmcli dev wifi connect your-ssid -a` to setup the connection.
-6. `nmcli c up your-ssid` to connect to the newly setup WiFi connection.
-
-See also [How to use a WiFi interface](https://wiki.debian.org/WiFi/HowToUse)
+```sh
+sudo ufw allow in on tailscale0 to any port 22
+sudo ufw allow 41641/udp
+```
 
 ## Configure VPN L2TP/IPSec
 
@@ -156,3 +146,20 @@ Note that `libreswan` can be installed to support older ciphers.
 To support `PPTP` with `ufw`, GRE tunnels has to be enabled `sudo ufw allow
 proto gre from 200.200.200.200`(assuming the VPN server located at
 `200.200.200.200`).
+
+## Installing WiFi on Intel NUC
+
+Note that the driver installation may only be needed in Debian 9 (stretch)
+installation (to be verifiied).
+
+1. Download the latest driver from [Linux Support for Intel® Wireless
+   Adapters](https://www.intel.com/content/www/us/en/support/articles/000005511/network-and-i-o/wireless-networking.html).
+   Follow its instruction and copy the contents of the downloaded zip file to
+   directory `/lib/firmware`.
+2. `sudo modprobe -r iwlwifi`
+3. `sudo modprobe iwlwifi`
+4. Use `nmcli dev wifi` to list the available SSIDs.
+5. `nmcli dev wifi connect your-ssid -a` to setup the connection.
+6. `nmcli c up your-ssid` to connect to the newly setup WiFi connection.
+
+See also [How to use a WiFi interface](https://wiki.debian.org/WiFi/HowToUse)
