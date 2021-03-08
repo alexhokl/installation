@@ -71,6 +71,7 @@ choco install cmder
 choco install git-credential-manager-for-windows
 choco install gpg4win
 choco install neovim
+choco install kubernetes-helm
 
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---
