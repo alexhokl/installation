@@ -45,6 +45,7 @@ octant
 openssl
 python3
 rbenv
+redis
 ripgrep
 ruby
 sampler
