@@ -248,7 +248,7 @@ install_android_studio() {
 	LOCAL_BIN=/usr/local/bin
 	INSTALL_PATH=/opt/android-studio
 
-	curl -o $INSTALL_DIR/android-studio.tar.gz -sSL https://redirector.gvt1.com/edgedl/android/studio/ide-zips/4.1.1.0/android-studio-ide-201.6953283-linux.tar.gz
+	curl -o $INSTALL_DIR/android-studio.tar.gz -sSL https://redirector.gvt1.com/edgedl/android/studio/ide-zips/4.1.2.0/android-studio-ide-201.7042882-linux.tar.gz
 	if [ -d "$INSTALL_PATH" ]; then
 		sudo rm -rf $INSTALL_PATH
 	fi
