@@ -58,10 +58,6 @@ curl -sS https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 echo "deb https://deb.etcher.io stable etcher" | sudo tee -a $SOURCE_LIST
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
 
-# dart
-curl -sS https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-curl -sS https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list | sudo tee $SOURCE_LIST_DIR/dart_stable.list
-
 # tailscale
 curl -fsSL https://pkgs.tailscale.com/stable/${DISTRIBUTION}/${DISTRIBUTION_RELEASE}.gpg | sudo apt-key add -
 curl -fsSL https://pkgs.tailscale.com/stable/${DISTRIBUTION}/${DISTRIBUTION_RELEASE}.list | sudo tee $SOURCE_LIST_DIR/tailscale.list

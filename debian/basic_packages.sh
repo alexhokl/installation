@@ -14,7 +14,6 @@ sudo ACCEPT_EULA=Y apt install -y \
 	cgroupfs-mount \
 	cmake \
 	containerd.io \
-	dart \
 	dkms \
 	dnsutils \
 	docker-ce \
