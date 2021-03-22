@@ -2,18 +2,6 @@
 # Author: Alex Ho
 #
 # Adapted from https://gist.github.com/jessfraz/7c319b046daa101a4aaef937a20ff41f
-#
-# Install boxstarter:
-# 	. { iwr -useb http://boxstarter.org/bootstrapper.ps1 } | iex; get-boxstarter -Force
-#
-# You might need to set: Set-ExecutionPolicy RemoteSigned
-#
-# Run this boxstarter by calling the following from an **elevated** command-prompt:
-# 	start http://boxstarter.org/package/nr/url?<URL-TO-RAW-GIST>
-# OR
-# 	Install-BoxstarterPackage -PackageName <URL-TO-RAW-GIST> -DisableReboots
-#
-# Learn more: http://boxstarter.org/Learn/WebLauncher
 
 #---- TEMPORARY ---
 Disable-UAC
@@ -38,23 +26,17 @@ choco install Microsoft-Windows-Subsystem-Linux -source windowsfeatures
 choco install git
 choco install poshgit
 choco install sysinternals
-choco install neovim
 
 #--- Apps ---
 choco install googlechrome
-# choco install kubernetes-cli
 choco install golang
 choco install 7zip
 choco install 7zip.commandline
-choco install nodejs
-choco install yarn
 choco install procexp
-choco install ruby
-choco install python
 choco install linqpad
 choco install kdiff3
 choco install jq
-choco install dotnetcore-sdk
+choco install dotnet-5.0-sdk
 choco install netfx-4.7-devpack
 choco install visualstudio2019professional
 choco install visualstudio2019-workload-netweb
@@ -64,14 +46,12 @@ choco install visualstudio2019-workload-webbuildtools
 choco install visualstudio2019-workload-azure
 choco install visualstudio2019-workload-azurebuildtools
 choco install sql-server-management-studio
-# choco install vscode
-# choco install azure-data-studio
+choco install vscode
+choco install azure-data-studio
 choco install microsoftazurestorageexplorer
 choco install cmder
 choco install git-credential-manager-for-windows
 choco install gpg4win
-choco install neovim
-choco install kubernetes-helm
 
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---
