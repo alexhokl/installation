@@ -15,8 +15,8 @@ Disable-BingSearch
 Disable-GameBarTips
 
 Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions
-Set-TaskbarOptions -Size Small -Dock Bottom -Combine Full -Lock
-Set-TaskbarOptions -Size Small -Dock Bottom -Combine Full -AlwaysShowIconsOn
+# Set-TaskbarOptions -Size Small -Dock Bottom -Combine Full -Lock
+# Set-TaskbarOptions -Size Small -Dock Bottom -Combine Full -AlwaysShowIconsOn
 
 #--- Windows Subsystems/Features ---
 choco install Microsoft-Hyper-V-All -source windowsFeatures
