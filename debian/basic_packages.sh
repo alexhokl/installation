@@ -100,7 +100,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 	zip \
 	zlib1g-dev
 
-if [ "debian" = ${DISTRIBUTION} ]; then
+if [ "debian" = "${DISTRIBUTION}" ]; then
   sudo apt install -y \
     ripgrep
 fi
