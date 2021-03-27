@@ -52,6 +52,7 @@ choco install microsoftazurestorageexplorer
 choco install cmder
 choco install git-credential-manager-for-windows
 choco install gpg4win
+choco install microsoft-windows-terminal
 
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---
