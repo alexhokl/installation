@@ -6,10 +6,6 @@
 #---- TEMPORARY ---
 Disable-UAC
 
-#--- Fonts ---
-choco install inconsolata
-choco install robotofonts
-
 #--- Windows Settings ---
 Disable-BingSearch
 Disable-GameBarTips
@@ -17,43 +13,6 @@ Disable-GameBarTips
 Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions
 # Set-TaskbarOptions -Size Small -Dock Bottom -Combine Full -Lock
 # Set-TaskbarOptions -Size Small -Dock Bottom -Combine Full -AlwaysShowIconsOn
-
-#--- Windows Subsystems/Features ---
-choco install Microsoft-Hyper-V-All -source windowsFeatures
-choco install Microsoft-Windows-Subsystem-Linux -source windowsfeatures
-
-#--- Tools ---
-choco install git
-choco install poshgit
-choco install sysinternals
-
-#--- Apps ---
-choco install googlechrome
-choco install golang
-choco install 7zip
-choco install 7zip.commandline
-choco install procexp
-choco install linqpad
-choco install kdiff3
-choco install jq
-choco install dotnet-5.0-sdk
-choco install netfx-4.7-devpack
-choco install visualstudio2019professional
-choco install visualstudio2019-workload-netweb
-choco install visualstudio2019-workload-netcoretools
-choco install visualstudio2019-workload-data
-choco install visualstudio2019-workload-webbuildtools
-choco install visualstudio2019-workload-azure
-choco install visualstudio2019-workload-azurebuildtools
-choco install sql-server-management-studio
-choco install vscode
-choco install azure-data-studio
-choco install microsoftazurestorageexplorer
-choco install cmder
-choco install git-credential-manager-for-windows
-choco install gpg4win
-choco install microsoft-windows-terminal
-
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---
 
