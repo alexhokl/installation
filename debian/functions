@@ -557,7 +557,11 @@ install_git_sizer() {
 }
 
 install_cargo() {
+	LOCAL_BIN=/usr/local/bin
 	curl https://sh.rustup.rs -sSf | sh
+	rustup component add rust-src
+	sudo curl -o ${LOCAL_BIN}/rust-analyzer -sSL https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux
+	sudo chmod +x ${LOCAL_BIN}/rust-analyzer
 }
 
 install_cargo_packages() {
