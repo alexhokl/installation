@@ -41,7 +41,6 @@ install_all() {
 	install_popeye
 	install_android_studio
 	install_azcopy
-	install_kubectx
 	install_icdiff
 	install_lolcat
 	install_have
@@ -367,18 +366,6 @@ install_minikube() {
 	sudo dpkg -i $INSTALL_DIR/minikube.deb
 }
 
-install_kubectx() {
-	BASH_COMPLETION_DIR=/etc/bash_completion.d
-	LOCAL_BIN=/usr/local/bin
-
-	sudo curl -o $BASH_COMPLETION_DIR/kubectx.bash -sS https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/kubectx.bash
-	sudo curl -o $BASH_COMPLETION_DIR/kubens.bash -sS https://raw.githubusercontent.com/ahmetb/kubectx/master/completion/kubens.bash
-	sudo curl -o $LOCAL_BIN/kubectx -sSL https://raw.githubusercontent.com/ahmetb/kubectx/master/kubectx
-	sudo curl -o $LOCAL_BIN/kubens -sSL https://raw.githubusercontent.com/ahmetb/kubectx/master/kubens
-	sudo chmod a+x $LOCAL_BIN/kubectx
-	sudo chmod a+x $LOCAL_BIN/kubens
-}
-
 install_lolcat() {
 	LOCAL_BIN=/usr/local/bin
 
@@ -498,6 +485,18 @@ install_krew() {
   KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" &&
   "$KREW" install --manifest=krew.yaml --archive=krew.tar.gz &&
   "$KREW" update
+
+  "${KREW}" install get-all
+  "${KREW}" install neat
+  "${KREW}" install tail
+  "${KREW}" install view-allocations
+  "${KREW}" install view-secret
+  "${KREW}" install whoami
+  "${KREW}" install access-matrix
+  "${KREW}" install who-can
+  "${KREW}" install ns
+  "${KREW}" install ctx
+  "${KREW}" install tree
 }
 
 install_kind() {
