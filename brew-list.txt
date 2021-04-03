@@ -9,6 +9,7 @@ docker-completion
 fzf
 git
 git-lfs
+gitbatch
 github/gh/gh
 gnu-sed
 golang
@@ -37,6 +38,7 @@ homebrew/cask/vlc
 imagemagick
 jq
 kafkacat
+kompose
 kubectx
 libpq
 neovim
