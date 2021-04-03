@@ -543,7 +543,13 @@ install_protoc() {
 	curl -o $INSTALL_DIR/protoc.zip -sSL https://github.com/protocolbuffers/protobuf/releases/download/v${VERSION_PROTOCOLBUFFERS_PROTOBUF}/protoc-${VERSION_PROTOCOLBUFFERS_PROTOBUF}-linux-x86_64.zip
 	unzip $INSTALL_DIR/protoc.zip -d $INSTALL_DIR/
 	sudo /bin/mv -f $INSTALL_DIR/bin/protoc $LOCAL_BIN/
-	sudo /bin/mv -f $INSTALL_DIR/include/* /usr/local/include/
+	if [ -d /usr/local/include/google/protobuf ]; then
+		rm -rf /usr/local/include/google/protobuf
+	fi
+	if [ ! -d /usr/local/include/google ]; then
+		mkdir -p /usr/local/include/google
+	fi
+	sudo /bin/mv -f $INSTALL_DIR/include/google/protobuf /usr/local/include/google/
 }
 
 install_git_sizer() {
