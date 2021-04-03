@@ -155,7 +155,7 @@ install_python() {
 }
 
 install_go() {
-	VERSION_GOLANG=1.15.6
+	VERSION_GOLANG=1.16.3
 
 	GO_BIN_DIR=$HOME/git/bin
 
