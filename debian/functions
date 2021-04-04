@@ -21,6 +21,7 @@ update_all() {
 	install_code_server
 	install_protoc
 	install_git_sizer
+	install_go
 	install_go_packages
 	install_cargo_packages
 	install_kompose
