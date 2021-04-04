@@ -11,7 +11,6 @@ github.com/jstemmer/gotags
 github.com/juruen/rmapi
 github.com/kardianos/govendor
 github.com/mdempsky/gocode
-github.com/prometheus/prometheus/cmd/...
 github.com/rakyll/govalidate
 github.com/rakyll/hey
 github.com/rogpeppe/godef
