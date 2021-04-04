@@ -75,13 +75,6 @@ shutdown -r now
     be used
 - copy Docker Content Trust keys from another machine using SSH
     (`~/.docker/trust/private/`)
-- Open neovim and execute the following commands
-
-```
-:UpdateRemotePlugins
-:GoInstallBinaries
-:CocInstall coc-python
-```
 
 ## Backup
 
