@@ -138,8 +138,8 @@ install_ruby() {
 }
 
 install_python() {
-	VERSION_PYTHON=3.7.8
-	VERSION_PYTHON_MAJOR=3.7
+	VERSION_PYTHON=3.9.3
+	VERSION_PYTHON_MAJOR=3.9
 
 	_CURRENT_DIR=$PWD
 	INSTALL_DIR=$(mktemp -d)
