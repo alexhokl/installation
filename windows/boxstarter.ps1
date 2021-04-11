@@ -53,6 +53,8 @@ choco install cmder
 choco install git-credential-manager-for-windows
 choco install gpg4win
 choco install microsoft-windows-terminal
+choco install oh-my-posh
+choco install cascadoacode
 
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---
