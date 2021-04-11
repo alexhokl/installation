@@ -32,3 +32,10 @@ python -m pip install --user -r $HOME\Desktop\requirements.txt
 (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/go-packages.txt", "$HOME\Desktop\go-packages.txt")
 Get-Content $HOME\Desktop\go-packages.txt | ForEach-Object { go get -u $_ }
 ```
+
+### WSL
+
+```sh
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+wsl --set-default-version 2
+```
