@@ -26,6 +26,7 @@ update_all() {
 	install_cargo_packages
 	install_kompose
 	install_gitbatch
+	install_azure_data_studio
 }
 
 install_all() {
