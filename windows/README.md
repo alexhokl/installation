@@ -1,3 +1,10 @@
+### References
+
+- [Boxstarter
+  functions](https://github.com/chocolatey/boxstarter/tree/master/Boxstarter.WinConfig)
+
+### Steps
+
 - Open Powershell with administrator privileges and run the following scripts
 
 ```ps1
