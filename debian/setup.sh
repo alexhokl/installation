@@ -21,15 +21,18 @@ HARDWARE_TYPE=$(uname -i)  # unknown for crostini or virtual machine
 echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee $SOURCE_LIST_DIR/google-chrome.list
 
 # gcloud
+echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee $SOURCE_LIST_DIR/google-cloud-sdk.list
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a $SOURCE_LIST_DIR/google-cloud-sdk.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
 # docker
 echo "deb [arch=amd64] https://download.docker.com/linux/${DISTRIBUTION} ${DISTRIBUTION_RELEASE} stable" | sudo tee -a $SOURCE_LIST
 curl -fsSL https://download.docker.com/linux/${DISTRIBUTION}/gpg | sudo apt-key add -
 
 # kubectl
-echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a $SOURCE_LIST
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee $SOURCE_LIST_DIR/kubernetes.list
 
 # yubico
 # echo "deb http://ppa.launchpad.net/yubico/stable/ubuntu wily main" | sudo tee -a $SOURCE_LIST
