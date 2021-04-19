@@ -75,6 +75,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 	nnn \
 	openssh-server \
 	pkg-config \
+	powershell \
 	postgresql-client \
 	postgresql-client-common \
 	printer-driver-cups-pdf \
