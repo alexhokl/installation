@@ -85,6 +85,14 @@ install_git() {
 	BASH_COMPLETION_DIR=/etc/bash_completion.d
   source $HOME/git/installation/versions-on-github
 
+	if [[ -n "$(which git)" ]]; then
+		CURRENT_VERSION=$(git version | awk '{ print $3 }')
+	fi
+	if [ "$CURRENT_VERSION" == "$VERSION_GIT_GIT" ]; then
+		echo "git ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
+
 	sudo apt purge -y git git-core
 	sudo apt autoremove -y
 	hash -r
@@ -106,6 +114,14 @@ install_docker_compose() {
   BASH_COMPLETION_DIR=/etc/bash_completion.d
   source $HOME/git/installation/versions-on-github
 
+	if [[ -n "$(which docker-compose)" ]]; then
+		CURRENT_VERSION=$(docker-compose version | grep docker-compose | awk '{ gsub(",","",$3); print $3 }')
+	fi
+	if [ "$CURRENT_VERSION" == "$VERSION_DOCKER_COMPOSE" ]; then
+		echo "docker-compose ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
+
 	sudo curl -o $LOCAL_BIN/docker-compose -sSL "https://github.com/docker/compose/releases/download/${VERSION_DOCKER_COMPOSE}/docker-compose-$(uname -s)-$(uname -m)"
   sudo curl -o $BASH_COMPLETION_DIR/docker-compose -sS https://raw.githubusercontent.com/docker/compose/${VERSION_DOCKER_COMPOSE}/contrib/completion/bash/docker-compose
   sudo chmod a+x $LOCAL_BIN/docker-compose
@@ -114,6 +130,14 @@ install_docker_compose() {
 install_ruby() {
 	_CURRENT_DIR=$PWD
   source $HOME/git/installation/versions-on-github
+
+	if [[ -n "$(which rbenv)" ]]; then
+		CURRENT_VERSION=$(rbenv version | awk '{ print $1 }')
+	fi
+	if [ "$CURRENT_VERSION" == "$VERSION_RUBY_RUBY" ]; then
+		echo "ruby ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
 
 	if [ ! -d $HOME/.rbenv ]; then
 		git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
@@ -142,6 +166,14 @@ install_python() {
 	VERSION_PYTHON=3.9.3
 	VERSION_PYTHON_MAJOR=3.9
 
+	if [[ -n "$(which python)" ]]; then
+		CURRENT_VERSION=$(python --version | awk '{ print $2 }')
+	fi
+	if [ "$CURRENT_VERSION" == "$VERSION_PYTHON" ]; then
+		echo "python ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
+
 	_CURRENT_DIR=$PWD
 	INSTALL_DIR=$(mktemp -d)
 	LOCAL_BIN=/usr/local/bin
@@ -162,6 +194,14 @@ install_python() {
 
 install_go() {
 	VERSION_GOLANG=1.16.3
+
+	if [[ -n "$(which go)" ]]; then
+		CURRENT_VERSION=$(go version | awk '{ gsub("go","",$3); print $3 }')
+	fi
+	if [ "$CURRENT_VERSION" == "$VERSION_GOLANG" ]; then
+		echo "go ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
 
 	GO_BIN_DIR=$HOME/git/bin
 
@@ -212,13 +252,21 @@ install_sc_im() {
 }
 
 install_vault() {
+	if [[ -n "$(which vault)" ]]; then
+		CURRENT_VERSION=$(vault version | awk '{ gsub("v","",$2); print $2 }')
+	fi
 	INSTALL_DIR=$(mktemp -d)
 	LOCAL_BIN=/usr/local/bin
   source $HOME/git/installation/versions-on-github
 
+	if [ "$CURRENT_VERSION" == "$VERSION_HASHICORP_VAULT" ]; then
+		echo "vault ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
+
 	curl -o $INSTALL_DIR/vault.zip -sSL https://releases.hashicorp.com/vault/${VERSION_HASHICORP_VAULT}/vault_${VERSION_HASHICORP_VAULT}_linux_amd64.zip
-	unzip $INSTALL_DIR/vault.zip
-	sudo /bin/mv -f vault $LOCAL_BIN/
+	unzip $INSTALL_DIR/vault.zip -d $INSTALL_DIR/
+	sudo /bin/mv -f $INSTALL_DIR/vault $LOCAL_BIN/
 	$LOCAL_BIN/vault -autocomplete-install
 }
 
@@ -265,9 +313,18 @@ install_android_studio() {
 }
 
 install_popeye() {
+	if [[ -n "$(which popeye)" ]]; then
+		CURRENT_VERSION=$(popeye version | grep Version | awk '{ print $2 }')
+	fi
+
 	INSTALL_DIR=$(mktemp -d)
 	LOCAL_BIN=/usr/local/bin
   source $HOME/git/installation/versions-on-github
+
+	if [ "$CURRENT_VERSION" == "$VERSION_DERAILED_POPEYE" ]; then
+		echo "popeye ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
 
 	curl -o $INSTALL_DIR/popeye.tar.gz -sSL https://github.com/derailed/popeye/releases/download/v${VERSION_DERAILED_POPEYE}/popeye_Linux_x86_64.tar.gz
 	tar xvzf $INSTALL_DIR/popeye.tar.gz -C $INSTALL_DIR/
@@ -275,9 +332,18 @@ install_popeye() {
 }
 
 install_k9s() {
+	if [[ -n "$(which k9s)" ]]; then
+		CURRENT_VERSION=$(k9s version | grep Version | awk '{ gsub("v", "", $2); print $2 }')
+	fi
+
 	INSTALL_DIR=$(mktemp -d)
 	LOCAL_BIN=/usr/local/bin
   source $HOME/git/installation/versions-on-github
+
+	if [ "$CURRENT_VERSION" == "$VERSION_DERAILED_K9S" ]; then
+		echo "k9s ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
 
 	curl -o $INSTALL_DIR/k9s.tar.gz -sSL https://github.com/derailed/k9s/releases/download/v${VERSION_DERAILED_K9S}/k9s_Linux_x86_64.tar.gz
 	tar xvzf $INSTALL_DIR/k9s.tar.gz -C $INSTALL_DIR/
@@ -299,8 +365,17 @@ install_flutter() {
 }
 
 install_nvim() {
+	if [[ -n "$(which nvim)" ]]; then
+		CURRENT_VERSION=$(nvim --version | grep ^NVIM | awk '{ gsub("v", "", $2); print $2 }')
+	fi
+
 	INSTALL_DIR=$(mktemp -d)
   source $HOME/git/installation/versions-on-github
+
+	if [ "$CURRENT_VERSION" == "$VERSION_NEOVIM_NEOVIM" ]; then
+		echo "nvim ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
 
 	curl -o $INSTALL_DIR/nvim.appimage -sSL https://github.com/neovim/neovim/releases/download/v${VERSION_NEOVIM_NEOVIM}/nvim.appimage
 	chmod u+x $INSTALL_DIR/nvim.appimage
@@ -324,8 +399,17 @@ install_slack() {
 }
 
 install_bat() {
+	if [[ -n "$(which bat)" ]]; then
+		CURRENT_VERSION=$(bat --version | awk '{ print $2 }')
+	fi
+
 	INSTALL_DIR=$(mktemp -d)
   source $HOME/git/installation/versions-on-github
+
+	if [ "$CURRENT_VERSION" == "$VERSION_SHARKDP_BAT" ]; then
+		echo "bat ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
 
 	curl -o $INSTALL_DIR/bat.deb -sSL https://github.com/sharkdp/bat/releases/download/v${VERSION_SHARKDP_BAT}/bat-musl_${VERSION_SHARKDP_BAT}_amd64.deb
 	sudo dpkg -i $INSTALL_DIR/bat.deb
@@ -349,24 +433,51 @@ install_hexyl() {
 }
 
 install_octant() {
+	if [[ -n "$(which step)" ]]; then
+		CURRENT_VERSION=$(octant version | grep Version | awk '{ print $2 }')
+	fi
+
 	INSTALL_DIR=$(mktemp -d)
   source $HOME/git/installation/versions-on-github
+
+	if [ "$CURRENT_VERSION" == "$VERSION_VMWARE__TANZU_OCTANT" ]; then
+		echo "octant ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
 
 	curl -o $INSTALL_DIR/octant.deb -sSL https://github.com/vmware-tanzu/octant/releases/download/v${VERSION_VMWARE__TANZU_OCTANT}/octant_${VERSION_VMWARE__TANZU_OCTANT}_Linux-64bit.deb
 	sudo dpkg -i $INSTALL_DIR/octant.deb
 }
 
 install_step() {
+	if [[ -n "$(which step)" ]]; then
+		CURRENT_VERSION=$(step --version | grep Smallstep | awk '{ gsub("CLI/", "", $2); print $2 }')
+	fi
+
 	INSTALL_DIR=$(mktemp -d)
   source $HOME/git/installation/versions-on-github
+
+	if [ "$CURRENT_VERSION" == "$VERSION_SMALLSTEP_CLI" ]; then
+		echo "step ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
 
 	curl -o $INSTALL_DIR/step.deb -sSL https://github.com/smallstep/cli/releases/download/v${VERSION_SMALLSTEP_CLI}/step-cli_${VERSION_SMALLSTEP_CLI}_amd64.deb
 	sudo dpkg -i $INSTALL_DIR/step.deb
 }
 
 install_minikube() {
+	if [[ -n "$(which minikube)" ]]; then
+		CURRENT_VERSION=$(minikube version | grep minikube | awk '{ gsub("v", "", $3); print $3 }')
+	fi
+
 	INSTALL_DIR=$(mktemp -d)
   source $HOME/git/installation/versions-on-github
+
+	if [ "$CURRENT_VERSION" == "$VERSION_KUBERNETES_MINIKUBE" ]; then
+		echo "minikube ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
 
 	curl -o $INSTALL_DIR/minikube.deb -sSL https://storage.googleapis.com/minikube/releases/latest/minikube_${VERSION_KUBERNETES_MINIKUBE}-0_amd64.deb
 	sudo dpkg -i $INSTALL_DIR/minikube.deb
@@ -407,8 +518,17 @@ install_speedtest() {
 }
 
 install_stern() {
+	if [[ -n "$(which stern)" ]]; then
+		CURRENT_VERSION=$(stern --version | awk '{ print $3 }')
+	fi
+
 	LOCAL_BIN=/usr/local/bin
   source $HOME/git/installation/versions-on-github
+
+	if [ "$CURRENT_VERSION" == "$VERSION_WERCKER_STERN" ]; then
+		echo "stern ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
 
 	sudo curl -o $LOCAL_BIN/stern -sSL https://github.com/wercker/stern/releases/download/${VERSION_WERCKER_STERN}/stern_linux_amd64
 	sudo chmod a+x $LOCAL_BIN/stern
@@ -461,9 +581,18 @@ install_gh() {
 }
 
 install_terraform() {
+	if [[ -n "$(which terraform)" ]]; then
+		CURRENT_VERSION=$(terraform version | grep Terraform | awk '{ gsub("v", "", $2); print $2 }')
+	fi
+
 	LOCAL_BIN=/usr/local/bin
 	INSTALL_DIR=$(mktemp -d)
   source $HOME/git/installation/versions-on-github
+
+	if [ "$CURRENT_VERSION" == "$VERSION_HASHICORP_TERRAFORM" ]; then
+		echo "terraform ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
 
 	curl -o $INSTALL_DIR/terraform.zip -sSL https://releases.hashicorp.com/terraform/${VERSION_HASHICORP_TERRAFORM}/terraform_${VERSION_HASHICORP_TERRAFORM}_linux_amd64.zip
 	unzip $INSTALL_DIR/terraform.zip -d $INSTALL_DIR/
@@ -508,8 +637,17 @@ install_krew() {
 }
 
 install_kind() {
+	if [[ -n "$(which kind)" ]]; then
+		CURRENT_VERSION=$(kind version | awk '{ gsub("v", "", $2); print $2 }')
+	fi
+
 	INSTALL_DIR=$(mktemp -d)
   source $HOME/git/installation/versions-on-github
+
+	if [ "$CURRENT_VERSION" == "$VERSION_KUBERNETES__SIGS_KIND" ]; then
+		echo "kind ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
 
 	curl -o $INSTALL_DIR/kind -sSL https://kind.sigs.k8s.io/dl/v${VERSION_KUBERNETES__SIGS_KIND}/kind-$(uname)-amd64
 	chmod +x $INSTALL_DIR/kind
@@ -523,11 +661,23 @@ install_code_server() {
 install_ripgrep() {
 	DISTRIBUTION=$(. /etc/os-release; echo $ID)
 	if [ "ubuntu" = ${DISTRIBUTION} ]; then
+		if [[ -n "$(which rg)" ]]; then
+			CURRENT_VERSION=$(rg --version | grep ripgrep | awk '{ print $2 }')
+		fi
+
 		INSTALL_DIR=$(mktemp -d)
 		source $HOME/git/installation/versions-on-github
 
+		if [ "$CURRENT_VERSION" == "$VERSION_BURNTSUSHI_RIPGREP" ]; then
+			echo "ripgrep ($CURRENT_VERSION) is up-to-date."
+			return
+		fi
+
 		curl -o $INSTALL_DIR/ripgrep.deb -sSL https://github.com/BurntSushi/ripgrep/releases/download/${VERSION_BURNTSUSHI_RIPGREP}/ripgrep_${VERSION_BURNTSUSHI_RIPGREP}_amd64.deb
 		sudo dpkg -i $INSTALL_DIR/ripgrep.deb
+	else
+		echo Please use apt to update ripgrep.
+		return
 	fi
 }
 
@@ -545,9 +695,19 @@ install_redis_cli() {
 }
 
 install_protoc() {
+	if [[ -n "$(which protoc)" ]]; then
+		CURRENT_VERSION=$(protoc --version | awk '{ print $2 }')
+	fi
+
 	INSTALL_DIR=$(mktemp -d)
 	LOCAL_BIN=/usr/local/bin
   source $HOME/git/installation/versions-on-github
+
+	if [ "$CURRENT_VERSION" == "$VERSION_PROTOCOLBUFFERS_PROTOBUF" ]; then
+		echo "protoc ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
+
 	curl -o $INSTALL_DIR/protoc.zip -sSL https://github.com/protocolbuffers/protobuf/releases/download/v${VERSION_PROTOCOLBUFFERS_PROTOBUF}/protoc-${VERSION_PROTOCOLBUFFERS_PROTOBUF}-linux-x86_64.zip
 	unzip $INSTALL_DIR/protoc.zip -d $INSTALL_DIR/
 	sudo /bin/mv -f $INSTALL_DIR/bin/protoc $LOCAL_BIN/
@@ -561,9 +721,19 @@ install_protoc() {
 }
 
 install_git_sizer() {
+	if [[ -n "$(which git-sizer)" ]]; then
+		CURRENT_VERSION=$(git-sizer --version | awk '{ print $3 }')
+	fi
+
 	INSTALL_DIR=$(mktemp -d)
 	LOCAL_BIN=/usr/local/bin
   source $HOME/git/installation/versions-on-github
+
+	if [ "$CURRENT_VERSION" == "$VERSION_GITHUB_GIT__SIZER" ]; then
+		echo "git-sizer ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
+
 	curl -o $INSTALL_DIR/git-sizer.zip -sSL https://github.com/github/git-sizer/releases/download/v${VERSION_GITHUB_GIT__SIZER}/git-sizer-${VERSION_GITHUB_GIT__SIZER}-linux-amd64.zip
 	unzip $INSTALL_DIR/git-sizer.zip -d $INSTALL_DIR/
 	sudo /bin/mv -f $INSTALL_DIR/git-sizer $LOCAL_BIN/
@@ -586,8 +756,17 @@ install_go_packages() {
 }
 
 install_kompose() {
+	if [[ -n "$(which kompose)" ]]; then
+		CURRENT_VERSION=$(kompose version | awk '{ print $1 }')
+	fi
+
 	LOCAL_BIN=/usr/local/bin
   source $HOME/git/installation/versions-on-github
+
+	if [ "$CURRENT_VERSION" == "$VERSION_KUBERNETES_KOMPOSE" ]; then
+		echo "kompose ($CURRENT_VERSION) is up-to-date."
+		return
+	fi
 
 	sudo curl -o $LOCAL_BIN/kompose -sSL https://github.com/kubernetes/kompose/releases/download/v${VERSION_KUBERNETES_KOMPOSE}/kompose-linux-amd64
 	sudo chmod +x $LOCAL_BIN/kompose
@@ -599,5 +778,5 @@ install_gitbatch() {
   source $HOME/git/installation/versions-on-github
 	curl -o $INSTALL_DIR/gitbatch.tar.gz -sSL https://github.com/isacikgoz/gitbatch/releases/download/v${VERSION_ISACIKGOZ_GITBATCH}/gitbatch_${VERSION_ISACIKGOZ_GITBATCH}_linux_amd64.tar.gz
 	tar xvzf $INSTALL_DIR/gitbatch.tar.gz -C $INSTALL_DIR/
-	sudo mv $INSTALL_DIR/gitbatch $LOCAL_BIN/
+	sudo mv -f $INSTALL_DIR/gitbatch $LOCAL_BIN/
 }
