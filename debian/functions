@@ -421,7 +421,7 @@ install_azure_data_studio() {
 	LINK=$(curl -sL https://docs.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio | grep fwlink | grep "\.deb" | tail -n 1 | cut -d '"' -f 2)
 	curl -o $INSTALL_DIR/azuredatastudio.deb -sSL $LINK
 	sudo dpkg -i $INSTALL_DIR/azuredatastudio.deb
-	cat $HOME/git/installation/azuredatastudio.extensions | xargs -d ' ' /usr/bin/azuredatastudio --force --install-extension
+	cat $HOME/git/installation/azuredatastudio.extensions | xargs -n 1 /usr/bin/azuredatastudio --force --install-extension
 }
 
 install_hexyl() {
