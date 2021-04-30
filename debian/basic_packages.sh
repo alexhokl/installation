@@ -89,6 +89,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 	sshfs \
 	strace \
 	tailscale \
+	tshark \
 	tmux \
 	translate-shell \
 	tree \

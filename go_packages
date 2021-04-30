@@ -3,6 +3,7 @@ github.com/axw/gocov/gocov
 github.com/cjbassi/gotop
 github.com/davecgh/go-spew/spew
 github.com/davecheney/httpstat
+github.com/gcla/termshark/v2/cmd/termshark
 github.com/go-swagger/go-swagger
 github.com/gohugoio/hugo
 github.com/google/gops

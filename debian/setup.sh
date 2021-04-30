@@ -92,6 +92,7 @@ if [ "unknown" != "$HARDWARE_TYPE" ]; then
 fi
 
 sudo usermod -aG docker $USER
+sudo usermod -a -G wireshark $USER
 sudo adduser $USER libvirt
 
 source $HOME/git/installation/versions-on-github
