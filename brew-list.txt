@@ -1,4 +1,3 @@
-awscli
 azure-cli
 bash-completion
 bat

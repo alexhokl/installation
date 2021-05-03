@@ -1,4 +1,3 @@
-awscli
 git+https://github.com/jeffkaufman/icdiff.git
 http-prompt
 mssql-cli
