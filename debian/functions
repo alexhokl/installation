@@ -784,9 +784,17 @@ install_gitbatch() {
 }
 
 install_awscli() {
+	_CURRENT_PATH=$(which aws)
+	if [[ -n "$_CURRENT_PATH" ]]; then
+		CURRENT_VERSION=$(aws --version | awk '{ gsub("aws-cli/","",$1); print $1 }')
+	fi
 	INSTALL_DIR=$(mktemp -d)
 	LOCAL_BIN=/usr/local/bin
 	curl -sSL https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o $INSTALL_DIR/aws.zip
 	unzip $INSTALL_DIR/aws.zip -d $INSTALL_DIR/
-  sudo $INSTALL_DIR/aws/install
+	if [[ -n "$_CURRENT_PATH" ]]; then
+		sudo $INSTALL_DIR/aws/install --update
+	else
+		sudo $INSTALL_DIR/aws/install
+	fi
 }
