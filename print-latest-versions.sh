@@ -2,11 +2,11 @@
 
 github-latest-release ()
 {
-	if [ -z "$1" ]; then
+  if [ -z "$1" ]; then
     echo "No source repo specified"
     return
-	fi
-	_status_code=$(curl -s -o /dev/null -I -w "%{http_code}" https://api.github.com/repos/${1}/releases/latest)
+  fi
+  _status_code=$(curl -s -o /dev/null -I -w "%{http_code}" https://api.github.com/repos/${1}/releases/latest)
   if [ "${_status_code}" != "404" ]; then
 		curl -s https://api.github.com/repos/${1}/releases/latest | jq -r '.tag_name'
 		return
