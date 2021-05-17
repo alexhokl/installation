@@ -69,6 +69,11 @@ curl -fsSL https://pkgs.tailscale.com/stable/${DISTRIBUTION}/${DISTRIBUTION_RELE
 curl -fsSL https://repo.protonvpn.com/debian/public_key.asc | sudo apt-key add -
 sudo add-apt-repository 'deb https://repo.protonvpn.com/debian unstable main'
 
+# helm
+curl -sSL https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee $SOURCE_LIST_DIR/helm-stable-debian.list
+sudo apt install helm
+
 sudo apt update
 sudo apt -y upgrade
 
