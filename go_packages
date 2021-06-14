@@ -19,4 +19,5 @@ github.com/russross/blackfriday-tool
 github.com/shurcooL/markdownfmt
 github.com/spf13/cobra/cobra
 github.com/unidoc/unidoc
+github.com/zricethezav/gitleaks/v7
 honnef.co/go/tools/cmd/staticcheck
