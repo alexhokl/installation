@@ -10,7 +10,6 @@ update_all() {
 	install_octant
 	install_stern
 	install_sampler
-	install_minikube
 	install_git
 	install_docker_compose
 	install_ruby
@@ -38,7 +37,6 @@ install_all() {
 	install_hexyl
 	install_octant
 	install_step
-	install_minikube
 	install_python
 	install_nvim
 	install_flutter
@@ -466,23 +464,6 @@ install_step() {
 
 	curl -o $INSTALL_DIR/step.deb -sSL https://github.com/smallstep/cli/releases/download/v${VERSION_SMALLSTEP_CLI}/step-cli_${VERSION_SMALLSTEP_CLI}_amd64.deb
 	sudo dpkg -i $INSTALL_DIR/step.deb
-}
-
-install_minikube() {
-	if [[ -n "$(which minikube)" ]]; then
-		CURRENT_VERSION=$(minikube version | grep minikube | awk '{ gsub("v", "", $3); print $3 }')
-	fi
-
-	INSTALL_DIR=$(mktemp -d)
-  source $HOME/git/installation/versions-on-github
-
-	if [ "$CURRENT_VERSION" == "$VERSION_KUBERNETES_MINIKUBE" ]; then
-		echo "minikube ($CURRENT_VERSION) is up-to-date."
-		return
-	fi
-
-	curl -o $INSTALL_DIR/minikube.deb -sSL https://storage.googleapis.com/minikube/releases/latest/minikube_${VERSION_KUBERNETES_MINIKUBE}-0_amd64.deb
-	sudo dpkg -i $INSTALL_DIR/minikube.deb
 }
 
 install_lolcat() {
