@@ -77,6 +77,7 @@ install_all() {
 	install_kompose
 	install_gitbatch
 	install_awscli
+	install_another_redis_desktop_manager
 }
 
 install_git() {
@@ -778,4 +779,13 @@ install_awscli() {
 	else
 		sudo $INSTALL_DIR/aws/install
 	fi
+}
+
+install_another_redis_desktop_manager() {
+	INSTALL_DIR=$(mktemp -d)
+  source $HOME/git/installation/versions-on-github
+
+	curl -o $INSTALL_DIR/another-redis-desktop-manager -sSL https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}/Another-Redis-Desktop-Manager.${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}.AppImage
+	chmod u+x $INSTALL_DIR/another-redis-desktop-manager
+	sudo /bin/mv -f $INSTALL_DIR/another-redis-desktop-manager /usr/bin/
 }
