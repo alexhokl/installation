@@ -50,8 +50,8 @@ echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" |
 curl -sS https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 
 # yarn
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee -a $SOURCE_LIST
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee $SOURCE_LIST_DIR/yarn.list
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
 
 # signal
 echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a $SOURCE_LIST
