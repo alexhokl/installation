@@ -81,7 +81,7 @@ install_all() {
 }
 
 install_git() {
-	_CURRENT_DIR=$PWD
+	pushd
 	INSTALL_DIR=$(mktemp -d)
 	BASH_COMPLETION_DIR=/etc/bash_completion.d
   source $HOME/git/installation/versions-on-github
@@ -106,7 +106,7 @@ install_git() {
 
 	sudo curl -o $BASH_COMPLETION_DIR/git-completion.bash -sS https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
-	cd $_CURRENT_DIR
+	popd
 }
 
 install_docker_compose() {
@@ -129,7 +129,7 @@ install_docker_compose() {
 }
 
 install_ruby() {
-	_CURRENT_DIR=$PWD
+	pushd
   source $HOME/git/installation/versions-on-github
 
 	if [[ -n "$(which rbenv)" ]]; then
@@ -160,7 +160,7 @@ install_ruby() {
 	$HOME/.rbenv/versions/$VERSION_RUBY_RUBY/bin/gem install bundler
 	$HOME/.rbenv/versions/$VERSION_RUBY_RUBY/bin/gem install travis
 
-	cd $_CURRENT_DIR
+	popd
 }
 
 install_python() {
@@ -175,7 +175,7 @@ install_python() {
 		return
 	fi
 
-	_CURRENT_DIR=$PWD
+	pushd
 	INSTALL_DIR=$(mktemp -d)
 	LOCAL_BIN=/usr/local/bin
 
@@ -188,7 +188,7 @@ install_python() {
 	sudo update-alternatives --install /usr/bin/python python $LOCAL_BIN/python${VERSION_PYTHON_MAJOR} 1
 	sudo update-alternatives --set python $LOCAL_BIN/python${VERSION_PYTHON_MAJOR}
 
-	cd $_CURRENT_DIR
+	popd
 
   python -m pip install --user -r $HOME/git/installation/requirements.txt
 }
@@ -219,7 +219,7 @@ install_go() {
 }
 
 install_vim() {
-	_CURRENT_DIR=$PWD
+	pushd
 
 	if [ -d $HOME/.vim ]; then
 		rm -rf $HOME/.vim
@@ -228,7 +228,7 @@ install_vim() {
 	cd $HOME/.vim
 	make install
 
-	cd $_CURRENT_DIR
+	popd
 }
 
 install_vscode_extensions() {
@@ -238,7 +238,7 @@ install_vscode_extensions() {
 }
 
 install_sc_im() {
-	_CURRENT_DIR=$PWD
+	pushd
 
 	git clone https://github.com/jmcnamara/libxlsxwriter.git $HOME/git/libxlsxwriter
 	cd $HOME/git/libxlsxwriter
@@ -249,7 +249,7 @@ install_sc_im() {
 	make
 	sudo make install
 
-	cd $_CURRENT_DIR
+	popd
 }
 
 install_vault() {
@@ -284,7 +284,7 @@ install_sqlpackage() {
 }
 
 install_azcopy() {
-	_CURRENT_DIR=$PWD
+	pushd
 
 	INSTALL_DIR=$(mktemp -d)
 	LOCAL_BIN=/usr/local/bin
@@ -294,7 +294,7 @@ install_azcopy() {
 	cd $INSTALL_DIR/azcopy_*
 	sudo /bin/mv -f azcopy $LOCAL_BIN/
 
-	cd $_CURRENT_DIR
+	popd
 }
 
 install_android_studio() {
@@ -352,7 +352,7 @@ install_k9s() {
 }
 
 install_flutter() {
-	_CURRENT_DIR=$PWD
+	pushd
 
 	_REPO_DIR=$HOME/git/flutter
 	if [ -d $_REPO_DIR ]; then
@@ -362,7 +362,7 @@ install_flutter() {
 	cd $_REPO_DIR
 	git checkout stable
 
-	cd $_CURRENT_DIR
+	popd
 }
 
 install_nvim() {
@@ -482,7 +482,7 @@ install_have() {
 }
 
 install_light() {
-	_CURRENT_DIR=$PWD
+	pushd
 	INSTALL_DIR=$(mktemp -d)
 	source $HOME/git/installation/versions-on-github
 
@@ -491,7 +491,7 @@ install_light() {
 	cd $INSTALL_DIR/light-*
 	./configure --with-udev && make
 	sudo make install
-	cd $_CURRENT_DIR
+	popd
 }
 
 install_speedtest() {
@@ -547,7 +547,7 @@ install_bb_pr() {
 }
 
 install_gh() {
-	_CURRENT_DIR=$PWD
+	pushd
 
 	_DIR=$HOME/git/cli
 	if [ ! -d "$_DIR" ]; then
@@ -561,7 +561,7 @@ install_gh() {
 	make
 	/bin/cp -f ./bin/gh $HOME/git/bin/
 
-	cd $_CURRENT_DIR
+	popd
 }
 
 install_terraform() {
@@ -584,7 +584,7 @@ install_terraform() {
 }
 
 install_fzf() {
-	_CURRENT_DIR=$PWD
+	pushd
 
 	_DIR=$HOME/.fzf
 	if [ ! -d "$_DIR" ]; then
@@ -596,7 +596,7 @@ install_fzf() {
 	fi
   ./install
 
-	cd $_CURRENT_DIR
+	popd
 }
 
 install_krew() {
@@ -666,7 +666,7 @@ install_ripgrep() {
 }
 
 install_redis_cli() {
-	_CURRENT_DIR=$PWD
+	pushd
 
 	INSTALL_DIR=$(mktemp -d)
 	curl -o $INSTALL_DIR/redis-stable.tar.gz -sSL http://download.redis.io/redis-stable.tar.gz
@@ -675,7 +675,7 @@ install_redis_cli() {
 	make
 	sudo make install
 
-	cd $_CURRENT_DIR
+	popd
 }
 
 install_protoc() {
