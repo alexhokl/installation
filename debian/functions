@@ -81,7 +81,7 @@ install_all() {
 }
 
 install_git() {
-	pushd
+	pushd $PWD
 	INSTALL_DIR=$(mktemp -d)
 	BASH_COMPLETION_DIR=/etc/bash_completion.d
   source $HOME/git/installation/versions-on-github
@@ -129,7 +129,7 @@ install_docker_compose() {
 }
 
 install_ruby() {
-	pushd
+	pushd $PWD
   source $HOME/git/installation/versions-on-github
 
 	if [[ -n "$(which rbenv)" ]]; then
@@ -175,7 +175,7 @@ install_python() {
 		return
 	fi
 
-	pushd
+	pushd $PWD
 	INSTALL_DIR=$(mktemp -d)
 	LOCAL_BIN=/usr/local/bin
 
@@ -219,7 +219,7 @@ install_go() {
 }
 
 install_vim() {
-	pushd
+	pushd $PWD
 
 	if [ -d $HOME/.vim ]; then
 		rm -rf $HOME/.vim
@@ -238,7 +238,7 @@ install_vscode_extensions() {
 }
 
 install_sc_im() {
-	pushd
+	pushd $PWD
 
 	git clone https://github.com/jmcnamara/libxlsxwriter.git $HOME/git/libxlsxwriter
 	cd $HOME/git/libxlsxwriter
@@ -284,7 +284,7 @@ install_sqlpackage() {
 }
 
 install_azcopy() {
-	pushd
+	pushd $PWD
 
 	INSTALL_DIR=$(mktemp -d)
 	LOCAL_BIN=/usr/local/bin
@@ -352,7 +352,7 @@ install_k9s() {
 }
 
 install_flutter() {
-	pushd
+	pushd $PWD
 
 	_REPO_DIR=$HOME/git/flutter
 	if [ -d $_REPO_DIR ]; then
@@ -482,7 +482,7 @@ install_have() {
 }
 
 install_light() {
-	pushd
+	pushd $PWD
 	INSTALL_DIR=$(mktemp -d)
 	source $HOME/git/installation/versions-on-github
 
@@ -547,7 +547,7 @@ install_bb_pr() {
 }
 
 install_gh() {
-	pushd
+	pushd $PWD
 
 	_DIR=$HOME/git/cli
 	if [ ! -d "$_DIR" ]; then
@@ -584,7 +584,7 @@ install_terraform() {
 }
 
 install_fzf() {
-	pushd
+	pushd $PWD
 
 	_DIR=$HOME/.fzf
 	if [ ! -d "$_DIR" ]; then
@@ -666,7 +666,7 @@ install_ripgrep() {
 }
 
 install_redis_cli() {
-	pushd
+	pushd $PWD
 
 	INSTALL_DIR=$(mktemp -d)
 	curl -o $INSTALL_DIR/redis-stable.tar.gz -sSL http://download.redis.io/redis-stable.tar.gz
