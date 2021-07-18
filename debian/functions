@@ -346,7 +346,7 @@ install_k9s() {
 		return
 	fi
 
-	curl -o $INSTALL_DIR/k9s.tar.gz -sSL https://github.com/derailed/k9s/releases/download/v${VERSION_DERAILED_K9S}/k9s_v${VERSION_DERAILED_K9S}_Linux_x86_64.tar.gz
+	curl -o $INSTALL_DIR/k9s.tar.gz -sSL https://github.com/derailed/k9s/releases/download/v${VERSION_DERAILED_K9S}/k9s_Linux_x86_64.tar.gz
 	tar xvzf $INSTALL_DIR/k9s.tar.gz -C $INSTALL_DIR/
 	sudo /bin/mv -f $INSTALL_DIR/k9s $LOCAL_BIN/
 }
