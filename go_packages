@@ -12,6 +12,7 @@ github.com/jstemmer/gotags
 github.com/juruen/rmapi
 github.com/kardianos/govendor
 github.com/mdempsky/gocode
+github.com/odeke-em/drive/cmd/drive
 github.com/rakyll/govalidate
 github.com/rakyll/hey
 github.com/rogpeppe/godef
