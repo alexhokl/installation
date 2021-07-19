@@ -78,6 +78,7 @@ install_all() {
 	install_gitbatch
 	install_awscli
 	install_another_redis_desktop_manager
+	install_cloudflared
 }
 
 install_git() {
@@ -788,4 +789,10 @@ install_another_redis_desktop_manager() {
 	curl -o $INSTALL_DIR/another-redis-desktop-manager -sSL https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}/Another-Redis-Desktop-Manager.${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}.AppImage
 	chmod u+x $INSTALL_DIR/another-redis-desktop-manager
 	sudo /bin/mv -f $INSTALL_DIR/another-redis-desktop-manager /usr/bin/
+}
+
+install_cloudflared() {
+	INSTALL_DIR=$(mktemp -d)
+	curl -o $INSTALL_DIR/cloudflared.deb -sSL https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb
+	sudo dpkg -i $INSTALL_DIR/cloudflared.deb
 }
