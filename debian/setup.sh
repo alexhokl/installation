@@ -43,11 +43,15 @@ echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https:/
 # echo "deb http://repository.spotify.com stable non-free" | sudo tee -a $SOURCE_LIST
 # curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
 
-# Microsdft azure-cli, dotnet core, vscode, mssql-tools
+# Microsoft azure-cli, dotnet core, vscode, mssql-tools
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ ${DISTRIBUTION_RELEASE} main" | sudo tee -a $SOURCE_LIST
 curl -sS https://packages.microsoft.com/config/${DISTRIBUTION}/${DISTRIBUTION_RELEASE_NO}/prod.list | sudo tee $SOURCE_LIST_DIR/mssql-release.list;
 echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" | sudo tee $SOURCE_LIST_DIR/vscode.list
 curl -sS https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+# Microsoft GPG keys package
+INSTALL_DIR=$(mktemp -d)
+curl -sSL https://packages.microsoft.com/config/${DISTRIBUTION}/${DISTRIBUTION_RELEASE_NO}/packages-microsoft-prod.deb -o $INSTALL_DIR/packages-microsoft-prod.deb
+sudo dpkg -i $INSTALL_DIR/packages-microsoft-prod.deb
 
 # yarn
 echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee $SOURCE_LIST_DIR/yarn.list
@@ -75,6 +79,7 @@ echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee $SOURCE_
 sudo apt install helm
 
 sudo apt update
+sudo add-apt-repository universe
 sudo apt -y upgrade
 
 curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/basic_packages.sh | bash
