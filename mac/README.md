@@ -10,7 +10,7 @@ like Windows or Linux installation). This can be resolved by
 `diskutil eraseDisk free EMPTY /dev/disk9`.)
 
 ```sh
-sh sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/Name --applicationpath /Applications/Install\ macOS\ High\ Sierra.app
+sh sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/Name
 ```
 
 Note: if directory `Applications/Install*` does not exist, one needs to visit
