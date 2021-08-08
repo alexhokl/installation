@@ -3,7 +3,6 @@
 sudo apt update
 sudo apt install -y lsb-release
 
-SOURCE_LIST=/etc/apt/sources.list
 SOURCE_LIST_DIR=/etc/apt/sources.list.d
 DISTRIBUTION=$(. /etc/os-release; echo $ID)
 DISTRIBUTION_RELEASE=$(lsb_release -cs)
@@ -27,7 +26,7 @@ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyr
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 
 # docker
-echo "deb [arch=amd64] https://download.docker.com/linux/${DISTRIBUTION} ${DISTRIBUTION_RELEASE} stable" | sudo tee -a $SOURCE_LIST
+echo "deb [arch=amd64] https://download.docker.com/linux/${DISTRIBUTION} ${DISTRIBUTION_RELEASE} stable" | sudo tee $SOURCE_LIST_DIR/docker.list
 curl -fsSL https://download.docker.com/linux/${DISTRIBUTION}/gpg | sudo apt-key add -
 
 # kubectl
@@ -35,16 +34,16 @@ sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://pack
 echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee $SOURCE_LIST_DIR/kubernetes.list
 
 # yubico
-# echo "deb http://ppa.launchpad.net/yubico/stable/ubuntu wily main" | sudo tee -a $SOURCE_LIST
-# echo "deb-src http://ppa.launchpad.net/yubico/stable/ubuntu wily main" | sudo tee -a $SOURCE_LIST
+# echo "deb http://ppa.launchpad.net/yubico/stable/ubuntu wily main" | sudo tee $SOURCE_LIST_DIR/yubico.list
+# echo "deb-src http://ppa.launchpad.net/yubico/stable/ubuntu wily main" | sudo tee -a $SOURCE_LIST_DIR/yubico.list
 # sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 3653E21064B19D134466702E43D5C49532CBA1A9
 
 # spotify
-# echo "deb http://repository.spotify.com stable non-free" | sudo tee -a $SOURCE_LIST
+# echo "deb http://repository.spotify.com stable non-free" | sudo tee $SOURCE_LIST_DIR/spotify
 # curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
 
 # Microsoft azure-cli, dotnet core, vscode, mssql-tools
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ ${DISTRIBUTION_RELEASE} main" | sudo tee -a $SOURCE_LIST
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ ${DISTRIBUTION_RELEASE} main" | sudo tee $SOURCE_LIST_DIR/azure-cli.list
 curl -sS https://packages.microsoft.com/config/${DISTRIBUTION}/${DISTRIBUTION_RELEASE_NO}/prod.list | sudo tee $SOURCE_LIST_DIR/mssql-release.list;
 echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" | sudo tee $SOURCE_LIST_DIR/vscode.list
 curl -sS https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
@@ -58,11 +57,11 @@ echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/deb
 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
 
 # signal
-echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a $SOURCE_LIST
+echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a $SOURCE_LIST_DIR/signal.list
 curl -sS https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 
 # etcher
-echo "deb https://deb.etcher.io stable etcher" | sudo tee -a $SOURCE_LIST
+echo "deb https://deb.etcher.io stable etcher" | sudo tee -a $SOURCE_LIST_DIR/etcher.list
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
 
 # tailscale
