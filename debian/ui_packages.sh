@@ -1,7 +1,6 @@
 #!/bin/bash
 
 sudo ACCEPT_EULA=Y apt install -y \
-		balena-etcher-electron \
 		byzanz \
 		code \
 		darktable \

@@ -60,10 +60,6 @@ curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /us
 echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a $SOURCE_LIST_DIR/signal.list
 curl -sS https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 
-# etcher
-echo "deb https://deb.etcher.io stable etcher" | sudo tee -a $SOURCE_LIST_DIR/etcher.list
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
-
 # tailscale
 curl -fsSL https://pkgs.tailscale.com/stable/${DISTRIBUTION}/${DISTRIBUTION_RELEASE}.gpg | sudo apt-key add -
 curl -fsSL https://pkgs.tailscale.com/stable/${DISTRIBUTION}/${DISTRIBUTION_RELEASE}.list | sudo tee $SOURCE_LIST_DIR/tailscale.list
