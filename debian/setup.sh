@@ -15,6 +15,7 @@ if [ "ubuntu" = "${DISTRIBUTION}" ]; then
 	fi
 fi
 HARDWARE_TYPE=$(uname -i)  # unknown for crostini or virtual machine
+INSTALL_DIR=$(mktemp -d)
 
 # chrome
 echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee $SOURCE_LIST_DIR/google-chrome.list
@@ -48,7 +49,6 @@ curl -sS https://packages.microsoft.com/config/${DISTRIBUTION}/${DISTRIBUTION_RE
 echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" | sudo tee $SOURCE_LIST_DIR/vscode.list
 curl -sS https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 # Microsoft GPG keys package
-INSTALL_DIR=$(mktemp -d)
 curl -sSL https://packages.microsoft.com/config/${DISTRIBUTION}/${DISTRIBUTION_RELEASE_NO}/packages-microsoft-prod.deb -o $INSTALL_DIR/packages-microsoft-prod.deb
 sudo dpkg -i $INSTALL_DIR/packages-microsoft-prod.deb
 
@@ -69,8 +69,8 @@ curl -fsSL https://pkgs.tailscale.com/stable/${DISTRIBUTION}/${DISTRIBUTION_RELE
 curl -fsSL https://pkgs.tailscale.com/stable/${DISTRIBUTION}/${DISTRIBUTION_RELEASE}.list | sudo tee $SOURCE_LIST_DIR/tailscale.list
 
 # protonvpn
-curl -fsSL https://repo.protonvpn.com/debian/public_key.asc | sudo apt-key add -
-sudo add-apt-repository 'deb https://repo.protonvpn.com/debian unstable main'
+curl -sSL https://protonvpn.com/download/protonvpn-stable-release_1.0.1-1_all.deb -o $INSTALL_DIR/protonvpn-repo.deb
+sudo dpkg -i $INSTALL_DIR/protonvpn-repo.deb
 
 # helm
 curl -sSL https://baltocdn.com/helm/signing.asc | sudo apt-key add -
