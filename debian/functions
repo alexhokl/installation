@@ -601,6 +601,8 @@ install_fzf() {
 }
 
 install_krew() {
+	pushd $PWD
+
 	set -x; cd "$(mktemp -d)" &&
   curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.{tar.gz,yaml}" &&
   tar zxvf krew.tar.gz &&
@@ -619,6 +621,8 @@ install_krew() {
   "${KREW}" install ns
   "${KREW}" install ctx
   "${KREW}" install tree
+
+	popd
 }
 
 install_kind() {
