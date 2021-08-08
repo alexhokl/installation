@@ -91,7 +91,6 @@ sudo ACCEPT_EULA=Y apt install -y \
 	tailscale \
 	tshark \
 	tmux \
-	translate-shell \
 	tree \
 	unixodbc-dev \
 	vim \
