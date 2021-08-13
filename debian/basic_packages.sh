@@ -96,6 +96,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 	unixodbc-dev \
 	vim \
 	webp \
+	wget \
 	xclip \
 	xdotool \
 	yarn=1.17.3-1 \
