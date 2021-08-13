@@ -7,7 +7,6 @@ sudo ACCEPT_EULA=Y apt install -y \
 		openvpn \
 		pptp-linux \
 		qemu-kvm \
-		ufw \
 		virt-manager \
 		xl2tpd
 

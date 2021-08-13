@@ -92,6 +92,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 	tshark \
 	tmux \
 	tree \
+	ufw \
 	unixodbc-dev \
 	vim \
 	webp \
