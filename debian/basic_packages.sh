@@ -67,6 +67,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 	libxml2-dev \
 	libyaml-dev \
 	libzip-dev \
+	locales \
 	make \
 	mssql-tools \
 	net-tools \
