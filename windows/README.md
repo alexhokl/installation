@@ -8,6 +8,8 @@
 - Open Powershell with administrator privileges and run the following scripts
 
 ```ps1
+Set-ExecutionPolicy AllSigned
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://boxstarter.org/bootstrapper.ps1')); Get-Boxstarter -Force
 $computername = "alex-windows"
 Install-BoxstarterPackage -PackageName https://raw.githubusercontent.com/alexhokl/installation/master/windows/boxstarter.ps1 -DisableReboots
