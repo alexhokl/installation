@@ -5,7 +5,7 @@
 
 ### Steps
 
-- Open Powershell with administrator privileges and run the following scripts
+- Open Powershell (v6 but not v7) with administrator privileges and run the following scripts
 
 ```ps1
 Set-ExecutionPolicy AllSigned
