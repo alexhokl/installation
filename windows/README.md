@@ -48,7 +48,6 @@ Open Powershell with administrator privileges and run the following scripts
 
 ```sh
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-wsl --set-default-version 2
 ```
 
 Open Powershell as a normal user and run the following scripts
