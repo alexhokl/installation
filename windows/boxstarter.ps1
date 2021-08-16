@@ -56,6 +56,7 @@ choco install microsoft-windows-terminal
 choco install oh-my-posh
 choco install cascadoacode
 choco install nodejs
+choco install python3
 
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---
