@@ -8,6 +8,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 	autoconf \
 	automake \
 	azure-cli \
+	bash-completion \
 	bison \
 	build-essential \
 	calcurse \
