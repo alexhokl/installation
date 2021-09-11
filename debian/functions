@@ -195,7 +195,7 @@ install_python() {
 }
 
 install_go() {
-	VERSION_GOLANG=1.16.3
+	VERSION_GOLANG=1.17.1
 
 	if [[ -n "$(which go)" ]]; then
 		CURRENT_VERSION=$(go version | awk '{ gsub("go","",$3); print $3 }')
