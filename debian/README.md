@@ -57,7 +57,7 @@ following.
 
 ```sh
 if [ "debian" = $(. /etc/os-release; echo $ID) ]; then
-    sudo apt install -y apt-transport-https ca-certificates curl dirmngr --no-install-recommends;
+    sudo apt install -y apt-transport-https --no-install-recommends;
 else
     sudo apt install -y apt-transport-https curl --no-install-recommends;
 fi
