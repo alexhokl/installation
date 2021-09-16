@@ -56,11 +56,8 @@ following.
 ### General
 
 ```sh
-if [ "debian" = $(. /etc/os-release; echo $ID) ]; then
-    sudo apt install -y apt-transport-https --no-install-recommends;
-else
-    sudo apt install -y apt-transport-https curl --no-install-recommends;
-fi
+sudo apt update
+sudo apt install -y apt-transport-https --no-install-recommends
 curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/setup.sh | bash
 shutdown -r now
 ```

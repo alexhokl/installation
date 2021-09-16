@@ -3,7 +3,7 @@
 sudo apt install -y kdiff3
 sudo apt install -y odbcinst1debian2
 
-sudo ACCEPT_EULA=Y apt install -y \
+sudo ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt install -y \
 	asciinema \
 	autoconf \
 	automake \

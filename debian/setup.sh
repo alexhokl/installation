@@ -8,11 +8,7 @@ DISTRIBUTION=$(. /etc/os-release; echo $ID)
 DISTRIBUTION_RELEASE=$(lsb_release -cs)
 DISTRIBUTION_RELEASE_NO=11
 if [ "ubuntu" = "${DISTRIBUTION}" ]; then
-	if [ "focal" = "${DISTRIBUTION_RELEASE}" ]; then
-  	DISTRIBUTION_RELEASE_NO=20.04
-	else
-		DISTRIBUTION_RELEASE_NO=18.04
-	fi
+	DISTRIBUTION_RELEASE_NO=20.04
 fi
 HARDWARE_TYPE=$(uname -i)  # unknown for crostini or virtual machine
 INSTALL_DIR=$(mktemp -d)
@@ -20,7 +16,7 @@ _ARCH=$(dpkg --print-architecture)
 
 # chrome
 curl -sS https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key --keyring /usr/share/keyrings/chrome.google.gpg add -
-echo "deb [arch=$_ARCH signed-by=/usr/share/keyrings/chrome.google.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee $SOURCE_LIST_DIR/google-chrome.list
+echo "deb [arch=$_ARCH signed-by=/usr/share/keyrings/chrome.google.gpg] https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee $SOURCE_LIST_DIR/google-chrome.list
 
 # gcloud
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a $SOURCE_LIST_DIR/google-cloud-sdk.list
@@ -45,7 +41,7 @@ echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https:/
 
 # Microsoft azure-cli, dotnet core, vscode, mssql-tools
 echo "deb [arch=$_ARCH] https://packages.microsoft.com/repos/azure-cli/ ${DISTRIBUTION_RELEASE} main" | sudo tee $SOURCE_LIST_DIR/azure-cli.list
-echo "deb [arch=$_ARCH] http://packages.microsoft.com/repos/vscode stable main" | sudo tee $SOURCE_LIST_DIR/vscode.list
+echo "deb [arch=$_ARCH] https://packages.microsoft.com/repos/vscode stable main" | sudo tee $SOURCE_LIST_DIR/vscode.list
 curl -sS https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 # Microsoft GPG keys package
 curl -sSL https://packages.microsoft.com/config/${DISTRIBUTION}/${DISTRIBUTION_RELEASE_NO}/packages-microsoft-prod.deb -o $INSTALL_DIR/packages-microsoft-prod.deb
