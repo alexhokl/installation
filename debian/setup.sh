@@ -67,6 +67,8 @@ sudo dpkg -i $INSTALL_DIR/protonvpn-repo.deb
 curl -sSL https://baltocdn.com/helm/signing.asc | sudo apt-key add -
 echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee $SOURCE_LIST_DIR/helm-stable-debian.list
 
+echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debconf-set-selections
+
 sudo apt update
 sudo add-apt-repository universe
 sudo apt -y upgrade
