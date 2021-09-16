@@ -16,17 +16,18 @@ if [ "ubuntu" = "${DISTRIBUTION}" ]; then
 fi
 HARDWARE_TYPE=$(uname -i)  # unknown for crostini or virtual machine
 INSTALL_DIR=$(mktemp -d)
+_ARCH=$(dpkg --print-architecture)
 
 # chrome
-echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee $SOURCE_LIST_DIR/google-chrome.list
+curl -sS https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key --keyring /usr/share/keyrings/chrome.google.gpg add -
+echo "deb [arch=$_ARCH signed-by=/usr/share/keyrings/chrome.google.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee $SOURCE_LIST_DIR/google-chrome.list
 
 # gcloud
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a $SOURCE_LIST_DIR/google-cloud-sdk.list
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 
 # docker
-echo "deb [arch=amd64] https://download.docker.com/linux/${DISTRIBUTION} ${DISTRIBUTION_RELEASE} stable" | sudo tee $SOURCE_LIST_DIR/docker.list
+echo "deb [arch=$_ARCH] https://download.docker.com/linux/${DISTRIBUTION} ${DISTRIBUTION_RELEASE} stable" | sudo tee $SOURCE_LIST_DIR/docker.list
 curl -fsSL https://download.docker.com/linux/${DISTRIBUTION}/gpg | sudo apt-key add -
 
 # kubectl
@@ -43,8 +44,8 @@ echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https:/
 # curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
 
 # Microsoft azure-cli, dotnet core, vscode, mssql-tools
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ ${DISTRIBUTION_RELEASE} main" | sudo tee $SOURCE_LIST_DIR/azure-cli.list
-echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" | sudo tee $SOURCE_LIST_DIR/vscode.list
+echo "deb [arch=$_ARCH] https://packages.microsoft.com/repos/azure-cli/ ${DISTRIBUTION_RELEASE} main" | sudo tee $SOURCE_LIST_DIR/azure-cli.list
+echo "deb [arch=$_ARCH] http://packages.microsoft.com/repos/vscode stable main" | sudo tee $SOURCE_LIST_DIR/vscode.list
 curl -sS https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 # Microsoft GPG keys package
 curl -sSL https://packages.microsoft.com/config/${DISTRIBUTION}/${DISTRIBUTION_RELEASE_NO}/packages-microsoft-prod.deb -o $INSTALL_DIR/packages-microsoft-prod.deb
@@ -55,7 +56,7 @@ echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/deb
 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
 
 # signal
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a $SOURCE_LIST_DIR/signal.list
+echo "deb [arch=$_ARCH signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a $SOURCE_LIST_DIR/signal.list
 curl -sS https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor | sudo tee -a /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
 
 # tailscale
@@ -69,7 +70,6 @@ sudo dpkg -i $INSTALL_DIR/protonvpn-repo.deb
 # helm
 curl -sSL https://baltocdn.com/helm/signing.asc | sudo apt-key add -
 echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee $SOURCE_LIST_DIR/helm-stable-debian.list
-sudo apt install helm
 
 sudo apt update
 sudo add-apt-repository universe

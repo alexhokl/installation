@@ -34,6 +34,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 	gnupg2 \
 	google-cloud-sdk \
 	google-cloud-sdk-kpt \
+	helm \
 	hopenpgp-tools \
 	indent \
 	jq \
