@@ -6,7 +6,7 @@ sudo apt install -y lsb-release
 SOURCE_LIST_DIR=/etc/apt/sources.list.d
 DISTRIBUTION=$(. /etc/os-release; echo $ID)
 DISTRIBUTION_RELEASE=$(lsb_release -cs)
-DISTRIBUTION_RELEASE_NO=10
+DISTRIBUTION_RELEASE_NO=11
 if [ "ubuntu" = "${DISTRIBUTION}" ]; then
 	if [ "focal" = "${DISTRIBUTION_RELEASE}" ]; then
   	DISTRIBUTION_RELEASE_NO=20.04
