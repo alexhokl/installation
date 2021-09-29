@@ -124,9 +124,12 @@ install_docker_compose() {
 		return
 	fi
 
-	sudo curl -o $LOCAL_BIN/docker-compose -sSL "https://github.com/docker/compose/releases/download/${VERSION_DOCKER_COMPOSE}/docker-compose-$(uname -s)-$(uname -m)"
-  sudo curl -o $BASH_COMPLETION_DIR/docker-compose -sS https://raw.githubusercontent.com/docker/compose/${VERSION_DOCKER_COMPOSE}/contrib/completion/bash/docker-compose
-  sudo chmod a+x $LOCAL_BIN/docker-compose
+	_DOCKER_PLUGIN_DIRECTORY=$HOME/.docker/cli-plugins
+	if [ ! -d $_DOCKER_PLUGIN_DIRECTORY ]; then
+		mkdir $_DOCKER_PLUGIN_DIRECTORY
+	fi
+	curl -o $_DOCKER_PLUGIN_DIRECTORY/docker-compose -sSL "https://github.com/docker/compose/releases/download/v${VERSION_DOCKER_COMPOSE}/docker-compose-linux-amd64"
+  sudo chmod a+x $_DOCKER_PLUGIN_DIRECTORY/docker-compose
 }
 
 install_ruby() {
