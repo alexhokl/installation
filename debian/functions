@@ -740,11 +740,11 @@ install_cargo() {
 }
 
 install_cargo_packages() {
-	cat $HOME/git/installation/cargo_packages | xargs cargo install
+	cat $HOME/git/installation/cargo_packages | xargs -n 1 cargo install
 }
 
 install_go_packages() {
-	cat $HOME/git/installation/go_packages | xargs go get -u
+	cat $HOME/git/installation/go_packages | xargs -n 1 go install
 }
 
 install_kompose() {

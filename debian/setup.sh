@@ -85,12 +85,12 @@ if [ "unknown" != "$HARDWARE_TYPE" ]; then
 	sudo snap install kontena-lens --classic
 fi
 
-git clone https://github.com/alexhokl/installation $HOME/git/installation
-git clone https://github.com/alexhokl/dotfiles $HOME/git/dotfiles
-git clone https://github.com/alexhokl/notes $HOME/git/notes
+cd $HOME/git
+cat $HOME/git/installation/repo_list | xargs -n 1 git clone
 if [ "unknown" != "$HARDWARE_TYPE" ]; then
 	git clone https://github.com/vivien/i3blocks-contrib $HOME/.config/i3blocks
 fi
+cd $HOME
 
 sudo usermod -aG docker $USER
 sudo usermod -a -G wireshark $USER
