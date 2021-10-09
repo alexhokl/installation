@@ -109,6 +109,7 @@ sudo apt --fix-broken install -y
 cd $HOME/git/dotfiles
 make bin
 make dotfiles
+cp ./ssh/config $HOME/.ssh/
 cd $HOME
 
 sudo sed -i -e 's/#\ en_GB\.UTF\-8/en_GB\.UTF\-8/g' /etc/locale.gen
