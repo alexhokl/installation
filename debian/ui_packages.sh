@@ -5,6 +5,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		code \
 		darktable \
 		feh \
+		freerdp2-x11 \
 		google-chrome-stable \
 		i3 \
 		i3blocks \
