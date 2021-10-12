@@ -128,7 +128,7 @@ install_docker_compose() {
 	if [ ! -d $_DOCKER_PLUGIN_DIRECTORY ]; then
 		mkdir $_DOCKER_PLUGIN_DIRECTORY
 	fi
-	curl -o $_DOCKER_PLUGIN_DIRECTORY/docker-compose -sSL "https://github.com/docker/compose/releases/download/v${VERSION_DOCKER_COMPOSE}/docker-compose-linux-amd64"
+	curl -o $_DOCKER_PLUGIN_DIRECTORY/docker-compose -sSL "https://github.com/docker/compose/releases/download/v${VERSION_DOCKER_COMPOSE}/docker-compose-linux-x86_64"
   sudo chmod a+x $_DOCKER_PLUGIN_DIRECTORY/docker-compose
 }
 
