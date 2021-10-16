@@ -27,6 +27,7 @@ update_all() {
 	install_gitbatch
 	install_azure_data_studio
 	install_awscli
+	install_gactions
 }
 
 install_all() {
@@ -79,6 +80,7 @@ install_all() {
 	install_awscli
 	install_another_redis_desktop_manager
 	install_cloudflared
+	install_gactions
 }
 
 install_git() {
@@ -770,7 +772,7 @@ install_gitbatch() {
   source $HOME/git/installation/versions-on-github
 	curl -o $INSTALL_DIR/gitbatch.tar.gz -sSL https://github.com/isacikgoz/gitbatch/releases/download/v${VERSION_ISACIKGOZ_GITBATCH}/gitbatch_${VERSION_ISACIKGOZ_GITBATCH}_linux_amd64.tar.gz
 	tar xvzf $INSTALL_DIR/gitbatch.tar.gz -C $INSTALL_DIR/
-	sudo mv -f $INSTALL_DIR/gitbatch $LOCAL_BIN/
+	sudo /bin/mv -f $INSTALL_DIR/gitbatch $LOCAL_BIN/
 }
 
 install_awscli() {
@@ -817,3 +819,17 @@ install_translate_shell() {
 
 	popd
 }
+
+install_gactions() {
+	pushd $PWD
+
+	LOCAL_BIN=/usr/local/bin
+	INSTALL_DIR=$(mktemp -d)
+	curl -o $INSTALL_DIR/gactions.tar.gz -sS "https://dl.google.com/gactions/v3/release/gactions-sdk_linux.tar.gz?authuser=0"
+	tar xvzf $INSTALL_DIR/gactions.tar.gz -C $INSTALL_DIR/
+	sudo /bin/mv $INSTALL_DIR/aog_cli/gactions $LOCAL_BIN/
+	chmod +x $LOCAL_BIN/gactions
+
+	popd
+}
+
