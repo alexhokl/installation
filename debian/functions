@@ -28,7 +28,6 @@ update_all() {
 	install_azure_data_studio
 	install_awscli
 	install_gactions
-	install_omnisharp_roslyn
 }
 
 install_all() {
@@ -82,7 +81,6 @@ install_all() {
 	install_another_redis_desktop_manager
 	install_cloudflared
 	install_gactions
-	install_omnisharp_roslyn
 }
 
 install_git() {
@@ -827,7 +825,7 @@ install_gactions() {
 
 	LOCAL_BIN=/usr/local/bin
 	INSTALL_DIR=$(mktemp -d)
-	curl -o $INSTALL_DIR/gactions.tar.gz -sSL "https://dl.google.com/gactions/v3/release/gactions-sdk_linux.tar.gz?authuser=0"
+	curl -o $INSTALL_DIR/gactions.tar.gz -sS "https://dl.google.com/gactions/v3/release/gactions-sdk_linux.tar.gz?authuser=0"
 	tar xvzf $INSTALL_DIR/gactions.tar.gz -C $INSTALL_DIR/
 	sudo /bin/mv $INSTALL_DIR/aog_cli/gactions $LOCAL_BIN/
 	chmod +x $LOCAL_BIN/gactions
@@ -835,15 +833,3 @@ install_gactions() {
 	popd
 }
 
-install_omnisharp_roslyn() {
-	pushd $PWD
-
-  source $HOME/git/installation/versions-on-github
-	INSTALL_DIR=$(mktemp -d)
-	mkdir $INSTALL_DIR/omnisharp-roslyn
-	curl -o $INSTALL_DIR/omnisharp-roslyn.tar.gz -sSL https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v${VERSION_OMNISHARP_OMNISHARP__ROSLYN}/omnisharp-linux-x64.tar.gz
-	tar xvzf $INSTALL_DIR/omnisharp-roslyn.tar.gz -C $INSTALL_DIR/omnisharp-roslyn/
-	sudo /bin/mv $INSTALL_DIR/omnisharp-roslyn /opt/
-
-	popd
-}
