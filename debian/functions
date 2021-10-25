@@ -196,7 +196,7 @@ install_python() {
 
 	popd
 
-  python -m pip install --user -r $HOME/git/installation/requirements.txt
+  python -m pip install --upgrade --user -r $HOME/git/installation/requirements.txt
 }
 
 install_go() {
