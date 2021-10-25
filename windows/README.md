@@ -36,6 +36,8 @@ mkdir $HOME\Desktop\git
 (iwr -useb https://raw.githubusercontent.com/alexhokl/dotfiles/windows10/.gitconfig).Content.Replace("`n", "`r`n") | Set-Content -Encoding utf8 $HOME\.gitconfig
 (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/vscode-extensions.txt", "$HOME\Desktop\vscode-extensions.txt")
 Get-Content $HOME\Desktop\vscode-extensions.txt | ForEach-Object { code --install-extension $_ }
+(New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/dotnet_tools", "$HOME\Desktop\dotnet_tools.txt")
+Get-Content $HOME\Desktop\dotnet_tools.txt | ForEach-Object { dotnet tool install -g $_ }
 (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/requirements.txt", "$HOME\Desktop\requirements.txt")
 python -m pip install --user -r $HOME\Desktop\requirements.txt
 (New-Object System.Net.WebClient).DownloadFile("https://raw.githubusercontent.com/alexhokl/installation/master/go_packages", "$HOME\Desktop\go_packages")

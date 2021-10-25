@@ -59,6 +59,7 @@ install_all() {
 	install_vault
 	install_sc_im
 	install_vscode_extensions
+	install_dotnet_tools
 	install_ruby
 	install_vim
 	install_git
@@ -241,6 +242,10 @@ install_vscode_extensions() {
 	cat $HOME/git/installation/vscode-extensions.txt | xargs /usr/bin/code --force --install-extension
 	mkdir -p $HOME/.config/Code/User
 	/bin/cp -f $HOME/git/installation/vscode_settings.json $HOME/.config/Code/User/settings.json
+}
+
+install_dotnet_tools() {
+	cat $HOME/git/installation/dotnet_tools | xargs -n 1 dotnet tool install -g
 }
 
 install_sc_im() {

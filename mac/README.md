@@ -72,6 +72,7 @@ cd installation
 npm install -g $(cat npm-list.txt)
 cat go_packages | xargs go get -u
 cat vscode-extensions.txt | xargs code --install-extension
+cat dotnet_tools | xargs -n 1 dotnet tool install -g
 sudo curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose -o /usr/local/etc/bash_completion.d/docker-compose
 ```
 
