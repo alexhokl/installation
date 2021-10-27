@@ -620,17 +620,7 @@ install_krew() {
   "$KREW" install --manifest=krew.yaml --archive=krew.tar.gz &&
   "$KREW" update
 
-  "${KREW}" install get-all
-  "${KREW}" install neat
-  "${KREW}" install tail
-  "${KREW}" install view-allocations
-  "${KREW}" install view-secret
-  "${KREW}" install whoami
-  "${KREW}" install access-matrix
-  "${KREW}" install who-can
-  "${KREW}" install ns
-  "${KREW}" install ctx
-  "${KREW}" install tree
+  cat $HOME/git/installation/krew_list | xargs -n 1 "${KREW}" install
 
 	popd
 }
