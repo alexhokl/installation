@@ -225,19 +225,6 @@ install_go() {
 	sudo tar xvf $INSTALL_DIR/golang.tar.gz -C /usr/local/
 }
 
-install_vim() {
-	pushd $PWD
-
-	if [ -d $HOME/.vim ]; then
-		rm -rf $HOME/.vim
-	fi
-	git clone --recursive https://github.com/alexhokl/.vim $HOME/.vim
-	cd $HOME/.vim
-	make install
-
-	popd
-}
-
 install_vscode_extensions() {
 	cat $HOME/git/installation/vscode-extensions.txt | xargs /usr/bin/code --force --install-extension
 	mkdir -p $HOME/.config/Code/User
@@ -381,6 +368,7 @@ install_nvim() {
 		CURRENT_VERSION=$(nvim --version | grep ^NVIM | awk '{ gsub("v", "", $2); print $2 }')
 	fi
 
+	LOCAL_BIN=/usr/local/bin
 	INSTALL_DIR=$(mktemp -d)
   source $HOME/git/installation/versions-on-github
 
@@ -391,7 +379,34 @@ install_nvim() {
 
 	curl -o $INSTALL_DIR/nvim.appimage -sSL https://github.com/neovim/neovim/releases/download/v${VERSION_NEOVIM_NEOVIM}/nvim.appimage
 	chmod u+x $INSTALL_DIR/nvim.appimage
-	sudo /bin/mv -f $INSTALL_DIR/nvim.appimage /usr/bin/nvim
+	sudo /bin/mv -f $INSTALL_DIR/nvim.appimage $LOCAL_BIN/nvim
+}
+
+install_nvim6() {
+	pushd $PWD
+
+	if [ -d $HOME/git/neovim ]; then
+		rm -rf $HOME/git/neovim
+	fi
+	git clone https://github.com/neovim/neovim $HOME/git/neovim
+	cd $HOME/git/neovim
+	make CMAKE_BUILD_TYPE=RelWithDebInfo
+	sudo make install
+
+	popd
+}
+
+install_vim() {
+	pushd $PWD
+
+	if [ -d $HOME/.vim ]; then
+		rm -rf $HOME/.vim
+	fi
+	git clone --recursive https://github.com/alexhokl/.vim $HOME/.vim
+	cd $HOME/.vim
+	make install
+
+	popd
 }
 
 install_nodejs() {
