@@ -77,10 +77,11 @@ sudo ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt install -y \
 	network-manager-l2tp \
 	nnn \
 	openssh-server \
+	ovmf \
 	pkg-config \
-	powershell \
 	postgresql-client \
 	postgresql-client-common \
+	powershell \
 	printer-driver-cups-pdf \
 	protonvpn \
 	python-dev \
@@ -92,9 +93,9 @@ sudo ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt install -y \
 	sshfs \
 	strace \
 	tailscale \
-	tshark \
 	tmux \
 	tree \
+	tshark \
 	ufw \
 	unixodbc-dev \
 	vim \
