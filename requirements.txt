@@ -6,3 +6,4 @@ setuptools
 wheel
 youtube-dl
 jedi-language-server
+pulsemixer
