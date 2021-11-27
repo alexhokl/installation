@@ -4,7 +4,7 @@ update_all() {
 	install_bat
 	install_step
 	install_hexyl
-	install_nvim
+	install_nvim6
 	install_k9s
 	install_popeye
 	install_octant
