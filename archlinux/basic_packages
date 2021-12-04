@@ -38,6 +38,7 @@ jq
 k9s
 kdiff3
 kompose
+kubeconform
 kubectl
 libnm
 libtool
