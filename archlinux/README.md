@@ -46,3 +46,11 @@ After reboot, login as a normal user
 ```sh
 ./setup.sh
 ```
+
+Once the above has been completed, reboot again.
+
+The following commands can be ran to import keys from public key server.
+
+```sh
+gpg --keyserver hkps://pgp.mit.edu --recv-keys $KEYID
+```
