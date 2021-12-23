@@ -4,7 +4,7 @@ update_all() {
 	install_bat
 	install_step
 	install_hexyl
-	install_nvim6
+	install_nvim
 	install_k9s
 	install_popeye
 	install_octant
@@ -380,20 +380,6 @@ install_nvim() {
 	curl -o $INSTALL_DIR/nvim.appimage -sSL https://github.com/neovim/neovim/releases/download/v${VERSION_NEOVIM_NEOVIM}/nvim.appimage
 	chmod u+x $INSTALL_DIR/nvim.appimage
 	sudo /bin/mv -f $INSTALL_DIR/nvim.appimage $LOCAL_BIN/nvim
-}
-
-install_nvim6() {
-	pushd $PWD
-
-	if [ -d $HOME/git/neovim ]; then
-		rm -rf $HOME/git/neovim
-	fi
-	git clone https://github.com/neovim/neovim $HOME/git/neovim
-	cd $HOME/git/neovim
-	make CMAKE_BUILD_TYPE=RelWithDebInfo
-	sudo make install
-
-	popd
 }
 
 install_vim() {
