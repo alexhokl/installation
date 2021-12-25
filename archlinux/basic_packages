@@ -70,6 +70,7 @@ python-distro
 python-gobject
 python-jinja
 python-keyring
+python-pip
 python-pythondialog
 python-pyxdg
 python-systemd
