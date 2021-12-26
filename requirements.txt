@@ -7,3 +7,4 @@ wheel
 youtube-dl
 jedi-language-server
 pulsemixer
+jc
