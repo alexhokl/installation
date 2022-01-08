@@ -16,7 +16,7 @@ code-server
 stern-bin
 kind-bin
 sampler
-gitbatch
+gitbatch-bin
 aws-cli-v2-bin
 gactions
 azuredatastudio-bin
