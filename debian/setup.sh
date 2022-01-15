@@ -85,8 +85,9 @@ if [ "unknown" != "$HARDWARE_TYPE" ]; then
 	sudo snap install kontena-lens --classic
 fi
 
+mkdir -p $HOME/git
 cd $HOME/git
-cat $HOME/git/installation/repo_list | xargs -n 1 git clone
+curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/repo_list | xargs -n 1 git clone
 if [ "unknown" != "$HARDWARE_TYPE" ]; then
 	git clone https://github.com/vivien/i3blocks-contrib $HOME/.config/i3blocks
 fi
