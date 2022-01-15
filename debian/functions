@@ -799,7 +799,7 @@ install_another_redis_desktop_manager() {
 
 install_cloudflared() {
 	INSTALL_DIR=$(mktemp -d)
-	curl -o $INSTALL_DIR/cloudflared.deb -sSL https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.deb
+	curl -o $INSTALL_DIR/cloudflared.deb -sSL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
 	sudo dpkg -i $INSTALL_DIR/cloudflared.deb
 }
 
@@ -824,7 +824,7 @@ install_gactions() {
 	INSTALL_DIR=$(mktemp -d)
 	curl -o $INSTALL_DIR/gactions.tar.gz -sS "https://dl.google.com/gactions/v3/release/gactions-sdk_linux.tar.gz?authuser=0"
 	tar xvzf $INSTALL_DIR/gactions.tar.gz -C $INSTALL_DIR/
-	sudo /bin/mv $INSTALL_DIR/aog_cli/gactions $LOCAL_BIN/
+	sudo /bin/mv $INSTALL_DIR/gactions $LOCAL_BIN/
 	chmod +x $LOCAL_BIN/gactions
 
 	popd
