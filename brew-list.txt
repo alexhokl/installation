@@ -23,6 +23,7 @@ homebrew/cask/android-studio
 homebrew/cask/balenaetcher
 homebrew/cask/docker
 homebrew/cask/dotnet-sdk
+homebrew/cask/flameshot
 homebrew/cask/google-chrome
 homebrew/cask/google-cloud-sdk
 homebrew/cask/iterm2
