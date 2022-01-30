@@ -28,3 +28,4 @@ icdiff-git
 sqlpackage
 cloudflared
 krew-bin
+stern-bin
