@@ -54,3 +54,80 @@ The following commands can be ran to import keys from public key server.
 ```sh
 gpg --keyserver hkps://pgp.mit.edu --recv-keys $KEYID
 ```
+
+## Crostini
+
+Reference: [Chrome OS
+devices/Crostini](https://wiki.archlinux.org/title/Chrome_OS_devices/Crostini)
+
+Open one `crosh` window by <kbd>ctrl</kbd><kbd>alt</kbd><kbd>t</kbd>.
+
+```sh
+vmc start termina
+```
+
+Open another `crosh` window.
+
+```sh
+vmc container termina arch https://us.lxd.images.canonical.com/ archlinux/current
+```
+
+It is fine if it shows the following error message.
+
+```
+"Error: routine at frontends/vmc.rs:403
+`container_setup_user(vm_name,user_id_hash,container_name,username)` failed:
+timeout while waiting for signal"
+```
+
+```sh
+vsh termina
+lxc exec arch -- bash
+grep 1000:1000 /etc/passwd|cut -d':' -f1
+pkill -9 -u alexhokl
+groupmod -n alex alexhokl
+usermod -d /home/alex -l alex -m -c alex alexhokl
+passwd alex
+sed -i -e 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers
+sed -i -e 's/#\en_GB\.UTF\-8/en_GB\.UTF\-8/g' /etc/locale.gen
+ln -sf /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
+locale-gen
+echo LANG=en_GB.UTF-8 > /etc/locale.conf
+usermod -aG wheel alex
+exit
+```
+
+Sign out of ChromeOS so that all containers are shutdown and virtual machine is
+off. Sign back on and open one `crosh` window by
+<kbd>ctrl</kbd><kbd>alt</kbd><kbd>t</kbd>. Rename the `lxc` container of
+ArchLinux created to `penguin`.
+
+```sh
+vmc start termina
+lxc rename penguin debian
+lxc rename arch penguin
+```
+
+Sign out of ChromeOS so that all containers are shutdown and virtual machine is
+off. Sign back on and open Crostini terminal.
+
+```sh
+sudo pacman -Syu
+sudo pacman -S pacman-contrib git rsync reflector base-devel wayland xorg-xwayland
+sudo reflector -a 10 -c hk -f 5 --sort rate --save /etc/pacman.d/mirrorlist
+sudo pacman -Syu
+mkdir git
+git clone https://aur.archlinux.org/yay.git $HOME/git/yay
+cd $HOME/git/yay
+makepkg -si --noconfirm
+yay -Syu
+yay -S cros-container-guest-tools-git
+systemctl --user enable sommelier-x@0.service
+systemctl --user enable sommelier@0.service
+
+USER_SETUP_SCRIPT_FILE=/home/$USER/setup.sh
+curl -o $USER_SETUP_SCRIPT_FILE -sSL https://raw.githubusercontent.com/alexhokl/installation/master/archlinux/user_setup_crostini.sh
+chmod +x $USER_SETUP_SCRIPT_FILE
+$USER_SETUP_SCRIPT_FILE
+```
+
