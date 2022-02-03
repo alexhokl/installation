@@ -14,7 +14,7 @@ cd $HOME/git/yay
 makepkg -si --noconfirm
 cd $HOME
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/archlinux/aur_packages \
-	| yay -S --noconfirm
+	| xargs yay -S --noconfirm
 
 for r in $(curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/repo_list); do
 	n=$(basename $r)

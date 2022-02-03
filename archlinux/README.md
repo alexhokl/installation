@@ -120,8 +120,8 @@ mkdir git
 git clone https://aur.archlinux.org/yay.git $HOME/git/yay
 cd $HOME/git/yay
 makepkg -si --noconfirm
-yay -Syu
-yay -S cros-container-guest-tools-git
+yay -Syu --answerclean A --answerdiff N
+yay -S --answerclean A --answerdiff N cros-container-guest-tools-git
 systemctl --user enable sommelier-x@0.service
 systemctl --user enable sommelier@0.service
 
