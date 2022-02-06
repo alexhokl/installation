@@ -1,3 +1,11 @@
+## References
+
+- [Installation guide](https://wiki.archlinux.org/title/installation_guide)
+- [Alacritty](https://wiki.archlinux.org/title/Alacritty)
+- [Pipewire](https://wiki.archlinux.org/title/PipeWire)
+- [Efficient Encrypted UEFI-Booting Arch
+  Installation](https://gist.github.com/HardenedArray/31915e3d73a4ae45adc0efa9ba458b07)
+
 ## Partitioning
 
 Assuming the system contains 8Gb of memory.
