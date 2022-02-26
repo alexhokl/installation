@@ -20,7 +20,7 @@ curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/cargo_p
 	| xargs -n 1 cargo install
 
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/vscode-extensions.txt \
-	| xargs /usr/bin/code --force --install-extension
+	| xargs -n 1 /usr/bin/code --force --install-extension
 mkdir -p $HOME/.config/Code/User
 curl -o $HOME/.config/Code/User/settings.json -sSL https://raw.githubusercontent.com/alexhokl/installation/master/vscode_settings.json
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/dotnet_tools \

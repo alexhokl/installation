@@ -226,7 +226,7 @@ install_go() {
 }
 
 install_vscode_extensions() {
-	cat $HOME/git/installation/vscode-extensions.txt | xargs /usr/bin/code --force --install-extension
+	cat $HOME/git/installation/vscode-extensions.txt | xargs -n 1 /usr/bin/code --force --install-extension
 	mkdir -p $HOME/.config/Code/User
 	/bin/cp -f $HOME/git/installation/vscode_settings.json $HOME/.config/Code/User/settings.json
 }
