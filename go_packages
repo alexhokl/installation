@@ -20,5 +20,6 @@ github.com/russross/blackfriday-tool@master
 github.com/shurcooL/markdownfmt@master
 github.com/spf13/cobra/cobra@master
 github.com/zricethezav/gitleaks@master
+go.k6.io/k6@latest
 golang.org/x/tools/cmd/stringer@latest
 honnef.co/go/tools/cmd/staticcheck@master
