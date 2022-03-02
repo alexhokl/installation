@@ -5,7 +5,7 @@ curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/archlin
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/archlinux/ui_packages \
   | xargs -n 1 sudo pacman -S --noconfirm
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/archlinux/aur_packages \
-	| xargs yay -S --noconfirm --answerclean A --answerdiff N
+	| xargs -n 1 yay -S --noconfirm --answerclean A --answerdiff N
 
 for r in $(curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/repo_list); do
 	n=$(basename $r)
