@@ -388,7 +388,7 @@ install_vim() {
 	if [ -d $HOME/.vim ]; then
 		rm -rf $HOME/.vim
 	fi
-	git clone --recursive https://github.com/alexhokl/.vim $HOME/.vim
+	git clone --recursive -b master https://github.com/alexhokl/.vim $HOME/.vim
 	cd $HOME/.vim
 	make install
 
