@@ -1,7 +1,12 @@
 ### Creating installation media
 
-Reference: [How to create a bootable installer for macOS
-](https://support.apple.com/en-hk/HT201372)
+References:
+
+- [How to create a bootable installer for
+- macOS](https://support.apple.com/en-hk/HT201372)
+- [Revive or restore a Mac with Apple silicon using Apple
+  Configurator](https://support.apple.com/en-gb/guide/apple-configurator-mac/apdd5f3c75ad/mac)
+
 
 The USB involved should be formatted with format `Mac OS Extended`.
 (Note that, if erase cannot be done, it could be a problem with the partitioning
