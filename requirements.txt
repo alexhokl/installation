@@ -9,3 +9,4 @@ jedi-language-server
 pulsemixer
 jc
 mssql-cli
+cli-helpers
