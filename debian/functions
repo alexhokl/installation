@@ -830,3 +830,16 @@ install_gactions() {
 	popd
 }
 
+install_glow() {
+	pushd $PWD
+
+	_SRC_DIR=$HOME/git/glow
+	if [ ! -d $_SRC_DIR ]; then
+		git clone https://github.com/charmbracelet/glow.git $_SRC_DIR
+	fi
+	cd $_SRC_DIR
+	git pull
+	go install
+
+	popd
+}

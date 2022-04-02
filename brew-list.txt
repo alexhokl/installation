@@ -11,6 +11,7 @@ git
 git-lfs
 gitbatch
 github/gh/gh
+glow
 gnu-sed
 golang
 gpg2
