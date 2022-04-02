@@ -25,3 +25,4 @@ golang.org/x/tools/cmd/stringer@latest
 honnef.co/go/tools/cmd/staticcheck@master
 github.com/lighttiger2505/sqls@latest
 github.com/charmbracelet/wishlist/cmd/wishlist@latest
+github.com/charmbracelet/melt/cmd/melt@latest
