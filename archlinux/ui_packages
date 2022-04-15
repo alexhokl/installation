@@ -12,5 +12,6 @@ lightdm
 lightdm-gtk-greeter
 rofi
 scrot
+torbrowser-launcher
 xf86-video-intel
 xorg

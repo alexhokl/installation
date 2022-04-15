@@ -17,6 +17,7 @@ sudo ACCEPT_EULA=Y apt install -y \
 		rxvt-unicode-256color \
 		scrot \
 		suckless-tools \
+		torbrowser-launcher \
 		xcompmgr
 
 sudo apt install -y signal-desktop
