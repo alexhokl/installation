@@ -1,0 +1,79 @@
+#!/bin/bash
+
+update_all() {
+	sudo pacman -Syu --noconfirm;
+	yay -Syu --noconfirm --answerclean A --answerdiff N;
+	install_go_packages
+	install_cargo_packages
+	install_vscode_extensions
+	install_dotnet_tools
+	install_vim
+}
+
+install_all() {
+	install_have
+	install_sc_im
+	install_another_redis_desktop_manager
+}
+
+install_vscode_extensions() {
+	cat $HOME/git/installation/vscode-extensions.txt | xargs -n 1 /usr/bin/code --force --install-extension
+	mkdir -p $HOME/.config/Code/User
+	/bin/cp -f $HOME/git/installation/vscode_settings.json $HOME/.config/Code/User/settings.json
+}
+
+install_dotnet_tools() {
+	cat $HOME/git/installation/dotnet_tools | xargs -n 1 dotnet tool install -g
+}
+
+install_sc_im() {
+	pushd $PWD
+
+	git clone https://github.com/jmcnamara/libxlsxwriter.git $HOME/git/libxlsxwriter
+	cd $HOME/git/libxlsxwriter
+	make
+	sudo make install
+	git clone https://github.com/andmarti1424/sc-im.git $HOME/git/sc-im
+	cd $HOME/git/sc-im
+	make
+	sudo make install
+
+	popd
+}
+
+install_vim() {
+	pushd $PWD
+
+	if [ -d $HOME/.vim ]; then
+		rm -rf $HOME/.vim
+	fi
+	git clone --recursive -b master https://github.com/alexhokl/.vim $HOME/.vim
+	cd $HOME/.vim
+	make install
+
+	popd
+}
+
+install_have() {
+	LOCAL_BIN=/usr/local/bin
+
+	sudo curl -o $LOCAL_BIN/have -sSL https://misc.j3ss.co/binaries/have
+	sudo chmod a+x $LOCAL_BIN/have
+}
+
+install_cargo_packages() {
+	cat $HOME/git/installation/cargo_packages | xargs -n 1 cargo install
+}
+
+install_go_packages() {
+	cat $HOME/git/installation/go_packages | xargs -n 1 go install
+}
+
+install_another_redis_desktop_manager() {
+	INSTALL_DIR=$(mktemp -d)
+  source $HOME/git/installation/versions-on-github
+
+	curl -o $INSTALL_DIR/another-redis-desktop-manager -sSL https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}/Another-Redis-Desktop-Manager.${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}.AppImage
+	chmod u+x $INSTALL_DIR/another-redis-desktop-manager
+	sudo /bin/mv -f $INSTALL_DIR/another-redis-desktop-manager /usr/bin/
+}

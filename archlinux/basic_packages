@@ -79,6 +79,7 @@ python-pyxdg
 python-systemd
 qemu
 rclone
+redis
 ripgrep
 ruby
 rust
@@ -91,6 +92,7 @@ tailscale
 terraform
 the_silver_searcher
 tmux
+translate-shell
 tree
 ufw
 unixodbc
