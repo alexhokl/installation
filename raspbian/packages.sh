@@ -26,7 +26,6 @@ sudo ACCEPT_EULA=Y apt install -y \
 	jq \
 	kubectl \
 	libapparmor-dev \
-	libappindicator1 \
 	libc6-dev \
 	libcurl4-openssl-dev \
 	libdbusmenu-gtk4 \
@@ -34,7 +33,6 @@ sudo ACCEPT_EULA=Y apt install -y \
 	libexpat1-dev \
 	libffi-dev \
 	libgdbm-dev \
-	libindicator7 \
 	libltdl-dev \
 	libncurses5-dev \
 	libncursesw5-dev \
@@ -57,7 +55,6 @@ sudo ACCEPT_EULA=Y apt install -y \
 	nnn \
 	pkg-config \
 	printer-driver-cups-pdf \
-	python-dev \
 	ripgrep \
 	scdaemon \
 	strace \
