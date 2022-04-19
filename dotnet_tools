@@ -1,3 +1,5 @@
-dotnet-format
+altcover.visualizer
 dotnet-ef
+dotnet-format
+dotnet-reportgenerator-globaltool
 dotnet-script
