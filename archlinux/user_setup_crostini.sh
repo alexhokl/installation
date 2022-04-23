@@ -28,7 +28,7 @@ curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/dotnet_
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/krew_list \
   | xargs -n 1 kubectl krew install
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/npm-list.txt \
-	| xargs -n 1 npm i -g
+	| xargs -n 1 sudo npm i -g
 
 sudo pacman -R --noconfirm vim
 sudo ln -s /usr/bin/nvim /usr/bin/vim
