@@ -57,6 +57,7 @@ sudo ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt install -y \
 	libpq-dev \
 	libreadline-dev \
 	libreswan \
+	libsane-extras \
 	libseccomp-dev \
 	libsqlite3-dev \
 	libssl-dev \
@@ -84,6 +85,8 @@ sudo ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt install -y \
 	protonvpn \
 	python-dev \
 	rclone \
+	sane \
+	sane-utils \
 	scdaemon \
 	silversearcher-ag \
 	snapd \

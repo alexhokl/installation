@@ -83,7 +83,10 @@ redis
 ripgrep
 ruby
 rust
+sane
+sane-airscan
 signal-desktop
+simple-scan
 speedtest-cli
 sshfs
 step-cli
