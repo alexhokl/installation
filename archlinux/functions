@@ -1,12 +1,12 @@
 #!/bin/bash
 
 update_all() {
-	sudo pacman -Syu --noconfirm;
-	yay -Syu --noconfirm --answerclean A --answerdiff N;
 	install_go_packages
 	install_cargo_packages
 	install_vscode_extensions
 	install_dotnet_tools
+	sudo pacman -Syu --noconfirm;
+	yay -Syu --noconfirm --answerclean A --answerdiff N;
 	install_vim
 }
 

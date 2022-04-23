@@ -4,6 +4,12 @@ curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/archlin
   | xargs -n 1 sudo pacman -S --noconfirm
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/archlinux/ui_packages \
   | xargs -n 1 sudo pacman -S --noconfirm
+
+mkdir -p $HOME/git
+git clone https://aur.archlinux.org/yay.git $HOME/git/yay
+cd $HOME/git/yay
+makepkg -si --noconfirm
+cd $HOME
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/archlinux/aur_packages \
 	| xargs -n 1 yay -S --noconfirm --answerclean A --answerdiff N
 
