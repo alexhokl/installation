@@ -121,7 +121,7 @@ off. Sign back on and open Crostini terminal.
 
 ```sh
 sudo pacman -Syu
-sudo pacman -S pacman-contrib git rsync reflector base-devel wayland xorg-xwayland
+sudo pacman -S --noconfirm pacman-contrib git rsync reflector base-devel wayland xorg-xwayland
 sudo reflector -a 10 -c hk -f 5 --sort rate --save /etc/pacman.d/mirrorlist
 sudo pacman -Syu
 mkdir git
