@@ -42,6 +42,8 @@ cd $HOME
 mkdir -p $HOME/.ssh
 curl -o $HOME/.ssh/config -sSL https://raw.githubusercontent.com/alexhokl/dotfiles/master/ssh/config
 
+echo "StreamLocalBindUnlink yes" | sudo tee -a /etc/ssh/sshd_config
+
 systemctl enable lightdm
 systemctl enable sshd
 systemctl enable bluetooth
