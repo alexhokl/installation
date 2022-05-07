@@ -7,7 +7,6 @@ sudo ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt install -y \
 	asciinema \
 	autoconf \
 	automake \
-	azure-cli \
 	bash-completion \
 	bison \
 	build-essential \

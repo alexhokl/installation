@@ -28,6 +28,7 @@ update_all() {
 	install_azure_data_studio
 	install_awscli
 	install_gactions
+	update_python_packages
 }
 
 install_all() {
@@ -842,4 +843,9 @@ install_glow() {
 	go install
 
 	popd
+}
+
+update_python_packages() {
+	python -m pip install --upgrade --user pip
+	python -m pip install --upgrade --user -r $HOME/git/installation/requirements.txt
 }

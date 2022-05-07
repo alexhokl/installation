@@ -10,3 +10,4 @@ pulsemixer
 jc
 mssql-cli
 cli-helpers
+azure-cli

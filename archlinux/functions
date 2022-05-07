@@ -1,12 +1,13 @@
 #!/bin/bash
 
 update_all() {
+	sudo pacman -Syu --noconfirm;
+	yay -Syu --noconfirm --answerclean A --answerdiff N;
 	install_go_packages
 	install_cargo_packages
 	install_vscode_extensions
 	install_dotnet_tools
-	sudo pacman -Syu --noconfirm;
-	yay -Syu --noconfirm --answerclean A --answerdiff N;
+	update_python_packages
 	install_vim
 }
 
@@ -76,4 +77,9 @@ install_another_redis_desktop_manager() {
 	curl -o $INSTALL_DIR/another-redis-desktop-manager -sSL https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}/Another-Redis-Desktop-Manager.${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}.AppImage
 	chmod u+x $INSTALL_DIR/another-redis-desktop-manager
 	sudo /bin/mv -f $INSTALL_DIR/another-redis-desktop-manager /usr/bin/
+}
+
+update_python_packages() {
+	python -m pip install --upgrade --user pip
+	python -m pip install --upgrade --user -r $HOME/git/installation/requirements.txt
 }

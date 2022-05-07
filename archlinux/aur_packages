@@ -1,6 +1,5 @@
 unixodbc
 mssql-tools
-azure-cli
 google-cloud-sdk
 librdkafka-git
 kafkacat-git
