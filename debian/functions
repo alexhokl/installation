@@ -29,6 +29,7 @@ update_all() {
 	install_awscli
 	install_gactions
 	update_python_packages
+	install_gems
 }
 
 install_all() {
@@ -165,8 +166,6 @@ install_ruby() {
 	$HOME/.rbenv/bin/rbenv install $VERSION_RUBY_RUBY
 	$HOME/.rbenv/bin/rbenv global $VERSION_RUBY_RUBY
 	echo "gem: --no-document" > $HOME/.gemrc
-	$HOME/.rbenv/versions/$VERSION_RUBY_RUBY/bin/gem install bundler
-	$HOME/.rbenv/versions/$VERSION_RUBY_RUBY/bin/gem install travis
 
 	popd
 }
@@ -848,4 +847,8 @@ install_glow() {
 update_python_packages() {
 	python -m pip install --upgrade --user pip
 	python -m pip install --upgrade --user -r $HOME/git/installation/requirements.txt
+}
+
+install_gems() {
+	cat $HOME/git/installation/gem-list | xargs -n 1 gem install
 }
