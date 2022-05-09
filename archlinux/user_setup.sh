@@ -13,6 +13,10 @@ git clone https://aur.archlinux.org/yay.git $HOME/git/yay
 cd $HOME/git/yay
 makepkg -si --noconfirm
 cd $HOME
+yay -S --noconfirm --answerclean A --answerdiff N python39
+ln -s /usr/bin/python3.9 /usr/bin/python
+curl -s https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python -m pip install --upgrade --user pip
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/archlinux/aur_packages \
 	| xargs -n 1 yay -S --noconfirm --answerclean A --answerdiff N
 

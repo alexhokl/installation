@@ -69,15 +69,6 @@ popeye
 postgresql
 postgresql-client
 protobuf
-python-dbus
-python-distro
-python-gobject
-python-jinja
-python-keyring
-python-pip
-python-pythondialog
-python-pyxdg
-python-systemd
 qemu
 rclone
 redis
