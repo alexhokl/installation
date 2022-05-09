@@ -33,8 +33,9 @@ chmod +x setup.sh
 
 Edit `setup.sh` to fit the device names and size of swap partition.
 
-If the hard disk involved is `/dev/nvme0n1`, the memory is 16Gb and the ethernet
-interface is `eno1`, we can do the following replacements
+If the hard disk involved is `/dev/nvme0n1` (check with `lsblk`), the memory is
+16Gb and the ethernet interface is `eno1` (check with `ip a`), we can do the
+following replacements
 
 ```sh
 sed -i -e 's/sda/nvme0n1p/' setup.sh
