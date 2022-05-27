@@ -55,7 +55,7 @@ networkmanager
 networkmanager-l2tp
 networkmanager-openvpn
 nnn
-nodejs
+nodejs-lts-gallium
 noto-fonts-cjk
 npm
 ntfs-3g
