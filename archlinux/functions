@@ -16,6 +16,7 @@ install_all() {
 	install_have
 	install_sc_im
 	install_another_redis_desktop_manager
+	configure_rust
 }
 
 install_vscode_extensions() {
@@ -87,4 +88,8 @@ update_python_packages() {
 
 install_gems() {
 	cat $HOME/git/installation/gem-list | xargs -n 1 gem install
+}
+
+configure_rust() {
+	rustup install stable
 }

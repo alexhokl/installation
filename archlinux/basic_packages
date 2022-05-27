@@ -74,7 +74,7 @@ rclone
 redis
 ripgrep
 ruby
-rust
+rustup
 sane
 sane-airscan
 signal-desktop
