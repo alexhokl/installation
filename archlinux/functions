@@ -25,6 +25,10 @@ install_vscode_extensions() {
 	/bin/cp -f $HOME/git/installation/vscode_settings.json $HOME/.config/Code/User/settings.json
 }
 
+install_azure_data_studio_extensions() {
+	cat $HOME/git/installation/azuredatastudio.extensions | xargs -n 1 /usr/bin/azuredatastudio --force --install-extension
+}
+
 install_dotnet_tools() {
 	cat $HOME/git/installation/dotnet_tools | xargs -n 1 dotnet tool install -g
 }
