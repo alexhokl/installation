@@ -57,6 +57,7 @@ echo "StreamLocalBindUnlink yes" | sudo tee -a /etc/ssh/sshd_config
 systemctl enable lightdm
 systemctl enable sshd
 systemctl enable bluetooth
+systemctl enable containerd
 systemctl enable docker
 systemctl enable cups
 systemctl enable NetworkManager
