@@ -97,3 +97,13 @@ install_gems() {
 configure_rust() {
 	rustup install stable
 }
+
+install_kubelogin() {
+	INSTALL_DIR=$(mktemp -d)
+  source $HOME/git/installation/versions-on-github
+
+	curl -o $INSTALL_DIR/kubelogin.zip -sSL https://github.com/Azure/kubelogin/releases/download/v${VERSION_AZURE_KUBELOGIN}/kubelogin-linux-amd64.zip
+	unzip $INSTALL_DIR/kubelogin.zip -d $INSTALL_DIR/
+	chmod +x $INSTALL_DIR/bin/linux_amd64/kubelogin
+	sudo /bin/mv -f $INSTALL_DIR/bin/linux_amd64/kubelogin /usr/local/bin/
+}
