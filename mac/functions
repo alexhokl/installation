@@ -1,0 +1,105 @@
+#!/bin/bash
+
+update_all() {
+	brew update
+	brew upgrade
+	install_go_packages
+	install_cargo_packages
+	install_vscode_extensions
+	install_dotnet_tools
+	install_gems
+	update_python_packages
+	install_vim
+}
+
+install_all() {
+	install_have
+	install_another_redis_desktop_manager
+	configure_rust
+}
+
+install_vscode_extensions() {
+	cat $HOME/git/installation/vscode-extensions.txt | xargs -n 1 /usr/bin/code --force --install-extension
+	mkdir -p $HOME/.config/Code/User
+	/bin/cp -f $HOME/git/installation/vscode_settings.json $HOME/.config/Code/User/settings.json
+}
+
+install_azure_data_studio_extensions() {
+	cat $HOME/git/installation/azuredatastudio.extensions | xargs -n 1 /usr/bin/azuredatastudio --force --install-extension
+}
+
+install_dotnet_tools() {
+	cat $HOME/git/installation/dotnet_tools | xargs -n 1 dotnet tool install -g
+}
+
+install_vim() {
+	pushd $PWD
+
+	if [ -d $HOME/.vim ]; then
+		rm -rf $HOME/.vim
+	fi
+	git clone --recursive -b master https://github.com/alexhokl/.vim $HOME/.vim
+	cd $HOME/.vim
+	make install
+
+	popd
+}
+
+install_cargo_packages() {
+	cat $HOME/git/installation/cargo_packages | xargs -n 1 cargo install
+}
+
+install_go_packages() {
+	cat $HOME/git/installation/go_packages | xargs -n 1 go install
+}
+
+install_another_redis_desktop_manager() {
+	INSTALL_DIR=$(mktemp -d)
+  source $HOME/git/installation/versions-on-github
+
+	curl -o $INSTALL_DIR/another-redis-desktop-manager.dmg -sSL https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}/Another-Redis-Desktop-Manager-M1-arm64-${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}.dmg
+	open $INSTALL_DIR/another-redis-desktop-manager.dmg
+}
+
+update_python_packages() {
+	python -m pip install --upgrade --user pip
+	python -m pip install --upgrade --user -r $HOME/git/installation/requirements.txt
+}
+
+install_gems() {
+	cat $HOME/git/installation/gem-list | xargs -n 1 brew-gem install
+}
+
+configure_rust() {
+	rustup install stable
+}
+
+install_kubelogin() {
+	INSTALL_DIR=$(mktemp -d)
+  source $HOME/git/installation/versions-on-github
+
+	curl -o $INSTALL_DIR/kubelogin.zip -sSL https://github.com/Azure/kubelogin/releases/download/v${VERSION_AZURE_KUBELOGIN}/kubelogin-darwin-arm64.zip
+	unzip $INSTALL_DIR/kubelogin.zip -d $INSTALL_DIR/
+	chmod +x $INSTALL_DIR/bin/darwin_arm64/kubelogin
+	sudo /bin/mv -f $INSTALL_DIR/bin/darwin_arm64/kubelogin /usr/local/bin/
+}
+
+install_krew() {
+	pushd $PWD
+
+	set -x; cd "$(mktemp -d)" &&
+	OS="$(uname | tr '[:upper:]' '[:lower:]')" &&
+	ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')" &&
+	KREW="krew-${OS}_${ARCH}" &&
+	curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/${KREW}.tar.gz" &&
+	tar zxvf "${KREW}.tar.gz" &&
+	./"${KREW}" install krew
+
+	popd
+}
+
+install_krew_packages() {
+	curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/krew_list \
+		| xargs -n 1 kubectl krew install
+}
+
