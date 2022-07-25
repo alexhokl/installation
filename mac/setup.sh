@@ -2,6 +2,7 @@
 
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/mac/brew_list | xargs -n 1 brew install
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/mac/cask_list | xargs -n 1 brew install --cask
+brew link --force libpq
 brew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release
 ACCEPT_EULA=y brew install mssql-tools
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | /bin/bash
