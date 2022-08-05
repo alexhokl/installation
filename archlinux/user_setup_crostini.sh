@@ -16,8 +16,12 @@ echo -n "docker wireshark libvirt" | xargs -d ' ' -I %% -n 1 sudo usermod -aG %%
 
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/go_packages \
 	| xargs -n 1 go install
+
+rustup install stable
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/cargo_packages \
 	| xargs -n 1 cargo install
+
+python -m pip install --upgrade --user -r $HOME/git/installation/requirements.txt
 
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/vscode-extensions.txt \
 	| xargs -n 1 /usr/bin/code --force --install-extension
