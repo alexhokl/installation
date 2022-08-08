@@ -364,20 +364,20 @@ install_flutter() {
 }
 
 install_nvim() {
-	if [[ -n "$(which nvim)" ]]; then
-		CURRENT_VERSION=$(nvim --version | grep ^NVIM | awk '{ gsub("v", "", $2); print $2 }')
-	fi
-
+	# if [[ -n "$(which nvim)" ]]; then
+	# 	CURRENT_VERSION=$(nvim --version | grep ^NVIM | awk '{ gsub("v", "", $2); print $2 }')
+	# fi
+  #
 	LOCAL_BIN=/usr/local/bin
 	INSTALL_DIR=$(mktemp -d)
-  source $HOME/git/installation/versions-on-github
+  # source $HOME/git/installation/versions-on-github
+  #
+	# if [ "$CURRENT_VERSION" == "$VERSION_NEOVIM_NEOVIM" ]; then
+	# 	echo "nvim ($CURRENT_VERSION) is up-to-date."
+	# 	return
+	# fi
 
-	if [ "$CURRENT_VERSION" == "$VERSION_NEOVIM_NEOVIM" ]; then
-		echo "nvim ($CURRENT_VERSION) is up-to-date."
-		return
-	fi
-
-	curl -o $INSTALL_DIR/nvim.appimage -sSL https://github.com/neovim/neovim/releases/download/v${VERSION_NEOVIM_NEOVIM}/nvim.appimage
+	curl -o $INSTALL_DIR/nvim.appimage -sSL https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
 	chmod u+x $INSTALL_DIR/nvim.appimage
 	sudo /bin/mv -f $INSTALL_DIR/nvim.appimage $LOCAL_BIN/nvim
 }
