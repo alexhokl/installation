@@ -28,6 +28,7 @@ kafkacat
 kompose
 kubectx
 libpq
+mycli
 neovim
 node
 octant
