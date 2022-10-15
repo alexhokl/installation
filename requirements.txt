@@ -4,10 +4,10 @@ pynvim
 rtv
 setuptools
 wheel
-youtube-dl
 jedi-language-server
 pulsemixer
 jc
 mssql-cli
 cli-helpers
 azure-cli
+yt-dlp
