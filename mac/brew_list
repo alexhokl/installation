@@ -8,6 +8,7 @@ code-server
 datree
 derailed/k9s/k9s
 derailed/popeye/popeye
+docker-slim
 fzf
 git
 git-delta
