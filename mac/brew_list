@@ -32,7 +32,9 @@ libpq
 mycli
 neovim
 node
+ocaml
 octant
+opam
 openssl
 pinentry-mac
 pinentry-touchid
