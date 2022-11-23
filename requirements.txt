@@ -11,3 +11,4 @@ mssql-cli
 cli-helpers
 azure-cli
 yt-dlp
+pyopenssl
