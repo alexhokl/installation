@@ -2,6 +2,7 @@
 
 update_all() {
 	sudo pacman -Syu --noconfirm;
+	configure_rust
 	yay -Syu --noconfirm --answerclean A --answerdiff N;
 	install_datree
 	install_go_packages
