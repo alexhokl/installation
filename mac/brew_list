@@ -38,6 +38,7 @@ ocaml
 octant
 opam
 openssl
+pigz
 pinentry-mac
 pinentry-touchid
 python3
