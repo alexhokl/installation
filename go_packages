@@ -27,3 +27,4 @@ github.com/lighttiger2505/sqls@latest
 github.com/charmbracelet/wishlist/cmd/wishlist@latest
 github.com/charmbracelet/melt/cmd/melt@latest
 github.com/errata-ai/vale@latest
+golang.org/x/tools/cmd/goimports@latest
