@@ -103,3 +103,6 @@ install_krew_packages() {
 		| xargs -n 1 kubectl krew install
 }
 
+install_d2() {
+	curl -fsSL https://d2lang.com/install.sh | sh -s --
+}

@@ -138,3 +138,7 @@ install_datree() {
 	chmod +x $INSTALL_DIR/datree
 	sudo /bin/mv -f $INSTALL_DIR/datree /usr/local/bin/
 }
+
+install_d2() {
+	curl -fsSL https://d2lang.com/install.sh | sh -s --
+}
