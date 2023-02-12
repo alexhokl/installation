@@ -51,6 +51,7 @@ ruby
 sampler
 smallstep/smallstep/step
 socat
+stateful/tap/runme
 stern
 tmux
 translate-shell
