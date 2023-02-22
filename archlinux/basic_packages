@@ -20,6 +20,7 @@ docker
 docker-compose
 dotnet-sdk
 dpkg
+duf
 exfat-utils
 ffmpeg
 fzf

@@ -22,6 +22,7 @@ sudo ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt install -y \
 	dotnet-sdk-3.1 \
 	dotnet-sdk-5.0 \
 	dotnet-sdk-6.0 \
+	duf \
 	exfat-fuse \
 	exfat-utils \
 	ffmpeg \
