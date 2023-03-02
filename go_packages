@@ -29,3 +29,4 @@ github.com/charmbracelet/melt/cmd/melt@latest
 github.com/errata-ai/vale@latest
 golang.org/x/tools/cmd/goimports@latest
 github.com/cloudentity/oauth2c@latest
+github.com/maaslalani/slides@latest
