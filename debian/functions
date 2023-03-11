@@ -25,7 +25,6 @@ update_all() {
 	install_go_packages
 	install_cargo_packages
 	install_kompose
-	install_gitbatch
 	install_azure_data_studio
 	install_awscli
 	install_gactions
@@ -81,7 +80,6 @@ install_all() {
 	install_cargo
 	install_cargo_packages
 	install_kompose
-	install_gitbatch
 	install_awscli
 	install_another_redis_desktop_manager
 	install_cloudflared
@@ -763,15 +761,6 @@ install_kompose() {
 
 	sudo curl -o $LOCAL_BIN/kompose -sSL https://github.com/kubernetes/kompose/releases/download/v${VERSION_KUBERNETES_KOMPOSE}/kompose-linux-amd64
 	sudo chmod +x $LOCAL_BIN/kompose
-}
-
-install_gitbatch() {
-	INSTALL_DIR=$(mktemp -d)
-	LOCAL_BIN=/usr/local/bin
-  source $HOME/git/installation/versions-on-github
-	curl -o $INSTALL_DIR/gitbatch.tar.gz -sSL https://github.com/isacikgoz/gitbatch/releases/download/v${VERSION_ISACIKGOZ_GITBATCH}/gitbatch_${VERSION_ISACIKGOZ_GITBATCH}_linux_amd64.tar.gz
-	tar xvzf $INSTALL_DIR/gitbatch.tar.gz -C $INSTALL_DIR/
-	sudo /bin/mv -f $INSTALL_DIR/gitbatch $LOCAL_BIN/
 }
 
 install_awscli() {

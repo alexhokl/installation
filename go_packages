@@ -30,3 +30,5 @@ github.com/errata-ai/vale@latest
 golang.org/x/tools/cmd/goimports@latest
 github.com/cloudentity/oauth2c@latest
 github.com/maaslalani/slides@latest
+github.com/Rican7/define@latest
+github.com/isacikgoz/gitbatch/cmd/gitbatch@latest
