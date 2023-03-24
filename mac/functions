@@ -9,12 +9,14 @@ update_all() {
 	install_dotnet_tools
 	install_gems
 	update_python_packages
+	install_gcpdiag
 	install_vim
 }
 
 install_all() {
 	install_have
 	install_another_redis_desktop_manager
+	install_gcpdiag
 	configure_rust
 }
 
@@ -105,4 +107,9 @@ install_krew_packages() {
 
 install_d2() {
 	curl -fsSL https://d2lang.com/install.sh | sh -s --
+}
+
+install_gcpdiag() {
+	sudo curl -o /usr/local/bin/gcpdiag -sSL https://gcpdiag.dev/gcpdiag.sh
+	sudo chmod +x /usr/local/bin/gcpdiag
 }

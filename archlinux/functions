@@ -11,6 +11,7 @@ update_all() {
 	install_dotnet_tools
 	install_gems
 	update_python_packages
+	install_gcpdiag
 	install_vim
 }
 
@@ -18,6 +19,7 @@ install_all() {
 	install_have
 	install_sc_im
 	install_another_redis_desktop_manager
+	install_gcpdiag
 	configure_rust
 }
 
@@ -149,4 +151,9 @@ install_yq() {
 	curl -o $INSTALL_DIR/yq -sSL https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
 	chmod +x $INSTALL_DIR/yq
 	sudo /bin/mv -f $INSTALL_DIR/yq /usr/local/bin/
+}
+
+install_gcpdiag() {
+	sudo curl -o /usr/local/bin/gcpdiag -sSL https://gcpdiag.dev/gcpdiag.sh
+	sudo chmod +x /usr/local/bin/gcpdiag
 }

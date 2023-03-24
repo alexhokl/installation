@@ -30,6 +30,7 @@ update_all() {
 	install_gactions
 	update_python_packages
 	install_gems
+	install_gcpdiag
 }
 
 install_all() {
@@ -84,6 +85,7 @@ install_all() {
 	install_another_redis_desktop_manager
 	install_cloudflared
 	install_gactions
+	install_gcpdiag
 }
 
 install_git() {
@@ -852,4 +854,9 @@ install_datree() {
 	unzip $INSTALL_DIR/datree.zip -d $INSTALL_DIR/
 	chmod +x $INSTALL_DIR/datree
 	sudo /bin/mv -f $INSTALL_DIR/datree /usr/local/bin/
+}
+
+install_gcpdiag() {
+	sudo curl -o /usr/local/bin/gcpdiag -sSL https://gcpdiag.dev/gcpdiag.sh
+	sudo chmod +x /usr/local/bin/gcpdiag
 }
