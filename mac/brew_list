@@ -56,6 +56,7 @@ stateful/tap/runme
 stern
 tmux
 translate-shell
+typst
 tz
 vhs
 watchman
