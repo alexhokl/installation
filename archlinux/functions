@@ -162,3 +162,17 @@ install_gcpdiag() {
 install_task_completion() {
 	sudo curl -o /etc/bash_completion.d/task.bash -sSL https://raw.githubusercontent.com/go-task/task/master/completion/bash/task.bash
 }
+
+install_asdf() {
+	pushd $PWD
+
+	cd $HOME/git
+	_REPO_DIRECTORY=$HOME/git/asdf-vm
+
+	if [ -d "${_REPO_DIRECTORY}" ]; then
+		rm -rf $_REPO_DIRECTORY
+	fi
+	git clone https://aur.archlinux.org/asdf-vm.git && cd asdf-vm && makepkg -si
+
+	popd
+}
