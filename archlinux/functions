@@ -14,6 +14,7 @@ update_all() {
 	update_python_packages
 	install_gcpdiag
 	install_vim
+	flutter upgrade
 }
 
 install_all() {
@@ -173,6 +174,20 @@ install_asdf() {
 		rm -rf $_REPO_DIRECTORY
 	fi
 	git clone https://aur.archlinux.org/asdf-vm.git && cd asdf-vm && makepkg -si
+
+	popd
+}
+
+install_flutter() {
+	pushd $PWD
+
+	_REPO_DIR=$HOME/git/flutter
+	if [ -d $_REPO_DIR ]; then
+		rm -rf $_REPO_DIR
+	fi
+	git clone https://github.com/flutter/flutter.git $_REPO_DIR
+	cd $_REPO_DIR
+	git checkout stable
 
 	popd
 }

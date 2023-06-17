@@ -11,6 +11,7 @@ update_all() {
 	update_python_packages
 	install_gcpdiag
 	install_vim
+	flutter upgrade
 }
 
 install_all() {
@@ -116,4 +117,18 @@ install_gcpdiag() {
 
 install_task_completion() {
 	sudo curl -o /opt/homebrew/etc/bash_completion.d/task.bash -sSL https://raw.githubusercontent.com/go-task/task/master/completion/bash/task.bash
+}
+
+install_flutter() {
+	pushd $PWD
+
+	_REPO_DIR=$HOME/git/flutter
+	if [ -d $_REPO_DIR ]; then
+		rm -rf $_REPO_DIR
+	fi
+	git clone https://github.com/flutter/flutter.git $_REPO_DIR
+	cd $_REPO_DIR
+	git checkout stable
+
+	popd
 }
