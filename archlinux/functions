@@ -15,6 +15,7 @@ update_all() {
 	install_gcpdiag
 	install_vim
 	flutter upgrade
+	install_slack_cli
 }
 
 install_all() {
@@ -23,6 +24,7 @@ install_all() {
 	install_another_redis_desktop_manager
 	install_gcpdiag
 	configure_rust
+	install_slack_cli
 }
 
 install_vscode_extensions() {
@@ -190,4 +192,8 @@ install_flutter() {
 	git checkout stable
 
 	popd
+}
+
+install_slack_cli() {
+	curl -fsSL https://downloads.slack-edge.com/slack-cli/install.sh | bash
 }
