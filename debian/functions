@@ -871,3 +871,8 @@ install_task_completion() {
 install_slack_cli() {
 	curl -fsSL https://downloads.slack-edge.com/slack-cli/install.sh | bash
 }
+
+install_telepresence() {
+	sudo curl -fL https://app.getambassador.io/download/tel2oss/releases/download/v2.14.0/telepresence-darwin-arm64 -o /usr/local/bin/telepresence
+	sudo chmod a+x /usr/local/bin/telepresence
+}
