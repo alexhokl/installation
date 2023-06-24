@@ -23,6 +23,7 @@ dpkg
 duf
 exfat-utils
 ffmpeg
+flex
 fzf
 gcc
 gettext
@@ -48,10 +49,12 @@ kubectl
 libnm
 libtool
 libwebp
+libyaml
 light
 lolcat
 lsb-release
 make
+ncurses
 net-tools
 networkmanager
 networkmanager-l2tp
@@ -84,6 +87,7 @@ python-pythondialog
 python-pyxdg
 python-systemd
 qemu
+qemu-system-x86
 rclone
 redis
 ripgrep
@@ -93,6 +97,7 @@ sane
 sane-airscan
 signal-desktop
 simple-scan
+socat
 speedtest-cli
 sshfs
 step-cli
