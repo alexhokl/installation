@@ -35,3 +35,4 @@ github.com/savannahostrowski/gruyere@latest
 github.com/go-task/task/v3/cmd/task@latest
 github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
 golang.org/x/vuln/cmd/govulncheck@latest
+gitlab.com/zephyrtronium/gotools@latest
