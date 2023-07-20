@@ -5,6 +5,7 @@ bash
 bash-completion
 bat
 caddy
+charmbracelet/tap/wishlist
 cloudflare/cloudflare/cloudflared
 code-server
 datree
