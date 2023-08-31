@@ -16,6 +16,7 @@ derailed/popeye/popeye
 docker-slim
 duf
 fzf
+gcc
 git
 git-delta
 github/gh/gh
@@ -37,6 +38,7 @@ kompose
 kubectx
 kubescape/tap/kubescape-cli
 libpq
+llvm
 mycli
 neovim
 node
