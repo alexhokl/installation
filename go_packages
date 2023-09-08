@@ -37,3 +37,4 @@ github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest
 golang.org/x/vuln/cmd/govulncheck@latest
 gitlab.com/zephyrtronium/gotools@latest
 github.com/maaslalani/slides@latest
+github.com/caddyserver/xcaddy/cmd/xcaddy@latest
