@@ -12,7 +12,7 @@
 1. Insert USB storage to a Mac
 2. Use `diskutil list` to find the USB device
 3. Assuming the USB storage is `/dev/disk9`, earse the disk by
-   `diskutil eraseDisk FAT32 MacOSX /dev/disk9`
+   `diskutil eraseDisk FAT32 MAC_OS_X /dev/disk9`
 4. Download the latest version of MacOS from App Store
 5. Directory `Applications/Install*` should contain a version of macOS
 6. Assuming the version involved is `High Sierra`, the command to create a USB
