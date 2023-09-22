@@ -11,6 +11,7 @@ bluez-utils
 caddy
 calcurse
 ccid
+clang
 cmake
 cups
 cups-pdf
@@ -59,6 +60,7 @@ net-tools
 networkmanager
 networkmanager-l2tp
 networkmanager-openvpn
+ninja
 nnn
 nodejs-lts-gallium
 noto-fonts-cjk
