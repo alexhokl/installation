@@ -869,7 +869,7 @@ install_task_completion() {
 }
 
 install_slack_cli() {
-	curl -fsSL https://downloads.slack-edge.com/slack-cli/install.sh | bash
+	curl -fsSL https://downloads.slack-edge.com/slack-cli/install.sh | bash -s slack-cli
 }
 
 install_telepresence() {
