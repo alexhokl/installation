@@ -60,7 +60,6 @@ install_all() {
 	install_hey
 	install_nuget
 	install_docker_compose
-	install_sqlpackage
 	install_vault
 	install_sc_im
 	install_vscode_extensions
@@ -272,18 +271,6 @@ install_vault() {
 	unzip $INSTALL_DIR/vault.zip -d $INSTALL_DIR/
 	sudo /bin/mv -f $INSTALL_DIR/vault $LOCAL_BIN/
 	$LOCAL_BIN/vault -autocomplete-install
-}
-
-install_sqlpackage() {
-	INSTALL_DIR=$(mktemp -d)
-	LOCAL_BIN=/usr/local/bin
-  source $HOME/git/installation/versions-on-github
-
-	curl -o $INSTALL_DIR/sqlpackage.zip -sSL https://go.microsoft.com/fwlink/?linkid=2087431
-	unzip $INSTALL_DIR/sqlpackage.zip -d $INSTALL_DIR/sqlpackage
-	chmod a+x $INSTALL_DIR/sqlpackage/sqlpackage
-	sudo /bin/mv -f $INSTALL_DIR/sqlpackage /opt/
-	sudo ln -s /opt/sqlpackage/sqlpackage $LOCAL_BIN/sqlpackage
 }
 
 install_azcopy() {

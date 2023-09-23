@@ -3,3 +3,4 @@ dotnet-ef
 dotnet-format
 dotnet-reportgenerator-globaltool
 dotnet-script
+microsoft.sqlpackage
