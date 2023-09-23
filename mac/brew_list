@@ -58,6 +58,7 @@ ruby
 sampler
 smallstep/smallstep/step
 socat
+sqlcmd
 stateful/tap/runme
 stern
 tmux

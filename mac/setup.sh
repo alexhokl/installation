@@ -5,7 +5,7 @@ curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/mac/cas
 brew link --force libpq
 brew tap microsoft/mssql-release https://github.com/Microsoft/homebrew-mssql-release
 brew update
-HOMEBREW_NO_ENV_FILTERING=1 ACCEPT_EULA=y brew install msodbcsql18 mssql-tools18
+HOMEBREW_NO_ENV_FILTERING=1 ACCEPT_EULA=y brew install msodbcsql18
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | /bin/bash
 
 curl -sSLO https://raw.githubusercontent.com/alexhokl/installation/master/requirements.txt

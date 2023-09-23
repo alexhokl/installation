@@ -60,6 +60,7 @@ choco install oh-my-posh
 choco install cascadoacode
 choco install nodejs
 choco install python3
+choco install sqlcmd
 
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---

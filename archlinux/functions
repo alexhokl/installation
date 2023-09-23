@@ -16,6 +16,7 @@ update_all() {
 	install_vim
 	flutter upgrade
 	install_slack_cli
+	install_sqlcmd
 }
 
 install_all() {
@@ -25,6 +26,7 @@ install_all() {
 	install_gcpdiag
 	configure_rust
 	install_slack_cli
+	install_sqlcmd
 }
 
 install_vscode_extensions() {
@@ -201,4 +203,14 @@ install_slack_cli() {
 install_telepresence() {
 	sudo curl -fL https://app.getambassador.io/download/tel2oss/releases/download/v2.14.0/telepresence-darwin-arm64 -o /usr/local/bin/telepresence
 	sudo chmod a+x /usr/local/bin/telepresence
+}
+
+install_sqlcmd() {
+	INSTALL_DIR=$(mktemp -d)
+  source $HOME/git/installation/versions-on-github
+
+	curl -o $INSTALL_DIR/sqlcmd.bz2 -sSL https://github.com/microsoft/go-sqlcmd/releases/download/v${VERSION_MICROSOFT_GO__SQLCMD}/sqlcmd-v${VERSION_MICROSOFT_GO__SQLCMD}-linux-amd64.tar.bz2
+	tar xvf $INSTALL_DIR/sqlcmd.bz2 -C $INSTALL_DIR/
+	chmod +x $INSTALL_DIR/sqlcmd
+	sudo /bin/mv -f $INSTALL_DIR/sqlcmd /usr/local/bin/
 }
