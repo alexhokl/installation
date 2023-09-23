@@ -38,3 +38,4 @@ golang.org/x/vuln/cmd/govulncheck@latest
 gitlab.com/zephyrtronium/gotools@latest
 github.com/maaslalani/slides@latest
 github.com/caddyserver/xcaddy/cmd/xcaddy@latest
+github.com/charmbracelet/mods@latest
