@@ -13,10 +13,10 @@ update_all() {
 	install_gems
 	update_python_packages
 	install_gcpdiag
-	install_vim
 	flutter upgrade
 	install_slack_cli
 	install_sqlcmd
+	install_vim
 }
 
 install_all() {
