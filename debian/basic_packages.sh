@@ -4,6 +4,7 @@ sudo apt install -y kdiff3
 sudo apt install -y odbcinst1debian2
 
 sudo ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt install -y \
+	age \
 	asciinema \
 	autoconf \
 	automake \
