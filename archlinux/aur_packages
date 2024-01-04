@@ -29,3 +29,4 @@ code-server
 powershell-bin
 google-cloud-sdk-gke-gcloud-auth-plugin
 viddy
+go-sqlcmd

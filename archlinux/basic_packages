@@ -19,6 +19,7 @@ cups-pdf
 dkms
 dnsutils
 docker
+docker-buildx
 docker-compose
 dotnet-sdk
 dpkg
@@ -102,6 +103,7 @@ signal-desktop
 simple-scan
 socat
 speedtest-cli
+sqlcmd
 sshfs
 step-cli
 strace
