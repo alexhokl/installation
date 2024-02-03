@@ -52,6 +52,7 @@ openssl
 pigz
 pinentry-mac
 pinentry-touchid
+pyenv
 python3
 rbenv
 redis
@@ -72,6 +73,6 @@ vmware-tanzu/carvel/ytt
 watchman
 webp
 yj
+ykman
 yq
 yt-dlp
-ykman

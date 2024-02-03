@@ -91,6 +91,8 @@ python-pip
 python-pythondialog
 python-pyxdg
 python-systemd
+python-virtualenv
+python3
 qemu
 qemu-system-x86
 rclone
