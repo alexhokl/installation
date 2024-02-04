@@ -17,6 +17,7 @@ derailed/k9s/k9s
 derailed/popeye/popeye
 docker-slim
 duf
+FairwindsOps/tap/rbac-lookup
 fzf
 gcc
 git
