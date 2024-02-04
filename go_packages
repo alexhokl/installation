@@ -41,3 +41,4 @@ github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 github.com/charmbracelet/mods@latest
 github.com/mat2cc/redis_tui@latest
 github.com/bschaatsbergen/cidr@latest
+github.com/fairwindsops/nova@latest
