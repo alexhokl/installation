@@ -4,6 +4,7 @@ update_all() {
 	brew update
 	brew upgrade
 	install_go_packages
+	rustup install stable
 	install_cargo_packages
 	install_vscode_extensions
 	install_dotnet_tools
@@ -19,7 +20,7 @@ install_all() {
 	install_have
 	install_another_redis_desktop_manager
 	install_gcpdiag
-	configure_rust
+	rustup install stable
 	install_slack_cli
 }
 
@@ -73,10 +74,6 @@ update_python_packages() {
 
 install_gems() {
 	cat $HOME/git/installation/gem-list | xargs -n 1 brew-gem install
-}
-
-configure_rust() {
-	rustup install stable
 }
 
 install_kubelogin() {
