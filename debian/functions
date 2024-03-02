@@ -24,6 +24,7 @@ update_all() {
 	install_go
 	install_go_packages
 	install_cargo_packages
+	install_gh_extensions
 	install_kompose
 	install_azure_data_studio
 	install_awscli
@@ -736,6 +737,10 @@ install_cargo_packages() {
 
 install_go_packages() {
 	cat $HOME/git/installation/go_packages | xargs -n 1 go install
+}
+
+install_gh_extensions() {
+	cat $HOME/git/installation/gh_extensions | xargs -n 1 gh extension install
 }
 
 install_kompose() {

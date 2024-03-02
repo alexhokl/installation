@@ -10,6 +10,7 @@ update_all() {
 	install_cargo_packages
 	install_vscode_extensions
 	install_dotnet_tools
+	install_gh_extensions
 	install_gems
 	update_python_packages
 	install_gcpdiag
@@ -39,6 +40,10 @@ install_azure_data_studio_extensions() {
 
 install_dotnet_tools() {
 	cat $HOME/git/installation/dotnet_tools | xargs -n 1 dotnet tool install -g
+}
+
+install_gh_extensions() {
+	cat $HOME/git/installation/gh_extensions | xargs -n 1 gh extension install
 }
 
 install_sc_im() {
