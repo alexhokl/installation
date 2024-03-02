@@ -42,3 +42,7 @@ github.com/charmbracelet/mods@latest
 github.com/mat2cc/redis_tui@latest
 github.com/bschaatsbergen/cidr@latest
 github.com/fairwindsops/nova@latest
+github.com/ajstarks/deck/cmd/pngdeck@latest
+github.com/ajstarks/deck/cmd/pdfdeck@latest
+github.com/ajstarks/dchart/cmd/dchart@latest
+
