@@ -1,6 +1,7 @@
 altcover.visualizer
 dotnet-ef
 dotnet-format
+dotnet-outdated-tool
 dotnet-reportgenerator-globaltool
 dotnet-script
 microsoft.sqlpackage
