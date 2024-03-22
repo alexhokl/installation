@@ -45,4 +45,4 @@ github.com/fairwindsops/nova@latest
 github.com/ajstarks/deck/cmd/pngdeck@latest
 github.com/ajstarks/deck/cmd/pdfdeck@latest
 github.com/ajstarks/dchart/cmd/dchart@latest
-
+dmd.tanna.dev/cmd/dmd@latest
