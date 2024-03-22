@@ -13,6 +13,7 @@ update_all() {
 	install_gcpdiag
 	flutter upgrade
 	install_gh_extensions
+	gh upgrade --all
 	install_slack_cli
 	install_vim
 }

@@ -25,6 +25,7 @@ update_all() {
 	install_go_packages
 	install_cargo_packages
 	install_gh_extensions
+	gh upgrade --all
 	install_kompose
 	install_azure_data_studio
 	install_awscli

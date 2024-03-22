@@ -11,6 +11,7 @@ update_all() {
 	install_vscode_extensions
 	install_dotnet_tools
 	install_gh_extensions
+	gh upgrade --all
 	install_gems
 	update_python_packages
 	install_gcpdiag
