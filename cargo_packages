@@ -10,3 +10,5 @@ procs
 sd
 xh
 when-cli
+create-tauri-app
+tauri-cli
