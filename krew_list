@@ -6,6 +6,7 @@ ingress-nginx
 krew
 neat
 ns
+rbac-tool
 tail
 tree
 view-allocations
