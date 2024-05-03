@@ -47,3 +47,4 @@ github.com/ajstarks/deck/cmd/pdfdeck@latest
 github.com/ajstarks/dchart/cmd/dchart@latest
 dmd.tanna.dev/cmd/dmd@latest
 github.com/charmbracelet/freeze@latest
+github.com/charmbracelet/mods@latest
