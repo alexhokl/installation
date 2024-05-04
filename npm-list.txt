@@ -10,3 +10,4 @@ neovim
 @marp-team/marp-cli
 markdownlint-cli
 @bitwarden/cli
+opencommit
