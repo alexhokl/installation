@@ -11,3 +11,4 @@ neovim
 markdownlint-cli
 @bitwarden/cli
 opencommit
+@razorsim/commit-companion
