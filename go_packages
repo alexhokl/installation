@@ -48,3 +48,4 @@ github.com/ajstarks/dchart/cmd/dchart@latest
 dmd.tanna.dev/cmd/dmd@latest
 github.com/charmbracelet/freeze@latest
 github.com/charmbracelet/mods@latest
+github.com/mlange-42/tom@main
