@@ -46,6 +46,7 @@ kubescape/tap/kubescape-cli
 libpq
 llvm
 mycli
+neomutt
 neovim
 node
 nushell

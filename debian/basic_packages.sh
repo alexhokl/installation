@@ -75,6 +75,7 @@ sudo ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt install -y \
 	net-tools \
 	network-manager \
 	network-manager-l2tp \
+	neomutt \
 	nnn \
 	openssh-server \
 	ovmf \
