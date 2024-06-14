@@ -1,3 +1,5 @@
+FairwindsOps/tap/pluto
+FairwindsOps/tap/rbac-lookup
 age
 anchordotdev/tap/anchor
 asciinema
@@ -19,8 +21,6 @@ derailed/k9s/k9s
 derailed/popeye/popeye
 docker-slim
 duf
-FairwindsOps/tap/pluto
-FairwindsOps/tap/rbac-lookup
 fzf
 gcc
 git
@@ -58,6 +58,7 @@ openssl
 pigz
 pinentry-mac
 pinentry-touchid
+protobuf
 pyenv
 python3
 rbenv
