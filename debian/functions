@@ -28,7 +28,6 @@ update_all() {
 	gh upgrade --all
 	install_kompose
 	install_azure_data_studio
-	install_awscli
 	install_gactions
 	update_python_packages
 	install_gems
@@ -84,7 +83,6 @@ install_all() {
 	install_cargo
 	install_cargo_packages
 	install_kompose
-	install_awscli
 	install_another_redis_desktop_manager
 	install_cloudflared
 	install_gactions
