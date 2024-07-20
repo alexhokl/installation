@@ -49,3 +49,4 @@ dmd.tanna.dev/cmd/dmd@latest
 github.com/charmbracelet/freeze@latest
 github.com/charmbracelet/mods@latest
 github.com/mlange-42/tom@main
+github.com/google/ko@latest
