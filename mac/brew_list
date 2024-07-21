@@ -38,6 +38,7 @@ helm
 hexyl
 imagemagick
 inetutils
+jfryy/tap/qq
 jq
 kafkacat
 kompose
