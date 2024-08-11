@@ -50,3 +50,4 @@ github.com/charmbracelet/freeze@latest
 github.com/charmbracelet/mods@latest
 github.com/mlange-42/tom@main
 github.com/google/ko@latest
+github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
