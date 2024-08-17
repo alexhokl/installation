@@ -16,6 +16,7 @@ clang
 cmake
 cups
 cups-pdf
+debugedit
 dkms
 dnsutils
 docker
