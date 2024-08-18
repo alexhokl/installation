@@ -143,9 +143,9 @@ $USER_SETUP_SCRIPT_FILE
 ## VM on GCP
 
 ```sh
-sudo pacman -Sy archlinux-keyring
-sudo pacman -Syu --noconfirm
-sudo pacman -S --noconfirm pacman-contrib git rsync reflector base-devel tailscale
+sudo pacman --noconfirm -Sy archlinux-keyring
+sudo pacman --noconfirm -Syu
+sudo pacman --noconfirm -S pacman-contrib git rsync reflector base-devel tailscale
 sudo systemctl enable tailscaled
 sudo tailscale up --ssh
 ```
@@ -161,7 +161,7 @@ cd $HOME/git/yay
 makepkg -si --noconfirm
 yay -Syu --answerclean A --answerdiff N
 USER_SETUP_SCRIPT_FILE=/home/$USER/setup.sh
-curl -o $USER_SETUP_SCRIPT_FILE -sSL https://raw.githubusercontent.com/alexhokl/installation/master/archlinux/user_setup_crostini.sh
+curl -o $USER_SETUP_SCRIPT_FILE -sSL https://raw.githubusercontent.com/alexhokl/installation/master/archlinux/user_setup.sh
 chmod +x $USER_SETUP_SCRIPT_FILE
 $USER_SETUP_SCRIPT_FILE
 ```
