@@ -20,7 +20,6 @@ update_all() {
 	install_code_server
 	install_protoc
 	install_git_sizer
-	install_datree
 	install_go
 	install_go_packages
 	install_cargo_packages
@@ -69,7 +68,6 @@ install_all() {
 	install_vim
 	install_git
 	install_gh
-	install_datree
 	install_go
 	install_go_packages
 	install_bb_pr
@@ -838,16 +836,6 @@ update_python_packages() {
 
 install_gems() {
 	cat $HOME/git/installation/gem-list | xargs -n 1 gem install
-}
-
-install_datree() {
-	INSTALL_DIR=$(mktemp -d)
-  source $HOME/git/installation/versions-on-github
-
-	curl -o $INSTALL_DIR/datree.zip -sSL https://github.com/datreeio/datree/releases/download/${VERSION_DATREEIO_DATREE}/datree-cli_${VERSION_DATREEIO_DATREE}_Linux_x86_64.zip
-	unzip $INSTALL_DIR/datree.zip -d $INSTALL_DIR/
-	chmod +x $INSTALL_DIR/datree
-	sudo /bin/mv -f $INSTALL_DIR/datree /usr/local/bin/
 }
 
 install_gcpdiag() {

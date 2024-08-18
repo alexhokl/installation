@@ -5,7 +5,6 @@ update_all() {
 	sudo pacman -Syu --noconfirm;
 	configure_rust
 	yay -Syu --noconfirm --answerclean A --answerdiff N;
-	install_datree
 	install_go_packages
 	install_cargo_packages
 	install_vscode_extensions
@@ -139,16 +138,6 @@ install_kubelogin() {
 	unzip $INSTALL_DIR/kubelogin.zip -d $INSTALL_DIR/
 	chmod +x $INSTALL_DIR/bin/linux_amd64/kubelogin
 	sudo /bin/mv -f $INSTALL_DIR/bin/linux_amd64/kubelogin /usr/local/bin/
-}
-
-install_datree() {
-	INSTALL_DIR=$(mktemp -d)
-  source $HOME/git/installation/versions-on-github
-
-	curl -o $INSTALL_DIR/datree.zip -sSL https://github.com/datreeio/datree/releases/download/${VERSION_DATREEIO_DATREE}/datree-cli_${VERSION_DATREEIO_DATREE}_Linux_x86_64.zip
-	unzip $INSTALL_DIR/datree.zip -d $INSTALL_DIR/
-	chmod +x $INSTALL_DIR/datree
-	sudo /bin/mv -f $INSTALL_DIR/datree /usr/local/bin/
 }
 
 install_d2() {
