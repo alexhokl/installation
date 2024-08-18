@@ -36,14 +36,12 @@ update_all() {
 }
 
 install_all() {
-	install_nodejs
 	install_bat
 	install_slack
 	install_azure_data_studio
 	install_hexyl
 	install_octant
 	install_step
-	install_python
 	install_nvim
 	install_flutter
 	install_k9s
@@ -170,36 +168,6 @@ install_ruby() {
 	echo "gem: --no-document" > $HOME/.gemrc
 
 	popd
-}
-
-install_python() {
-	VERSION_PYTHON=3.9.3
-	VERSION_PYTHON_MAJOR=3.9
-
-	if [[ -n "$(which python)" ]]; then
-		CURRENT_VERSION=$(python --version | awk '{ print $2 }')
-	fi
-	if [ "$CURRENT_VERSION" == "$VERSION_PYTHON" ]; then
-		echo "python ($CURRENT_VERSION) is up-to-date."
-		return
-	fi
-
-	pushd $PWD
-	INSTALL_DIR=$(mktemp -d)
-	LOCAL_BIN=/usr/local/bin
-
-	curl -o $INSTALL_DIR/python.tar.xz -sS https://www.python.org/ftp/python/${VERSION_PYTHON}/Python-${VERSION_PYTHON}.tar.xz
-	tar -xf $INSTALL_DIR/python.tar.xz -C $INSTALL_DIR/
-	cd $INSTALL_DIR/Python-${VERSION_PYTHON}
-	./configure --enable-optimizations
-	make
-	sudo make install
-	sudo update-alternatives --install /usr/bin/python python $LOCAL_BIN/python${VERSION_PYTHON_MAJOR} 1
-	sudo update-alternatives --set python $LOCAL_BIN/python${VERSION_PYTHON_MAJOR}
-
-	popd
-
-  python -m pip install --upgrade --user -r $HOME/git/installation/requirements.txt
 }
 
 install_go() {
@@ -383,13 +351,6 @@ install_vim() {
 	make install
 
 	popd
-}
-
-install_nodejs() {
-	curl -sL https://deb.nodesource.com/setup_16.x curl | sudo -E bash -
-	sudo apt update
-	sudo apt install -y nodejs
-	sudo npm i -g $(cat $HOME/git/installation/npm-list.txt)
 }
 
 install_slack() {

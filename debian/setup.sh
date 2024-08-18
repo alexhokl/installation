@@ -73,6 +73,19 @@ sudo apt update
 sudo add-apt-repository universe
 sudo apt -y upgrade
 
+# install pyenv for managing python installations
+curl https://pyenv.run | bash
+
+# install python
+pyenv install 3.10
+pyenv global 3.10
+
+# install n for nodejs
+curl -L https://bit.ly/n-install | bash
+
+# install nodejs
+sudo n install 20
+
 curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/basic_packages.sh | bash
 if [ "unknown" != "$HARDWARE_TYPE" ]; then
 	curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/ui_packages.sh | bash

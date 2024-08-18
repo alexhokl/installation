@@ -59,7 +59,6 @@ pinentry-mac
 pinentry-touchid
 protobuf
 pyenv
-python3
 rbenv
 redis
 ripgrep

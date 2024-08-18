@@ -85,10 +85,6 @@ sudo ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt install -y \
 	powershell \
 	printer-driver-cups-pdf \
 	protonvpn \
-	python-dev \
-	python3 \
-	python3-dev \
-	python3-venv \
 	rclone \
 	sane \
 	sane-utils \

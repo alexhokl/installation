@@ -8,6 +8,16 @@ mkdir -p $HOME/.config/i3
 curl -o $HOME/.config/i3/config -sSL https://raw.githubusercontent.com/alexhokl/dotfiles/master/.i3/config
 curl -o $HOME/.i3blocks.conf https://raw.githubusercontent.com/alexhokl/dotfiles/master/.i3blocks.conf
 
+# install python
+pyenv install 3.10.0
+pyenv global 3.10.0
+
+# install n for node
+curl -L https://bit.ly/n-install | bash
+
+#install nodejs
+sudo n install 20
+
 mkdir -p $HOME/git
 git clone https://aur.archlinux.org/yay.git $HOME/git/yay
 cd $HOME/git/yay

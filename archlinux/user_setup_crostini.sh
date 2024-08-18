@@ -2,6 +2,17 @@ sudo pacman -Syy
 
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/archlinux/basic_packages \
   | xargs -n 1 sudo pacman -S --noconfirm
+
+# install python
+pyenv install 3.10.0
+pyenv global 3.10.0
+
+# install n for node
+curl -L https://bit.ly/n-install | bash
+
+#install nodejs
+sudo n install 20
+
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/archlinux/ui_packages \
   | xargs -n 1 sudo pacman -S --noconfirm
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/archlinux/aur_packages \

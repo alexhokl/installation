@@ -66,7 +66,6 @@ networkmanager-l2tp
 networkmanager-openvpn
 ninja
 nnn
-nodejs-lts-gallium
 noto-fonts-cjk
 npm
 ntfs-3g
@@ -83,17 +82,7 @@ popeye
 postgresql
 postgresql-client
 protobuf
-python-dbus
-python-distro
-python-gobject
-python-jinja
-python-keyring
-python-pip
-python-pythondialog
-python-pyxdg
-python-systemd
-python-virtualenv
-python3
+pyenv
 qemu
 qemu-system-x86
 rclone
