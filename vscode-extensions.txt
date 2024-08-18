@@ -6,16 +6,12 @@ dart-code.flutter
 dbaeumer.vscode-eslint
 donjayamanne.githistory
 eamodio.gitlens
-EQuimper.react-native-react-redux
-euskadi31.json-pretty-printer
 googlecloudtools.cloudcode
 k--kato.docomment
-leizongmin.node-module-intellisense
 ms-azuretools.vscode-docker
 ms-kubernetes-tools.vscode-kubernetes-tools
 ms-mssql.mssql
 ms-python.python
-ms-dotnettools.csharp
 ms-vscode.go
 ms-vscode.powerShell
 ms-vsliveshare.vsliveshare
@@ -27,5 +23,4 @@ shardulm94.trailing-spaces
 shd101wyy.markdown-preview-enhanced
 streetsidesoftware.code-spell-checker
 waderyan.gitblame
-xabikos.ReactSnippets
 zignd.html-css-class-completion
