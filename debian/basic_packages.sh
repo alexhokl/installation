@@ -19,10 +19,8 @@ sudo ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt install -y \
 	dnsutils \
 	docker-ce \
 	docker-ce-cli \
-	dotnet-sdk-2.1 \
-	dotnet-sdk-3.1 \
-	dotnet-sdk-5.0 \
 	dotnet-sdk-6.0 \
+	dotnet-sdk-8.0 \
 	duf \
 	exfat-fuse \
 	exfat-utils \

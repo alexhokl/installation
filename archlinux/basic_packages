@@ -23,6 +23,8 @@ docker
 docker-buildx
 docker-compose
 dotnet-sdk
+dotnet-sdk-6.0
+aspnet-runtime-6.0
 dpkg
 duf
 exfat-utils

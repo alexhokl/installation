@@ -36,10 +36,8 @@ choco install procexp
 choco install linqpad
 choco install kdiff3
 choco install jq
-choco install dotnetcore-2.1-sdk
-choco install dotnetcore-3.1-sdk
-choco install dotnet-5.0-sdk
 choco install dotnet-6.0-sdk
+choco install dotnet-8.0-sdk
 choco install netfx-4.7-devpack
 choco install visualstudio2019professional
 choco install visualstudio2019-workload-netweb
