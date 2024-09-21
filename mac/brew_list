@@ -13,6 +13,7 @@ bruno
 bschaatsbergen/dnsee/dnsee
 caddy
 charmbracelet/tap/wishlist
+clang
 cloudflare/cloudflare/cloudflared
 code-server
 curl
@@ -57,6 +58,7 @@ openssl
 pigz
 pinentry-mac
 pinentry-touchid
+poppler
 protobuf
 pyenv
 rbenv
