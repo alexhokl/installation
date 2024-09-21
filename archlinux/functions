@@ -102,6 +102,7 @@ install_have() {
 
 install_cargo_packages() {
 	cat $HOME/git/installation/cargo_packages | xargs -n 1 cargo install
+	cat $HOME/git/installation/cargo_git_packages | xargs -n 1 cargo install --git
 }
 
 install_go_packages() {
