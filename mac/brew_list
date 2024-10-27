@@ -44,6 +44,7 @@ kafkacat
 kompose
 kubectx
 kubescape/tap/kubescape-cli
+lcov
 libpq
 llvm
 mycli
