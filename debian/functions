@@ -47,7 +47,6 @@ install_all() {
 	install_k9s
 	install_popeye
 	install_android_studio
-	install_azcopy
 	install_icdiff
 	install_lolcat
 	install_have
@@ -237,20 +236,6 @@ install_vault() {
 	unzip $INSTALL_DIR/vault.zip -d $INSTALL_DIR/
 	sudo /bin/mv -f $INSTALL_DIR/vault $LOCAL_BIN/
 	$LOCAL_BIN/vault -autocomplete-install
-}
-
-install_azcopy() {
-	pushd $PWD
-
-	INSTALL_DIR=$(mktemp -d)
-	LOCAL_BIN=/usr/local/bin
-
-	curl -o $INSTALL_DIR/azcopy.tar.gz -sSL https://aka.ms/downloadazcopy-v10-linux
-	tar xvzf $INSTALL_DIR/azcopy.tar.gz -C $INSTALL_DIR/
-	cd $INSTALL_DIR/azcopy_*
-	sudo /bin/mv -f azcopy $LOCAL_BIN/
-
-	popd
 }
 
 install_android_studio() {
