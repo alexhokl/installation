@@ -51,3 +51,5 @@ github.com/charmbracelet/mods@latest
 github.com/mlange-42/tom@main
 github.com/google/ko@latest
 github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
+google.golang.org/protobuf/cmd/protoc-gen-go@latest
+google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
