@@ -55,3 +55,4 @@ google.golang.org/protobuf/cmd/protoc-gen-go@latest
 google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 github.com/charmbracelet/sequin@latest
 github.com/kubernetes-sigs/ingress2gateway@v0.3.0
+github.com/yznts/dsh/cmd/...@latest
