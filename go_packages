@@ -57,3 +57,4 @@ github.com/charmbracelet/sequin@latest
 github.com/kubernetes-sigs/ingress2gateway@v0.3.0
 github.com/yznts/dsh/cmd/...@latest
 github.com/securego/gosec/v2/cmd/gosec@latest
+golang.org/x/perf/cmd/benchstat@latest
