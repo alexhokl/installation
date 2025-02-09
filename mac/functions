@@ -15,6 +15,7 @@ update_all() {
 	install_gh_extensions
 	gh upgrade --all
 	install_vim
+	$HOME/git/installation/uv_tools_install.sh
 }
 
 install_all() {
@@ -23,6 +24,7 @@ install_all() {
 	install_gcpdiag
 	rustup install stable
 	install_slack_cli
+	$HOME/git/installation/uv_tools_install.sh
 }
 
 install_vscode_extensions() {
