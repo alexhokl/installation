@@ -75,6 +75,7 @@ ruby
 sampler
 smallstep/smallstep/step
 socat
+spotify_player
 sqlcmd
 stateful/tap/runme
 stern
