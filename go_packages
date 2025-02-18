@@ -59,3 +59,4 @@ github.com/yznts/dsh/cmd/...@latest
 github.com/securego/gosec/v2/cmd/gosec@latest
 golang.org/x/perf/cmd/benchstat@latest
 github.com/jobodd/rgst/cmd/rgst@latest
+github.com/yannh/kubeconform/cmd/kubeconform@latest
