@@ -33,6 +33,7 @@ update_all() {
 	install_gcpdiag
 	flutter upgrade
 	install_slack_cli
+	install_reddit_tui
 }
 
 install_all() {
@@ -83,6 +84,7 @@ install_all() {
 	install_gactions
 	install_gcpdiag
 	install_slack_cli
+	install_reddit_tui
 }
 
 install_git() {
@@ -801,4 +803,21 @@ install_slack_cli() {
 install_telepresence() {
 	sudo curl -fL https://app.getambassador.io/download/tel2oss/releases/download/v2.14.0/telepresence-darwin-arm64 -o /usr/local/bin/telepresence
 	sudo chmod a+x /usr/local/bin/telepresence
+}
+
+install_reddit_tui() {
+	pushd $PWD
+
+	_REPO_DIR=$HOME/git/reddit-tui
+	if [ -d $_REPO_DIR ]; then
+		rm -rf $_REPO_DIR
+		echo Removed existing directory [$_REPO_DIR]
+	fi
+	git clone https://github.com/tonymajestro/reddit-tui $_REPO_DIR
+	cd $_REPO_DIR
+
+	go build -o reddittui main.go
+	mv -f reddittui $HOME/git/bin/
+
+	popd
 }
