@@ -52,6 +52,7 @@ kubescape/tap/kubescape-cli
 lcov
 libpq
 llvm
+mr
 mycli
 neomutt
 neovim

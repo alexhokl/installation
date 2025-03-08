@@ -70,6 +70,7 @@ sudo ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt install -y \
 	libzip-dev \
 	locales \
 	make \
+	myrepos \
 	net-tools \
 	network-manager \
 	network-manager-l2tp \

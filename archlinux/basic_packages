@@ -1,5 +1,6 @@
 age
 aspnet-runtime
+aspnet-runtime-6.0
 autoconf
 automake
 barrier
@@ -24,7 +25,6 @@ docker-buildx
 docker-compose
 dotnet-sdk
 dotnet-sdk-6.0
-aspnet-runtime-6.0
 dpkg
 duf
 exfat-utils
@@ -59,6 +59,7 @@ light
 lolcat
 lsb-release
 make
+myrepos
 ncurses
 neomutt
 net-tools
