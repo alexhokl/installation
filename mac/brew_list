@@ -29,6 +29,7 @@ gcc
 git
 git-delta
 github/gh/gh
+gitleaks
 glow
 gnu-sed
 golang
