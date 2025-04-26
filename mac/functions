@@ -167,3 +167,8 @@ install_reddit_tui() {
 
 	popd
 }
+
+install_gcloud_sql_proxy() {
+	sudo curl -o /usr/local/bin/cloud-sql-proxy -sSL https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.15.2/cloud-sql-proxy.darwin.amd64
+	sudo chmod +x /usr/local/bin/cloud-sql-proxy
+}
