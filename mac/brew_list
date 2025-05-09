@@ -54,6 +54,7 @@ kubescape/tap/kubescape-cli
 lcov
 libpq
 llvm
+luarocks
 mr
 mycli
 neomutt
