@@ -13,7 +13,6 @@ update_all() {
 	install_gcpdiag
 	flutter upgrade
 	install_gh_extensions
-	gh upgrade --all
 	install_vim
 	$HOME/git/installation/uv_tools_install.sh
 	install_reddit_tui
