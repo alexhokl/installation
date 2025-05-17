@@ -17,6 +17,7 @@ curl -L https://bit.ly/n-install | bash
 
 #install nodejs
 sudo n install 20
+curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/node_setup.sh | bash
 
 mkdir -p $HOME/git
 git clone https://aur.archlinux.org/yay.git $HOME/git/yay

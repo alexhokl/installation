@@ -85,6 +85,7 @@ curl -L https://bit.ly/n-install | bash
 
 # install nodejs
 sudo n install 20
+curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/node_setup.sh | bash
 
 curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/basic_packages.sh | bash
 if [ "unknown" != "$HARDWARE_TYPE" ]; then
