@@ -1,173 +1,190 @@
 #!/bin/bash
 
 update_all() {
-	brew update
-	brew upgrade
-	install_go_packages
-	rustup install stable
-	install_cargo_packages
-	install_vscode_extensions
-	install_dotnet_tools
-	install_gems
-	update_python_packages
-	install_gcpdiag
-	flutter upgrade
-	install_gh_extensions
-	install_vim
-	$HOME/git/installation/uv_tools_install.sh
-	install_reddit_tui
+  brew update
+  brew upgrade
+  install_go_packages
+  rustup install stable
+  install_cargo_packages
+  install_vscode_extensions
+  install_dotnet_tools
+  install_gems
+  update_python_packages
+  install_gcpdiag
+  flutter upgrade
+  install_gh_extensions
+  install_vim
+  $HOME/git/installation/uv_tools_install.sh
+  install_reddit_tui
+  install_hugo
 }
 
 install_all() {
-	install_have
-	install_another_redis_desktop_manager
-	install_gcpdiag
-	rustup install stable
-	install_slack_cli
-	$HOME/git/installation/uv_tools_install.sh
-	install_reddit_tui
+  install_have
+  install_another_redis_desktop_manager
+  install_gcpdiag
+  rustup install stable
+  install_slack_cli
+  $HOME/git/installation/uv_tools_install.sh
+  install_reddit_tui
 }
 
 install_vscode_extensions() {
-	cat $HOME/git/installation/vscode-extensions.txt | xargs -n 1 /usr/bin/code --force --install-extension
-	mkdir -p $HOME/.config/Code/User
-	/bin/cp -f $HOME/git/installation/vscode_settings.json $HOME/.config/Code/User/settings.json
+  cat $HOME/git/installation/vscode-extensions.txt | xargs -n 1 /usr/bin/code --force --install-extension
+  mkdir -p $HOME/.config/Code/User
+  /bin/cp -f $HOME/git/installation/vscode_settings.json $HOME/.config/Code/User/settings.json
 }
 
 install_azure_data_studio_extensions() {
-	cat $HOME/git/installation/azuredatastudio.extensions | xargs -n 1 /usr/bin/azuredatastudio --force --install-extension
+  cat $HOME/git/installation/azuredatastudio.extensions | xargs -n 1 /usr/bin/azuredatastudio --force --install-extension
 }
 
 install_dotnet_tools() {
-	cat $HOME/git/installation/dotnet_tools | xargs -n 1 dotnet tool install -g
+  cat $HOME/git/installation/dotnet_tools | xargs -n 1 dotnet tool install -g
 }
 
 install_gh_extensions() {
-	cat $HOME/git/installation/gh_extensions | xargs -n 1 gh extension install
+  cat $HOME/git/installation/gh_extensions | xargs -n 1 gh extension install
 }
 
 install_vim() {
-	pushd $PWD
+  pushd $PWD
 
-	if [ -d $HOME/.vim ]; then
-		rm -rf $HOME/.vim
-	fi
-	git clone --recursive -b master https://github.com/alexhokl/.vim $HOME/.vim
-	cd $HOME/.vim
-	make install
+  if [ -d $HOME/.vim ]; then
+    rm -rf $HOME/.vim
+  fi
+  git clone --recursive -b master https://github.com/alexhokl/.vim $HOME/.vim
+  cd $HOME/.vim
+  make install
 
-	popd
+  popd
 }
 
 install_cargo_packages() {
-	cat $HOME/git/installation/cargo_packages | xargs -n 1 cargo install
-	cat $HOME/git/installation/cargo_git_packages | xargs -n 1 cargo install --git
+  cat $HOME/git/installation/cargo_packages | xargs -n 1 cargo install
+  cat $HOME/git/installation/cargo_git_packages | xargs -n 1 cargo install --git
 }
 
 install_go_packages() {
-	cat $HOME/git/installation/go_packages | xargs -n 1 go install
+  cat $HOME/git/installation/go_packages | xargs -n 1 go install
 }
 
 install_another_redis_desktop_manager() {
-	INSTALL_DIR=$(mktemp -d)
+  INSTALL_DIR=$(mktemp -d)
   source $HOME/git/installation/versions-on-github
 
-	curl -o $INSTALL_DIR/another-redis-desktop-manager.dmg -sSL https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}/Another-Redis-Desktop-Manager-M1-arm64-${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}.dmg
-	open $INSTALL_DIR/another-redis-desktop-manager.dmg
+  curl -o $INSTALL_DIR/another-redis-desktop-manager.dmg -sSL https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}/Another-Redis-Desktop-Manager-M1-arm64-${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}.dmg
+  open $INSTALL_DIR/another-redis-desktop-manager.dmg
 }
 
 update_python_packages() {
-	python -m pip install --upgrade --user pip
-	python -m pip install --upgrade --user -r $HOME/git/installation/requirements.txt
+  python -m pip install --upgrade --user pip
+  python -m pip install --upgrade --user -r $HOME/git/installation/requirements.txt
 }
 
 install_gems() {
-	cat $HOME/git/installation/gem-list | xargs -n 1 brew-gem install
+  cat $HOME/git/installation/gem-list | xargs -n 1 brew-gem install
 }
 
 install_kubelogin() {
-	INSTALL_DIR=$(mktemp -d)
+  INSTALL_DIR=$(mktemp -d)
   source $HOME/git/installation/versions-on-github
 
-	curl -o $INSTALL_DIR/kubelogin.zip -sSL https://github.com/Azure/kubelogin/releases/download/v${VERSION_AZURE_KUBELOGIN}/kubelogin-darwin-arm64.zip
-	unzip $INSTALL_DIR/kubelogin.zip -d $INSTALL_DIR/
-	chmod +x $INSTALL_DIR/bin/darwin_arm64/kubelogin
-	sudo /bin/mv -f $INSTALL_DIR/bin/darwin_arm64/kubelogin /usr/local/bin/
+  curl -o $INSTALL_DIR/kubelogin.zip -sSL https://github.com/Azure/kubelogin/releases/download/v${VERSION_AZURE_KUBELOGIN}/kubelogin-darwin-arm64.zip
+  unzip $INSTALL_DIR/kubelogin.zip -d $INSTALL_DIR/
+  chmod +x $INSTALL_DIR/bin/darwin_arm64/kubelogin
+  sudo /bin/mv -f $INSTALL_DIR/bin/darwin_arm64/kubelogin /usr/local/bin/
 }
 
 install_krew() {
-	pushd $PWD
+  pushd $PWD
 
-	set -x; cd "$(mktemp -d)" &&
-	OS="$(uname | tr '[:upper:]' '[:lower:]')" &&
-	ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')" &&
-	KREW="krew-${OS}_${ARCH}" &&
-	curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/${KREW}.tar.gz" &&
-	tar zxvf "${KREW}.tar.gz" &&
-	./"${KREW}" install krew
+  set -x; cd "$(mktemp -d)" &&
+  OS="$(uname | tr '[:upper:]' '[:lower:]')" &&
+  ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')" &&
+  KREW="krew-${OS}_${ARCH}" &&
+  curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/${KREW}.tar.gz" &&
+  tar zxvf "${KREW}.tar.gz" &&
+  ./"${KREW}" install krew
 
-	popd
+  popd
 }
 
 install_krew_packages() {
-	curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/krew_list \
-		| xargs -n 1 kubectl krew install
+  curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/krew_list \
+    | xargs -n 1 kubectl krew install
 }
 
 install_d2() {
-	curl -fsSL https://d2lang.com/install.sh | sh -s --
+  curl -fsSL https://d2lang.com/install.sh | sh -s --
 }
 
 install_gcpdiag() {
-	sudo curl -o /usr/local/bin/gcpdiag -sSL https://gcpdiag.dev/gcpdiag.sh
-	sudo chmod +x /usr/local/bin/gcpdiag
+  sudo curl -o /usr/local/bin/gcpdiag -sSL https://gcpdiag.dev/gcpdiag.sh
+  sudo chmod +x /usr/local/bin/gcpdiag
 }
 
 install_task_completion() {
-	sudo curl -o /opt/homebrew/etc/bash_completion.d/task.bash -sSL https://raw.githubusercontent.com/go-task/task/master/completion/bash/task.bash
+  sudo curl -o /opt/homebrew/etc/bash_completion.d/task.bash -sSL https://raw.githubusercontent.com/go-task/task/master/completion/bash/task.bash
 }
 
 install_flutter() {
-	pushd $PWD
+  pushd $PWD
 
-	_REPO_DIR=$HOME/git/flutter
-	if [ -d $_REPO_DIR ]; then
-		rm -rf $_REPO_DIR
-	fi
-	git clone https://github.com/flutter/flutter.git $_REPO_DIR
-	cd $_REPO_DIR
-	git checkout stable
+  _REPO_DIR=$HOME/git/flutter
+  if [ -d $_REPO_DIR ]; then
+    rm -rf $_REPO_DIR
+  fi
+  git clone https://github.com/flutter/flutter.git $_REPO_DIR
+  cd $_REPO_DIR
+  git checkout stable
 
-	popd
+  popd
 }
 
 install_slack_cli() {
-	curl -fsSL https://downloads.slack-edge.com/slack-cli/install.sh | bash -s slack-cli
+  curl -fsSL https://downloads.slack-edge.com/slack-cli/install.sh | bash -s slack-cli
 }
 
 install_telepresence() {
-	sudo curl -fL https://app.getambassador.io/download/tel2oss/releases/download/v2.14.0/telepresence-darwin-arm64 -o /usr/local/bin/telepresence
-	sudo chmod a+x /usr/local/bin/telepresence
+  sudo curl -fL https://app.getambassador.io/download/tel2oss/releases/download/v2.14.0/telepresence-darwin-arm64 -o /usr/local/bin/telepresence
+  sudo chmod a+x /usr/local/bin/telepresence
 }
 
 install_reddit_tui() {
-	pushd $PWD
+  pushd $PWD
 
-	_REPO_DIR=$HOME/git/reddit-tui
-	if [ -d $_REPO_DIR ]; then
-		rm -rf $_REPO_DIR
-		echo Removed existing directory [$_REPO_DIR]
-	fi
-	git clone https://github.com/tonymajestro/reddit-tui $_REPO_DIR
-	cd $_REPO_DIR
+  _REPO_DIR=$HOME/git/reddit-tui
+  if [ -d $_REPO_DIR ]; then
+    rm -rf $_REPO_DIR
+    echo Removed existing directory [$_REPO_DIR]
+  fi
+  git clone https://github.com/tonymajestro/reddit-tui $_REPO_DIR
+  cd $_REPO_DIR
 
-	go build -o reddittui main.go
-	mv -f reddittui $HOME/git/bin/
+  go build -o reddittui main.go
+  mv -f reddittui $HOME/git/bin/
 
-	popd
+  popd
 }
 
 install_gcloud_sql_proxy() {
-	sudo curl -o /usr/local/bin/cloud-sql-proxy -sSL https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.15.2/cloud-sql-proxy.darwin.amd64
-	sudo chmod +x /usr/local/bin/cloud-sql-proxy
+  sudo curl -o /usr/local/bin/cloud-sql-proxy -sSL https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.15.2/cloud-sql-proxy.darwin.amd64
+  sudo chmod +x /usr/local/bin/cloud-sql-proxy
+}
+
+install_hugo() {
+  pushd $PWD
+
+  _REPO_DIR=$HOME/git/temp-hugo
+  if [ -d $_REPO_DIR ]; then
+    rm -rf $_REPO_DIR
+    echo Removed existing directory [$_REPO_DIR]
+  fi
+  git clone https://github.com/gohugoio/hugo@master $_REPO_DIR
+  cd $_REPO_DIR
+
+  go install --tags extended
+
+  popd
 }
