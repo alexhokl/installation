@@ -89,8 +89,6 @@ install_vim() {
     rm -rf $HOME/.vim
   fi
   git clone --recursive -b master https://github.com/alexhokl/.vim $HOME/.vim
-  cd $HOME/.vim
-  make install
 
   popd
 }
