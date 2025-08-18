@@ -15,6 +15,7 @@ update_all() {
   install_gh_extensions
   install_vim
   $HOME/git/installation/uv_tools_install.sh
+  install_pipx_packages
   install_reddit_tui
   install_hugo
 }
@@ -26,6 +27,7 @@ install_all() {
   rustup install stable
   install_slack_cli
   $HOME/git/installation/uv_tools_install.sh
+  install_pipx_packages
   install_reddit_tui
 }
 
@@ -185,4 +187,9 @@ install_hugo() {
   go install --tags extended
 
   popd
+}
+
+install_pipx_packages() {
+  cat ./pipx_packages | xargs -n 1 pipx install
+  pipx inject mdformat mdformat-gfm
 }
