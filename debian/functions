@@ -828,7 +828,7 @@ install_hugo() {
     rm -rf $_REPO_DIR
     echo Removed existing directory [$_REPO_DIR]
   fi
-  git clone https://github.com/gohugoio/hugo@master $_REPO_DIR
+  git clone -b master https://github.com/gohugoio/hugo $_REPO_DIR
   cd $_REPO_DIR
 
   go install --tags extended
