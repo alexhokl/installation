@@ -61,3 +61,4 @@ honnef.co/go/tools/cmd/staticcheck@master
 github.com/charmbracelet/crush@latest
 github.com/google/yamlfmt/cmd/yamlfmt@latest
 github.com/oz/tz@latest
+golang.org/x/tools/gopls@latest
