@@ -31,3 +31,4 @@ go-sqlcmd
 bruno
 dotnet-runtime-8.0-bin
 aspnet-runtime-8.0-bin
+opencode-bin
