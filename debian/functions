@@ -34,6 +34,7 @@ update_all() {
   install_slack_cli
   install_reddit_tui
   install_hugo
+  update_protobuf_flutter
 }
 
 install_all() {
@@ -834,4 +835,8 @@ install_hugo() {
   go install --tags extended
 
   popd
+}
+
+update_protobuf_flutter() {
+  dart pub global activate protoc_plugin
 }

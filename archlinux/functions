@@ -231,3 +231,7 @@ install_hugo() {
 
   popd
 }
+
+update_protobuf_flutter() {
+  dart pub global activate protoc_plugin
+}

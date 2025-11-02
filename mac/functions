@@ -18,6 +18,7 @@ update_all() {
   install_pipx_packages
   install_reddit_tui
   install_hugo
+  update_protobuf_flutter
 }
 
 install_all() {
@@ -192,4 +193,8 @@ install_hugo() {
 install_pipx_packages() {
   cat $HOME/git/installation/pipx_packages | xargs -n 1 pipx install
   pipx inject mdformat mdformat-gfm
+}
+
+update_protobuf_flutter() {
+  dart pub global activate protoc_plugin
 }
