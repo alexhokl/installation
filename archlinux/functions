@@ -7,6 +7,7 @@ update_all() {
   yay -Syu --noconfirm --answerclean A --answerdiff N;
   install_go_packages
   install_cargo_packages
+  install_opam_packages
   install_vscode_extensions
   install_dotnet_tools
   install_gh_extensions
@@ -107,6 +108,11 @@ install_cargo_packages() {
 
 install_go_packages() {
   cat $HOME/git/installation/go_packages | xargs -n 1 go install
+}
+
+install_opam_packages() {
+  opam update
+  cat $HOME/git/installation/opam_packages | xargs -n 1 opam install -y
 }
 
 install_another_redis_desktop_manager() {
