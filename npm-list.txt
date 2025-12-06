@@ -14,3 +14,4 @@ opencommit
 @razorsim/commit-companion
 tree-sitter-cli
 @tailwindcss/cli
+corepack
