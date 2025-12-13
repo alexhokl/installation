@@ -18,7 +18,6 @@ update_all() {
   install_slack_cli
   install_reddit_tui
   install_hugo
-  install_vim
 }
 
 install_all() {
@@ -81,17 +80,6 @@ install_nvim() {
   curl -o $INSTALL_DIR/nvim.appimage -sSL https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
   chmod u+x $INSTALL_DIR/nvim.appimage
   sudo /bin/mv -f $INSTALL_DIR/nvim.appimage $LOCAL_BIN/nvim
-}
-
-install_vim() {
-  pushd $PWD
-
-  if [ -d $HOME/.vim ]; then
-    rm -rf $HOME/.vim
-  fi
-  git clone --recursive -b master https://github.com/alexhokl/.vim $HOME/.vim
-
-  popd
 }
 
 install_have() {

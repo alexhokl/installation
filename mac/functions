@@ -14,7 +14,6 @@ update_all() {
   install_gcpdiag
   flutter upgrade
   install_gh_extensions
-  install_vim
   $HOME/git/installation/uv_tools_install.sh
   install_pipx_packages
   install_reddit_tui
@@ -49,17 +48,6 @@ install_dotnet_tools() {
 
 install_gh_extensions() {
   cat $HOME/git/installation/gh_extensions | xargs -n 1 gh extension install
-}
-
-install_vim() {
-  pushd $PWD
-
-  if [ -d $HOME/.vim ]; then
-    rm -rf $HOME/.vim
-  fi
-  git clone --recursive -b master https://github.com/alexhokl/.vim $HOME/.vim
-
-  popd
 }
 
 install_cargo_packages() {
