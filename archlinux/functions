@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $HOME/git/installation/functions_common
+
 update_all() {
   sudo pacman -Sy --noconfirm archlinux-keyring;
   sudo pacman -Syu --noconfirm;
@@ -30,22 +32,8 @@ install_all() {
   install_reddit_tui
 }
 
-install_vscode_extensions() {
-  cat $HOME/git/installation/vscode-extensions.txt | xargs -n 1 /usr/bin/code --force --install-extension
-  mkdir -p $HOME/.config/Code/User
-  /bin/cp -f $HOME/git/installation/vscode_settings.json $HOME/.config/Code/User/settings.json
-}
-
 install_azure_data_studio_extensions() {
   cat $HOME/git/installation/azuredatastudio.extensions | xargs -n 1 /usr/bin/azuredatastudio --force --install-extension
-}
-
-install_dotnet_tools() {
-  cat $HOME/git/installation/dotnet_tools | xargs -n 1 dotnet tool install -g
-}
-
-install_gh_extensions() {
-  cat $HOME/git/installation/gh_extensions | xargs -n 1 gh extension install
 }
 
 install_sc_im() {
@@ -89,15 +77,6 @@ install_have() {
   sudo chmod a+x $LOCAL_BIN/have
 }
 
-install_cargo_packages() {
-  cat $HOME/git/installation/cargo_packages | xargs -n 1 cargo install
-  cat $HOME/git/installation/cargo_git_packages | xargs -n 1 cargo install --git
-}
-
-install_go_packages() {
-  cat $HOME/git/installation/go_packages | xargs -n 1 go install
-}
-
 install_opam_packages() {
   opam update
   cat $HOME/git/installation/opam_packages | xargs -n 1 opam install -y
@@ -110,11 +89,6 @@ install_another_redis_desktop_manager() {
   curl -o $INSTALL_DIR/another-redis-desktop-manager -sSL https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}/Another-Redis-Desktop-Manager.${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}.AppImage
   chmod u+x $INSTALL_DIR/another-redis-desktop-manager
   sudo /bin/mv -f $INSTALL_DIR/another-redis-desktop-manager /usr/bin/
-}
-
-update_python_packages() {
-  python -m pip install --upgrade --user pip
-  python -m pip install --upgrade --user -r $HOME/git/installation/requirements.txt
 }
 
 install_gems() {
@@ -147,11 +121,6 @@ install_yq() {
   sudo /bin/mv -f $INSTALL_DIR/yq /usr/local/bin/
 }
 
-install_gcpdiag() {
-  sudo curl -o /usr/local/bin/gcpdiag -sSL https://gcpdiag.dev/gcpdiag.sh
-  sudo chmod +x /usr/local/bin/gcpdiag
-}
-
 install_task_completion() {
   sudo curl -o /etc/bash_completion.d/task.bash -sSL https://raw.githubusercontent.com/go-task/task/master/completion/bash/task.bash
 }
@@ -168,64 +137,4 @@ install_asdf() {
   git clone https://aur.archlinux.org/asdf-vm.git && cd asdf-vm && makepkg -si
 
   popd
-}
-
-install_flutter() {
-  pushd $PWD
-
-  _REPO_DIR=$HOME/git/flutter
-  if [ -d $_REPO_DIR ]; then
-    rm -rf $_REPO_DIR
-  fi
-  git clone https://github.com/flutter/flutter.git $_REPO_DIR
-  cd $_REPO_DIR
-  git checkout stable
-
-  popd
-}
-
-install_slack_cli() {
-  curl -fsSL https://downloads.slack-edge.com/slack-cli/install.sh | bash -s slack-cli
-}
-
-install_telepresence() {
-  sudo curl -fL https://app.getambassador.io/download/tel2oss/releases/download/v2.14.0/telepresence-darwin-arm64 -o /usr/local/bin/telepresence
-  sudo chmod a+x /usr/local/bin/telepresence
-}
-
-install_reddit_tui() {
-  pushd $PWD
-
-  _REPO_DIR=$HOME/git/reddit-tui
-  if [ -d $_REPO_DIR ]; then
-    rm -rf $_REPO_DIR
-    echo Removed existing directory [$_REPO_DIR]
-  fi
-  git clone https://github.com/tonymajestro/reddit-tui $_REPO_DIR
-  cd $_REPO_DIR
-
-  go build -o reddittui main.go
-  mv -f reddittui $HOME/git/bin/
-
-  popd
-}
-
-install_hugo() {
-  pushd $PWD
-
-  _REPO_DIR=$HOME/git/temp-hugo
-  if [ -d $_REPO_DIR ]; then
-    rm -rf $_REPO_DIR
-    echo Removed existing directory [$_REPO_DIR]
-  fi
-  git clone -b master https://github.com/gohugoio/hugo $_REPO_DIR
-  cd $_REPO_DIR
-
-  go install --tags extended
-
-  popd
-}
-
-update_protobuf_flutter() {
-  dart pub global activate protoc_plugin
 }
