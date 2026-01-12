@@ -66,6 +66,7 @@ ollama
 opam
 openssl
 opentofu
+pandoc
 pigz
 pinentry-mac
 pinentry-touchid
