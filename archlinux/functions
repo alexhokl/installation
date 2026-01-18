@@ -30,6 +30,7 @@ install_all() {
   configure_rust
   install_slack_cli
   install_reddit_tui
+  install_claude_code
 }
 
 install_azure_data_studio_extensions() {

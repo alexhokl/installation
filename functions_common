@@ -92,3 +92,7 @@ install_hugo() {
 update_protobuf_flutter() {
   dart pub global activate protoc_plugin
 }
+
+install_claude_code() {
+  curl -fsSL https://claude.ai/install.sh | bash
+}

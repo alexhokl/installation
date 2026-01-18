@@ -87,6 +87,7 @@ install_all() {
   install_gcpdiag
   install_slack_cli
   install_reddit_tui
+  install_claude_code
 }
 
 install_git() {

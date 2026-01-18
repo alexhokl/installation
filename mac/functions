@@ -32,6 +32,7 @@ install_all() {
   $HOME/git/installation/uv_tools_install.sh
   install_pipx_packages
   install_reddit_tui
+  install_claude_code
 }
 
 install_azure_data_studio_extensions() {
