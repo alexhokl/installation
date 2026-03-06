@@ -669,20 +669,6 @@ install_cloudflared() {
   sudo dpkg -i $INSTALL_DIR/cloudflared.deb
 }
 
-install_translate_shell() {
-  pushd $PWD
-
-  if [ ! -d $HOME/git/translate-shell ]; then
-    git clone https://github.com/soimort/translate-shell $HOME/git/translate-shell
-  fi
-  cd $HOME/git/translate-shell
-  git pull
-  make
-  sudo make install
-
-  popd
-}
-
 install_gactions() {
   pushd $PWD
 

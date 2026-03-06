@@ -87,7 +87,6 @@ sst/tap/opencode
 stateful/tap/runme
 stern
 tmux
-translate-shell
 trurl
 typst
 uv
