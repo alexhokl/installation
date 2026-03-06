@@ -55,7 +55,6 @@ libpq
 llvm
 luarocks
 mr
-mycli
 neovim
 ocaml
 octant
