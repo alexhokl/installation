@@ -40,7 +40,6 @@ graphviz
 gum
 handbrake
 hashicorp/tap/terraform
-hashicorp/tap/vault
 helm
 hexyl
 imagemagick

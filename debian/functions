@@ -15,7 +15,6 @@ update_all() {
   install_git
   install_docker_compose
   install_ruby
-  install_vault
   install_terraform
   install_light
   install_kind
@@ -61,7 +60,6 @@ install_all() {
   install_hey
   install_nuget
   install_docker_compose
-  install_vault
   install_sc_im
   install_vscode_extensions
   install_dotnet_tools
@@ -212,25 +210,6 @@ install_sc_im() {
   sudo make install
 
   popd
-}
-
-install_vault() {
-  if [[ -n "$(which vault)" ]]; then
-    CURRENT_VERSION=$(vault version | awk '{ gsub("v","",$2); print $2 }')
-  fi
-  INSTALL_DIR=$(mktemp -d)
-  LOCAL_BIN=/usr/local/bin
-  source $HOME/git/installation/versions-on-github
-
-  if [ "$CURRENT_VERSION" == "$VERSION_HASHICORP_VAULT" ]; then
-    echo "vault ($CURRENT_VERSION) is up-to-date."
-    return
-  fi
-
-  curl -o $INSTALL_DIR/vault.zip -sSL https://releases.hashicorp.com/vault/${VERSION_HASHICORP_VAULT}/vault_${VERSION_HASHICORP_VAULT}_linux_amd64.zip
-  unzip $INSTALL_DIR/vault.zip -d $INSTALL_DIR/
-  sudo /bin/mv -f $INSTALL_DIR/vault $LOCAL_BIN/
-  $LOCAL_BIN/vault -autocomplete-install
 }
 
 install_android_studio() {
