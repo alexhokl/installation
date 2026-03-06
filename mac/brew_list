@@ -65,12 +65,10 @@ ollama
 opam
 openapi-generator
 openssl
-pandoc
 pigz
 pinentry-mac
 pinentry-touchid
 pipx
-poppler
 protobuf
 pyenv
 qutebrowser

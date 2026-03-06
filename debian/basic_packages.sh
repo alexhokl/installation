@@ -78,7 +78,6 @@ sudo ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt install -y \
 	nnn \
 	openssh-server \
 	ovmf \
-  pandoc \
 	pkg-config \
 	postgresql-client \
 	postgresql-client-common \
