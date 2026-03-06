@@ -10,7 +10,6 @@ update_all() {
   install_k9s
   install_popeye
   install_octant
-  install_stern
   install_sampler
   install_git
   install_docker_compose
@@ -55,7 +54,6 @@ install_all() {
   install_have
   install_light
   install_speedtest
-  install_stern
   install_sampler
   install_hey
   install_nuget
@@ -394,23 +392,6 @@ install_speedtest() {
 
   sudo curl -o $LOCAL_BIN/speedtest -sS https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
   sudo chmod a+x $LOCAL_BIN/speedtest
-}
-
-install_stern() {
-  if [[ -n "$(which stern)" ]]; then
-    CURRENT_VERSION=$(stern --version | awk '{ print $3 }')
-  fi
-
-  LOCAL_BIN=/usr/local/bin
-  source $HOME/git/installation/versions-on-github
-
-  if [ "$CURRENT_VERSION" == "$VERSION_WERCKER_STERN" ]; then
-    echo "stern ($CURRENT_VERSION) is up-to-date."
-    return
-  fi
-
-  sudo curl -o $LOCAL_BIN/stern -sSL https://github.com/wercker/stern/releases/download/${VERSION_WERCKER_STERN}/stern_linux_amd64
-  sudo chmod a+x $LOCAL_BIN/stern
 }
 
 install_sampler() {

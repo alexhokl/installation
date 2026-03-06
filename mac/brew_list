@@ -85,7 +85,6 @@ spotify_player
 sqlcmd
 sst/tap/opencode
 stateful/tap/runme
-stern
 tmux
 trurl
 typst
