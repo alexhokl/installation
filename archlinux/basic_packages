@@ -62,7 +62,6 @@ luarocks
 make
 myrepos
 ncurses
-neomutt
 net-tools
 networkmanager
 networkmanager-l2tp
