@@ -40,6 +40,12 @@ curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/dotnet_
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/npm-list.txt \
 	| xargs -n 1 sudo npm i -g
 
+rbenv install 4.0.2
+rbenv global 4.0.2
+rbenv rehash
+curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/gem-list \
+  | xargs -n 1 sudo gem install
+
 source $HOME/git/installation/mac/functions
 set_display_more_space
 setup_preferences
