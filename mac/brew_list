@@ -20,6 +20,7 @@ code-server
 curl
 derailed/k9s/k9s
 derailed/popeye/popeye
+displayplacer
 docker-slim
 duf
 font-comic-shanns-mono-nerd-font
@@ -54,7 +55,9 @@ lcov
 libpq
 llvm
 luarocks
+mas
 mr
+n
 neovim
 ocaml
 octant

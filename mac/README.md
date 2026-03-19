@@ -27,30 +27,15 @@ Note: In case the machine shows `No bootable device`, try to clean the BIOS
 See [How to Reset NVRAM on your Mac](https://support.apple.com/en-hk/HT204063)
 for more information.
 
-### Setup steps
+## Setup a new Mac
 
-- update OSX
-- open a terminal and run the following
-- `curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/mac/setup_initial.sh | /bin/bash`
-- `curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/mac/setup.sh | /bin/bash`
-- install the following apps from App Store
-  - Tailscale
-  - Magnet
-  - Microsoft Remote Desktop
-  - Slack for Desktop
-  - Xcode
-- set display scaled and choose "more space"
-- setup keyboard with UK English and HK Chinese and download dictation
-- setup three finger drag in "accessibility" (see
-  https://support.apple.com/en-us/HT204609)
-- setup "Require password immediately after sleep or screen saver begins" in
-  "Security & Privacy"
-- change default download directory of chrome to desktop
-- customise using the following script
+1. update OSX
+2. sign in to App Store (required before running `setup.sh` so `mas` can install apps)
+3. open a terminal and run the following
 
-```sh
-sudo xcodebuid -license accept
-
-curl https://raw.githubusercontent.com/alexhokl/installation/master/mac/preferences.scpt -o mac-preferences.scpt
-osascript mac-preferences.scpt
 ```
+curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/mac/setup_initial.sh | /bin/bash
+curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/mac/setup.sh | /bin/bash
+```
+
+4. change default download directory of chrome to desktop

@@ -12,11 +12,17 @@ curl -sSLO https://raw.githubusercontent.com/alexhokl/installation/master/requir
 python -m pip install --upgrade --user pip
 python -m pip install --upgrade --user -r $HOME/git/installation/requirements.txt
 
+## latest LTS version of node
+n lts
+
 mkdir -p $HOME/git
 for r in $(curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/repo_list); do
 	n=$(basename $r)
 	git clone $r $HOME/git/$n
 done
+
+git clone https://github.com/alexhokl/.vim $HOME/.vim
+ln -sf $HOME/.vim $HOME/.config/nvim
 
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/go_packages \
 	| xargs -n 1 go install
@@ -33,9 +39,22 @@ curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/npm-lis
 	| xargs -n 1 sudo npm i -g
 
 source $HOME/git/installation/mac/functions
-install_vim
+set_display_more_space
+setup_preferences
+setup_keyboard
+setup_three_finger_drag
+setup_tap_to_click
+setup_caps_lock_to_control
+setup_password_on_sleep
 
 pushd $PWD
 cd $HOME/git/dotfiles
 make dotfiles
 popd
+
+mas install 497799835   # Xcode
+mas install 803453959   # Slack for Desktop
+mas install 1295203466  # Windows App
+mas install 1475387142  # Tailscale
+
+sudo xcodebuild -license accept

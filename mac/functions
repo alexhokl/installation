@@ -102,3 +102,162 @@ install_pipx_packages() {
   cat $HOME/git/installation/pipx_packages | xargs -n 1 pipx install
   pipx inject mdformat mdformat-gfm
 }
+
+setup_three_finger_drag() {
+  # Enables three-finger drag via Accessibility > Pointer Control > Trackpad Options.
+  # Requires disabling the legacy one-finger drag (Dragging) and DragLock, which
+  # are mutually exclusive with three-finger drag.
+  # Changes take effect immediately without a restart.
+  defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -int 1
+  defaults write com.apple.AppleMultitouchTrackpad Dragging -int 0
+  defaults write com.apple.AppleMultitouchTrackpad DragLock -int 0
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -int 1
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -int 0
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad DragLock -int 0
+}
+
+setup_tap_to_click() {
+  # Enables tap to click via System Settings > Trackpad > Point & Click > Tap to click.
+  # Written to both trackpad domains so it applies to the built-in and any
+  # Bluetooth trackpad. Changes take effect immediately without a restart.
+  defaults write com.apple.AppleMultitouchTrackpad Clicking -int 1
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
+}
+
+setup_caps_lock_to_control() {
+  # Remaps Caps Lock to Control via System Settings > Keyboard > Keyboard Shortcuts >
+  # Modifier Keys. The key com.apple.keyboard.modifiermapping.-1--1-0 in
+  # NSGlobalDomain applies the mapping to all keyboards (-1--1-0 means any
+  # vendor, any product). HIDKeyboardModifierMappingSrc/Dst values are macOS
+  # NX modifier key codes: 0 = Caps Lock, 2 = Control.
+  # A logout/login is required for the change to take effect.
+  defaults write -g "com.apple.keyboard.modifiermapping.-1--1-0" \
+    -array "<dict><key>HIDKeyboardModifierMappingDst</key><integer>2</integer><key>HIDKeyboardModifierMappingSrc</key><integer>0</integer></dict>"
+}
+
+setup_password_on_sleep() {
+  # Requires password immediately when the screen saver begins or the display
+  # sleeps, via System Settings > Lock Screen > "Require password after screen
+  # saver begins or display is turned off".
+  # askForPasswordDelay = 0 means immediately (any positive value is seconds).
+  defaults write com.apple.screensaver askForPassword -int 1
+  defaults write com.apple.screensaver askForPasswordDelay -int 0
+}
+
+setup_keyboard() {
+  # Configures input sources: UK English keyboard, Japanese Romaji, and
+  # Traditional Chinese (Cangjie) for HK, then enables dictation with those
+  # three locales so the dictation language assets are downloaded.
+  #
+  # Bundle IDs / layout IDs sourced from the macOS TIS framework:
+  #   US English keyboard layout ID  : 0
+  #   Japanese Romaji                 : com.apple.inputmethod.Kotoeri.RomajiTyping
+  #   HK Chinese (Cangjie)           : com.apple.inputmethod.TYIM
+  #
+  # A logout/login (or `killall SystemUIServer`) is needed for the input-source
+  # changes to be fully reflected in the menu bar.
+
+  defaults write com.apple.HIToolbox AppleEnabledInputSources -array \
+    '<dict>
+      <key>InputSourceKind</key><string>Keyboard Layout</string>
+      <key>KeyboardLayout ID</key><integer>0</integer>
+      <key>KeyboardLayout Name</key><string>U.S.</string>
+    </dict>' \
+    '<dict>
+      <key>Bundle ID</key><string>com.apple.inputmethod.Kotoeri.RomajiTyping</string>
+      <key>Input Mode</key><string>com.apple.inputmethod.Japanese</string>
+      <key>InputSourceKind</key><string>Input Mode</string>
+    </dict>' \
+    '<dict>
+      <key>Bundle ID</key><string>com.apple.inputmethod.Kotoeri.RomajiTyping</string>
+      <key>InputSourceKind</key><string>Keyboard Input Method</string>
+    </dict>' \
+    '<dict>
+      <key>Bundle ID</key><string>com.apple.inputmethod.TYIM</string>
+      <key>Input Mode</key><string>com.apple.inputmethod.TYIM.Cangjie</string>
+      <key>InputSourceKind</key><string>Input Mode</string>
+    </dict>'
+
+  # Enable dictation and set preferred languages to en_GB, ja_JP, zh_HK.
+  # DictationIMUseOnlyOfflineDictation = 0 allows downloading language assets
+  # on first use; VisibleNetworkSRLocaleIdentifiers controls which languages
+  # appear in the dictation language selector.
+  defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs \
+    DictationIMPreferredLanguageIdentifiers -array "en_US" "ja_JP" "zh_HK"
+  defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs \
+    VisibleNetworkSRLocaleIdentifiers \
+    -dict "en_US" -bool true "ja_JP" -bool true "zh_HK" -bool true
+  defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs \
+    DictationIMNetworkBasedLocaleIdentifier -string "en_US"
+  defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs \
+    DictationIMUseOnlyOfflineDictation -bool false
+  defaults write com.apple.Accessibility DictationEnabled -bool true
+
+  killall SystemUIServer
+}
+
+setup_preferences() {
+  # Dock: autohide, small tile size, no magnification.
+  defaults write com.apple.dock autohide -bool true
+  defaults write com.apple.dock tilesize -int 36
+  defaults write com.apple.dock magnification -bool false
+
+  # Hot Corners: top-right corner puts the display to sleep (corner code 10).
+  # All other corners are disabled (0 = no action). The modifier key for each
+  # corner is 0 (no modifier required).
+  defaults write com.apple.dock wvous-tr-corner -int 10
+  defaults write com.apple.dock wvous-tr-modifier -int 0
+  defaults write com.apple.dock wvous-tl-corner -int 0
+  defaults write com.apple.dock wvous-tl-modifier -int 0
+  defaults write com.apple.dock wvous-bl-corner -int 0
+  defaults write com.apple.dock wvous-bl-modifier -int 0
+  defaults write com.apple.dock wvous-br-corner -int 0
+  defaults write com.apple.dock wvous-br-modifier -int 0
+
+  # Menu bar: show Bluetooth and Sound/Volume icons via Control Center.
+  # These keys are used on macOS Monterey and later (Ventura+).
+  defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -bool true
+  defaults write com.apple.controlcenter "NSStatusItem Visible Sound" -bool true
+
+  # Restart the Dock to apply dock and hot-corner changes immediately.
+  killall Dock
+}
+
+set_display_more_space() {
+  # Sets every connected display to "More Space" scaled mode using displayplacer.
+  # "More Space" corresponds to the highest HiDPI scaled resolution available
+  # for each display (largest res with scaling:on).
+  #
+  # Run `displayplacer list` to inspect available modes after setup.
+  _DISPLAY_LIST=$(displayplacer list)
+
+  # Collect all serial screen ids.
+  _IDS=$(echo "$_DISPLAY_LIST" | awk '/Serial screen id:/{print $4}')
+
+  if [ -z "$_IDS" ]; then
+    echo "set_display_more_space: no displays found, skipping."
+    return
+  fi
+
+  for _ID in $_IDS; do
+    # For each display, find the highest-width HiDPI scaled mode (scaling:on).
+    _MODE=$(echo "$_DISPLAY_LIST" \
+      | awk -v id="$_ID" '
+          /Serial screen id:/ { in_block = ($4 == id) }
+          in_block && /res:.*scaling:on/ {
+            split($0, a, "res:"); split(a[2], b, " "); res = b[1]
+            split(res, wh, "x"); w = wh[1]+0
+            if (w > max_w) { max_w = w; best = res }
+          }
+          END { print best }
+        ')
+
+    if [ -z "$_MODE" ]; then
+      echo "set_display_more_space: no scaled modes available for display [$_ID], skipping."
+      continue
+    fi
+
+    echo "set_display_more_space: setting display [$_ID] to res:$_MODE scaling:on"
+    displayplacer "id:$_ID res:$_MODE scaling:on"
+  done
+}
