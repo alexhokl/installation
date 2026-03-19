@@ -178,17 +178,20 @@ setup_keyboard() {
       <key>InputSourceKind</key><string>Input Mode</string>
     </dict>'
 
-  # Enable dictation and set preferred languages to en_GB, ja_JP, zh_HK.
+  # Enable dictation with languages: en_US, en_GB, ja_JP, zh_HK.
+  # DictationIMLaunchShortcut: 0=off, 1=Fn twice, 2=Left Cmd twice, 3=Right Cmd twice.
   # DictationIMUseOnlyOfflineDictation = 0 allows downloading language assets
   # on first use; VisibleNetworkSRLocaleIdentifiers controls which languages
   # appear in the dictation language selector.
   defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs \
-    DictationIMPreferredLanguageIdentifiers -array "en_US" "ja_JP" "zh_HK"
+    DictationIMPreferredLanguageIdentifiers -array "en_US" "en_GB" "ja_JP" "zh_HK"
   defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs \
     VisibleNetworkSRLocaleIdentifiers \
-    -dict "en_US" -bool true "ja_JP" -bool true "zh_HK" -bool true
+    -dict "en_US" -bool true "en_GB" -bool true "ja_JP" -bool true "zh_HK" -bool true
   defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs \
     DictationIMNetworkBasedLocaleIdentifier -string "en_US"
+  defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs \
+    DictationIMLaunchShortcut -int 3
   defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs \
     DictationIMUseOnlyOfflineDictation -bool false
   defaults write com.apple.Accessibility DictationEnabled -bool true
