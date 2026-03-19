@@ -60,3 +60,5 @@ mas install 1295203466  # Windows App
 mas install 1475387142  # Tailscale
 
 sudo xcodebuild -license accept
+
+bash <(curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh)
