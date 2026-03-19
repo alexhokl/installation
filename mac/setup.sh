@@ -64,6 +64,8 @@ mas install 497799835   # Xcode
 mas install 803453959   # Slack for Desktop
 mas install 1295203466  # Windows App
 mas install 1475387142  # Tailscale
+mas install 1464122853  # NextDNS
+mas install 1276493162  # reMarkable desktop
 
 sudo xcodebuild -license accept
 
