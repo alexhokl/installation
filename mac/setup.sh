@@ -61,4 +61,6 @@ mas install 1475387142  # Tailscale
 
 sudo xcodebuild -license accept
 
+sudo ln -sf /opt/homebrew/bin/pinentry-mac /usr/local/bin/pinentry
+
 bash <(curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh)
