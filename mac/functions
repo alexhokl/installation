@@ -226,6 +226,45 @@ setup_preferences() {
   killall Dock
 }
 
+setup_menu_bar_show_items() {
+  # Shows Bluetooth, Battery (with percentage), and VPN in the menu bar.
+  #
+  # Bluetooth and Battery use the Control Center NSStatusItem visibility keys
+  # (macOS Ventura+). "NSStatusItem Visible <Module>" = true makes the item
+  # appear directly in the menu bar rather than only inside Control Center.
+  # ShowBatteryPercentage adds the numeric percentage next to the battery icon.
+  #
+  # VPN is a legacy Menu Extra and is registered via the menuExtras array in
+  # com.apple.systemuiserver. The entry is added with -array-add to avoid
+  # clobbering any existing entries.
+  #
+  # killall SystemUIServer restarts the menu bar host process so all changes
+  # take effect immediately without a logout.
+  defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -bool true
+  defaults write com.apple.controlcenter "NSStatusItem Visible Battery" -bool true
+  defaults write com.apple.controlcenter ShowBatteryPercentage -bool true
+  defaults write com.apple.systemuiserver menuExtras -array-add \
+    "/System/Library/CoreServices/Menu Extras/VPN.menu"
+  killall SystemUIServer
+}
+
+setup_menu_bar_hide_items() {
+  # Hides Timer, Now Playing, Screen Mirroring, and Focus from the menu bar.
+  #
+  # Setting "NSStatusItem Visible <Module>" = false removes the item from the
+  # menu bar while keeping it available inside Control Center. The module name
+  # identifiers (Timer, NowPlaying, ScreenMirroring, FocusModes) match the
+  # internal class names used by ControlCenter.app (macOS Ventura+).
+  #
+  # killall SystemUIServer restarts the menu bar host process so all changes
+  # take effect immediately without a logout.
+  defaults write com.apple.controlcenter "NSStatusItem Visible Timer" -bool false
+  defaults write com.apple.controlcenter "NSStatusItem Visible NowPlaying" -bool false
+  defaults write com.apple.controlcenter "NSStatusItem Visible ScreenMirroring" -bool false
+  defaults write com.apple.controlcenter "NSStatusItem Visible FocusModes" -bool false
+  killall SystemUIServer
+}
+
 set_display_more_space() {
   # Sets every connected display to "More Space" scaled mode using displayplacer.
   # "More Space" corresponds to the highest HiDPI scaled resolution available

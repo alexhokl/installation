@@ -54,6 +54,8 @@ setup_three_finger_drag
 setup_tap_to_click
 setup_caps_lock_to_control
 setup_password_on_sleep
+setup_menu_bar_show_items
+setup_menu_bar_hide_items
 
 pushd $PWD
 cd $HOME/git/dotfiles
