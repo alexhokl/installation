@@ -6,3 +6,4 @@ dotnet-outdated-tool
 dotnet-reportgenerator-globaltool
 dotnet-script
 microsoft.sqlpackage
+PowerShell
