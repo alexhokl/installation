@@ -7,6 +7,7 @@ github.com/ajstarks/deck/cmd/pngdeck@latest
 github.com/axw/gocov/gocov@master
 github.com/bschaatsbergen/cidr@latest
 github.com/caddyserver/xcaddy/cmd/xcaddy@latest
+github.com/charmbracelet/crush@latest
 github.com/charmbracelet/freeze@latest
 github.com/charmbracelet/melt/cmd/melt@latest
 github.com/charmbracelet/mods@latest
@@ -14,6 +15,7 @@ github.com/charmbracelet/sequin@latest
 github.com/charmbracelet/wishlist/cmd/wishlist@latest
 github.com/cloudentity/oauth2c@latest
 github.com/davecheney/httpstat@master
+github.com/dolmen-go/kittyimg/cmd/icat@latest
 github.com/errata-ai/vale@latest
 github.com/fairwindsops/nova@latest
 github.com/gcla/termshark/v2/cmd/termshark@master
@@ -22,6 +24,7 @@ github.com/go-swagger/go-swagger/cmd/swagger@master
 github.com/go-task/task/v3/cmd/task@latest
 github.com/google/gops@master
 github.com/google/ko@latest
+github.com/google/yamlfmt/cmd/yamlfmt@latest
 github.com/isacikgoz/gitbatch/cmd/gitbatch@latest
 github.com/itchyny/bed/cmd/bed@master
 github.com/jobodd/rgst/cmd/rgst@latest
@@ -35,6 +38,7 @@ github.com/mdempsky/gocode@master
 github.com/mlange-42/tom@main
 github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
 github.com/odeke-em/drive/cmd/drive@master
+github.com/oz/tz@latest
 github.com/rakyll/govalidate@master
 github.com/rakyll/hey@master
 github.com/rogpeppe/godef@master
@@ -54,11 +58,8 @@ go.k6.io/k6@latest
 golang.org/x/perf/cmd/benchstat@latest
 golang.org/x/tools/cmd/goimports@latest
 golang.org/x/tools/cmd/stringer@latest
+golang.org/x/tools/gopls@latest
 golang.org/x/vuln/cmd/govulncheck@latest
 google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 google.golang.org/protobuf/cmd/protoc-gen-go@latest
 honnef.co/go/tools/cmd/staticcheck@master
-github.com/charmbracelet/crush@latest
-github.com/google/yamlfmt/cmd/yamlfmt@latest
-github.com/oz/tz@latest
-golang.org/x/tools/gopls@latest
