@@ -1,4 +1,5 @@
 bundler
-travis
-timetrap
 cocoapods
+neovim
+timetrap
+travis
