@@ -8,7 +8,7 @@ asciinema
 asdf
 azure-cli
 bash
-bash-completion
+bash-completion@2
 bat
 biome
 bitwarden
