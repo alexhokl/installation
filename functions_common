@@ -1,7 +1,19 @@
 #!/bin/bash
 
 install_vscode_extensions() {
-  cat $HOME/git/installation/vscode-extensions.txt | xargs -n 1 /usr/bin/code --force --install-extension
+  if [ ! -f $HOME/git/installation/vscode-extensions.txt ]; then
+    echo "File [vscode-extensions.txt] not found. Skipping VSCode extensions installation."
+    return
+  fi
+  if [ ! -f $HOME/git/installation/vscode_settings.json ]; then
+    echo "File [vscode_settings.json] not found. Skipping VSCode settings installation."
+    return
+  fi
+  if ! command -v code &> /dev/null; then
+    echo "VSCode is not installed. Skipping VSCode extensions and settings installation."
+    return
+  fi
+  cat $HOME/git/installation/vscode-extensions.txt | xargs -n 1 code --force --install-extension
   mkdir -p $HOME/.config/Code/User
   /bin/cp -f $HOME/git/installation/vscode_settings.json $HOME/.config/Code/User/settings.json
 }
