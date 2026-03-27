@@ -10,6 +10,7 @@ neovim
 @marp-team/marp-cli
 markdownlint-cli
 @bitwarden/cli
+@llamaindex/liteparse
 opencommit
 @razorsim/commit-companion
 tree-sitter-cli
