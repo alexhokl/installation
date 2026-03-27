@@ -12,7 +12,8 @@ curl -L https://bit.ly/n-install | bash
 
 #install nodejs
 sudo n install 20
-curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/node_setup.sh | bash
+mkdir -p $HOME/.npm-global
+npm config set prefix $HOME/.npm-global
 
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/archlinux/ui_packages \
   | xargs -n 1 sudo pacman -S --noconfirm

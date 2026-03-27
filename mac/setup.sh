@@ -16,6 +16,8 @@ python -m pip install --upgrade --user -r $HOME/git/installation/requirements.tx
 
 ## latest LTS version of node
 n lts
+mkdir -p $HOME/.npm-global
+npm config set prefix $HOME/.npm-global
 
 mkdir -p $HOME/git
 for r in $(curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/repo_list); do
