@@ -54,6 +54,7 @@ jfryy/tap/qq
 jq
 kafkacat
 kompose
+kubectl
 kubectx
 kubescape/tap/kubescape-cli
 lcov
