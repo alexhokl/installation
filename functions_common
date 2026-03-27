@@ -40,6 +40,10 @@ update_python_packages() {
   python -m pip install --upgrade --user -r $HOME/git/installation/requirements.txt
 }
 
+install_gcloud_components() {
+  cat $HOME/git/installation/gcloud_components | xargs -n 1 gcloud components install -q
+}
+
 install_gcpdiag() {
   sudo curl -o /usr/local/bin/gcpdiag -sSL https://gcpdiag.dev/gcpdiag.sh
   sudo chmod +x /usr/local/bin/gcpdiag
