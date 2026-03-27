@@ -25,6 +25,7 @@ github.com/go-task/task/v3/cmd/task@latest
 github.com/google/gops@master
 github.com/google/ko@latest
 github.com/google/yamlfmt/cmd/yamlfmt@latest
+github.com/mr-karan/doggo/cmd/doggo@latest
 github.com/isacikgoz/gitbatch/cmd/gitbatch@latest
 github.com/itchyny/bed/cmd/bed@master
 github.com/jobodd/rgst/cmd/rgst@latest
