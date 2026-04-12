@@ -59,6 +59,7 @@ kubectx
 kubescape/tap/kubescape-cli
 lcov
 libpq
+llama.cpp
 llvm
 luarocks
 mas
