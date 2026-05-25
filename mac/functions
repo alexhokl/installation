@@ -13,6 +13,7 @@ update_all() {
   install_dotnet_tools
   install_gems
   update_python_packages
+  update_npm_packages
   install_gcpdiag
   flutter upgrade
   install_gh_extensions

@@ -15,6 +15,7 @@ update_all() {
   install_gh_extensions
   install_gems
   update_python_packages
+  update_npm_packages
   install_gcpdiag
   flutter upgrade
   install_slack_cli

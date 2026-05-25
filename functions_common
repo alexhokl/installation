@@ -35,6 +35,10 @@ install_go_packages() {
   cat $HOME/git/installation/go_packages | xargs -n 1 go install
 }
 
+update_npm_packages() {
+  cat $HOME/git/installation/npm-list.txt | xargs -n 1 npm install -g
+}
+
 update_python_packages() {
   python -m pip install --upgrade --user pip
   python -m pip install --upgrade --user -r $HOME/git/installation/requirements.txt

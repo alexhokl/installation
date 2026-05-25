@@ -28,6 +28,7 @@ update_all() {
   install_azure_data_studio
   install_gactions
   update_python_packages
+  update_npm_packages
   install_gems
   install_gcpdiag
   flutter upgrade
