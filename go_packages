@@ -10,7 +10,6 @@ github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 github.com/charmbracelet/crush@latest
 github.com/charmbracelet/freeze@latest
 github.com/charmbracelet/melt/cmd/melt@latest
-github.com/charmbracelet/mods@latest
 github.com/charmbracelet/sequin@latest
 github.com/charmbracelet/wishlist/cmd/wishlist@latest
 github.com/cloudentity/oauth2c@latest
