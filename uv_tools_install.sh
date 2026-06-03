@@ -3,3 +3,4 @@ uv tool install --python 3.12 posting
 uv tool install llm
 uv tool install "huggingface_hub[cli]"
 uv tool install graphifyy
+uv tool install litert-lm
