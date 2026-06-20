@@ -5,3 +5,5 @@ uv tool install "huggingface_hub[cli]"
 uv tool install graphifyy
 uv tool install litert-lm
 uv tool install mlx-lm
+uv tool install mlx-vlm
+# uv tool install --force mlx-audio --prerelease=allow
