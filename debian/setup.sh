@@ -112,7 +112,7 @@ sudo usermod -aG docker $USER
 sudo usermod -a -G wireshark $USER
 sudo adduser $USER libvirt
 
-source $HOME/git/installation/versions-on-github
+source $HOME/git/installation/versions_on_github
 source $HOME/git/installation/debian/functions
 install_all
 

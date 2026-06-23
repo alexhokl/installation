@@ -21,6 +21,7 @@ update_all() {
   install_slack_cli
   install_reddit_tui
   install_hugo
+  install_mermaid_ascii
 }
 
 install_all() {
@@ -32,6 +33,7 @@ install_all() {
   install_slack_cli
   install_reddit_tui
   install_claude_code
+  install_mermaid_ascii
 }
 
 install_azure_data_studio_extensions() {
@@ -53,25 +55,6 @@ install_sc_im() {
   popd
 }
 
-install_nvim() {
-  # if [[ -n "$(which nvim)" ]]; then
-  #   CURRENT_VERSION=$(nvim --version | grep ^NVIM | awk '{ gsub("v", "", $2); print $2 }')
-  # fi
-  #
-  LOCAL_BIN=/usr/local/bin
-  INSTALL_DIR=$(mktemp -d)
-  # source $HOME/git/installation/versions-on-github
-  #
-  # if [ "$CURRENT_VERSION" == "$VERSION_NEOVIM_NEOVIM" ]; then
-  #   echo "nvim ($CURRENT_VERSION) is up-to-date."
-  #   return
-  # fi
-
-  curl -o $INSTALL_DIR/nvim.appimage -sSL https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
-  chmod u+x $INSTALL_DIR/nvim.appimage
-  sudo /bin/mv -f $INSTALL_DIR/nvim.appimage $LOCAL_BIN/nvim
-}
-
 install_have() {
   LOCAL_BIN=/usr/local/bin
 
@@ -86,11 +69,21 @@ install_opam_packages() {
 
 install_another_redis_desktop_manager() {
   INSTALL_DIR=$(mktemp -d)
-  source $HOME/git/installation/versions-on-github
+  _VERSION=$(jq -r '."qishibo/AnotherRedisDesktopManager"' $HOME/git/installation/versions_on_github.json)
 
-  curl -o $INSTALL_DIR/another-redis-desktop-manager -sSL https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}/Another-Redis-Desktop-Manager.${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}.AppImage
+  curl -o $INSTALL_DIR/another-redis-desktop-manager -sSL https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v${_VERSION}/Another-Redis-Desktop-Manager.${_VERSION}.AppImage
   chmod u+x $INSTALL_DIR/another-redis-desktop-manager
   sudo /bin/mv -f $INSTALL_DIR/another-redis-desktop-manager /usr/bin/
+}
+
+install_mermaid_ascii() {
+  INSTALL_DIR=$(mktemp -d)
+  LOCAL_BIN=/usr/local/bin
+  _VERSION=$(jq -r '."AlexanderGrooff/mermaid-ascii"' $HOME/git/installation/versions_on_github.json)
+
+  curl -o $INSTALL_DIR/mermaid-ascii.tar.gz -sSL https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/${_VERSION}/mermaid-ascii_Linux_x86_64.tar.gz
+  tar xzf $INSTALL_DIR/mermaid-ascii.tar.gz -C $INSTALL_DIR/
+  sudo /bin/mv -f $INSTALL_DIR/mermaid-ascii $LOCAL_BIN/
 }
 
 install_gems() {
@@ -99,16 +92,6 @@ install_gems() {
 
 configure_rust() {
   rustup install stable
-}
-
-install_kubelogin() {
-  INSTALL_DIR=$(mktemp -d)
-  source $HOME/git/installation/versions-on-github
-
-  curl -o $INSTALL_DIR/kubelogin.zip -sSL https://github.com/Azure/kubelogin/releases/download/v${VERSION_AZURE_KUBELOGIN}/kubelogin-linux-amd64.zip
-  unzip $INSTALL_DIR/kubelogin.zip -d $INSTALL_DIR/
-  chmod +x $INSTALL_DIR/bin/linux_amd64/kubelogin
-  sudo /bin/mv -f $INSTALL_DIR/bin/linux_amd64/kubelogin /usr/local/bin/
 }
 
 install_d2() {

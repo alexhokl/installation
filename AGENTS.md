@@ -13,8 +13,8 @@ and no build system beyond the single `Makefile` target.
 installation/
 ├── Makefile                  # Single target: print-latest-versions
 ├── functions_common          # Shared Bash functions sourced by all platforms
-├── version_on_github        # Pinned tool versions (KEY=value format)
-├── print-latest-versions.sh  # Queries GitHub API to refresh version_on_github
+├── versions_on_github.json   # Pinned tool versions (owner/repo: version format)
+├── print-latest-versions.sh  # Queries GitHub API to refresh versions_on_github.json
 ├── requirements.txt          # Python packages (pip)
 ├── go_packages               # Go tools (one import path per line)
 ├── cargo_packages            # Rust crates (one crate name per line)
@@ -74,7 +74,7 @@ make print-latest-versions
 ```
 
 This queries the GitHub API for the latest release of every tool pinned in
-`version_on_github` and rewrites that file in-place. Requires `curl` and `jq`.
+`versions_on_github.json` and rewrites that file in-place. Requires `xh` and `jq`.
 
 ### macOS setup
 
@@ -182,9 +182,8 @@ the scripts against a real machine.
 - No comments inside list files (they are piped directly to `xargs`).
 - `go_packages`: full module import paths including version suffix
   (`@latest`, `@master`, `@vX.Y.Z`).
-- `version_on_github`: `VERSION_OWNER_REPO=x.y.z` format. Owner and repo are
-  separated by `_`; a double underscore `__` replaces a hyphen in the owner or
-  repo name (e.g. `VERSION_VMWARE__TANZU_OCTANT`).
+- `versions_on_github.json`: `"owner/repo": "x.y.z"` format. Use the exact
+  owner and repo names as they appear on GitHub.
 
 ### Makefile
 
@@ -200,8 +199,8 @@ the scripts against a real machine.
 
 ## Conventions When Adding New Tools
 
-1. **Pin the version** in `version_on_github` using the
-   `VERSION_OWNER_REPO=x.y.z` pattern. Run `./print-latest-versions.sh` to
+1. **Pin the version** in `versions_on_github.json` using the
+   `"owner/repo": "x.y.z"` format. Run `./print-latest-versions.sh` to
    populate the initial value.
 2. **Add an install function** in the appropriate `functions` file
    (`functions_common` for cross-platform, `mac/functions`,

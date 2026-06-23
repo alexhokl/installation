@@ -3,28 +3,12 @@
 source $HOME/git/installation/functions_common
 
 update_all() {
-  install_bat
-  install_step
-  install_hexyl
-  install_nvim
-  install_k9s
-  install_popeye
-  install_octant
-  install_sampler
-  install_git
-  install_docker_compose
   install_ruby
-  install_terraform
-  install_light
-  install_kind
   install_code_server
-  install_protoc
   install_git_sizer
-  install_go
   install_go_packages
   install_cargo_packages
   install_gh_extensions
-  install_kompose
   install_azure_data_studio
   install_gactions
   update_python_packages
@@ -36,48 +20,33 @@ update_all() {
   install_reddit_tui
   install_hugo
   update_protobuf_flutter
+  install_mermaid_ascii
 }
 
 install_all() {
-  install_bat
   install_slack
   install_azure_data_studio
-  install_hexyl
-  install_octant
-  install_step
-  install_nvim
   install_flutter
-  install_k9s
-  install_popeye
   install_android_studio
   install_icdiff
   install_lolcat
   install_have
-  install_light
   install_speedtest
-  install_sampler
   install_hey
   install_nuget
-  install_docker_compose
   install_sc_im
   install_vscode_extensions
   install_dotnet_tools
   install_ruby
-  install_git
   install_gh
-  install_go
   install_go_packages
   install_bb_pr
-  install_terraform
   install_fzf
   install_krew
-  install_kind
   install_code_server
-  install_protoc
   install_git_sizer
   install_cargo
   install_cargo_packages
-  install_kompose
   install_another_redis_desktop_manager
   install_cloudflared
   install_gactions
@@ -85,67 +54,17 @@ install_all() {
   install_slack_cli
   install_reddit_tui
   install_claude_code
-}
-
-install_git() {
-  pushd $PWD
-  INSTALL_DIR=$(mktemp -d)
-  BASH_COMPLETION_DIR=/etc/bash_completion.d
-  source $HOME/git/installation/versions-on-github
-
-  if [[ -n "$(which git)" ]]; then
-    CURRENT_VERSION=$(git version | awk '{ print $3 }')
-  fi
-  if [ "$CURRENT_VERSION" == "$VERSION_GIT_GIT" ]; then
-    echo "git ($CURRENT_VERSION) is up-to-date."
-    return
-  fi
-
-  sudo apt purge -y git git-core
-  sudo apt autoremove -y
-  hash -r
-
-  curl -o $INSTALL_DIR/git.tar.gz -sSL https://github.com/git/git/archive/v${VERSION_GIT_GIT}.tar.gz
-  tar xvzf $INSTALL_DIR/git.tar.gz -C $INSTALL_DIR/
-  cd $INSTALL_DIR/git-*
-  make prefix=/usr/local all
-  sudo make prefix=/usr/local install
-
-  sudo curl -o $BASH_COMPLETION_DIR/git-completion.bash -sS https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-
-  popd
-}
-
-install_docker_compose() {
-  INSTALL_DIR=$(mktemp -d)
-  LOCAL_BIN=/usr/local/bin
-  BASH_COMPLETION_DIR=/etc/bash_completion.d
-  source $HOME/git/installation/versions-on-github
-
-  if [[ -n "$(which docker-compose)" ]]; then
-    CURRENT_VERSION=$(docker-compose version | grep docker-compose | awk '{ gsub(",","",$3); print $3 }')
-  fi
-  if [ "$CURRENT_VERSION" == "$VERSION_DOCKER_COMPOSE" ]; then
-    echo "docker-compose ($CURRENT_VERSION) is up-to-date."
-    return
-  fi
-
-  _DOCKER_PLUGIN_DIRECTORY=$HOME/.docker/cli-plugins
-  if [ ! -d $_DOCKER_PLUGIN_DIRECTORY ]; then
-    mkdir $_DOCKER_PLUGIN_DIRECTORY
-  fi
-  curl -o $_DOCKER_PLUGIN_DIRECTORY/docker-compose -sSL "https://github.com/docker/compose/releases/download/v${VERSION_DOCKER_COMPOSE}/docker-compose-linux-x86_64"
-  sudo chmod a+x $_DOCKER_PLUGIN_DIRECTORY/docker-compose
+  install_mermaid_ascii
 }
 
 install_ruby() {
   pushd $PWD
-  source $HOME/git/installation/versions-on-github
+  _VERSION=$(jq -r '."ruby/ruby"' $HOME/git/installation/versions_on_github.json)
 
   if [[ -n "$(which rbenv)" ]]; then
     CURRENT_VERSION=$(rbenv version | awk '{ print $1 }')
   fi
-  if [ "$CURRENT_VERSION" == "$VERSION_RUBY_RUBY" ]; then
+  if [ "$CURRENT_VERSION" == "$_VERSION" ]; then
     echo "ruby ($CURRENT_VERSION) is up-to-date."
     return
   fi
@@ -164,49 +83,9 @@ install_ruby() {
   fi
 
   $HOME/.rbenv/bin/rbenv init
-  $HOME/.rbenv/bin/rbenv install $VERSION_RUBY_RUBY
-  $HOME/.rbenv/bin/rbenv global $VERSION_RUBY_RUBY
+  $HOME/.rbenv/bin/rbenv install $_VERSION
+  $HOME/.rbenv/bin/rbenv global $_VERSION
   echo "gem: --no-document" > $HOME/.gemrc
-
-  popd
-}
-
-install_go() {
-  VERSION_GOLANG=1.18.1
-
-  if [[ -n "$(which go)" ]]; then
-    CURRENT_VERSION=$(go version | awk '{ gsub("go","",$3); print $3 }')
-  fi
-  if [ "$CURRENT_VERSION" == "$VERSION_GOLANG" ]; then
-    echo "go ($CURRENT_VERSION) is up-to-date."
-    return
-  fi
-
-  GO_BIN_DIR=$HOME/git/bin
-
-  INSTALL_DIR=$(mktemp -d)
-
-  if [ ! -d $GO_BIN_DIR ]; then
-    mkdir $GO_BIN_DIR
-  fi
-  curl -o $INSTALL_DIR/golang.tar.gz -sS https://storage.googleapis.com/golang/go${VERSION_GOLANG}.linux-amd64.tar.gz
-  if [ -d /usr/local/go ]; then
-    sudo rm -rf /usr/local/go
-  fi
-  sudo tar xvf $INSTALL_DIR/golang.tar.gz -C /usr/local/
-}
-
-install_sc_im() {
-  pushd $PWD
-
-  git clone https://github.com/jmcnamara/libxlsxwriter.git $HOME/git/libxlsxwriter
-  cd $HOME/git/libxlsxwriter
-  make
-  sudo make install
-  git clone https://github.com/andmarti1424/sc-im.git $HOME/git/sc-im
-  cd $HOME/git/sc-im
-  make
-  sudo make install
 
   popd
 }
@@ -227,63 +106,6 @@ install_android_studio() {
   sudo ln -s $INSTALL_PATH/bin/studio.sh $LOCAL_BIN/studio.sh
 }
 
-install_popeye() {
-  if [[ -n "$(which popeye)" ]]; then
-    CURRENT_VERSION=$(popeye version | grep Version | awk '{ print $2 }')
-  fi
-
-  INSTALL_DIR=$(mktemp -d)
-  LOCAL_BIN=/usr/local/bin
-  source $HOME/git/installation/versions-on-github
-
-  if [ "$CURRENT_VERSION" == "$VERSION_DERAILED_POPEYE" ]; then
-    echo "popeye ($CURRENT_VERSION) is up-to-date."
-    return
-  fi
-
-  curl -o $INSTALL_DIR/popeye.tar.gz -sSL https://github.com/derailed/popeye/releases/download/v${VERSION_DERAILED_POPEYE}/popeye_Linux_x86_64.tar.gz
-  tar xvzf $INSTALL_DIR/popeye.tar.gz -C $INSTALL_DIR/
-  sudo /bin/mv -f $INSTALL_DIR/popeye $LOCAL_BIN/
-}
-
-install_k9s() {
-  if [[ -n "$(which k9s)" ]]; then
-    CURRENT_VERSION=$(k9s version | grep Version | awk '{ gsub("v", "", $2); print $2 }')
-  fi
-
-  INSTALL_DIR=$(mktemp -d)
-  LOCAL_BIN=/usr/local/bin
-  source $HOME/git/installation/versions-on-github
-
-  if [ "$CURRENT_VERSION" == "$VERSION_DERAILED_K9S" ]; then
-    echo "k9s ($CURRENT_VERSION) is up-to-date."
-    return
-  fi
-
-  curl -o $INSTALL_DIR/k9s.tar.gz -sSL https://github.com/derailed/k9s/releases/download/v${VERSION_DERAILED_K9S}/k9s_Linux_x86_64.tar.gz
-  tar xvzf $INSTALL_DIR/k9s.tar.gz -C $INSTALL_DIR/
-  sudo /bin/mv -f $INSTALL_DIR/k9s $LOCAL_BIN/
-}
-
-install_nvim() {
-  # if [[ -n "$(which nvim)" ]]; then
-  #   CURRENT_VERSION=$(nvim --version | grep ^NVIM | awk '{ gsub("v", "", $2); print $2 }')
-  # fi
-  #
-  LOCAL_BIN=/usr/local/bin
-  INSTALL_DIR=$(mktemp -d)
-  # source $HOME/git/installation/versions-on-github
-  #
-  # if [ "$CURRENT_VERSION" == "$VERSION_NEOVIM_NEOVIM" ]; then
-  #   echo "nvim ($CURRENT_VERSION) is up-to-date."
-  #   return
-  # fi
-
-  curl -o $INSTALL_DIR/nvim.appimage -sSL https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
-  chmod u+x $INSTALL_DIR/nvim.appimage
-  sudo /bin/mv -f $INSTALL_DIR/nvim.appimage $LOCAL_BIN/nvim
-}
-
 install_slack() {
   INSTALL_DIR=$(mktemp -d)
 
@@ -293,23 +115,6 @@ install_slack() {
   sudo dpkg -i $INSTALL_DIR/slack.deb
 }
 
-install_bat() {
-  if [[ -n "$(which bat)" ]]; then
-    CURRENT_VERSION=$(bat --version | awk '{ print $2 }')
-  fi
-
-  INSTALL_DIR=$(mktemp -d)
-  source $HOME/git/installation/versions-on-github
-
-  if [ "$CURRENT_VERSION" == "$VERSION_SHARKDP_BAT" ]; then
-    echo "bat ($CURRENT_VERSION) is up-to-date."
-    return
-  fi
-
-  curl -o $INSTALL_DIR/bat.deb -sSL https://github.com/sharkdp/bat/releases/download/v${VERSION_SHARKDP_BAT}/bat-musl_${VERSION_SHARKDP_BAT}_amd64.deb
-  sudo dpkg -i $INSTALL_DIR/bat.deb
-}
-
 install_azure_data_studio() {
   INSTALL_DIR=$(mktemp -d)
 
@@ -317,48 +122,6 @@ install_azure_data_studio() {
   curl -o $INSTALL_DIR/azuredatastudio.deb -sSL $LINK
   sudo dpkg -i $INSTALL_DIR/azuredatastudio.deb
   cat $HOME/git/installation/azuredatastudio.extensions | xargs -n 1 /usr/bin/azuredatastudio --force --install-extension
-}
-
-install_hexyl() {
-  INSTALL_DIR=$(mktemp -d)
-  source $HOME/git/installation/versions-on-github
-
-  curl -o $INSTALL_DIR/hexyl.deb -sSL https://github.com/sharkdp/hexyl/releases/download/v${VERSION_SHARKDP_HEXYL}/hexyl_${VERSION_SHARKDP_HEXYL}_amd64.deb
-  sudo dpkg -i $INSTALL_DIR/hexyl.deb
-}
-
-install_octant() {
-  if [[ -n "$(which step)" ]]; then
-    CURRENT_VERSION=$(octant version | grep Version | awk '{ print $2 }')
-  fi
-
-  INSTALL_DIR=$(mktemp -d)
-  source $HOME/git/installation/versions-on-github
-
-  if [ "$CURRENT_VERSION" == "$VERSION_VMWARE__TANZU_OCTANT" ]; then
-    echo "octant ($CURRENT_VERSION) is up-to-date."
-    return
-  fi
-
-  curl -o $INSTALL_DIR/octant.deb -sSL https://github.com/vmware-tanzu/octant/releases/download/v${VERSION_VMWARE__TANZU_OCTANT}/octant_${VERSION_VMWARE__TANZU_OCTANT}_Linux-64bit.deb
-  sudo dpkg -i $INSTALL_DIR/octant.deb
-}
-
-install_step() {
-  if [[ -n "$(which step)" ]]; then
-    CURRENT_VERSION=$(step --version | grep Smallstep | awk '{ gsub("CLI/", "", $2); print $2 }')
-  fi
-
-  INSTALL_DIR=$(mktemp -d)
-  source $HOME/git/installation/versions-on-github
-
-  if [ "$CURRENT_VERSION" == "$VERSION_SMALLSTEP_CLI" ]; then
-    echo "step ($CURRENT_VERSION) is up-to-date."
-    return
-  fi
-
-  curl -o $INSTALL_DIR/step.deb -sSL https://github.com/smallstep/cli/releases/download/v${VERSION_SMALLSTEP_CLI}/step-cli_${VERSION_SMALLSTEP_CLI}_amd64.deb
-  sudo dpkg -i $INSTALL_DIR/step.deb
 }
 
 install_lolcat() {
@@ -375,32 +138,11 @@ install_have() {
   sudo chmod a+x $LOCAL_BIN/have
 }
 
-install_light() {
-  pushd $PWD
-  INSTALL_DIR=$(mktemp -d)
-  source $HOME/git/installation/versions-on-github
-
-  curl -o $INSTALL_DIR/light.tar.gz -sSL https://github.com/haikarainen/light/archive/v${VERSION_HAIKARAINEN_LIGHT}.tar.gz
-  tar xf $INSTALL_DIR/light.tar.gz -C $INSTALL_DIR/
-  cd $INSTALL_DIR/light-*
-  ./configure --with-udev && make
-  sudo make install
-  popd
-}
-
 install_speedtest() {
   LOCAL_BIN=/usr/local/bin
 
   sudo curl -o $LOCAL_BIN/speedtest -sS https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
   sudo chmod a+x $LOCAL_BIN/speedtest
-}
-
-install_sampler() {
-  LOCAL_BIN=/usr/local/bin
-  source $HOME/git/installation/versions-on-github
-
-  sudo curl -o $LOCAL_BIN/sampler -sSL https://github.com/sqshq/sampler/releases/download/v${VERSION_SQSHQ_SAMPLER}/sampler-${VERSION_SQSHQ_SAMPLER}-linux-amd64
-  sudo chmod a+x $LOCAL_BIN/sampler
 }
 
 install_hey() {
@@ -441,25 +183,6 @@ install_gh() {
   popd
 }
 
-install_terraform() {
-  if [[ -n "$(which terraform)" ]]; then
-    CURRENT_VERSION=$(terraform version | grep Terraform | awk '{ gsub("v", "", $2); print $2 }')
-  fi
-
-  LOCAL_BIN=/usr/local/bin
-  INSTALL_DIR=$(mktemp -d)
-  source $HOME/git/installation/versions-on-github
-
-  if [ "$CURRENT_VERSION" == "$VERSION_HASHICORP_TERRAFORM" ]; then
-    echo "terraform ($CURRENT_VERSION) is up-to-date."
-    return
-  fi
-
-  curl -o $INSTALL_DIR/terraform.zip -sSL https://releases.hashicorp.com/terraform/${VERSION_HASHICORP_TERRAFORM}/terraform_${VERSION_HASHICORP_TERRAFORM}_linux_amd64.zip
-  unzip $INSTALL_DIR/terraform.zip -d $INSTALL_DIR/
-  sudo /bin/mv -f $INSTALL_DIR/terraform $LOCAL_BIN/
-}
-
 install_fzf() {
   pushd $PWD
 
@@ -492,49 +215,8 @@ install_krew() {
   popd
 }
 
-install_kind() {
-  if [[ -n "$(which kind)" ]]; then
-    CURRENT_VERSION=$(kind version | awk '{ gsub("v", "", $2); print $2 }')
-  fi
-
-  INSTALL_DIR=$(mktemp -d)
-  source $HOME/git/installation/versions-on-github
-
-  if [ "$CURRENT_VERSION" == "$VERSION_KUBERNETES__SIGS_KIND" ]; then
-    echo "kind ($CURRENT_VERSION) is up-to-date."
-    return
-  fi
-
-  curl -o $INSTALL_DIR/kind -sSL https://kind.sigs.k8s.io/dl/v${VERSION_KUBERNETES__SIGS_KIND}/kind-$(uname)-amd64
-  chmod +x $INSTALL_DIR/kind
-  sudo /bin/mv -f $INSTALL_DIR/kind $LOCAL_BIN/
-}
-
 install_code_server() {
   curl -fsSL https://code-server.dev/install.sh | sh
-}
-
-install_ripgrep() {
-  DISTRIBUTION=$(. /etc/os-release; echo $ID)
-  if [ "ubuntu" = ${DISTRIBUTION} ]; then
-    if [[ -n "$(which rg)" ]]; then
-      CURRENT_VERSION=$(rg --version | grep ripgrep | awk '{ print $2 }')
-    fi
-
-    INSTALL_DIR=$(mktemp -d)
-    source $HOME/git/installation/versions-on-github
-
-    if [ "$CURRENT_VERSION" == "$VERSION_BURNTSUSHI_RIPGREP" ]; then
-      echo "ripgrep ($CURRENT_VERSION) is up-to-date."
-      return
-    fi
-
-    curl -o $INSTALL_DIR/ripgrep.deb -sSL https://github.com/BurntSushi/ripgrep/releases/download/${VERSION_BURNTSUSHI_RIPGREP}/ripgrep_${VERSION_BURNTSUSHI_RIPGREP}_amd64.deb
-    sudo dpkg -i $INSTALL_DIR/ripgrep.deb
-  else
-    echo Please use apt to update ripgrep.
-    return
-  fi
 }
 
 install_redis_cli() {
@@ -550,32 +232,6 @@ install_redis_cli() {
   popd
 }
 
-install_protoc() {
-  if [[ -n "$(which protoc)" ]]; then
-    CURRENT_VERSION=$(protoc --version | awk '{ print $2 }')
-  fi
-
-  INSTALL_DIR=$(mktemp -d)
-  LOCAL_BIN=/usr/local/bin
-  source $HOME/git/installation/versions-on-github
-
-  if [ "$CURRENT_VERSION" == "$VERSION_PROTOCOLBUFFERS_PROTOBUF" ]; then
-    echo "protoc ($CURRENT_VERSION) is up-to-date."
-    return
-  fi
-
-  curl -o $INSTALL_DIR/protoc.zip -sSL https://github.com/protocolbuffers/protobuf/releases/download/v${VERSION_PROTOCOLBUFFERS_PROTOBUF}/protoc-${VERSION_PROTOCOLBUFFERS_PROTOBUF}-linux-x86_64.zip
-  unzip $INSTALL_DIR/protoc.zip -d $INSTALL_DIR/
-  sudo /bin/mv -f $INSTALL_DIR/bin/protoc $LOCAL_BIN/
-  if [ -d /usr/local/include/google/protobuf ]; then
-    rm -rf /usr/local/include/google/protobuf
-  fi
-  if [ ! -d /usr/local/include/google ]; then
-    mkdir -p /usr/local/include/google
-  fi
-  sudo /bin/mv -f $INSTALL_DIR/include/google/protobuf /usr/local/include/google/
-}
-
 install_git_sizer() {
   if [[ -n "$(which git-sizer)" ]]; then
     CURRENT_VERSION=$(git-sizer --version | awk '{ print $3 }')
@@ -583,14 +239,14 @@ install_git_sizer() {
 
   INSTALL_DIR=$(mktemp -d)
   LOCAL_BIN=/usr/local/bin
-  source $HOME/git/installation/versions-on-github
+  _VERSION=$(jq -r '."github/git-sizer"' $HOME/git/installation/versions_on_github.json)
 
-  if [ "$CURRENT_VERSION" == "$VERSION_GITHUB_GIT__SIZER" ]; then
+  if [ "$CURRENT_VERSION" == "$_VERSION" ]; then
     echo "git-sizer ($CURRENT_VERSION) is up-to-date."
     return
   fi
 
-  curl -o $INSTALL_DIR/git-sizer.zip -sSL https://github.com/github/git-sizer/releases/download/v${VERSION_GITHUB_GIT__SIZER}/git-sizer-${VERSION_GITHUB_GIT__SIZER}-linux-amd64.zip
+  curl -o $INSTALL_DIR/git-sizer.zip -sSL https://github.com/github/git-sizer/releases/download/v${_VERSION}/git-sizer-${_VERSION}-linux-amd64.zip
   unzip $INSTALL_DIR/git-sizer.zip -d $INSTALL_DIR/
   sudo /bin/mv -f $INSTALL_DIR/git-sizer $LOCAL_BIN/
 }
@@ -601,23 +257,6 @@ install_cargo() {
   rustup component add rust-src
   sudo curl -o ${LOCAL_BIN}/rust-analyzer -sSL https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux
   sudo chmod +x ${LOCAL_BIN}/rust-analyzer
-}
-
-install_kompose() {
-  if [[ -n "$(which kompose)" ]]; then
-    CURRENT_VERSION=$(kompose version | awk '{ print $1 }')
-  fi
-
-  LOCAL_BIN=/usr/local/bin
-  source $HOME/git/installation/versions-on-github
-
-  if [ "$CURRENT_VERSION" == "$VERSION_KUBERNETES_KOMPOSE" ]; then
-    echo "kompose ($CURRENT_VERSION) is up-to-date."
-    return
-  fi
-
-  sudo curl -o $LOCAL_BIN/kompose -sSL https://github.com/kubernetes/kompose/releases/download/v${VERSION_KUBERNETES_KOMPOSE}/kompose-linux-amd64
-  sudo chmod +x $LOCAL_BIN/kompose
 }
 
 install_awscli() {
@@ -638,11 +277,21 @@ install_awscli() {
 
 install_another_redis_desktop_manager() {
   INSTALL_DIR=$(mktemp -d)
-  source $HOME/git/installation/versions-on-github
+  _VERSION=$(jq -r '."qishibo/AnotherRedisDesktopManager"' $HOME/git/installation/versions_on_github.json)
 
-  curl -o $INSTALL_DIR/another-redis-desktop-manager -sSL https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}/Another-Redis-Desktop-Manager.${VERSION_QISHIBO_ANOTHERREDISDESKTOPMANAGER}.AppImage
+  curl -o $INSTALL_DIR/another-redis-desktop-manager -sSL https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v${_VERSION}/Another-Redis-Desktop-Manager.${_VERSION}.AppImage
   chmod u+x $INSTALL_DIR/another-redis-desktop-manager
   sudo /bin/mv -f $INSTALL_DIR/another-redis-desktop-manager /usr/bin/
+}
+
+install_mermaid_ascii() {
+  INSTALL_DIR=$(mktemp -d)
+  LOCAL_BIN=/usr/local/bin
+  _VERSION=$(jq -r '."AlexanderGrooff/mermaid-ascii"' $HOME/git/installation/versions_on_github.json)
+
+  curl -o $INSTALL_DIR/mermaid-ascii.tar.gz -sSL https://github.com/AlexanderGrooff/mermaid-ascii/releases/download/${_VERSION}/mermaid-ascii_Linux_x86_64.tar.gz
+  tar xzf $INSTALL_DIR/mermaid-ascii.tar.gz -C $INSTALL_DIR/
+  sudo /bin/mv -f $INSTALL_DIR/mermaid-ascii $LOCAL_BIN/
 }
 
 install_cloudflared() {
