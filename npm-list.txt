@@ -16,3 +16,4 @@ tree-sitter-cli
 @tailwindcss/cli
 corepack
 @mermaid-js/mermaid-cli
+openwiki
