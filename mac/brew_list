@@ -49,6 +49,7 @@ gum
 handbrake
 hashicorp/tap/terraform
 helm
+hermes-agent
 hexyl
 imagemagick
 inetutils
