@@ -64,3 +64,4 @@ google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 google.golang.org/protobuf/cmd/protoc-gen-go@latest
 honnef.co/go/tools/cmd/staticcheck@master
 mvdan.cc/gofumpt@latest
+github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
