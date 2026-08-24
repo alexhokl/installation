@@ -17,6 +17,7 @@ update_all() {
   install_gcpdiag
   flutter upgrade
   install_gh_extensions
+  install_npx_skills
   $HOME/git/installation/uv_tools_install.sh
   install_pipx_packages
   install_reddit_tui
@@ -35,6 +36,7 @@ install_all() {
   install_pipx_packages
   install_reddit_tui
   install_claude_code
+  install_npx_skills
   install_mermaid_ascii
 }
 

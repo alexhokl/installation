@@ -13,6 +13,7 @@ update_all() {
   install_vscode_extensions
   install_dotnet_tools
   install_gh_extensions
+  install_npx_skills
   install_gems
   update_python_packages
   update_npm_packages
@@ -33,6 +34,7 @@ install_all() {
   install_slack_cli
   install_reddit_tui
   install_claude_code
+  install_npx_skills
   install_mermaid_ascii
 }
 

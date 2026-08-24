@@ -9,6 +9,7 @@ update_all() {
   install_go_packages
   install_cargo_packages
   install_gh_extensions
+  install_npx_skills
   install_azure_data_studio
   install_gactions
   update_python_packages
@@ -54,6 +55,7 @@ install_all() {
   install_slack_cli
   install_reddit_tui
   install_claude_code
+  install_npx_skills
   install_mermaid_ascii
 }
 

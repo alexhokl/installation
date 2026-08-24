@@ -39,6 +39,10 @@ update_npm_packages() {
   cat $HOME/git/installation/npm-list.txt | xargs -n 1 npm install -g
 }
 
+install_npx_skills() {
+  cat $HOME/git/installation/npx_skills | xargs -n 1 npx skills add --yes -g
+}
+
 update_python_packages() {
   python -m pip install --upgrade --user pip
   python -m pip install --upgrade --user -r $HOME/git/installation/requirements.txt

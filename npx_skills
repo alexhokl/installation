@@ -1,0 +1,7 @@
+gemini-cli-extensions/google-cloud-storage@gcs-security-assessment
+google/skills@bigquery-ai-ml
+google/skills@bigquery-basics
+google/skills@detection-engineering-coverage-evaluation
+google/skills@gke-workload-security
+google/skills@iam-helper-for-policy-simulator
+google/skills@iam-helper-for-privileged-access-management
