@@ -5,3 +5,5 @@ google/skills@detection-engineering-coverage-evaluation
 google/skills@gke-workload-security
 google/skills@iam-helper-for-policy-simulator
 google/skills@iam-helper-for-privileged-access-management
+mattpocock/skills --skill grill-me
+mattpocock/skills --skill grilling
