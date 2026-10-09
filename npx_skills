@@ -6,6 +6,7 @@ google/skills@gke-platform-security
 google/skills@gke-workload-security
 google/skills@iam-helper-for-policy-simulator
 google/skills@iam-helper-for-privileged-access-management
+mattpocock/skills@domain-modeling
 mattpocock/skills@grill-me
 mattpocock/skills@grill-with-docs
 mattpocock/skills@grilling
