@@ -2,8 +2,14 @@ gemini-cli-extensions/google-cloud-storage@gcs-security-assessment
 google/skills@bigquery-ai-ml
 google/skills@bigquery-basics
 google/skills@detection-engineering-coverage-evaluation
+google/skills@gke-platform-security
 google/skills@gke-workload-security
 google/skills@iam-helper-for-policy-simulator
 google/skills@iam-helper-for-privileged-access-management
-mattpocock/skills --skill grill-me
-mattpocock/skills --skill grilling
+mattpocock/skills@grill-me
+mattpocock/skills@grill-with-docs
+mattpocock/skills@grilling
+mattpocock/skills@handoff
+mattpocock/skills@teach
+run-llama/llamaparse-agent-skills@liteparse
+vercel-labs/skills@find-skills

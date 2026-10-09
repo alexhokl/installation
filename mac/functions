@@ -18,6 +18,7 @@ update_all() {
   flutter upgrade
   install_gh_extensions
   install_npx_skills
+  npx skills update -g
   $HOME/git/installation/uv_tools_install.sh
   install_pipx_packages
   install_reddit_tui

@@ -10,6 +10,7 @@ update_all() {
   install_cargo_packages
   install_gh_extensions
   install_npx_skills
+  npx skills update -g
   install_azure_data_studio
   install_gactions
   update_python_packages

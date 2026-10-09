@@ -40,7 +40,7 @@ update_npm_packages() {
 }
 
 install_npx_skills() {
-  cat $HOME/git/installation/npx_skills | xargs -n 1 npx skills add --yes -g
+  cat $HOME/git/installation/npx_skills | xargs -n 1 npx skills add -y --agent opencode --agent claude-code -g
 }
 
 update_python_packages() {
