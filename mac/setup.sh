@@ -42,8 +42,9 @@ curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/dotnet_
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/npm-list.txt \
 	| xargs -n 1 npm i -g
 
-rbenv install 4.0.2
-rbenv global 4.0.2
+RUBY_VERSION=$(jq -r '."ruby/ruby"' $HOME/git/installation/versions_on_github.json)
+rbenv install $RUBY_VERSION
+rbenv global $RUBY_VERSION
 rbenv rehash
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/gem-list \
   | xargs -n 1 gem install
