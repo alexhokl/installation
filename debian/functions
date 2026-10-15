@@ -315,7 +315,7 @@ install_gactions() {
   curl -o $INSTALL_DIR/gactions.tar.gz -sS "https://dl.google.com/gactions/v3/release/gactions-sdk_linux.tar.gz?authuser=0"
   tar xvzf $INSTALL_DIR/gactions.tar.gz -C $INSTALL_DIR/
   sudo /bin/mv $INSTALL_DIR/gactions $LOCAL_BIN/
-  chmod +x $LOCAL_BIN/gactions
+  sudo chmod +x $LOCAL_BIN/gactions
 
   popd
 }
