@@ -205,7 +205,7 @@ install_fzf() {
 install_krew() {
   pushd $PWD
 
-  set -x; cd "$(mktemp -d)"
+  cd "$(mktemp -d)"
   local _OS="$(uname | tr '[:upper:]' '[:lower:]')"
   local _ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')"
   local _KREW="krew-${_OS}_${_ARCH}"
