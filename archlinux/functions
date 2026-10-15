@@ -43,21 +43,6 @@ install_azure_data_studio_extensions() {
   cat $HOME/git/installation/azuredatastudio.extensions | xargs -n 1 /usr/bin/azuredatastudio --force --install-extension
 }
 
-install_sc_im() {
-  pushd $PWD
-
-  git clone https://github.com/jmcnamara/libxlsxwriter.git $HOME/git/libxlsxwriter
-  cd $HOME/git/libxlsxwriter
-  make
-  sudo make install
-  git clone https://github.com/andmarti1424/sc-im.git $HOME/git/sc-im
-  cd $HOME/git/sc-im
-  make
-  sudo make install
-
-  popd
-}
-
 install_have() {
   LOCAL_BIN=/usr/local/bin
 

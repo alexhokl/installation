@@ -80,6 +80,35 @@ install_telepresence() {
   sudo chmod a+x /usr/local/bin/telepresence
 }
 
+install_sc_im() {
+  pushd $PWD
+
+  _DIR=$HOME/git/libxlsxwriter
+  if [ ! -d "$_DIR" ]; then
+    git clone https://github.com/jmcnamara/libxlsxwriter.git $_DIR
+    cd $_DIR
+  else
+    cd $_DIR
+    git pull
+  fi
+  make
+  sudo make install
+
+  _DIR=$HOME/git/sc-im
+  if [ ! -d "$_DIR" ]; then
+    git clone https://github.com/andmarti1424/sc-im.git $_DIR
+    cd $_DIR
+  else
+    cd $_DIR
+    git pull
+  fi
+  # Makefile lives in src/, not the repository root
+  make -C src
+  sudo make -C src install
+
+  popd
+}
+
 install_reddit_tui() {
   pushd $PWD
 
