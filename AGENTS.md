@@ -31,7 +31,9 @@ installation/
 ├── azuredatastudio.extensions # Azure Data Studio extensions
 ├── repo_list                 # Git repositories to clone into ~/git/
 ├── apm-list.txt              # Atom package list (legacy)
-├── node_setup.sh             # npm global prefix configuration
+├── npx_skills                # Agent skills installed via `npx skills add`
+├── gcloud_components         # gcloud SDK components
+├── luarock_modules           # LuaRocks modules
 ├── uv_tools_install.sh       # uv tool installations
 ├── mac/                      # macOS-specific scripts and package lists
 │   ├── setup_initial.sh      # First-run: Xcode CLI tools + Homebrew
@@ -50,15 +52,17 @@ installation/
 │   ├── aur_packages          # AUR packages (yay)
 │   ├── ui_packages           # GUI/desktop packages
 │   └── create_vm.sh          # VM creation helper
-└── debian/                   # Debian/Ubuntu setup scripts
-    ├── setup.sh              # Full Debian/Ubuntu setup
-    ├── functions             # Debian-specific Bash functions
-    ├── basic_packages.sh     # Core apt packages
-    ├── desktop_packages.sh   # Desktop environment packages
-    ├── ui_packages.sh        # UI application packages
-    ├── backup.sh             # Backup script
-    ├── preseed.cfg           # Debian automated installer config
-    └── preseed.no-root.cfg   # Variant without root account
+├── debian/                   # Debian/Ubuntu setup scripts
+│   ├── setup.sh              # Full Debian/Ubuntu setup
+│   ├── functions             # Debian-specific Bash functions
+│   ├── basic_packages.sh     # Core apt packages
+│   ├── desktop_packages.sh   # Desktop environment packages
+│   ├── ui_packages.sh        # UI application packages
+│   ├── backup.sh             # Backup script
+│   ├── preseed.cfg           # Debian automated installer config
+│   └── preseed.no-root.cfg   # Variant without root account
+├── raspbian/                 # Raspberry Pi OS setup
+└── windows/                  # Windows setup (Boxstarter)
 ```
 
 ---
