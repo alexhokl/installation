@@ -1,21 +1,26 @@
 #!/bin/bash
 
 install_vscode_extensions() {
-  if [ ! -f $HOME/git/installation/vscode-extensions.txt ]; then
-    echo "File [vscode-extensions.txt] not found. Skipping VSCode extensions installation."
+  if ! command -v code &> /dev/null; then
+    echo "VSCode is not installed. Skipping VSCode extensions and settings installation."
     return
+  fi
+  if [ -f $HOME/git/installation/vscode-extensions.txt ]; then
+    cat $HOME/git/installation/vscode-extensions.txt | xargs -n 1 code --force --install-extension
+  else
+    echo "File [vscode-extensions.txt] not found. Skipping VSCode extensions installation."
   fi
   if [ ! -f $HOME/git/installation/vscode_settings.json ]; then
     echo "File [vscode_settings.json] not found. Skipping VSCode settings installation."
     return
   fi
-  if ! command -v code &> /dev/null; then
-    echo "VSCode is not installed. Skipping VSCode extensions and settings installation."
-    return
+  if [ "$(uname)" == "Darwin" ]; then
+    _SETTINGS_DIR="$HOME/Library/Application Support/Code/User"
+  else
+    _SETTINGS_DIR=$HOME/.config/Code/User
   fi
-  cat $HOME/git/installation/vscode-extensions.txt | xargs -n 1 code --force --install-extension
-  mkdir -p $HOME/.config/Code/User
-  /bin/cp -f $HOME/git/installation/vscode_settings.json $HOME/.config/Code/User/settings.json
+  mkdir -p "$_SETTINGS_DIR"
+  /bin/cp -f $HOME/git/installation/vscode_settings.json "$_SETTINGS_DIR/settings.json"
 }
 
 install_dotnet_tools() {
