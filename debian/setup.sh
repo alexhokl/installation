@@ -6,10 +6,7 @@ sudo apt install -y lsb-release
 SOURCE_LIST_DIR=/etc/apt/sources.list.d
 DISTRIBUTION=$(. /etc/os-release; echo $ID)
 DISTRIBUTION_RELEASE=$(lsb_release -cs)
-DISTRIBUTION_RELEASE_NO=11
-if [ "ubuntu" = "${DISTRIBUTION}" ]; then
-	DISTRIBUTION_RELEASE_NO=20.04
-fi
+DISTRIBUTION_RELEASE_NO=$(. /etc/os-release; echo $VERSION_ID)
 HARDWARE_TYPE=$(uname -i)  # unknown for crostini or virtual machine
 INSTALL_DIR=$(mktemp -d)
 _ARCH=$(dpkg --print-architecture)
@@ -19,7 +16,7 @@ curl -sS https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key --keyr
 echo "deb [arch=$_ARCH signed-by=/usr/share/keyrings/chrome.google.gpg] https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee $SOURCE_LIST_DIR/google-chrome.list
 
 # gcloud
-echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a $SOURCE_LIST_DIR/google-cloud-sdk.list
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee $SOURCE_LIST_DIR/google-cloud-sdk.list
 curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 
 # docker
@@ -27,8 +24,10 @@ echo "deb [arch=$_ARCH] https://download.docker.com/linux/${DISTRIBUTION} ${DIST
 curl -fsSL https://download.docker.com/linux/${DISTRIBUTION}/gpg | sudo apt-key add -
 
 # kubectl
-sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee $SOURCE_LIST_DIR/kubernetes.list
+# apt.kubernetes.io has been shut down; pkgs.k8s.io is versioned per minor release
+KUBERNETES_MINOR_VERSION=v1.37
+curl -fsSL https://pkgs.k8s.io/core:/stable:/${KUBERNETES_MINOR_VERSION}/deb/Release.key | gpg --dearmor | sudo tee /usr/share/keyrings/kubernetes-apt-keyring.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/${KUBERNETES_MINOR_VERSION}/deb/ /" | sudo tee $SOURCE_LIST_DIR/kubernetes.list
 
 # yubico
 # echo "deb http://ppa.launchpad.net/yubico/stable/ubuntu wily main" | sudo tee $SOURCE_LIST_DIR/yubico.list
@@ -52,8 +51,8 @@ echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/deb
 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
 
 # signal
-echo "deb [arch=$_ARCH signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a $SOURCE_LIST_DIR/signal.list
-curl -sS https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor | sudo tee -a /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
+echo "deb [arch=$_ARCH signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main" | sudo tee $SOURCE_LIST_DIR/signal.list
+curl -sS https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
 
 # tailscale
 curl -fsSL https://pkgs.tailscale.com/stable/${DISTRIBUTION}/${DISTRIBUTION_RELEASE}.gpg | sudo apt-key add -
