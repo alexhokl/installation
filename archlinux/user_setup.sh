@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo pacman -Syy
 
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/archlinux/basic_packages \

@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/mac/brew_list | xargs -n 1 brew install
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/mac/cask_list | xargs -n 1 brew install --cask

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 PARTITION_EFI=/dev/sda1
 PARTITION_BOOT=/dev/sda2
 PARTITION_ENCRYPTED=/dev/sda3
@@ -33,7 +35,7 @@ arch-chroot /mnt passwd $USER_NAME
 
 arch-chroot /mnt ./root_setup.sh
 
-arch-chroot /mnt sed -i -e 's/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"cryptdevice=\/dev\/sda3:secret resume=\/dev\/mapper\/arch-swap\"/g' /etc/default/grub
+arch-chroot /mnt sed -i -e "s|GRUB_CMDLINE_LINUX=\"\"|GRUB_CMDLINE_LINUX=\"cryptdevice=${PARTITION_ENCRYPTED}:secret resume=/dev/mapper/arch-swap\"|g" /etc/default/grub
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
 arch-chroot /mnt systemctl enable dhcpcd@$ETHERNET_INTERFACE
