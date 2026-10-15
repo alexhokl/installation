@@ -64,11 +64,13 @@ install_ruby() {
   pushd $PWD
   _VERSION=$(jq -r '."ruby/ruby"' $HOME/git/installation/versions_on_github.json)
 
+  CURRENT_VERSION=
   if [[ -n "$(which rbenv)" ]]; then
     CURRENT_VERSION=$(rbenv version | awk '{ print $1 }')
   fi
   if [ "$CURRENT_VERSION" == "$_VERSION" ]; then
     echo "ruby ($CURRENT_VERSION) is up-to-date."
+    popd
     return
   fi
 
@@ -236,6 +238,7 @@ install_redis_cli() {
 }
 
 install_git_sizer() {
+  CURRENT_VERSION=
   if [[ -n "$(which git-sizer)" ]]; then
     CURRENT_VERSION=$(git-sizer --version | awk '{ print $3 }')
   fi
@@ -263,6 +266,7 @@ install_cargo() {
 }
 
 install_awscli() {
+  CURRENT_VERSION=
   _CURRENT_PATH=$(which aws)
   if [[ -n "$_CURRENT_PATH" ]]; then
     CURRENT_VERSION=$(aws --version | awk '{ gsub("aws-cli/","",$1); print $1 }')
