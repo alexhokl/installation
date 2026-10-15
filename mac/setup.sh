@@ -26,6 +26,7 @@ for r in $(curl -sSL https://raw.githubusercontent.com/alexhokl/installation/mas
 done
 
 git clone https://github.com/alexhokl/.vim $HOME/.vim
+mkdir -p $HOME/.config
 ln -sf $HOME/.vim $HOME/.config/nvim
 
 curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/go_packages \
