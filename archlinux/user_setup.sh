@@ -69,14 +69,14 @@ curl -o $HOME/.ssh/config -sSL https://raw.githubusercontent.com/alexhokl/dotfil
 
 echo "StreamLocalBindUnlink yes" | sudo tee -a /etc/ssh/sshd_config
 
-systemctl enable lightdm
-systemctl enable sshd
-systemctl enable bluetooth
-systemctl enable containerd
-systemctl enable docker
-systemctl enable cups
-systemctl enable NetworkManager
-systemctl enable pcscd
-systemctl enable tailscaled
+sudo systemctl enable lightdm
+sudo systemctl enable sshd
+sudo systemctl enable bluetooth
+sudo systemctl enable containerd
+sudo systemctl enable docker
+sudo systemctl enable cups
+sudo systemctl enable NetworkManager
+sudo systemctl enable pcscd
+sudo systemctl enable tailscaled
 systemctl --user enable pipewire
 systemctl --user enable pipewire-pulse
