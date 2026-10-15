@@ -94,11 +94,6 @@ install_d2() {
   curl -fsSL https://d2lang.com/install.sh | sh -s --
 }
 
-install_gcloud_sql_proxy() {
-  sudo curl -o /usr/local/bin/cloud-sql-proxy -sSL https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.15.2/cloud-sql-proxy.darwin.amd64
-  sudo chmod +x /usr/local/bin/cloud-sql-proxy
-}
-
 install_pipx_packages() {
   cat $HOME/git/installation/pipx_packages | xargs -n 1 pipx install
   pipx inject mdformat mdformat-gfm
