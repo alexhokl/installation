@@ -1,6 +1,9 @@
 #!/bin/bash
 
-BACKUP_DIR=/tmp/debian-backup
+# backup contains credentials; keep it readable by the owner only
+umask 077
+
+BACKUP_DIR=$(mktemp -d)/debian-backup
 mkdir -p $BACKUP_DIR
 
 mkdir -p $BACKUP_DIR/docker-trust-keys
@@ -13,6 +16,6 @@ cp $HOME/.extra $BACKUP_DIR/
 cp $HOME/.extra_backup $BACKUP_DIR/
 cp $HOME/.git-credentials $BACKUP_DIR/
 
-tar cvzf debian-backup.tar.gz $BACKUP_DIR
+tar cvzf debian-backup.tar.gz -C "$(dirname $BACKUP_DIR)" debian-backup
 
-rm -rf $BACKUP_DIR
+rm -rf "$(dirname $BACKUP_DIR)"
