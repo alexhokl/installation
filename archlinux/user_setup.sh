@@ -58,8 +58,7 @@ curl -sSL https://raw.githubusercontent.com/alexhokl/installation/master/npm-lis
 
 sudo pacman -R --noconfirm vim
 sudo ln -s /usr/bin/nvim /usr/bin/vim
-source $HOME/git/installation/debian/functions
-install_vim
+source $HOME/git/installation/archlinux/functions
 
 cd $HOME/git/dotfiles
 make bin
