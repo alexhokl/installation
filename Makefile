@@ -1,2 +1,2 @@
 print-latest-versions:
-	./print-latest-versions.sh
+	./print_latest_versions.sh

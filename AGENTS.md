@@ -14,7 +14,7 @@ installation/
 ├── Makefile                  # Single target: print-latest-versions
 ├── functions_common          # Shared Bash functions sourced by all platforms
 ├── versions_on_github.json   # Pinned tool versions (owner/repo: version format)
-├── print-latest-versions.sh  # Queries GitHub API to refresh versions_on_github.json
+├── print_latest_versions.sh  # Queries GitHub API to refresh versions_on_github.json
 ├── requirements.txt          # Python packages (pip)
 ├── go_packages               # Go tools (one import path per line)
 ├── cargo_packages            # Rust crates (one crate name per line)
@@ -70,7 +70,7 @@ installation/
 ```bash
 make print-latest-versions
 # or directly:
-./print-latest-versions.sh
+./print_latest_versions.sh
 ```
 
 This queries the GitHub API for the latest release of every tool pinned in
@@ -200,7 +200,7 @@ the scripts against a real machine.
 ## Conventions When Adding New Tools
 
 1. **Pin the version** in `versions_on_github.json` using the
-   `"owner/repo": "x.y.z"` format. Run `./print-latest-versions.sh` to
+   `"owner/repo": "x.y.z"` format. Run `./print_latest_versions.sh` to
    populate the initial value.
 2. **Add an install function** in the appropriate `functions` file
    (`functions_common` for cross-platform, `mac/functions`,
