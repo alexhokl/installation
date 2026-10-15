@@ -12,7 +12,7 @@ pyenv install 3.11
 pyenv global 3.11
 curl -sSLO https://raw.githubusercontent.com/alexhokl/installation/master/requirements.txt
 python -m pip install --upgrade --user pip
-python -m pip install --upgrade --user -r $HOME/git/installation/requirements.txt
+python -m pip install --upgrade --user -r ./requirements.txt
 
 ## latest LTS version of node
 n lts
