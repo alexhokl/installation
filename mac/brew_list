@@ -7,6 +7,7 @@ anchordotdev/tap/anchor
 android-platform-tools
 asciinema
 asdf
+awscli
 azure-cli
 bash
 bash-completion@2

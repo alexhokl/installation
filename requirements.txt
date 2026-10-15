@@ -19,4 +19,3 @@ torch
 torchvision
 torchaudio
 instagram-location-search
-awscli
