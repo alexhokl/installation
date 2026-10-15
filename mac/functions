@@ -28,7 +28,6 @@ update_all() {
 }
 
 install_all() {
-  install_have
   install_another_redis_desktop_manager
   install_gcpdiag
   rustup install stable
