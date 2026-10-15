@@ -91,7 +91,7 @@ npm config set prefix $HOME/.npm-global
 curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/basic_packages.sh | bash
 if [ "unknown" != "$HARDWARE_TYPE" ]; then
 	curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/ui_packages.sh | bash
-	curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/desktop_package.sh | bash
+	curl -sS https://raw.githubusercontent.com/alexhokl/installation/master/debian/desktop_packages.sh | bash
 fi
 
 if [ "unknown" != "$HARDWARE_TYPE" ]; then
