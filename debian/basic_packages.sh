@@ -69,6 +69,7 @@ sudo ACCEPT_EULA=Y DEBIAN_FRONTEND=noninteractive apt install -y \
 	libyaml-dev \
 	libzip-dev \
 	locales \
+	lynx \
 	make \
 	myrepos \
 	net-tools \
