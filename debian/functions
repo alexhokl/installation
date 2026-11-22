@@ -44,6 +44,7 @@ install_all() {
   install_go_packages
   install_bb_pr
   install_fzf
+  install_atuin
   install_krew
   install_code_server
   install_git_sizer
@@ -187,6 +188,15 @@ install_gh() {
   /bin/cp -f ./bin/gh $HOME/git/bin/
 
   popd
+}
+
+install_atuin() {
+  if [[ -n "$(which atuin)" ]]; then
+    echo "atuin is already installed."
+    return
+  fi
+
+  curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh | bash
 }
 
 install_fzf() {
