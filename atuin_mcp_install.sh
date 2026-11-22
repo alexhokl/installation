@@ -5,5 +5,5 @@ if [[ -z "$(which atuin)" ]]; then
   exit 0
 fi
 
-atuin mcp install claude
-atuin mcp install opencode
+atuin setup --only --mcp --agents claude-code
+atuin setup --only --mcp --agents opencode
