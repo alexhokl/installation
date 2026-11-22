@@ -57,6 +57,7 @@ install_all() {
   install_reddit_tui
   install_claude_code
   install_npx_skills
+  $HOME/git/installation/atuin_mcp_install.sh
   install_mermaid_ascii
 }
 

@@ -35,6 +35,7 @@ installation/
 ├── gcloud_components         # gcloud SDK components
 ├── luarock_modules           # LuaRocks modules
 ├── uv_tools_install.sh       # uv tool installations
+├── atuin_mcp_install.sh      # Registers the atuin MCP server with claude and opencode
 ├── mac/                      # macOS-specific scripts and package lists
 │   ├── setup_initial.sh      # First-run: Xcode CLI tools + Homebrew
 │   ├── setup.sh              # Full macOS setup
