@@ -11,6 +11,7 @@ and no build system beyond the single `Makefile` target.
 
 ```
 installation/
+├── README.md                 # Human notes; each platform directory has its own
 ├── Makefile                  # Single target: print-latest-versions
 ├── functions_common          # Shared Bash functions sourced by all platforms
 ├── versions_on_github.json   # Pinned tool versions (owner/repo: version format)
@@ -20,7 +21,7 @@ installation/
 ├── cargo_packages            # Rust crates (one crate name per line)
 ├── cargo_git_packages        # Rust crates installed via --git (one URL per line)
 ├── npm-list.txt              # npm global packages (one package per line)
-├── pipx_packages             # pipx tools (one package per line)
+├── pipx_packages             # pipx tools (one package per line; macOS only)
 ├── dotnet_tools              # .NET global tools (one tool ID per line)
 ├── gem-list                  # Ruby gems (one gem per line)
 ├── opam_packages             # OCaml opam packages (one package per line)
@@ -33,16 +34,15 @@ installation/
 ├── apm-list.txt              # Atom package list (legacy)
 ├── npx_skills                # Agent skills installed via `npx skills add`
 ├── gcloud_components         # gcloud SDK components
-├── luarock_modules           # LuaRocks modules
-├── uv_tools_install.sh       # uv tool installations
+├── luarock_modules           # LuaRocks modules (not read by any script)
+├── uv_tools_install.sh       # uv tool installations (called from mac/functions)
 ├── atuin_mcp_install.sh      # Registers the atuin MCP server with claude and opencode
 ├── mac/                      # macOS-specific scripts and package lists
 │   ├── setup_initial.sh      # First-run: Xcode CLI tools + Homebrew
 │   ├── setup.sh              # Full macOS setup
 │   ├── functions             # macOS-specific Bash functions
 │   ├── brew_list             # Homebrew formulae
-│   ├── cask_list             # Homebrew casks
-│   └── preferences.scpt      # macOS system preferences via AppleScript
+│   └── cask_list             # Homebrew casks
 ├── archlinux/                # Arch Linux setup scripts and package lists
 │   ├── setup.sh              # Disk partitioning + base install (run as root)
 │   ├── root_setup.sh         # Post-chroot root configuration
@@ -52,6 +52,7 @@ installation/
 │   ├── basic_packages        # pacman packages
 │   ├── aur_packages          # AUR packages (yay)
 │   ├── ui_packages           # GUI/desktop packages
+│   ├── missing_packages      # Debian packages without an Arch equivalent (not read by any script)
 │   └── create_vm.sh          # VM creation helper
 ├── debian/                   # Debian/Ubuntu setup scripts
 │   ├── setup.sh              # Full Debian/Ubuntu setup
@@ -61,9 +62,14 @@ installation/
 │   ├── ui_packages.sh        # UI application packages
 │   ├── backup.sh             # Backup script
 │   ├── preseed.cfg           # Debian automated installer config
-│   └── preseed.no-root.cfg   # Variant without root account
+│   ├── preseed.no-root.cfg   # Variant without root account
+│   ├── 90-touchpad.conf      # X11 touchpad config (copied manually)
+│   └── greeter.dconf-defaults.conf # GDM greeter config (copied manually)
 ├── raspbian/                 # Raspberry Pi OS setup
-└── windows/                  # Windows setup (Boxstarter)
+│   ├── setup.sh              # Full Raspberry Pi OS setup
+│   └── packages.sh           # apt packages
+└── windows/                  # Windows setup
+    └── boxstarter.ps1        # Boxstarter script
 ```
 
 ---
@@ -122,7 +128,7 @@ install_cargo_packages         # cargo install all packages in cargo_packages
 install_vscode_extensions      # install all VS Code extensions
 install_dotnet_tools           # install all .NET global tools
 install_gh_extensions          # install all GitHub CLI extensions
-install_pipx_packages          # install all pipx tools
+install_pipx_packages          # install all pipx tools (macOS only)
 update_python_packages         # pip upgrade all packages in requirements.txt
 ```
 
@@ -194,11 +200,6 @@ the scripts against a real machine.
 
 - Targets are lowercase with hyphens: `print-latest-versions`.
 - Tab-indented recipe lines (standard make syntax).
-
-### AppleScript (`mac/preferences.scpt`)
-
-- Used only for macOS system-preference automation; not a general-purpose
-  scripting language in this repo.
 
 ---
 
